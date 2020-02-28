@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+    <script>
+        // 等待页面加载完成
+        window.onload = function () {
+
+            // 失去焦点
+            document.getElementById("username").onblur = function () {
+                alert("失去焦点！");
+            }
+
+            // 鼠标在元素上
+            document.getElementById("username").onmouseover = function(){
+                alert("鼠标来了。。。");
+            }
+
+            // 鼠标点击
+            document.getElementById("username").onmousedown = function(event){
+                alert("鼠标来了。。。:" + event.button);
+            }
+
+            // 键盘事件
+            document.getElementById("username").onkeydown = function(event){
+                alert(event.keyCode+"被按下");
+            }
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="username">
+
+</body>
+
+</html>

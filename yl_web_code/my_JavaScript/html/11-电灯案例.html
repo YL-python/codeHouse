@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电灯案例</title>
+</head>
+<body>
+    <img src="../img/off.gif" id="light">
+
+
+    <script>
+        LIGHT = false;
+        function off_on(){
+            if(LIGHT){
+                light.src = "../img/off.gif";
+                LIGHT = !LIGHT;
+            }else{
+                light.src = "../img/on.gif";
+                LIGHT = !LIGHT;
+            }
+        }
+
+        var light = document.getElementById("light");
+        light.onclick = off_on;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>正在等待自动跳转</title>
+
+    <style>
+        p {
+            text-align: center;
+        }
+
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        <span id="time">5</span>
+        秒之后自动跳转到首页...
+    </p>
+
+    <script>
+        timeNum = 5;
+        function daojis(){
+            timeNum--;
+            var span = document.getElementById("time");
+            span.innerHTML = timeNum;
+            if(timeNum == 0){
+                clearInterval(dingshiqiID);
+                location.href = "https://www.baidu.com"
+            }
+        }
+        var span = document.getElementById("time")
+        var dingshiqiID = setInterval(daojis,1000);
+
+    </script>
+</body>
+
+</html>

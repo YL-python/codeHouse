@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="../点击特效/jquery.min.js"></script>
+    <script>
+        // 右键
+        document.oncontextmenu = function () {
+            return false;
+        }
+    </script>
+    <script>
+        // 右键
+        $(function () {
+            $(document).contextmenu(function () {
+                return false
+            })
+        });
+    </script>
+
+    <script>
+        function forbidKeyboard() {
+            $(document).keydown(function (e) {
+                /*9:Tab键, 17：Control键, 18:Alt键, 123:F12键, 83:S键*/
+                var keyboardCode = [9, 17, 18, 123];
+                for (i in keyboardCode) {
+                    if (keyboardCode[i] == e.keyCode) {
+                        return false;
+                    }
+                }
+                if ((e.keyCode == 83) && (e.ctrlKey || e.metaKey)) {
+                    return false;
+                }
+            });
+            /*禁止文本选择功能*/
+            $(document).bind("selectstart", function () {
+                return false;
+            });
+        }
+        $(function () {
+            forbidKeyboard();
+        });
+    </script>
+
+
+</head>
+12312312312
+不能F12  不能复制黏贴 不能选择文本
+<body>
+
+</body>
+
+</html>

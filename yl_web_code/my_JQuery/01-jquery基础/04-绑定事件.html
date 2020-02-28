@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JQuery对象和JS对象的转换</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+
+    <script>
+        // 入口函数
+        $(function () {
+            // 绑定事件
+            $("#btn1").click(function () {
+                alert("被点击了！")
+            });
+
+            // 修改样式
+            $("#div1").css("backgroundColor","red");
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div id="div1">div1....</div>
+    <div id="div2">div2....</div>
+    <input type="button" value="点我" id="btn1">
+
+</body>
+
+</html>

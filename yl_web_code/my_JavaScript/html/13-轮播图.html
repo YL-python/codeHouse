@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+</head>
+
+<body>
+
+    <img id="lunboimg" src="../img/banner_1.jpg" width="100%">
+
+    <script>
+        var number = 1;
+
+        function lunbofun() {
+            number++;
+            if (number > 3) {
+                number = 1;
+            }
+            var lunboimg = document.getElementById("lunboimg");
+            lunboimg.src = "../img/banner_" + number + ".jpg";
+        }
+
+        setInterval(lunbofun, 500)
+    </script>
+
+</body>
+
+</html>

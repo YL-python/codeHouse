@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+
+    <script>
+        // 隐藏
+        function hideFn() {
+            // $("showDiv").hide("show", "swing", function(){
+            //     alert("隐藏了。。。");
+            // })
+            // 默认方法
+            // $("#showDiv").hide("show", "swing");
+            // 滑动方式
+            // $("#showDiv").slideUp("show");
+            // 淡入淡出
+            $("#showDiv").fadeOut("show");
+        }
+
+        // 显示
+        function showFn() {
+            // $("showDiv").show("show", "swing", function(){
+            //     alert("显示了。。。");
+            // })
+            // $("#showDiv").show("show", "swing");
+            // 滑动方式
+            // $("#showDiv").slideDown("show");
+            // 淡入淡出
+            $("#showDiv").fadeIn("show");
+        }
+
+        // 显示
+        function toggleFn() {
+            // $("showDiv").toggle("show", "swing", function(){
+            //     alert("显示了。。。");
+            // })
+            // $("#showDiv").toggle("show", "swing");
+            // 滑动方式
+            // $("#showDiv").slideToggle("show");
+            // 淡入淡出
+            $("#showDiv").fadeToggle("show");
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <input type="button" value="点击按钮隐藏div" onclick="hideFn()">
+    <input type="button" value="点击按钮显示div" onclick="showFn()">
+    <input type="button" value="点击按钮切换div显示和隐藏" onclick="toggleFn()">
+
+    <div id="showDiv" style="width:300px;height:300px;background:pink">
+        div显示和隐藏
+    </div>
+</body>
+
+</html>

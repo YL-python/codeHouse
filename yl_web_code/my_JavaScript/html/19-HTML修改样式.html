@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改样式</title>
+
+    <style>
+        .d1{
+            border:1px solid blue;
+            width: 100PX ;
+            height: 100px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="div1">
+        div1内容
+    </div>
+
+    <div id="div2">
+            div2内容
+        </div>
+
+    <script>
+        var divElement1 = document.getElementById("div1");
+        divElement1.onclick = function(){
+            // 修改样式方法 1
+            divElement1.style.border = "1px solid red";
+            divElement1.style.width = "300PX"
+
+            // font-size  -->  fontSize
+            divElement1.style.fontSize = "20PX";
+
+        }
+        
+        // 样式多了用第一种就不方便了
+        var divElement2 = document.getElementById("div2");
+            divElement2.onclick = function(){
+                divElement2.className = "d1";
+                // divElement2.setAttribute("class","d1");
+        }
+    </script>
+</body>
+</html>

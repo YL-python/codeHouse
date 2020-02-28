@@ -1,0 +1,3 @@
+CTRL+shift+p          控制台
+! + CTRL+E              HTML5自动生成请求头
+输入 html:xt +tab     html1.0自动生成请求头

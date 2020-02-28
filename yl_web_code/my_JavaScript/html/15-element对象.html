@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <a >点我呀</a>
+    <input type="button" id="set_but" value="设置">
+    <input type="button" id="rem_but" value="取消">
+    <script>
+        var but_set = document.getElementById("set_but");
+        but_set.onclick = function(){
+            var a = document.getElementsByTagName("a")[0]
+            a.setAttribute("href","https://www.baidu.com")
+        }
+        var but_rem = document.getElementById("rem_but");
+        but_rem.onclick = function(){
+            var a = document.getElementsByTagName("a")[0]
+            a.removeAttribute("href")
+        }
+    </script>
+</body>
+</html>

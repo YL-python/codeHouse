@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>增删子节点</title>
+    <style>
+        div {
+            border: 1px solid red;
+        }
+
+        #div1 {
+            width: 200PX;
+            height: 200pX;
+        }
+
+        #div2 {
+            width: 100PX;
+            height: 100pX;
+        }
+        #div3 {
+            width: 300PX;
+            height: 300pX;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        div1
+        <div id="div2">div2</div>
+    </div>
+    <a href="javascript:void(0);"> 删除子节点 </a>
+    <a href="javascript:void(0);"> 增加子节点 </a>
+    <script>
+        /*超链接有两个功能
+            1.可以点击有样式
+            2.点击后会跳转到href指定的url
+        现在想实现1不实现2
+            需要让href属性 = javascript:void(0);*/
+
+        var element_a = document.getElementsByTagName("a")[0];
+        element_a.onclick = function () {
+            var div1 = document.getElementById("div1");
+            var div2 = document.getElementById("div2");
+            div1.removeChild(div2)
+        }
+        var element_a_2 = document.getElementsByTagName("a")[1];
+        element_a_2.onclick = function () {
+            var div1 = document.getElementById("div1");
+            var div3 = document.createElement("div")  // 创建element对象
+            div3.setAttribute("id","div3")  // 设置值
+            div3.innerHTML = "div3"
+            div1.appendChild(div3)  // 添加到父节点下
+        }
+    </script>
+
+
+
+</body>
+
+</html>

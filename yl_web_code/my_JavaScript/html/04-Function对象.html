@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function对象</title>
+    <script>
+        /*
+            Function 对象
+                1 创建
+                    1：var fun = new Function(形参列表，方法体)
+
+                    2:function 方法名（参数列表）{
+                        方法体
+                    }
+
+                    3:var 方法名 = function（参数列表）{
+                        方法体
+                    }
+
+                2 方法
+
+                3 属性
+                    length:形参的个数
+
+                4 特点
+                    1：方法定义的时候参数的类型可以不写
+                    2：方法是一个对象，重复会覆盖
+                    3：方法的调用只与方法的名称有关，与参数列表无关
+                    4：方法的声明中有一个内置对象（argument数组）封装了所有参数
+
+                5 调用
+        */
+        
+        //1.1演示
+        // var fun1 = new Function("a","b","alert(a)")
+        // fun1(3,4)
+
+        //1.2演示
+        // function fun2(a, b){
+        //     alert(a + b);
+        // }
+        // fun2(3,4)
+
+        //1.3演示
+        // var fun3 = function(a,b){
+        //     alert(a+b);
+        // }
+        // fun3(4,5)
+
+        // 4.3演示
+        // var fun3 = function(a,b){
+        //     alert(a);
+        //     alert(b);
+        // }
+        // fun3()
+        // fun3(1)
+        // fun3(1,2)
+        // fun3(1,2,3)
+    
+            
+        // 4.4演示   求任意长度的和
+        function add(){
+            var sum = 0;
+            for (var i = 0;i<arguments.length;i++){
+                sum += arguments[i];
+            }
+            return sum ;
+        }
+        alert(add(1,2,3))
+        alert(add(1,2,3,4))
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

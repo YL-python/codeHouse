@@ -1,0 +1,158 @@
+
+body {
+	background-color: #fffadd;
+}
+
+.wrapper {
+	width: 100%;
+	/*height: 540px;*/
+	/*border: 1px solid red;*/
+	/*margin: 0 auto;*/
+}
+
+/*头部*/
+.header {
+	width: 100%;
+	/*height: 140px;*/
+	position: relative;
+}
+.title, .slogan, .score, .best, .new-game {
+	position: absolute;
+	float: left;
+	text-align: center;
+}
+
+
+.title, .slogan {
+	width: 100%;
+	
+}
+
+.title strong {
+	display: inline-block;
+	width: 100%;
+	/*height: 260px;*/
+	font-size: 487%;  /* 100% 16px */
+	/*line-height: 192%;*/
+	text-align: center;
+	/*padding: 0 5px;*/
+	/*border: 1px solid black;*/
+}
+.slogan {
+	/*margin-top: 10px;*/
+	top: 65%;
+}
+
+/* github */
+/*.github>a {
+	top: 4%;
+	right: 6.25%;
+}*/
+
+
+/*分数*/
+.score, .best, .new-game {
+	width: 25%;
+	/*border: 1px solid green;*/
+}
+
+/* 分数动画 */
+.score-animation, .best-animation{
+	display: none;
+	/*position: absolute;*/
+	top: 25px;
+	left: 10px;
+	width: 65px;
+	height: 30px;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.score, .best {
+	/*position: absolute;*/
+	line-height: 28px;
+	top: 90%;
+	background-color: #bbada0;
+}
+.score {
+	left: 47.5%;
+}
+.best {
+	left: 75%;
+}
+.new-game {
+	width: 45%;
+	height: 60px;
+	line-height: 60px;
+	left: 0;
+	top: 90%;
+	text-align: center;
+	background-color: #8e7963;
+	cursor: pointer;
+	/*padding-bottom: 2em;*/
+	font-size: 28px;
+}
+.new-game:hover {
+	width: 45%;
+	/*height: 42px;*/
+	/*line-height: 42px;*/
+	height: 60px;
+	line-height: 60px;
+	left: 0;
+	top: 90%;
+	/*line-height: 2e;*/
+	font-size: 28px;
+}
+
+.score span, .best span, .new-game span {
+	color: #ffffff;
+}
+.score, .best, .new-game, .game-board, .grid {
+	text-align: center;
+	border-radius: 5px;
+} 
+.best .number, .score .number {
+	font-size: 22px;
+	font-weight: bold;
+}
+
+/*游戏主面板*/
+.game-board {
+	position: absolute;
+	/*display: none;*/
+	width: 100%;
+	height: auto;
+	/*height: 400px;*/
+	/*padding: 10px 10px;*/
+	background-color: #bbada0;
+	/*opacity: 0.4;*/
+	top: 36%;
+}
+.grid {
+	/*position: relative;*/
+	float: left;
+	width: 22%;
+	/*height: */
+	/*padding-bottom: 21.95%;*/
+	/*height: 100%;*/
+	line-height: 80px;
+	/*font-size: 48px;*/
+	font-weight: bold;
+	/*padding-bottom: 410px;*/
+	padding: 1.5%;
+	background-color: #b0c4de;
+}
+
+/* 生成新格子动画 */
+@keyframes tempgrid {
+	from {width: 50%; height: 50%; top: 25%;left: 25%; font-size: 24px; line-height: 192%;display: block;}
+	to {width: 100%; height: 100%; top: 0px;left: 0px; font-size: 48px; line-height: 192%;display: none;}
+}
+@-webkit-keyframes tempgrid {
+	from {width: 50%; height: 50%; top: 25%;left: 25%; font-size: 24px; line-height: 192%;display: block;}
+	to {width: 100%; height: 100%; top: 0px;left: 0px; font-size: 48px; line-height: 192%;display: none;}
+}
+@-moz-keyframes tempgrid {
+	from {width: 50%; height: 50%; top: 25%;left: 25%; font-size: 24px; line-height: 192%;display: block;}
+	to {width: 100%; height: 100%; top: 0px;left: 0px; font-size: 48px; line-height: 192%;display: none;}
+}
