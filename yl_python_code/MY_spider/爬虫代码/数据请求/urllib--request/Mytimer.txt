@@ -1,0 +1,22 @@
+import time as t
+
+class Mytimer():
+    
+    #开始计时
+    def start(self):
+        self.start=t.localtime()
+        print("计时开始...")
+        
+    #停止计时
+    def stop(self):
+        self.stop=t.localtime()
+        self._calc()
+        print("计时结束la!")
+        
+    def _calc(self):
+        self.len=[]
+        self.pr="总共运行了"
+        for i in range(6):
+            self.len.append(self.stop[i] - self.start[i])
+            self.pr+=str(self.len[i])
+        print(self.pr)

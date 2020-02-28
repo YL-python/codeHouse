@@ -1,0 +1,27 @@
+import urllib.request
+from http import cookiejar
+import  urllib.parse
+login_url="https://www.yaozh.com/login/"
+head = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3724.8 Safari/537.36",
+        }
+login_from_data={
+    "username":"15170915459",
+    "pwd":"5952768yl",
+    "fromhash":"DB96C26F29",
+    "backurl":"https%3A%2F%2Fwww.yaozh.com%2FF"
+}
+login_str = urllib.parse.urlencode(login_from_data).encode("utf-8")
+cookie_jar=cookiejar.CookieJar()
+
+cook_hanlder=urllib.request.HTTPCookieProcessor (cookie_jar)
+opener=urllib.request.build_opener(cook_hanlder)
+
+login_request=urllib.request.Request(login_url,headers=head,data=login_str)
+opener.open(login_request)
+
+center_url="https://www.yaozh.com/member"
+center_request=urllib.request.Request(center_url,headers=head)
+response=opener.open(center_url)
+data=response.read()
+with open("cookie_yaozh.html","wb") as f:
+    f.write(data)

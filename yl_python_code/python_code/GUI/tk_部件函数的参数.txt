@@ -1,0 +1,45 @@
+pack() 函数参数：
+    anchor：当可用空间大于组件所需求的大小时，该选项决定组件被放置在容器的何处。
+        该选项支持 N（北，代表上）、E（东，代表右）、S（南，代表下）、W（西，代表左）、NW（西北，代表左上）、
+        NE（东北，代表右上）、SW（西南，代表左下）、SE（东南，代表右下）、CENTER（中，默认值）这些值。
+    fill：设置组件是否沿水平或垂直方向填充。该选项支持 NONE、X、Y、BOTH 四个值，其中 NONE 表示不填充，
+        BOTH 表示沿着两个方向填充。
+    expand：该 bool 值指定当父容器增大时才是否拉伸组件。
+    ipadx：指定组件在 x 方向（水平）上的内部留白（padding）。
+    ipady：指定组件在 y 方向（水平）上的内部留白（padding）。
+    padx：指定组件在 x 方向（水平）上与其他组件的间距。
+    pady：指定组件在 y 方向（水平）上与其他组件的间距。
+    side：设置组件的添加位置，可以设置为 TOP、BOTTOM、LEFT 或 RIGHT 这四个值的其中之一
+
+label() 函数参数：
+    activebackground	1.设置当Label处于活动状态（通过state选项设置状态）的背景色2.默认值由系统指定
+    activeforeground	1.设置当Label处于活动状态（通过state选项设置状态）的前景色2.默认值由系统指定
+    anchor	            1.控制文本（或图像）在Label中显示位置2.N,NE,E,SE,S,SW,W,NW,或VENTER来定位（EWSN代表东西南北，上北下南左西右东）3.默认值是CENTER
+    background	        1.设置背景颜色2.默认值由系统指定
+    bg	和background一样
+    bitmap	            1.指定显示到Label上的位图2.如果指定了image选项，则该选项被忽略
+    borderwidth	        1.指定Label的边框宽度2.默认值由系统指定，通常是1或2像素
+    bd	跟borderwidth一样
+    compound	        1.控制Label中文本和图像的混合模式2.默认情况下，如果有指定位图或图片，则不现实文本3.如果该选项设置为CENTER,文本显示图像上（文本重叠图像）4.如果该选项设置为BOTTOM,LEFT,RIGHT或TOP，那么图像显示在文本的旁边（如：BOTTOM,则图像在文本的下方）5.默认值是NONE
+    cursor	            1.指定当鼠标Label上飘过时候的鼠标的样式2.默认值由系统指定
+    disableforeground	1.指定当Label不用的时候前景色的颜色2.默认值由系统指定
+    font	            1.指定Label中文本的字体2.一个Label只能设置一种字体3.默认值由系统指定
+    foreground	        1.设置Label的文本和位图的颜色2.默认值由系统指定
+    fg	和foreground一样
+    height	            1.设置Label的高度2.如果Label显示的是文本，那么单位是文本单元3.如果Label显示的是图像，那么单位是像素或屏幕单元4.如果设置为0或者干脆不设置，那么会自动根据Label的内容计算出高度
+    highlightbackground	1.指定当Label如果获得焦点的时候高亮边框的颜色2.默认值由系统指定，通常是标准的背景颜色
+    highlightcolor	    1.指定当Label获得焦点的时候的高亮边的颜色2.默认值由系统指定
+    highlightthickness	1.指定高亮边的宽度2.默认值是0（不带高亮边框）
+    image	            1.指定Label显示的图片2.该值应该是PhotoImage，BitmapImage，或者兼容的对象3.该选项优先于text和bitmap选项
+    justify	            1.定义如何对其对行文本2.使用LEFT,RIGHT或者CENTER3.注意，文本的位置取决于anchor选项4.默认值是CENTER
+    padx	            1.指定Label水平方向上的额外间距（内容和边框间）2.单位是像素
+    pady	            1.指定Label垂直方向上的额外间距（内容和边框间）2.单位是像素
+    relief	            1.指定边框样式2.默认值是FLAT3.另外你还可以设置SUNKEN,RAISED,GROOVE或者GIDGE
+    state	            1.指定Label的状态2.这个标签控制Label显示3.默认值是NORMAL4.另外你还可以设置ACTIVE或者DISABLED
+    takefocus	        1.如果是True，该Label接收输入焦点2.默认值是False
+    text	            1.指定Label显示的文本2.文本可以包含换行符3.如果设置了bitmap或者image选项，该选项则被忽略
+    textvariable	    1.Label显示Tkinter变量（通常是一个StringVar变量）的内容2.如果变量被修改，Label的文本会自动更新
+    underline	        1.跟text选项一起使用，用于指定哪一个字符画下划线（例如用于表示键盘快捷键）2.默认值是-13.例如设置为1，则说明在Button的第2个字符处画下划线
+    width	            1.设置Label的宽度2.如果Label显示的是文本，那么单位是文本单元3.如果Label显示是图像，那么单位是像素或者像素单元4.如果设置为0或者干脆不设置，那么会自动根据Label内容计算出宽度
+    wraplength	        1.决定Label的文本应该为分成多少行2.该选项指定每行的宽度，单位是屏幕单元3.默认值是0
+

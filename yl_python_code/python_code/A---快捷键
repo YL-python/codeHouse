@@ -1,0 +1,29 @@
+Ctrl + Q         快速查看文档
+Ctrl + 鼠标       简介/进入代码定义
+Ctrl + F1        显示错误描述或警告信息
+Ctrl + /         行注释/取消行注释
+Ctrl + Shift + / 块注释
+Shift + F10      运行
+Shift + F6       重命名
+Ctrl + F         查找
+Ctrl + R         替换
+tab              缩进
+Shift + tab      缩进
+
+
+
+
+
+
+
+
+
+设置
+1   WIndows-Editor Tabs-Tabs Placement                          编辑窗口在顶部显示
+2   file-settings-Editor-General-Appearence-show line numsbers   在所有界面显示行号
+3   file-settings-Appearence-background image                   设置背景
+4   file-settings-Editor-color scheme -python                   设置代码风格（颜色）
+5   setting-General-2  CTRL+滚轮设置字体大小
+6   file-settings-Editor-General-Change font size (Zoom) with Ctrlt Mouse Wheel
+                 设置字体大小/默认编码格式/
+7   https://www.cnblogs.com/yjmyzz/p/pycharm-add-third-package-and-add-domestic-mirror.html    pip设置国内镜像

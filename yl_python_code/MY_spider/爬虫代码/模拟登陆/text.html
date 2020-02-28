@@ -1,0 +1,380 @@
+<!DOCTYPE>
+<html >
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="renderer" content="webkit" />
+<meta name="shenma-site-verification" content="e2470ee6c9c52be8aa4ef26c5097f413_1495006700">
+<title>药智网会员注册登录</title>
+<meta name="keywords" content="登录，药智网，医药大数据">
+<meta name="description" content="药智网会员注册登录页面，为您提供服务">
+<link href="/public/css/core.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="//static.yaozh.com/css/app.css">
+<link href="//www.yaozh.com/static/css/login.css?t=20180309" type="text/css" rel="stylesheet" class="loginCss" />
+<script>
+//设置domain
+document.domain = location.host.replace(/(\w|-)+\./,'');
+
+//全局变量 Global Variables
+var GV = {
+	JS_ROOT : '/public/js/',//js目录
+	JS_VERSION : "59146C5C69",
+	TOKEN : "59146C5C69",	//token $.ajaxSetup data
+	FILE_TYPE : "*.gif;*.jpg;*.png;*.zip;*.rar;*.txt;*.doc;*.docx;*.pdf;*.xls;*.xlsx;",
+	FILE_SIZE : "10 MB",
+	UID : parseInt(""),		//用户空间(参数 : uid)
+	URL : {
+		IMAGE : '/images/',										//登录地址
+		QUICK_LOGIN : '/ajax/login/?backurl=%2F%2Fwww.yaozh.com'
+	}
+};
+</script>
+<script src="/public/js/yaozh.js?v=20130531"></script>
+<script>
+Wind.use("jquery",function(){
+  if(!!window.frameElement){
+    $('html').addClass('iframe');
+  }	
+});
+
+</script><script src="/public/js/jquery.js"></script>
+<script>
+  window.frameElement && window.frameElement.trigger('setOption',{height:540});
+</script>
+</head>
+<body class="login">
+  <div class="login_warp">
+    <div class="title clearfix">
+    
+      <a href="//www.yaozh.com" target="_blank" title="药智网首页"><img class="logo" src='//www.yaozh.com/public/img/index/yzlogo.gif' /></a>
+      <!-- <a href="//www.yaozh.com" target="_blank" title="药智网首页"><img class="logo" src='//www.yaozh.com/static/images/login/logo.png' /></a> --> 
+      <div class="fr mbt27">
+        <div class="item app fl mr20">
+          <i class="fa"></i>
+          <span><a target="_blank" href="//db.yaozh.com/app">药智数据APP</a></span>
+          <div class="hover-layer">
+            <div class="box">
+              <a target="_blank" href="https://itunes.apple.com/cn/app/id1025304074" target='_blank' class="btn btn-sm ios btn-gray">
+                <i class="fa"></i>
+                <span>iPhone版下载</span>
+              </a>
+              <a target="_blank" href="//static.yaozh.com/yaozh_latest.apk" class="btn btn-sm android mt10 btn-green">
+                <i class="fa"></i>
+                <span>android版下载</span>
+              </a>
+              <div class="tc mt10">
+                <img src="/public/images/download_qrcode.png?_v=1.5.26" alt="" style="width: 150px;">
+              </div>
+            </div>
+  
+          </div>
+        </div>
+        <div class="survey fl"><a href="https://www.wenjuan.com/s/ZbQbQnz/" target="_blank">登录页面，问卷调查</a></div>
+      </div>
+      
+    </div>
+  </div>
+<!-- 左侧是图片 -->
+      <!-- 更换临时背景-代码 -->
+  <div class="content leftimg oldLogin" style="background: url(//masfile.yaozh.com/image/20190815/20190815090051_28262.jpg) no-repeat;background-size: cover;height:510px;">
+    <div class="clearfix wap">
+      <div class="right pc">
+        <div class="clearfix"><span class="tip fl">账号登录</span><a href="//www.yaozh.com/connect/weixin/"><img class="tcode-icon icon fr" src="//www.yaozh.com/static/images/login/tcode.png"></a> <div class="fr safe">扫码登录更安全</div></div>
+        <form class="login_pc" id="login_pc">
+          <div class="pop_showmsg alert-error Mb_20 msg" id="J_login_msg" style="display: none;"></div>
+          <li class="li1 user"><input type="text" name="username" id="username" placeholder="手机号/用户名/邮箱"></li>
+          <li class="li2 pass"><input type="password" name="pwd" id="pwd" placeholder="密码"></li>
+          <div class="clearfix"><a class="forgot fl" href="/login/forget/" >忘记密码？</a><a class="regin fr" href="/register/">免费注册</a></div>
+          <button id="button" class="in" type="submit" value="登录" style="cursor: pointer">登 录</button>
+          <div class="clearfix oways-w"><li class="fl qq"><a class="oways" href="/connect/qq/">QQ登录</a></li><li class="fl wb"><a class="oways" href="/connect/weibo/">微博登录</a></li></div>
+          <input type="hidden" name="formhash" id="formhash" value="59146C5C69">
+          <input type="hidden" name="backurl" id="backurl" value="%2F%2Fwww.yaozh.com">
+        </form>
+      </div>
+      <div class="fl" style="background: transparent;height:450px;margin-top: 40px;"></div>
+    </div>
+  </div>
+  <div class="footer">
+  <div class="footer_1200">
+    <div class="footer_fr">
+      <div class=""><img width="111" height="111" src="/public/images/download_qrcode.png?_v=1.5.26" alt=""></div>
+      <div>
+        药智数据APP
+      </div>
+    </div>
+<p>
+	<a href="http://about.yaozh.com/about.html">关于我们</a><span class="line">|</span>
+    <a href="http://about.yaozh.com/contact.html">联系我们</a><span class="line">|</span>
+    <a href="http://about.yaozh.com/qualification.html">企业资质</a><span class="line">|</span>
+    <a href="http://about.yaozh.com/join.html">诚聘英才</a><span class="line">|</span>
+    <a href="http://about.yaozh.com/link.html">友情链接</a><span class="line">|</span>
+	  <a href="//help.yaozh.com/" target="_blank">帮助中心</a><span class="line">|</span>
+    <a href="//bbs.yaozh.com/forum-123-1.html">媒体报道</a><span class="line">|</span>
+    <a href="//bbs.yaozh.com">药智论坛</a><span class="line">|</span>
+    <a href="//about.yaozh.com/about/sitemap">全站导航</a><span class="line">|</span>
+    <a href="//www.yaozh.com/ued?source=www&name=zhihui_footer">用户体验提升计划</a>
+    <a href="//www.yaozh.com/xuan">业务介绍</a>
+</p>
+<p>互联网增值电信业务许可证编号：渝B2-20120028 | 渝ICP备10200070号  互联网药品信息服务资格证：(渝)-经营性-2016-0011 渝公网备：50010801500236</p>
+<p>康洲大数据   版权所有   Copyright © 2009-2019 药智网YAOZH.COM All Rights Reserved.    法律顾问：上海锦天城（重庆）律师事务所 程建律师
+<script>
+/*GoogleAnaly*/
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-73321472-5', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<span style="display:none"><script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " //");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F65968db3ac154c3089d7f9a4cbb98c94' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</span>
+</p>
+<p>客户服务热线：400-678-0778    E-mail：service@yaozh.com  商务合作QQ：845146016</p>
+<a id="netsafe" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=50010802001068"><img src="//www.yaozh.com/public/images/netsafe.png"/><p>渝公网安备 50010802001068号</p></a>
+<a id="outer-anquan"  key ="58fd5825efbfb064f4599465"  logo_size="83x30"  logo_type="realname"  href="http://www.anquan.org" ><script src="//static.anquan.org/static/outer/js/aq_auth.js"></script></a>
+<div class="tousu tousu1">
+  <img src="/public/images/tousu.png" alt="">
+  <div class="tousu-msg">
+    <p>投诉热线: 02362308742</p>
+    <p>邮箱: tousu@yaozh.com </p>
+    <p> QQ: 914894005</p>
+  </div>
+</div>
+
+
+
+
+  </div>
+</div>
+<script>
+  (function(){
+  var bp = document.createElement('script');
+  var curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https'){
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+  })();
+
+  // 网站底部投诉信息
+  $(function () {
+    var tousu=$('.tousu')[0];
+    var tousumsg=$('.tousu-msg')[0];
+    tousu.onmouseover=function(){
+        tousumsg.style.display='block';
+    }
+    tousumsg.onmouseout=function(){
+        tousumsg.style.display='none';
+    }
+    function stop(e){
+        e.stopPropagation();
+    }
+    $(tousu).on('click',stop);
+    $(tousumsg).on('click',stop);
+    $(document).on('click',function(){
+        tousumsg.style.display='none';
+    })
+  })
+</script>
+
+
+<!-- <script>
+  // 定时切换登录背景图
+  function checkout() {
+    var $css = $('.loginCss');
+    var $logo = $('.logo');
+    var $tcode = $('.tcode-icon');
+    var $a = $('.loginA');
+    $css.attr('href', '//www.yaozh.com/static/css/login.css?t=20171222');
+    $a.attr('href', '//www.yaozh.com?ga_source=www&ga_name=login');
+    $logo.attr('src', '//www.yaozh.com/public/img/index/yzlogo.gif');
+    $tcode.attr('src', '//www.yaozh.com/static/images/login/tcode.png');
+  }
+  function time() {
+    var now = new Date().getTime();
+    var target = new Date('2017/12/21 23:59:59').getTime();
+    if (target-now <= 0) {
+      checkout()
+    } else {
+      setTimeout(time, 1000)
+    }
+  }
+</script> -->
+
+
+<script type="text/javascript">
+// 刚进页面显示app二维码
+// var hoverLayer = $(".hover-layer").show();
+// var id = setTimeout(function(){
+//   hoverLayer.fadeOut(100);
+//   clearTimeout(id);
+//   id=null;
+// },3000);
+// $(window).click(function(e){
+//   // var a = $(e).parents(".hover-layer").length;
+//   // console.info(a);
+//   // if(!a){
+//     hoverLayer.hide();
+//     $(window).unbind();
+//   // }
+// });
+
+
+//控制圆圈显隐
+  $(function(){abc();});
+  function abc(){
+    $(".y1"). fadeOut(1000); 
+    $(".y1"). fadeIn(1000);
+    $(".y3"). fadeIn(1000);
+    $(".y3"). fadeOut(1000);    
+    $(".y4"). fadeOut(1500); 
+    $(".y4"). fadeIn(1500);    
+    }   
+  setInterval(abc, 2000);
+</script>
+<script type="text/javascript">
+  //在手机上登陆则取消扫描
+  $(function(){
+    if (navigator.userAgent.match(/mobile/i)) {
+      $(".left-img").attr("display","none");
+    }
+  });
+
+</script>
+
+
+<script src="//www.yaozh.com/static/js/login.js?t=20160104"></script>
+<script type="text/javascript">
+  Wind.use("global",function(){
+    //序列化form为object
+    $.fn.serializeObject = function() {
+      var o = {};
+      var a = this.serializeArray();
+      $.each(a, function() {
+        if (o[this.name] !== undefined) {
+          if (!o[this.name].push) {
+            o[this.name] = [o[this.name]];
+          }
+          o[this.name].push(this.value || '');
+        } else {
+          o[this.name] = this.value || '';
+        }
+      });
+      return o;
+    };
+    
+
+    function initLogin(){
+      var $form,$button,$msg;
+      $form = $('#login_pc');
+      $button = $form.find('#button');
+      //错误提示页面
+      $msg = $form.find('#J_login_msg'); 
+      $button.data('text',$button.text());
+
+      $form.on('submit',function(e){
+        // 保存登录邮箱到 window
+        window.login_account = $form.find('input[name="username"]').val();
+
+        $button.text('登录中...').addClass('disabled').prop('disabled',true);
+        e.preventDefault();
+        var data = $form.serializeObject();
+        
+        var lg = window.yaozh.actions.login(data);
+        lg.progress(function(type,data){
+          $button.text(data.message);
+          data.pointmsg && Wind.Util.jifenTips(data.pointmsg);
+        });
+        lg.done(function(type,msg,data){
+        	var url = data.referer=='' ? '/' : decodeURIComponent(data.referer);
+          $button.removeClass('disabled').text('登录成功，正在跳转...').prop('disabled',false);
+          if(window.frameElement){
+            window.frameElement.trigger("refresh");
+          }else{
+            window.location.href = url;
+          }
+        });
+        lg.fail(function(type,data){
+          var msg = data.message;
+          if (msg) {
+            var tmp;
+            try {
+               tmp = JSON.parse(msg);
+            } catch (e) {}
+            if (tmp) {
+              $msg.html(tmp.send_email).slideDown();
+              afterSlideDown();
+              $button.text("该账号未激活");
+            } else {
+              $msg.html(msg).slideDown();
+              afterSlideDown();
+            }
+          } else {
+            $msg.html(data).slideDown();
+            afterSlideDown();
+          }
+          $("#username").focus(function () {
+            $msg.slideUp();
+            afterSlideUp();
+            $button.text($button.data('text')).removeClass('disabled').prop('disabled',false);
+            $(this).off("focus");
+          })
+          $("#pwd").focus(function () {
+            $msg.slideUp();
+            afterSlideUp();
+            $button.text($button.data('text')).removeClass('disabled').prop('disabled',false);
+            $(this).off("focus");
+          })
+          
+        });
+      });
+
+    }
+    
+    $(initLogin);
+  });
+
+  function afterSlideDown() {
+    $(".content .right").animate({"margin-top":"23px"});
+  }
+  function afterSlideUp() {
+    $(".content .right").animate({"margin-top":"56.5px"});
+  }
+  function toEmail(_email) {
+    var current_email = [
+      ["qq.com","mail.qq.com"],
+      ["vip.qq.com","mail.qq.com"],
+      ["foxmail.com","mail.qq.com"],
+      ["gmail.com","gmail.google.com"],
+      ["sina.com","mail.sina.com.cn"],
+      ["sina.cn","mail.sina.com.cn"],
+      ["sohu.com","mail.sohu.com"],
+      ["163.com","mail.163.com"],
+      ["126.com","mail.126.com"],
+      ["outlook.com","login.live.com"],
+      ["tom.com","mail.tom.com"],
+      ["yahoo.com","login.yahoo.com"],
+      ["aliyun.com","mail.aliyun.com"]
+    ];
+    var tmp = _email.split("@");
+    for (var i = 0; i < current_email.length; i++) {
+      if (tmp[tmp.length-1] == current_email[i][0]) {
+        location.href = "http://"+current_email[i][1];
+        return;
+      }
+    }
+  }
+  
+</script> 
+
+</body>
+</html>
