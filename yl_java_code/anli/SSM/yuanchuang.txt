@@ -1,0 +1,27 @@
+# 学生表
+
+create table student(
+id int primary key auto_increment,  # 无意义主键
+username varchar(50),  # 登录账户名称
+password varchar(50),  # 登录密码
+studentName varchar(50),  # 学生姓名
+studentClass varchar(50),  # 学生班级
+studentPhoneNum varchar(20),  # 学生电话
+studentBirthday date  # 出生日期
+);
+
+create table qd(
+id int primary key auto_increment,  # 无意义主键
+qdMood varchar(20),  # 签到心情
+
+qdDate date,  # 签到日期
+qdStartTime time,  # 签到开始时间
+qdEndTime time,  # 签到结束时间
+qdStudyTime time,  # 签到学习时间 结束时间-开始时间
+
+qdTodayContent varchar(500),  # 签到内容
+qdtomorrowContent varchar(500),  # 签到内容
+qdUsername varchar(50),  # 签到人 外键
+
+FOREIGN KEY (qdUsername) REFERENCES user(username)
+);

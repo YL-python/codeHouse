@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yang.muyun.dao.UserDao">
+
+    <!-- select 操作 resultType结果类型 -->
+    <select id="findAll" resultType="yang.muyun.domain.User">
+        select * from user;
+    </select>
+
+    <!-- insert 操作 parameterType参数类型 -->
+    <insert id="saveUser" parameterType="yang.muyun.domain.User">
+        <!-- 配置插入后操作，获取插入数据的id值 -->
+        <selectKey keyProperty="id" keyColumn="id" order="AFTER" resultType="int">
+            select last_insert_id();
+        </selectKey>
+        insert into user(username,address,sex,birthday)value(#{username},#{address},#{sex},#{birthday});
+    </insert>
+
+    <!-- 更新数据操作 -->
+    <update id="updateUser" parameterType="yang.muyun.domain.User">
+        update user set username=#{username},address=#{address},birthday=#{birthday},sex=#{sex} where id=#{id};
+    </update>
+
+    <!-- 参数是基础数据类型而且只有一个的时候只需要写一个占位符就行 -->
+    <!-- 删除操作 -->
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from user where id=#{uid};
+    </delete>
+
+    <!-- 查询单个操作 -->
+    <select id="findById" parameterType="int" resultType="UsEr">
+        select * from USER where id=#{aaa};
+    </select>
+
+    <!-- 模糊查询 -->
+    <select id="findByName" parameterType="String" resultType="User">
+         select * from USER where username like #{name};
+    </select>
+
+    <!-- 聚合函数查询 -->
+    <select id="findTotal" resultType="int">
+        select count(id) from USER;
+    </select>
+
+</mapper>

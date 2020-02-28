@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yang.muyun.dao.UserDao">
+
+    <!-- 定义User的resultMap -->
+    <resultMap id="userAccountMap" type="user">
+        <id property="id" column="id" ></id>
+        <result property="username" column="username"></result>
+        <result property="address" column="address"></result>
+        <result property="sex" column="sex"></result>
+        <result property="birthday" column="birthday"></result>
+        <!-- property属性对应着实体类里面有的属性 ofType是集合内的每一个元素类型 -->
+        <!-- 因为用到了两个id所以要取别名  和sql语句取的别名一致 -->
+        <collection property="accounts" ofType="yang.muyun.domain.Account" >
+            <id property="id" column="aid"></id>
+            <result property="uid" column="uid"></result>
+            <result property="money" column="money"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findAll" resultMap="userAccountMap">
+        SELECT * from user u left outer join account a on u.id = a.uid;
+    </select>
+
+    <select id="findById" parameterType="int" resultType="User">
+        select * from USER where id=#{aaa};
+    </select>
+</mapper>

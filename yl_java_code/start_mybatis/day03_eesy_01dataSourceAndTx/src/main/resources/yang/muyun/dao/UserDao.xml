@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yang.muyun.dao.UserDao">
+
+<!--    &lt;!&ndash; 设置 数据库列名和实体类属性名 对应表 &ndash;&gt;-->
+<!--    <resultMap id="userMap" type="yang.muyun.domain.User">-->
+<!--        &lt;!&ndash; 主件字段对应 &ndash;&gt;-->
+<!--        <id property="" column=""></id>-->
+<!--        &lt;!&ndash; 非主件字段对应 &ndash;&gt;-->
+<!--        <result property="" column=""></result>-->
+<!--        <result property="" column=""></result>-->
+<!--        <result property="" column=""></result>-->
+<!--        <result property="" column=""></result>-->
+<!--        &lt;!&ndash; resultType="yang.muyun.domain.User"  改成 resultMap="userMap" &ndash;&gt;-->
+<!--    </resultMap>-->
+
+
+    <!-- select 操作 resultType结果类型 -->
+    <select id="findAll" resultType="yang.muyun.domain.User">
+        select * from user;
+    </select>
+
+    <!-- insert 操作 parameterType参数类型 -->
+    <insert id="saveUser" parameterType="yang.muyun.domain.User">
+        <!-- 配置插入后操作，获取插入数据的id值 -->
+        <selectKey keyProperty="id" keyColumn="id" order="AFTER" resultType="int">
+            select last_insert_id();
+        </selectKey>
+        insert into user(username,address,sex,birthday)value(#{username},#{address},#{sex},#{birthday});
+    </insert>
+
+    <!-- 更新数据操作 -->
+    <update id="updateUser" parameterType="yang.muyun.domain.User">
+        update user set username=#{username},address=#{address},birthday=#{birthday},sex=#{sex} where id=#{id};
+    </update>
+
+    <!-- 参数是基础数据类型而且只有一个的时候只需要写一个占位符就行 -->
+    <!-- 删除操作 -->
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from user where id=#{uid};
+    </delete>
+
+    <!-- 查询单个操作 -->
+    <select id="findById" parameterType="int" resultType="yang.muyun.domain.User">
+        select * from USER where id=#{aaa};
+    </select>
+
+    <!-- 模糊查询 -->
+    <!-- select * from USER where username like #{name};   // 需要自己添加 %  用？占位符方法  -->
+    <!-- 不需要自己添加 % 但是{}内必须写value 用字符串拼接方式 不推荐 -->
+    <select id="findByName" parameterType="String" resultType="yang.muyun.domain.User">
+        select * from USER where username like '%${value}%';
+    </select>
+
+    <!-- 聚合函数查询 -->
+    <select id="findTotal" resultType="int">
+        select count(id) from USER;
+    </select>
+
+    <!--根据对象查询  pojo对象  OGNL表达式 -->
+    <!-- yang.muyun.domain.QueryVo.getuser.getusername -->
+    <select id="findUserByVo" parameterType="yang.muyun.domain.QueryVo" resultType="yang.muyun.domain.User">
+        select * from USER where username like #{user.username};
+    </select>
+
+</mapper>

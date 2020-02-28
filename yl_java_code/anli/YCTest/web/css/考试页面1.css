@@ -1,0 +1,15 @@
+@charset "utf-8";
+body{
+	background:#a5def1d4;
+}
+#main {
+	width: 60%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20px;
+	background-color: #FFF;
+}
+
+.tijiao {
+	float: right;
+}

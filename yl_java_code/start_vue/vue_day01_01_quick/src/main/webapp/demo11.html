@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>v-for遍历对象</title>
+		<script src="js/vuejs-2.5.16.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<!-- 先是值 在是key-->
+				<li v-for="(value,key) in product">{{key}}--{{value}}</li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		//view model
+		new Vue({
+			el:'#app', //表示当前vue对象接管了div区域
+			data:{
+				product:{
+					id:1,
+					pname:"电视机",
+					price:6000
+				}
+			}
+		});
+	</script>
+</html>

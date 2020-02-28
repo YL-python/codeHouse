@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #a5def1d4;
+}
+
+#center {
+    height: 2800px;
+    width: 100%;
+}
+
+#timu {
+    background-color: #FFF;
+    height: 100%;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#choose {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#jiange {
+    height: 40px;
+    width: 100%;
+    padding-top: 50px;
+}
+
+#header table tr td input {
+    height: 30px;
+    width: 100px;
+}

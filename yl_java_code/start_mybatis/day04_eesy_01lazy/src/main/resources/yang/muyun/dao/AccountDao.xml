@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yang.muyun.dao.AccountDao">
+
+    <!-- 定义封装account 和user 的resultMap -->
+    <resultMap id="accountUserMap" type="account">
+        <!-- sql语句中取的别名 -->
+        <id property="id" column="id"></id>
+        <result property="uid" column="uid"></result>
+        <result property="money" column="money"></result>
+        <!-- 建立一对一的关系映射，配置封装user的内容
+        配置延时查询
+         select 属性指定的内容：查询用户的唯一标识
+         column 属性指定的值：用户根据id查询时，所需要的参数的值
+         -->
+        <association property="user" column="uid" javaType="user" select="yang.muyun.dao.UserDao.findById">
+        </association>
+    </resultMap>
+
+    <select id="findAll" resultMap="accountUserMap">
+        SELECT * FROM account;
+    </select>
+
+    <!-- 根据用户id 查询账户信息 -->
+    <select id="findAccountByUid" resultType="Account">
+        SELECT * FROM account where uid = #{uid};
+    </select>
+</mapper>

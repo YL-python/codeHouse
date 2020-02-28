@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!--  配置Servlet  -->
+    <servlet>
+<!--        随便取一个名字-->
+        <servlet-name>demo02</servlet-name>
+<!--        Java类的路径-->
+        <servlet-class>main.java.web.servlet.ServletDemo02</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+<!--        刚刚随便取的名字-->
+        <servlet-name>demo02</servlet-name>
+<!--        访问时候的虚拟路径-->
+        <url-pattern>/demo02</url-pattern>
+    </servlet-mapping>
+    
+</web-app>

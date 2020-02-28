@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>check</title>
+    <script>
+        window.onload = function () {
+            var check_code = document.getElementById("check_code");
+            var check_btn = document.getElementById("check_btn");
+
+            check_code.onclick = function(){
+                // 浏览器会缓存 要欺骗浏览器每次访问的不一样。不一样就加一个时间戳
+                var data = new Date().getTime();
+                check_code.src = "/response/check?"+data;
+            }
+            check_btn.onclick = function(){
+                var check = document.getElementById("check_code");
+                var data = new Date().getTime();
+                check.src = "/response/check?"+data;
+            }
+        }
+    </script>
+</head>
+<body>
+    <img id="check_code" src="/response/check">
+    <a id="check_btn" href="####">看不清</a>
+
+</body>
+</html>

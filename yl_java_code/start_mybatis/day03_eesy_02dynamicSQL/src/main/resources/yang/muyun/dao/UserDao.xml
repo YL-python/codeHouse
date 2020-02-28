@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="yang.muyun.dao.UserDao">
+
+    <!--    &lt;!&ndash; 设置 数据库列名和实体类属性名 对应表 &ndash;&gt;-->
+    <!--    <resultMap id="userMap" type="yang.muyun.domain.User">-->
+    <!--        &lt;!&ndash; 主件字段对应 &ndash;&gt;-->
+    <!--        <id property="" column=""></id>-->
+    <!--        &lt;!&ndash; 非主件字段对应 &ndash;&gt;-->
+    <!--        <result property="" column=""></result>-->
+    <!--        <result property="" column=""></result>-->
+    <!--        <result property="" column=""></result>-->
+    <!--        <result property="" column=""></result>-->
+    <!--        &lt;!&ndash; resultType="yang.muyun.domain.User"  改成 resultMap="userMap" &ndash;&gt;-->
+    <!--    </resultMap>-->
+
+    <!-- 抽取重复的sql语句 -->
+    <sql id="congfuSql">
+        select * from USER
+    </sql>
+
+    <!-- select 操作 resultType结果类型 -->
+    <select id="findAll" resultType="yang.muyun.domain.User">
+        <!-- 引入重复的sql语句 -->
+        <include refid="congfuSql"></include>
+    </select>
+
+    <!-- 查询单个操作 -->
+    <select id="findById" parameterType="int" resultType="yang.muyun.domain.User">
+        <include refid="congfuSql"></include>
+        where id = #{aaa}
+        <!--
+        <where>
+           <if test="true">
+               id = #{aaa}
+           </if>
+        </where> -->
+        <!--select * from USER where id=#{aaa};-->
+    </select>
+
+    <!-- 模糊查询 -->
+    <!-- select * from USER where username like #{name};   // 需要自己添加 %  用？占位符方法  -->
+    <!-- 不需要自己添加 % 但是{}内必须写value 用字符串拼接方式 不推荐 -->
+    <select id="findByName" parameterType="String" resultType="yang.muyun.domain.User">
+        select * from USER where username like '%${value}%';
+    </select>
+
+    <!--根据对象查询  pojo对象  OGNL表达式 -->
+    <!-- yang.muyun.domain.QueryVo.getuser.getusername -->
+    <select id="findUserByVo" parameterType="yang.muyun.domain.QueryVo" resultType="yang.muyun.domain.User">
+        select * from USER where username like #{user.username};
+    </select>
+
+    <!-- 根据条件查询
+    <select id="findUserByCondition" resultType="user" parameterType="user">
+        select * from user where 1=1
+        <if test="username != null">
+            and username = #{username}
+        </if>
+        <if test="sex != null">
+            and sex = #{sex}
+        </if>
+    </select>  -->
+    <select id="findUserByCondition" resultType="user" parameterType="user">
+        <include refid="congfuSql"></include>
+        <where>
+            <if test="username != null">
+                and username = #{username}
+            </if>
+            <if test="sex != null">
+                and sex = #{sex}
+            </if>
+        </where>
+    </select>
+
+    <select id="findUserInIds" resultType="user" parameterType="queryvo">
+        <include refid="congfuSql"></include>
+        <where>
+            <if test="ids != null and ids.size()>0">
+                <foreach collection="ids" open="and id in (" close=")" item="uid" separator=",">
+                    #{uid}
+                </foreach>
+            </if>
+        </where>
+    </select>
+</mapper>

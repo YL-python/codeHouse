@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 多写一个的好处是可以引用外部的配置文件
+        resource 属性：用于指定配置文件的位置，是按照类路径的写法来写，并且必须存在于类路径下。
+            resource="jdbcConfig.properties"
+        url 属性：按照URL的写法来写配置文件的路径
+            url="file:///F:/A%E9%BB%91%E9%A9%ACJavaEE%2057%E6%9C%9F18%E5%B9%B411%E6%9C%88%20idea%E7%89%88/03%20Mybatis/13-Mybatis%E8%B5%84%E6%96%99/mybatis_day02/%E8%B5%84%E6%96%99/jdbcConfig.properties"
+     -->
+    <properties resource="jdbcConfig.properties">
+<!--        <property name="driver" value="com.mysql.jdbc.Driver"/>-->
+<!--        <property name="url" value="jdbc:mysql://localhost:3306/eesy_mybatis"/>-->
+<!--        <property name="username" value="root"/>-->
+<!--        <property name="password" value="root"/>-->
+    </properties>
+
+    <!-- 使用 typeAliases 配置别名 只能配置domain包中类的别名 -->
+    <typeAliases>
+        <!-- typeAlias标签用来取别名，type属性指定全限定类名，alias起别名，取别名之后不区分大小写 -->
+<!--        <typeAlias type="yang.muyun.domain.User" alias="user"></typeAlias>-->
+        <!-- 用于指定配置别名的包，把包下所有类取别名，别名就是类名，别名不区分大小写 -->
+        <package name="yang.muyun.domain"/>
+
+    </typeAliases>
+
+    <!-- 配置环境 -->
+    <environments default="mysql">
+        <!-- 配置mysql环境 -->
+        <environment id="mysql">
+            <!-- 配置mysql事务类型 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 配置数据源（连接池） -->
+            <dataSource type="POOLED">
+                <!-- 配置数据库的基本信息 -->
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 指定映射配置文件的位置，映射配置文件是每个独立dao的配置文件 -->
+    <mappers>
+<!--        <mapper resource="yang/muyun/dao/UserDao.xml"/>-->
+        <!-- 指定dao接口所在的包 -->
+        <package name="yang.muyun.dao"/>
+    </mappers>
+
+</configuration>

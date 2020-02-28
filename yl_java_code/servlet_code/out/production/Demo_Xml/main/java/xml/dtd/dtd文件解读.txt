@@ -1,0 +1,6 @@
+<!ELEMENT students (student*) >     //  根标签是 students  里面可以写很多的student子标签
+<!ELEMENT student (name,age,sex)>   //  students 必须要有这三个子标签，顺序也要一致
+<!ELEMENT name (#PCDATA)>   // 子标签的内容是字符串
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT sex (#PCDATA)>
+<!ATTLIST student number ID #REQUIRED>  // student标签要number属性表示id值  REQUIRED表示必须要有

@@ -1,0 +1,158 @@
+create table orders(
+id int primary key auto_increment,
+orderNum varchar(50) not null unique,
+orderTime datetime,
+peopleCount int,
+orderDesc varchar(500),
+payType int,
+orderStatus int,
+productId int,
+memberId int,
+foreign key (productId) references product(id),
+foreign key (memberId) references member(id)
+);
+
+insert into ORDERS (ordernum, ordertime, peoplecount, orderdesc, paytype, orderstatus,productid, memberid)
+values ('12345','2018-02-03 12:00:00', 2, '没什么', 0, 1, 1,1);
+insert into ORDERS (ordernum, ordertime, peoplecount, orderdesc, paytype, orderstatus,productid, memberid)
+values ('54321','2018-02-03 12:00:00', 2, '没什么', 0, 1, 1,1);
+insert into ORDERS (ordernum, ordertime, peoplecount, orderdesc, paytype, orderstatus,productid, memberid)
+values ('67890','2018-02-03 12:00:00', 2, '没什么', 0, 1, 2,1);
+insert into ORDERS (ordernum, ordertime, peoplecount, orderdesc, paytype, orderstatus,productid, memberid)
+values ('98765','2018-02-03 12:00:00', 2, '没什么', 0, 1, 2,1);
+insert into ORDERS (ordernum, ordertime, peoplecount, orderdesc, paytype, orderstatus,productid, memberid)
+values ('11111','2018-02-03 12:00:00', 2, '没什么', 0, 1, 2,1);
+insert into ORDERS (ordernum, ordertime, peoplecount, orderdesc, paytype, orderstatus,productid, memberid)
+values ('22222','2018-02-03 12:00:00', 2, '没什么', 0, 1, 2,1);
+insert into ORDERS (ordernum, ordertime, peoplecount, orderdesc, paytype, orderstatus,productid, memberid)
+values ('33333','2018-02-03 12:00:00', 2, '没什么', 0, 1, 3,1);
+insert into ORDERS (ordernum, ordertime, peoplecount, orderdesc, paytype, orderstatus,productid, memberid)
+values ('44444','2018-02-03 12:00:00', 2, '没什么', 0, 1, 3,1);
+insert into ORDERS (ordernum, ordertime, peoplecount, orderdesc, paytype, orderstatus,productid, memberid)
+values ('55555','2018-02-03 12:00:00', 2, '没什么', 0, 1, 3,1);
+
+
+create table member(
+id int primary key auto_increment,
+name varchar(20),
+nickName varchar(20),
+phoneNum varchar(20),
+email varchar(20)
+);
+
+insert into MEMBER (name, nickname, phonenum, email)
+values ('张三', '小三', '18888888888', 'zs@163.com');
+
+create table traveller(
+id int primary key auto_increment,
+name varchar(20),
+sex varchar(20),
+phoneNum varchar(20),
+credentialsType int,
+credentialsNum varchar(20),
+travellerType int
+);
+
+insert into TRAVELLER (name, sex, phonenum, credentialstype, credentialsnum, travellertype)
+values ('张龙', '男', '13333333333', 0,'123456789009876543', 0);
+insert into TRAVELLER (name, sex, phonenum, credentialstype, credentialsnum, travellertype)
+values ('张小龙', '男', '13333333333', 0,'123456789009876543', 1);
+
+
+CREATE TABLE order_traveller(
+orderId int,
+travellerId int,
+PRIMARY KEY (orderId,travellerId),
+FOREIGN KEY (orderId) REFERENCES orders(id),
+FOREIGN KEY (travellerId) REFERENCES traveller(id)
+);
+
+insert into ORDER_TRAVELLER (orderid, travellerid) values (1, 1);
+insert into ORDER_TRAVELLER (orderid, travellerid) values (2, 1);
+insert into ORDER_TRAVELLER (orderid, travellerid) values (3, 2);
+insert into ORDER_TRAVELLER (orderid, travellerid) values (4, 2);
+insert into ORDER_TRAVELLER (orderid, travellerid) values (5, 1);
+insert into ORDER_TRAVELLER (orderid, travellerid) values (6, 2);
+insert into ORDER_TRAVELLER (orderid, travellerid) values (7, 1);
+insert into ORDER_TRAVELLER (orderid, travellerid) values (8, 2);
+insert into ORDER_TRAVELLER (orderid, travellerid) values (9, 2);
+
+
+
+create table users(
+id int primary key auto_increment,
+email varchar(50) UNIQUE NOT NULL,
+username varchar(50),
+password varchar(50),
+phonoNum varchar(50),
+status int
+);
+
+
+
+CREATE TABLE role(
+id int PRIMARY KEY auto_increment,
+roleName VARCHAR(50) ,
+roleDesc VARCHAR(50)
+);
+
+
+CREATE TABLE users_role(
+userId int,
+roleId int,
+PRIMARY KEY(userId,roleId),
+FOREIGN KEY (userId) REFERENCES users(id),
+FOREIGN KEY (roleId) REFERENCES role(id)
+);
+
+
+
+CREATE TABLE permission(
+id int auto_increment PRIMARY KEY,
+permissionName VARCHAR(50) ,
+url VARCHAR(50)
+);
+
+CREATE TABLE role_permission(
+permissionId int,
+roleId int,
+PRIMARY KEY(permissionId,roleId),
+FOREIGN KEY (permissionId) REFERENCES permission(id),
+FOREIGN KEY (roleId) REFERENCES role(id)
+);
+
+CREATE TABLE sysLog(
+id int auto_increment PRIMARY KEY,
+visitTime datetime,
+username VARCHAR(50),
+ip VARCHAR(30),
+url VARCHAR(50),
+executionTime int,
+method VARCHAR(200)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
