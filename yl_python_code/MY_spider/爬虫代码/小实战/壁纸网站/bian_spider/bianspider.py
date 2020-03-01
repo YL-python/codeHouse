@@ -5,7 +5,7 @@ import os
 
 ZHUTI = "dongman"
 MAX_PAGE = 10
-FILEPATH = "F:\\图片\\bian_img\\{}\\".format(ZHUTI)
+FILEPATH = "E:\\图片\\bian_img\\{}\\".format(ZHUTI)
 URL_HEAD = "http://www.netbian.com"
 
 

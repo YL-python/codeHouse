@@ -11,7 +11,7 @@ bin_width = 5   # 设置组距
 
 # 组距为5 的时候不能被  （max(a)-min(a)） 整除 绘制出来的图像就会偏移  解决方法是传列表参数让它能被均分
 # 实际上就是X轴的最大刻度和最小刻度之差要被 bin_num 均分
-plt.hist(a, range(min(a), max(a)+bin_width, bin_width) ,density=0)   #density=0 频数分布直方图    density=1 频率分布直方图    看源码啦啦啦
+plt.hist(a, range(min(a), max(a) + bin_width, bin_width), density=0)   #density=0 频数分布直方图    density=1 频率分布直方图    看源码啦啦啦
 
 # 注意这里X轴的坐标和实际数字的关系 也就是为什么不能被整分的原因
 plt.xticks(range(min(a), max(a)+bin_width, bin_width), rotation=45)

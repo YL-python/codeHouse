@@ -5,7 +5,7 @@ import requests
 from lxml import etree
 import os
 
-IMG_SEAVE_PATH = 'F:\\图片\\konachan_img\\'
+IMG_SEAVE_PATH = 'E:\\图片\\konachan_img\\'
 MAIN_URL = 'http://konachan.net/post?page={}&tags='
 HEADERS = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3724.8 Safari/537.36'}
 

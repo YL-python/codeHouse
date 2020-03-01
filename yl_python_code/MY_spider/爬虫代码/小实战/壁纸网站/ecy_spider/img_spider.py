@@ -12,7 +12,7 @@ data = {'type': 'catL13',
 XpathTitle = '//h2[@class="entry-title"]/a/text()'
 XpathUrl = '//h2[@class="entry-title"]/a/@href'
 XpathImg = '//figure[@class="content-img-box "]/img/@src'
-Save_path = 'F:\\图片\\ecy'
+Save_path = 'E:\\图片\\ecy'
 erroe_name = '\\/:*?"<>|'
 
 

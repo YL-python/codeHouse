@@ -41,8 +41,8 @@ def myGet(url):
 
 def main():
     url = 'https://www.wallpapermaiden.com/category/{}/{}?page=XXX'.format(category,tag)
-    Seave_path = os.path.join('F:\\图片\\wallpapermaiden',"category", category, tag, DAY, "")
-    find_path = os.path.join('F:\\图片\\wallpapermaiden',"category", "")
+    Seave_path = os.path.join('E:\\图片\\wallpapermaiden',"category", category, tag, DAY, "")
+    find_path = os.path.join('E:\\图片\\wallpapermaiden',"category", "")
     try:
         os.makedirs(Seave_path)
     except:

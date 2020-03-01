@@ -13,10 +13,10 @@ Xpath_list = '//div[@class="wallpaperBg"]/a/div/img/@src'
 max_page = 10
 DAY = time.strftime("%Y-%m-%d", time.localtime())
 tagList = ["views", "rating", "downloads"]
-tag = tagList[0]
+tag = tagList[1]
 url = url.format(tag)
-Seave_path = os.path.join('F:\\图片\\wallpapermaiden','popular',tag, DAY, "")
-find_path = os.path.join('F:\\图片\\wallpapermaiden','popular',"")
+Seave_path = os.path.join('E:\\图片\\wallpapermaiden','popular',tag, DAY, "")
+find_path = os.path.join('E:\\图片\\wallpapermaiden','popular',"")
 
 
 def save_img(img,name):

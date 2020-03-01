@@ -14,7 +14,7 @@ topRangeList = ["1M", "3M", "6M", "1y", "1w", "1d", "3d"]  # 时间
 sortingList = ["toplist", "favorites", "toplist-beta", "views"]  # 规则
 MAX_PAGE = 15  # 爬取最大页数
 DAY = time.strftime("%Y-%m-%d", time.localtime())+"fuli"  # 今天日期
-IMG_SEAVE_PATH = 'F:\\图片\\wallhaven\\'  # 保存路径
+IMG_SEAVE_PATH = 'E:\\图片\\wallhaven\\'  # 保存路径
 URL = 'https://wallhaven.cc/search?categories={}&purity={}&topRange={}&sorting={}&order=desc&page=@'
 IMG_URL = "https://w.wallhaven.cc/full/{}/wallhaven-{}"
 XPATH_STR = '//section[@class="thumb-listing-page"]/ul/li/figure/@data-wallpaper-id'

@@ -37,8 +37,8 @@ def myGet(url):
 
 def main(key):
     url = 'https://www.wallpapermaiden.com/search?term=SSSS&page=XXX'.replace("SSSS",key)
-    Seave_path = os.path.join('F:\\图片\\wallpapermaiden',"search", key, DAY, "")
-    find_path = os.path.join('F:\\图片\\wallpapermaiden', "search", "")
+    Seave_path = os.path.join('E:\\图片\\wallpapermaiden',"search", key, DAY, "")
+    find_path = os.path.join('E:\\图片\\wallpapermaiden', "search", "")
     try:
         os.makedirs(Seave_path)
     except:
