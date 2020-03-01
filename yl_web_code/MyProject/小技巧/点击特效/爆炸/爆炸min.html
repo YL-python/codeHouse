@@ -7,10 +7,6 @@
     <title>Document</title>
     <canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;"></canvas>
     <script>
-        /*
- 2017 Julian Garnier
- Released under the MIT license
-*/
         var $jscomp = {
             scope: {}
         };
@@ -27,7 +23,7 @@
         $jscomp.global = $jscomp.getGlobal(this);
         $jscomp.SYMBOL_PREFIX = "jscomp_symbol_";
         $jscomp.initSymbol = function () {
-            $jscomp.initSymbol = function () {};
+            $jscomp.initSymbol = function () { };
             $jscomp.global.Symbol || ($jscomp.global.Symbol = $jscomp.Symbol)
         };
         $jscomp.symbolCounter_ = 0;
@@ -45,7 +41,7 @@
                     return $jscomp.arrayIterator(this)
                 }
             });
-            $jscomp.initSymbolIterator = function () {}
+            $jscomp.initSymbolIterator = function () { }
         };
         $jscomp.arrayIterator = function (e) {
             var r = 0;
@@ -54,8 +50,8 @@
                     done: !1,
                     value: e[r++]
                 } : {
-                    done: !0
-                }
+                        done: !0
+                    }
             })
         };
         $jscomp.iteratorPrototype = function (e) {
@@ -131,7 +127,7 @@
                 if (!h.col(a))
                     try {
                         return document.querySelectorAll(a)
-                    } catch (c) {}
+                    } catch (c) { }
             }
 
             function r(a, c) {
@@ -224,7 +220,7 @@
 
             function y(a) {
                 if (a = /([\+\-]?[0-9#\.]+)(%|px|pt|em|rem|in|cm|mm|ex|ch|pc|vw|vh|vmin|vmax|deg|rad|turn)?$/.exec(
-                        a))
+                    a))
                     return a[2]
             }
 
@@ -264,7 +260,7 @@
                     return d;
                 for (var b = [], f = [], n = [], k = /(\w+)\((.+?)\)/g; b = k.exec(a);)
                     f.push(b[1]),
-                    n.push(b[2]);
+                        n.push(b[2]);
                 a = r(n, function (a, b) {
                     return f[b] === c
                 });
@@ -368,7 +364,7 @@
                         b = h.hex(b) ? T(b) : h.hsl(b) ? U(b) : void 0;
                 else
                     f = (f = y(b)) ? b.substr(0, b.length - f.length) : b,
-                    b = c && !/\s/g.test(b) ? f + c : f;
+                        b = c && !/\s/g.test(b) ? f + c : f;
                 b += "";
                 return {
                     original: b,
@@ -421,8 +417,8 @@
                 for (b in a) {
                     var f = I(a[b], c);
                     h.arr(f) && (f = f.map(function (a) {
-                            return I(a, c)
-                        }),
+                        return I(a, c)
+                    }),
                         1 === f.length && (f = f[0]));
                     d[b] = f
                 }
@@ -533,7 +529,7 @@
                             return a < b.end
                         })[0] || l);
                         for (var h = Math.min(Math.max(a - l.start - l.delay, 0), l.duration) / l.duration, w =
-                                isNaN(h) ? 1 : l.easing(h, l.elasticity), h = l.to.strings, p = l.round, n = [], m =
+                            isNaN(h) ? 1 : l.easing(h, l.elasticity), h = l.to.strings, p = l.round, n = [], m =
                                 void 0, m = l.to.numbers.length, t = 0; t < m; t++) {
                             var x = void 0,
                                 x = l.to.numbers[t],
@@ -546,8 +542,8 @@
                             for (m = h[0],
                                 w = 0; w < l; w++)
                                 p = h[w + 1],
-                                t = n[w],
-                                isNaN(t) || (m = p ? m + (t + p) : m + (t + " "));
+                                    t = n[w],
+                                    isNaN(t) || (m = p ? m + (t + p) : m + (t + " "));
                         else
                             m = n[0];
                         ha[e.type](k.target, e.property, m, c, k.id);
@@ -557,7 +553,7 @@
                     if (b = Object.keys(c).length)
                         for (d = 0; d < b; d++)
                             H || (H = E(document.body, "transform") ? "transform" : "-webkit-transform"),
-                            g.animatables[d].target.style[H] = c[d].join(" ");
+                                g.animatables[d].target.style[H] = c[d].join(" ");
                     g.currentTime = a;
                     g.progress = a / g.duration * 100
                 }
@@ -591,17 +587,17 @@
                     if (q >= w || !k)
                         g.began || (g.began = !0,
                             f("begin")),
-                        f("run");
+                            f("run");
                     if (q > n && q < k)
                         b(q);
                     else if (q <= n && 0 !== r && (b(0),
-                            x && e()),
+                        x && e()),
                         q >= k && r !== k || !k)
                         b(k),
-                        x || e();
+                            x || e();
                     f("update");
                     a >= k && (g.remaining ? (t = h,
-                            "alternate" === g.direction && (g.reversed = !g.reversed)) : (g.pause(),
+                        "alternate" === g.direction && (g.reversed = !g.reversed)) : (g.pause(),
                             g.completed || (g.completed = !0,
                                 f("complete"),
                                 "Promise" in window && (p(),
@@ -637,7 +633,7 @@
                 };
                 g.pause = function () {
                     var a = v.indexOf(g); -
-                    1 < a && v.splice(a, 1);
+                        1 < a && v.splice(a, 1);
                     g.paused = !0
                 };
                 g.play = function () {
@@ -663,15 +659,15 @@
                 return g
             }
             var ga = {
-                    update: void 0,
-                    begin: void 0,
-                    run: void 0,
-                    complete: void 0,
-                    loop: 1,
-                    direction: "normal",
-                    autoplay: !0,
-                    offset: 0
-                },
+                update: void 0,
+                begin: void 0,
+                run: void 0,
+                complete: void 0,
+                loop: 1,
+                direction: "normal",
+                autoplay: !0,
+                offset: 0
+            },
                 S = {
                     duration: 1E3,
                     delay: 0,
@@ -680,8 +676,8 @@
                     round: 0
                 },
                 W =
-                "translateX translateY translateZ rotate rotateX rotateY rotateZ scale scaleX scaleY scaleZ skewX skewY perspective"
-                .split(" "),
+                    "translateX translateY translateZ rotate rotateX rotateY rotateZ scale scaleX scaleY scaleZ skewX skewY perspective"
+                        .split(" "),
                 H, h = {
                     arr: function (a) {
                         return Array.isArray(a)
@@ -760,8 +756,8 @@
                                         g = 0;
                                     do
                                         m = l + (h - l) / 2,
-                                        n = a(m, c, b) - k,
-                                        0 < n ? h = m : l = m;
+                                            n = a(m, c, b) - k,
+                                            0 < n ? h = m : l = m;
                                     while (1e-7 < Math.abs(n) && 10 > ++g);
                                     k = m
                                 }
@@ -821,14 +817,14 @@
                         e;
                     for (e in d)
                         f.type = e,
-                        d[f.type].forEach(function (a) {
-                            return function (d, f) {
-                                b["ease" + a.type + c[f]] = h.fnc(d) ? d : A.apply($jscomp$this, d)
-                            }
-                        }(f)),
-                        f = {
-                            type: f.type
-                        };
+                            d[f.type].forEach(function (a) {
+                                return function (d, f) {
+                                    b["ease" + a.type + c[f]] = h.fnc(d) ? d : A.apply($jscomp$this, d)
+                                }
+                            }(f)),
+                            f = {
+                                type: f.type
+                            };
                     return b
                 }(),
                 ha = {
@@ -858,11 +854,11 @@
                         if (b) {
                             for (var d = 0; d < b;)
                                 v[d] && v[d].tick(c),
-                                d++;
+                                    d++;
                             a()
                         } else
                             cancelAnimationFrame(B),
-                            B = 0
+                                B = 0
                     }
                     return a
                 }();
@@ -1050,21 +1046,21 @@
                         canvasEl.getContext("2d").scale(2, 2)
                 }, 500);
             document.addEventListener(tap, function (e) {
-                    "sidebar" !== e.target.id && "toggle-sidebar" !== e.target.id && "A" !== e.target.nodeName &&
-                        "IMG" !== e.target.nodeName &&
-                        (anime({
-                                duration: 1800,
-                                autoplay: false,
-                                update: function () {
-                                    ctx.clearRect(0, 0, canvasEl.width, canvasEl.height)
-                                },
-                                complete: function () {
-                                    ctx.clearRect(0, 0, canvasEl.width, canvasEl.height)
-                                }
-                            }).play(),
-                            updateCoords(e),
-                            animateParticules(pointerX, pointerY))
-                }, !1),
+                "sidebar" !== e.target.id && "toggle-sidebar" !== e.target.id && "A" !== e.target.nodeName &&
+                    "IMG" !== e.target.nodeName &&
+                    (anime({
+                        duration: 1800,
+                        autoplay: false,
+                        update: function () {
+                            ctx.clearRect(0, 0, canvasEl.width, canvasEl.height)
+                        },
+                        complete: function () {
+                            ctx.clearRect(0, 0, canvasEl.width, canvasEl.height)
+                        }
+                    }).play(),
+                        updateCoords(e),
+                        animateParticules(pointerX, pointerY))
+            }, !1),
                 setCanvasSize(),
                 window.addEventListener("resize", setCanvasSize, !1)
         }
