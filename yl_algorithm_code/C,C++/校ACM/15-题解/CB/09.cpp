@@ -4,7 +4,7 @@ using namespace std;
 int main() {
 	// 哭了 暴力直接爆
 	// dp 也爆
-	// 用啥快速幂  
+	// 用啥 矩阵幂  
 	return 0;
 }
 
