@@ -7,8 +7,8 @@ swapaxes(0,1) 交换轴  轴默认是0，1（二维）  1，0 就是转置了
 '''
 import numpy as np
 
-t1 = np.arange(24).reshape((4,6))
+t1 = np.arange(24).reshape((4, 6))
 print(t1)
 print(t1.T)
 print(t1.transpose())
-print(t1.swapaxes(1,0))
+print(t1.swapaxes(1, 0))
