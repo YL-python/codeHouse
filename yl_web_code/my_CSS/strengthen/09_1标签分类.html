@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标签分类</title>
+    <style>
+        /* 
+        按类型分类
+            block (块) :
+                div ul ol li dl dd dt p h1 h2 ..h6 ...
+                特点：
+                    1. 块是上下排列的 ，块是独占一行的。(霸道的小总裁)
+                    2. 块，支持CSS中的所有样式。
+                    3. 当块不写宽度的时候，默认的宽度是父容器的宽。
+                    4. 块永远都是一个矩形区域。
+
+            inline（内联）：
+                span a strong em img ...
+                特点：
+                    1. 内联是左右排列的，内联必须在一起（粘人的小公举）
+                    2. 内联，有些样式是不支持的 width height margin(一部分) padding(一部分)
+                    3. 内联元素的宽度就是由内容决定的。
+                    4. 不一定总是矩形区域。（了解）
+                    5. 两个内联元素之间会有一个空隙（代码还行带来的空隙）
+                        一般情况下，要不要解决这个空隙问题。一般情况下是不需要的，因为一般我们都是用块来做布局的，用内联元素来做文本修饰的。
+                        解决：1. 让内联元素写到一行上。
+                            2. 给父容器设置font-size:0;再给当前元素设置正常的文字大小。
+                
+            inline-block （内联的块）:
+                input select ... 
+        
+        按显示分类
+            替换元素 : 浏览器根据元素的标签和属性，来决定元素的具体显示内容。
+                img input ...
+            非替换元素 : 将内容直接告诉浏览器，将其显示出来。
+                <div>aaaaa</div>
+        
+        图片<img>是一个内联元素，但是支持宽高（因为他还是一个替换元素）
+
+        display : 查看每一个标签的类型的（显示框类型）
+            block 块
+            inline 内联 
+            inline-block 内联块
+            none : 不显示标签(不占位)，类似于 border-right:none  text-decoration:none
+            display:none跟visibility: hidden;的区别：后者是占位的。
+
+        */
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

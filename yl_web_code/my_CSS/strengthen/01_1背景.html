@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ch_ZN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>background</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+        div {
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+            background-image: url("./img/laoli.jpg");
+            background-repeat: no-repeat;
+            /* 
+            background-repeat 属性取值
+            repeat 默认
+            repeat-x
+            repeat-y
+            no-repeat
+
+            背景图片和 img的图片区别
+            背景图片一般不会改变
+            img的图片经常变化
+            */
+            background-position: 50% 50%;
+            /* 
+            background-position 
+            写像素  100px  50px
+            修改图片在容器中的的定位 左上角 0 0
+            写百分比  50% 50% (居中)
+            写单词  x(left center right)  y(top center bottom)
+             */
+            background-attachment: scroll;
+            /* 
+            background-attachment：背景图随滚动条的移动方式
+            scroll : 滚动（默认值）
+            fixed : 固定
+            scroll 下的定位模式 position 是根据当前容器来偏移的
+            fixed 下的定位模式 position 是根据当前页面来偏移的
+            */
+            background-size: cover;
+            /*
+            可以写像素
+            有两个单词 cover(覆盖)  contain(包含)
+            覆盖是背景与 容器等比例方法，背景会超出容器
+            包含也是等比例放大，但是最大不会超出容器，会有白边
+            */
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+</body>
+
+</html>

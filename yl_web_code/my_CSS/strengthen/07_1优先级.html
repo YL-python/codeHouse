@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优先级</title>
+</head>
+
+<body>
+
+    <div>相同样式优先级<br>
+        当设置相同样式时，后面的优先级较高，但不建议出现重复设置样式的情况。</div>
+    <hr>
+    <div>内部样式与外部样式<br>
+        内部样式与外部样式优先级相同，如果都设置了相同样式，那么后写的引入方式优先级高。</div>
+    <hr>
+    <div>单一样式优先级<br>
+        style行间 > id > class > tag > * > 继承<br>
+        权重 1000 0100 0010 0001 ...
+    </div>
+    <hr>
+    <div>!important 权重 -> 10000 ( 建议不要乱用 , 非规范写法 ) <br>
+        场景：紧急情况下才去用。
+    </div>
+    <hr>
+    <div>
+        选择器 标签 + 类 > 单类
+    </div>
+    <hr>
+    <div>
+        群组选择器与单一选择器的优先级相同，靠后写的优先级高。
+    </div>
+    <hr>
+    <div>
+        层次选择器
+        <br>
+        权重： 把对应的数值加起来
+        <br>
+        约分：把相同的相同的选择器约掉
+        <br>
+        建议：层次选择器最好不要超过三层
+    </div>
+    <hr>
+</body>
+
+</html>

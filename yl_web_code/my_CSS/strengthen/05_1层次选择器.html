@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择器</title>
+    <style>
+        /*
+        标签选择器：name{}
+            不常用，一般去除 默认样式的时候使用
+            ul{ list-style:none;} a{ text-decoration:none;}
+        
+        id选择器： #id_name{}
+
+        类选择器：.class_name{}
+            多个class样式的时候 顺序是看CSS 代码写的顺序来
+            标签+类写法  div.class{}
+        
+        群组选择器： 选择器1, 选择器2, 选择器3{}
+
+        通配选择器：*{}
+            选择所有标签，拥有去除所有标签默认样式
+
+        层次选择器
+            后代：M N
+                M 下的所有 N 标签
+            父子：M > N
+                M 下的所有子标签 N  （父子，爷孙）
+            兄弟：M ~ N
+                是找 M标签 下 面的所有N 标签
+            相邻：M + N
+                + 是找M 标签 下 相邻的N 标签
+            无论用~ + 都是找下面的兄弟，上面的兄弟是不会有任何作用的。
+        */
+        #div1{
+            color: red;
+            border: red 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">div1</div>
+</body>
+</html>

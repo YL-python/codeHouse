@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌套规范</title>
+    <style>
+        /* 
+        标签本身就是很多嵌套规范：
+            table tr (td、th)
+            ul li
+            dl dt dd
+    
+        块标签可以嵌套内联标签:
+            <div>     √
+                <span></span>
+            </div>
+
+        块标签不一定能嵌套块标签:
+            <div>   √
+                <div></div>
+            </div>
+            特殊：
+            <p>     ×
+                <div></div>
+            </p>
+
+        内联标签不能嵌套块标签:
+            <span>   ×
+                <div></div>
+            </span>
+            特殊：
+            <a href="">   √
+                <div></div>
+            </a>
+
+        不能自己嵌套自己的操作：
+            <a href="">   ×
+                <a href=""></a>
+            </a>
+            <h2>       ×
+                <h2></h2>
+            </h2> 
+        */
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

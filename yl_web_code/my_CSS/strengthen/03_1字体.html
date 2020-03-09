@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字体</title>
+    <style>
+        div {
+            font-family: Arial;
+            font-size: 18px;
+            font-weight: 600;
+            font-style: italic;
+            color: red;
+            text-decoration: overline;
+            text-transform: lowercase;
+            text-indent: 2em;
+            text-align: left;
+            /*
+            font-family 
+                指定字体类型  中文名称不用引号，英文名称需要引号
+                默认是 微软雅黑
+                一般字体可以设置多个，通过空格进行添加，主要目的做一些备选方案。
+            font-size
+                字体大小
+                    默认16px 推荐大小写偶数，方便对其
+            font-weight
+                字体宽度
+                值 100 200 ... 900
+                    三个档：100 200 300 (细) 400 500 ( 正常 ) 600 700 800 900 (粗)
+                    单词 ( normal 默认表示正常 , bold 加粗 )
+            font-style
+                字体样式
+                    正常的 normal
+                    倾斜的 italic
+            color
+                设置颜色
+            text-decoration: 
+                文本装饰
+                overline(上划线) underline(下划线) line-through(删除线) none(没有线)
+                去除 a 标签的下划线
+            text-transform: 
+                控制文本的大小写  针对英文
+                lowercase(单词小写) uppercase(单词大写) capitalize(首字母大写)、
+            text-indent: 32px;
+                文本缩进  针对中文
+                em单位：相对单位 1em == 一个字的px大小 默认情况下 1em == 16px
+            text-align : 
+                文本对齐方式
+                left right center justify(两端点对齐)
+            */
+        }
+
+        p {
+            width: 500px;
+            height: 300px;
+            border-style: solid;
+            line-height: 40px;
+            /* 行高
+                默认的行高：是不确定具体大小的，它总是比当前字体大小，大个1.3倍左右。
+                值：具体的数值 30px 40px | scale( 比例值 1.5 20px -> 30px )
+            */
+            letter-spacing: normal;
+            /*
+                字间距
+            */
+            word-spacing: normal;
+            /* 词间距 针对英文 */
+            /* 
+            强制折行 : (针对英文)
+                1. word-break : break-all; (非常强烈的折行)
+                2. word-wrap : break-word;(不是那么强烈的折行)  
+                强烈的特点：不会留有空白区域，非强烈的特点：会留有一些空白区域。
+             */
+        }
+    </style>
+</head>
+
+<body>
+    <div>aaa啊啊啊111</div>
+    <p>aaa啊啊啊111aaa啊啊啊111aaa啊啊啊111aaa啊啊啊
+        111aaa啊啊啊111aaa啊啊啊111aaa啊啊啊111aaa啊啊啊111aaa啊啊啊111aaa啊啊啊111aaa啊啊啊111</p>
+    <span>aaa啊啊啊111</span>
+</body>
+
+</html>

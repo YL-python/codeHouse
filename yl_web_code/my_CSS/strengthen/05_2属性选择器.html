@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性选择器</title>
+    <style>
+        /*
+        选择器[attr]{}
+            包含这个属性的选择器 起作用
+
+        选择器[attr=value]{}
+            包含这个属性且值相等的选择器 起作用
+
+        选择器[attr*=value]{}
+            包含这个属性且值 包含 value 的选择器 起作用
+
+        选择器[attr^=value]{}
+            包含这个属性且值 起始值 是value 的选择器 起作用
+        
+        选择器[attr$=value]{}
+            包含这个属性 结束值 是value 的选择器 起作用
+        
+        选择器[attr1][attr2]{}
+            多个属性选择器
+        */
+        div[class*=box] {
+            border: solid 1px red;
+        }
+
+        /*
+        伪类选择器
+            CSS伪类用于向某些元素添加特殊的效果。一般用于初始样式添加不上的时候，用伪类来添加。
+            主要这四个伪类是针对a标签的
+            :link      访问前的选择器     ( 只能加给a标签 )
+            :visited   访问过后的选择器   ( 只能加给a标签 )
+            :hover     鼠标移入的选择器    ( 所有标签都能添加 )
+            :active    鼠标按下的选择器    ( 所有标签都能添加 )
+                a标签如果四个伪类都添加的话，那么是有顺序的 L V H A
+                一般的网站都只会设置a{ color:red;} a:hover{ color:blue;}
+        其他伪类选择器：
+            :before :after ( 特点，不用单独在创建一个标签，就可以给文本添加样式 )
+            :checked{ width:100px; height:100px;}
+                单选框被 选择的时候
+            :disabled{ width:100px; height:100px;}
+                单选框被 禁止的时候
+            :focus{ background:Red;}
+                当标签能够获取焦点的时候，会触发 :focus
+        结构性伪类选择器：
+            选择器的结果要是一个数组
+            根据选择器的类型
+            :nth-of-type(num)：选择组里面的第 num 个 选择器
+            :first-of-type：选择组里面的第 1 个
+            :last-of-type：选择组里面的 最后1 个
+            :only-of-type：选择组里面的 唯一1 个  只有一个时候生效       
+            根据选择器的孩子
+            :nth-child(num)：选择组里面的第 num 个 选择器, 并判断是不是这个类型的选择器
+            :first-child 
+            :last-child
+            :only-child
+            ()中可以添加的值：number(第几个，从1开始) | n(表示一个0到无穷大的数)
+            具体区别见： https://www.cnblogs.com/pssp/p/5991029.html
+        */
+        #div1 {
+            width: 100px;
+            height: 100px;
+            border: 1px red solid;
+        }
+
+        #div1:hover {
+            background-color: blue;
+        }
+
+        #div1:active {
+            background-color: green;
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        #div2 {
+            width: 200px;
+            height: 100px;
+            border: 1px red solid;
+        }
+
+        #div2:before {
+            color: red;
+            content: "before";
+        }
+
+        li:nth-of-type(2n) {
+            background: red;
+        }
+
+        li:nth-of-type(2n+1) {
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">aaaaa</div>
+    <div class="elem">bbbbb</div>
+    <div>ccccc</div>
+    <div class="searchbox">ddddd</div>
+    <div class="searchboxbtn">eeeee</div>
+    <div id="div1">我是div1</div>
+    <a href="#">我是链接</a>
+    <div id="div2">我是div2</div>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>

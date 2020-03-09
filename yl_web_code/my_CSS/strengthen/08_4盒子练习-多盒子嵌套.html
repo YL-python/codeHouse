@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多盒子嵌套</title>
+    <style>
+        body {
+            background: yellow;
+        }
+
+        #box1 {
+            width: 350px;
+            height: 350px;
+            border: 1px black dashed;
+            margin: 0 auto;
+            padding: 27px;
+        }
+
+        #box2 {
+            border: 5px #d7effe dashed;
+            padding: 20px;
+        }
+
+        #box3 {
+            background: pink;
+            padding: 41px;
+        }
+
+        #box4 {
+            border: 1px white dashed;
+            padding: 3px;
+        }
+
+        #box5 {
+            border: 1px white dashed;
+            padding: 49px;
+        }
+
+        #box6 {
+            height: 100px;
+            border: 5px #fcff00 solid;
+            background: #96ff38;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        /* 最后一个盒子要写高度，宽度会自适应，高度不会 */
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3">
+                <div id="box4">
+                    <div id="box5">
+                        <div id="box6">
+                            推荐外往里写
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

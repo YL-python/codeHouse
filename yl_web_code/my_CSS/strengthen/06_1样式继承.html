@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承</title>
+    <style>
+        /* P 标签继承了div 标签的 color 和 font-style属性，没有继承border属性 */
+        div {
+            color: red;
+            font-style: italic;
+            border: 1px black solid;
+        }
+        /* 
+        继承
+            文字相关的样式可以被继承
+                color line-height font-style font-size font-weight ...
+            布局相关的样式不能被继承 ( 默认行为 )
+            通过设置inherit值，可以继承父标签的值
+        */
+        p{
+            border: inherit;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        div的内容
+        <p>
+            p的内容
+        </p>
+    </div>
+</body>
+
+</html>

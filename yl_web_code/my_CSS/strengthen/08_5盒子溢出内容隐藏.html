@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>溢出隐藏</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 150px;
+            border: 1px red solid;
+            overflow: hidden;
+        }
+
+        /* 
+        overflow：溢出隐藏
+            给一个盒子固定大小后，当盒子里的内容比较多的情况下，就可能产生溢出的现象。
+            值有三种：hidden（溢出隐藏），scroll（加滚动条），auto（滚动条自适应）
+        overflow-x: hidden;
+        overflow-y: scroll;
+        */
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+        <p>段落</p>
+    </div>
+</body>
+
+</html>

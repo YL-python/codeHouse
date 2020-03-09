@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>思考</title>
+    <style>
+        /* 标签加类 选择器 */
+        div.box {
+            border: red 1px solid;
+        }
+
+        /* 层次选择器 中的后代选择器 */
+        div .box {
+            border: blue 1px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        aaa
+        <p class="box">
+            bbb
+        </p>
+    </div>
+</body>
+
+</html>

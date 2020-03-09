@@ -1,3 +1,16 @@
 CTRL+shift+p          控制台
-! + CTRL+E              HTML5自动生成请求头
+! + tab              HTML5自动生成请求头
 输入 html:xt +tab     html1.0自动生成请求头
+ctrl + s : 保存
+    ctrl + x、ctrl + c、ctrl + v : 剪切、复制、粘贴
+    ctrl + a : 全选
+    shift + end : 从头选中一行
+    shift + home : 从尾选中一行
+    shift + alt + 上下键：快速复制一行
+    alt + + 上下键：快速移动一行
+    ctrl + z : 撤销
+    ctrl + y : 还原
+    alt + 光标左键：实现多光标的操作
+    ctrl + d : 快速选中后面一样的代码
+    tab : 向后缩进
+    tab + shift : 向前缩进

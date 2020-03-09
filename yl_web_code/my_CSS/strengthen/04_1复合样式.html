@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复合样式</title>
+    <style>
+        /* 
+            尽量不要混写，如果非要混写，那么一定要先写复合样式再写单一样式。
+            复写是一个集合，包含所有的默认值， 后写的会覆盖先写的。
+         */
+        div {
+            width: 500px;
+            height: 500px;
+            /* background-color: red;
+            background-image: url("./img/laoli.jpg");
+            background-repeat: no-repeat;
+            background-position: center center; */
+            background: red url("./img/laoli.jpg") no-repeat center center;
+            /*
+            background-size : 如果想添加到复合写法中  x y / w h
+            background-size : 还可以 (解决方案：可以单独的写到background样式的后面) 
+             */
+        }
+
+        p {
+            width: 300px;
+            height: 300px;
+            /* border-style: solid;
+            border-color: red;
+            border-width: 2px; */
+
+            border: red 2px solid;
+
+            /* 针对一条边时 用  border-left */
+            /* 针对三条边的时候可以写一个border  然后写一条边属性值是 none */
+        }
+        /*
+        font : 复合写法是有顺序，最少要写两个值 ( size family )
+            weight style size family  √
+            style weight size family  √
+            style weight size/line-height family  √
+        text是没有复合写法的
+        */
+    </style>
+
+</head>
+
+<body>
+    <div></div>
+    <p></p>
+</body>
+
+</html>

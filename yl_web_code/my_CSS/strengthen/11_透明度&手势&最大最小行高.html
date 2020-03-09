@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>透明度</title>
+    <style>
+        #box1 {
+            width: 200px;
+            height: 200px;
+            background: red;
+            opacity: 0.5;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 0, 0, 0.4);
+        }
+
+        #box3 {
+            width: 300px;
+            height: 300px;
+            background: rgb(255, 0, 0);
+            cursor: pointer;
+        }
+
+        /* 
+        cursor: 手势
+            https://www.w3school.com.cn/cssref/pr_class_cursor.asp
+        */
+        #box4 {
+            width: 300px;
+            height: 300px;
+            background: rgb(255, 0, 0);
+            cursor: url('./img/cursor.ico'), auto;
+        }
+
+        #box5 {
+            width: 500px;
+            background: pink;
+            min-height: 100px;
+            max-height: 100px;
+        }
+        /* 
+        设置最大最小高度：
+            最小高度，盒子高度不够时用此高度
+            最大高度同理
+        
+        百分比值 永远和父容器值比较
+        */
+    </style>
+</head>
+
+<body>
+    opacity : 0 ~ 1 , 跟display:none也是有区别的。
+    <br>
+    rgb() , rgba() a的取值也是0 ~ 1。
+    <div id="box1">aaaaaaaa</div>
+    <div id="box2">bbbbbbbbb</div>
+    <div id="box3"> 鼠标移入看看 </div>
+    <div id="box4"> 自定义鼠标 </div>
+    <div id="box5"> 自定义鼠标 </div>
+</body>
+
+</html>

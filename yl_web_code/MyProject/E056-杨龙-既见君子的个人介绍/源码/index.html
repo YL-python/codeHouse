@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		既见君子
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="" />
+	<script>
+		addEventListener("load",
+			function () {
+				setTimeout(hideURLbar, 0);
+			},
+			false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<link rel="icon" href="./images/yl.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="bootstrap.css" />
+	<link rel="stylesheet" href="mystyle/style.css" type="text/css" media="all" />
+	<link href="./awesome-font/css/font-awesome.min.css" rel="stylesheet" />
+	<!-- font-awesome 图标库 -->
+	<link
+		href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+		rel="stylesheet" />
+	<link
+		href="http://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,latin-ext,vietnamese"
+		rel="stylesheet" />
+	<!-- 联网字体 -->
+</head>
+
+<body>
+	<canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:99999999;pointer-events:none;">
+	</canvas>
+	<script src="./myscript/click.js">
+	</script>
+	<!-- 点击效果 -->
+	<!-- home 首页 -->
+	<div id="home">
+		<!-- banner 导航栏 -->
+		<div class="banner_yl">
+			<!-- nav -->
+			<div class="nav_yl text-center">
+				<nav>
+					<label for="drop" class="toggle">
+						Menu
+					</label>
+					<input type="checkbox" id="drop" />
+					<ul class="menu">
+						<li>
+							<a href="index.html">
+								Home
+							</a>
+						</li>
+						<li>
+							<!-- 一极下拉菜单 -->
+							<label for="drop-2" class="toggle toogle-2">
+								Pages
+								<span class="fa fa-angle-down" aria-hidden="true">
+								</span>
+							</label>
+							<a href="#">
+								Pages
+								<span class="fa fa-angle-down" aria-hidden="true">
+								</span>
+							</a>
+							<input type="checkbox" id="drop-2" />
+							<ul class="text-left">
+								<li>
+									<a href="#about" class="drop-text">
+										About Me
+									</a>
+								</li>
+								<li>
+									<a href="#hobby" class="drop-text">
+										Hobby
+									</a>
+								</li>
+								<li>
+									<a href="#photos" class="drop-text">
+										Photo Wall
+									</a>
+								</li>
+								<li>
+									<a href="#slife" class="drop-text">
+										School Life
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#slifep">
+								School Life Photo
+							</a>
+						</li>
+						<li>
+							<a href="#contact">
+								Contact Me
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<!-- //nav -->
+			<div class="banner-text text-center">
+				<div class="banner-bot">
+					<h1>
+						<a href="index.html" class="logo">
+							既见君子
+						</a>
+					</h1>
+					<p class="my-3">
+						风雨如晦，鸡鸣不已。既见君子，云胡不喜。--《诗经》
+					</p>
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="social-icons mt-4">
+							<ul class="list-unstyled">
+								<li>
+									<a href="#contact">
+										<span class="fa fa-qq">
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="#contact">
+										<span class="fa fa-weixin">
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="#contact">
+										<span class="fa fa-github">
+										</span>
+									</a>
+								</li>
+								<li>
+									<a href="#contact">
+										<span class="fa fa-phone">
+										</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="text-right">
+							<a href="#about" class="btn button-style">
+								Learn More
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //banner -->
+	</div>
+	<!-- //home -->
+	<!-- main background image -->
+	<div class="bottom-yl">
+		<div class="wrap">
+			<!-- about -->
+			<section class="welcome py-5" id="about">
+				<div class="container py-xl-5 py-lg-3">
+					<h3 class="title mb-lg-5 mb-4 pb-4 text-center">
+						Story About Me
+					</h3>
+					<div class="row">
+						<div class="col-lg-6 welcome-left pr-lg-5">
+							<h3>
+								YangLong的个人介绍：
+							</h3>
+							<h2 class="mt-2 mb-3">
+								Welcome to my Website
+							</h2>
+							<h6>
+								既见君子，云胡不喜。
+								是我从高中以来最喜欢的句子，所以既见君子就一直是我使用的网名。
+							</h6>
+							<p class="mt-4">
+								我叫杨龙，我来自江西九江，现在就读于南昌理工学院。专业是大数据，一开始高考填报志愿的时候我也没想太多
+								，感觉大数据很高大上就报了这个专业。现在我已经大二了，我十分热爱我的专业，爱计算机，爱编程，爱动漫。
+							</p>
+							<a href="#hobby" class="btn button-style-3">
+								Learn More
+							</a>
+						</div>
+						<div class="col-lg-5 offset-lg-1 welcome-right text-center mt-lg-0 mt-5">
+							<img src="images/aboutme.jpg" alt="" class="img-fluid" />
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- //about -->
+			<!-- hobby -->
+			<section class="single_grid_main py-5" id="hobby">
+				<div class="container pb-xl-5 pb-lg-3">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="abt-grid">
+								<div class="row">
+									<div class="col-3">
+										<div class="abt-icon">
+											<span class="fa fa-gamepad">
+											</span>
+										</div>
+									</div>
+									<div class="col-9">
+										<div class="abt-txt">
+											<h4>
+												游戏
+											</h4>
+											<p>
+												我最喜欢玩的是王者荣耀，后来慢慢喜欢玩一些养成游戏，比如植物大战僵尸和部落冲突。
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 mt-lg-0 mt-5">
+							<div class="abt-grid">
+								<div class="row">
+									<div class="col-3">
+										<div class="abt-icon">
+											<span class="fa fa-play-circle">
+											</span>
+										</div>
+									</div>
+									<div class="col-9">
+										<div class="abt-txt">
+											<h4>
+												动漫
+											</h4>
+											<p>
+												可爱的动漫角色谁都受不了吧。哈哈哈!我最喜欢的是雷姆，也就是首页背景的人物。
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt-lg-5">
+						<div class="col-lg-6 mt-lg-4 mt-5">
+							<div class="abt-grid">
+								<div class="row">
+									<div class="col-3">
+										<div class="abt-icon">
+											<span class="fa fa-tag">
+											</span>
+										</div>
+									</div>
+									<div class="col-9">
+										<div class="abt-txt">
+											<h4>
+												业余爱好
+											</h4>
+											<p>
+												emm，我能拿得出手的应该就是魔方了，二阶、三阶、五阶、七阶魔方我都能复原。
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 mt-lg-4 mt-5">
+							<div class="abt-grid">
+								<div class="row">
+									<div class="col-3">
+										<div class="abt-icon">
+											<span class="fa fa-heart-o">
+											</span>
+										</div>
+									</div>
+									<div class="col-9">
+										<div class="abt-txt">
+											<h4>
+												技术栈
+											</h4>
+											<p>
+												弄啥啥不行，但是都会一点，算法、Java、python、前端。现在主要是用Java做后端。
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="d-flex justify-content-center">
+						<a href="#photos" class="btn button-style button-2">
+							View More
+						</a>
+					</div>
+				</div>
+			</section>
+			<!-- //hobby -->
+			<!-- Photo wall -->
+			<section class="blog_yl py-5" id="photos">
+				<div class="container pb-xl-5 pb-lg-3">
+					<h3 class="title mb-lg-5 mb-4 pb-4 text-center">
+						Photo wall
+					</h3>
+					<div class="row">
+						<!-- photo grid -->
+						<div class="col-lg-4 col-md-6">
+							<div class="card border-0 med-blog">
+								<div class="card-header p-0">
+									<a href="#photow1">
+										<img class="card-img-bottom" src="images/photo1.jpg" alt="image" />
+									</a>
+								</div>
+								<div class="card-body border border-top-0">
+									<div class="mb-3">
+										<h5 class="blog-title card-title font-weight-bold m-0">
+											<a href="#photow1">
+												从零开始的异世界--雷姆
+											</a>
+										</h5>
+										<div class="blog_icon">
+											<span>
+												我喜欢的动漫角色
+											</span>
+										</div>
+									</div>
+									<p>
+										如果爱有颜色那一定是蓝色吧。
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- //photo grid -->
+						<!-- photo grid -->
+						<div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+							<div class="card border-0 med-blog">
+								<div class="card-header p-0">
+									<a href="#photow2">
+										<img class="card-img-bottom" src="images/photo2.jpg" alt="image" />
+									</a>
+								</div>
+								<div class="card-body border">
+									<div class="mb-3">
+										<h5 class="blog-title card-title font-weight-bold m-0">
+											<a href="#photow2">
+												小林家的龙女仆--康娜酱
+											</a>
+										</h5>
+										<div class="blog_icon">
+											<span>
+												我喜欢的动漫角色
+											</span>
+										</div>
+									</div>
+									<p>
+										蝉这种动物，味道是脆脆的。
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- //photo grid -->
+						<!-- photo grid -->
+						<div class="col-lg-4 col-md-6 mt-lg-0 mt-5">
+							<div class="card border-0 med-blog">
+								<div class="card-header p-0">
+									<a href="#photow3">
+										<img class="card-img-bottom" src="images/photo3.jpg" alt="image" />
+									</a>
+								</div>
+								<div class="card-body border border-top-0">
+									<div class="mb-3">
+										<h5 class="blog-title card-title font-weight-bold m-0">
+											<a href="#photow3">
+												鬼灭之刃--蝴蝶忍
+											</a>
+										</h5>
+										<div class="blog_icon">
+											<span>
+												我喜欢的动漫角色
+											</span>
+										</div>
+									</div>
+									<p>
+										もしもし、大丈夫ですよ
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- //photo grid -->
+					</div>
+					<div class="row mt-5">
+						<!-- photo grid -->
+						<div class="col-lg-4 ml-auto col-md-6">
+							<div class="card border-0 med-blog">
+								<div class="card-header p-0">
+									<a href="#photow4">
+										<img class="card-img-bottom" src="images/photo4.jpg" alt="image" />
+									</a>
+								</div>
+								<div class="card-body border border-top-0">
+									<div class="mb-3">
+										<h5 class="blog-title card-title font-weight-bold m-0">
+											<a href="#photow4">
+												蓝桥杯省赛三等奖
+											</a>
+										</h5>
+										<div class="blog_icon">
+											<span>
+												获得的证书
+											</span>
+										</div>
+									</div>
+									<p>
+										大一上学期获得。
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- //photo grid -->
+						<!-- photo grid -->
+						<div class="col-lg-4 col-md-6 mr-auto mt-md-0 mt-5">
+							<div class="card border-0 med-blog">
+								<div class="card-header p-0">
+									<a href="#photow5">
+										<img class="card-img-bottom" src="images/photo5.jpg" alt="image" />
+									</a>
+								</div>
+								<div class="card-body border">
+									<div class="mb-3">
+										<h5 class="blog-title card-title font-weight-bold m-0">
+											<a href="#photow5">
+												软考初级证书
+											</a>
+										</h5>
+										<div class="blog_icon">
+											<span>
+												获得的证书
+											</span>
+										</div>
+									</div>
+									<p>
+										大一下学期获得。
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- //photo grid -->
+						<!-- photo grid -->
+						<div class="col-lg-4 col-md-6 mr-auto mt-md-0 mt-5">
+							<div class="card border-0 med-blog">
+								<div class="card-header p-0">
+									<a href="#photow6">
+										<img class="card-img-bottom" src="images/photo6.jpg" alt="image" />
+									</a>
+								</div>
+								<div class="card-body border">
+									<div class="mb-3">
+										<h5 class="blog-title card-title font-weight-bold m-0">
+											<a href="#photow6">
+												NIT证书
+											</a>
+										</h5>
+										<div class="blog_icon">
+											<span>
+												获得的证书
+											</span>
+										</div>
+									</div>
+									<p>
+										大二上学期获得。
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- //photo grid -->
+					</div>
+					<div class="row mt-5">
+						<!-- photo grid -->
+						<div class="col-lg-4 ml-auto col-md-6">
+							<div class="card border-0 med-blog">
+								<div class="card-header p-0">
+									<a href="#photow7">
+										<img class="card-img-bottom" src="images/photo7.jpg" alt="image" />
+									</a>
+								</div>
+								<div class="card-body border border-top-0">
+									<div class="mb-3">
+										<h5 class="blog-title card-title font-weight-bold m-0">
+											<a href="#photow7">
+												我的魔方们
+											</a>
+										</h5>
+										<div class="blog_icon">
+											<span>
+												兴趣爱好
+											</span>
+										</div>
+									</div>
+									<p>
+										以前我也是一个小佬，嘿嘿嘿。
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- //photo grid -->
+						<!-- photo grid -->
+						<div class="col-lg-4 col-md-6 mr-auto mt-md-0 mt-5">
+							<div class="card border-0 med-blog">
+								<div class="card-header p-0">
+									<a href="#photow">
+										<a href="#photow8">
+											<img class="card-img-bottom" src="images/photo8.jpg" alt="image" />
+										</a>
+								</div>
+								<div class="card-body border">
+									<div class="mb-3">
+										<h5 class="blog-title card-title font-weight-bold m-0">
+											<a href="#photow8">
+												王者荣耀
+											</a>
+										</h5>
+										<div class="blog_icon">
+											<span>
+												兴趣爱好
+											</span>
+										</div>
+									</div>
+									<p>
+										王者是我玩的时间最长的游戏了。
+									</p>
+								</div>
+							</div>
+						</div>
+						<!-- //photo grid -->
+					</div>
+					<!-- popup-->
+					<div id="photow1" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/photo1.jpg" alt="Popup Image" class="img-fluid" />
+							<h3 class="mt-4">
+								从零开始的异世界--雷姆
+							</h3>
+							<p class="mt-4">
+								如果爱有颜色那一定是蓝色吧。
+							</p>
+							<a class="close" href="#photos">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="photow2" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/photo2.jpg" alt="Popup Image" class="img-fluid" />
+							<h3 class="mt-4">
+								小林家的龙女仆--康娜酱
+							</h3>
+							<p class="mt-4">
+								蝉这种动物，味道是脆脆的。
+							</p>
+							<a class="close" href="#photos">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="photow3" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/photo3.jpg" alt="Popup Image" class="img-fluid" />
+							<h3 class="mt-4">
+								鬼灭之刃--蝴蝶忍
+							</h3>
+							<p class="mt-4">
+								もしもし、大丈夫ですよ
+							</p>
+							<a class="close" href="#photos">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="photow4" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/photo4.jpg" alt="Popup Image" class="img-fluid" />
+							<h3 class="mt-4">
+								蓝桥杯省赛三等奖
+							</h3>
+							<p class="mt-4">
+								大一上学期获得。
+							</p>
+							<a class="close" href="#photos">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="photow5" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/photo5.jpg" alt="Popup Image" class="img-fluid" />
+							<h3 class="mt-4">
+								软考初级证书
+							</h3>
+							<p class="mt-4">
+								大一下学期获得。
+							</p>
+							<a class="close" href="#photos">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="photow6" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/photo6.jpg" alt="Popup Image" class="img-fluid" />
+							<h3 class="mt-4">
+								NIT证书
+							</h3>
+							<p class="mt-4">
+								大二上学期获得。
+							</p>
+							<a class="close" href="#photos">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="photow7" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/photo7.jpg" alt="Popup Image" class="img-fluid" />
+							<h3 class="mt-4">
+								我的魔方们
+							</h3>
+							<p class="mt-4">
+								以前我也是一个小佬，嘿嘿嘿。
+							</p>
+							<a class="close" href="#photos">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="photow8" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/photo8.jpg" alt="Popup Image" class="img-fluid" />
+							<h3 class="mt-4">
+								王者荣耀
+							</h3>
+							<p class="mt-4">
+								王者是我玩的时间最长的游戏了。
+							</p>
+							<a class="close" href="#photos">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+				</div>
+			</section>
+			<!-- //Photo wall -->
+			<!-- School Life -->
+			<section class="banner-bottom-yl py-5" id="slife">
+				<div class="container pb-xl-5 pb-lg-3">
+					<h3 class="title mb-lg-5 mb-4 pb-4 text-center">
+						YL School Life
+					</h3>
+					<div class="row">
+						<div class="col-lg-4 about-in text-center">
+							<div class="card">
+								<div class="icon-wthrees">
+									<span class="fa fa-desktop">
+									</span>
+								</div>
+								<h5 class="card-title mb-3">
+									学习小组
+								</h5>
+								<p class="card-text">
+									.NET 学习小组
+								</p>
+								<p>
+									一名默默无闻的coder
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4 about-in text-center my-lg-0 my-4">
+							<div class="card active">
+								<div class="icon-wthrees">
+									<span class="fa fa-graduation-cap">
+									</span>
+								</div>
+								<h5 class="card-title mb-3">
+									学校
+								</h5>
+								<p class="card-text">
+									南昌理工学院
+								</p>
+								<p>
+									18级大数据专业1班
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4 about-in text-center">
+							<div class="card">
+								<div class="icon-wthrees">
+									<span class="fa fa-smile-o">
+									</span>
+								</div>
+								<h5 class="card-title mb-3">
+									社团
+								</h5>
+								<p class="card-text">
+									计算机DIY协会
+								</p>
+								<p>
+									技术部部长
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- //School Life -->
+			<!-- School Life Photo -->
+			<div class="py-5" id="slifep">
+				<h3 class="title mb-lg-5 mb-4 pb-4 text-center">
+					YL School Life Photo
+				</h3>
+				<div class="container pb-md-5">
+					<div class="row no-gutters text-center">
+						<div class="col-md-8 slifep-img">
+							<a href="#slifep1">
+								<img src="images/slifep1.jpg" alt="School Life Photo Image" class="img-fluid" />
+							</a>
+						</div>
+						<div class="col-md-4 slifep-img">
+							<a href="#slifep2">
+								<img src="images/slifep2.jpg" alt="School Life Photo Image" class="img-fluid" />
+							</a>
+						</div>
+					</div>
+					<div class="row no-gutters text-center">
+						<div class="col-md-4 slifep-img">
+							<a href="#slifep3">
+								<img src="images/slifep3.jpg" alt="School Life Photo Image" class="img-fluid" />
+							</a>
+						</div>
+						<div class="col-md-8 slifep-img">
+							<a href="#slifep4">
+								<img src="images/slifep4.jpg" alt="School Life Photo Image" class="img-fluid" />
+							</a>
+						</div>
+					</div>
+					<div class="row no-gutters text-center">
+						<div class="col-md-4 slifep-img">
+							<a href="#slifep5">
+								<img src="images/slifep5.jpg" alt="School Life Photo Image" class="img-fluid" />
+							</a>
+						</div>
+						<div class="col-md-4 slifep-img">
+							<a href="#slifep6">
+								<img src="images/slifep6.jpg" alt="School Life Photo Image" class="img-fluid" />
+							</a>
+						</div>
+						<div class="col-md-4 slifep-img">
+							<a href="#slifep7">
+								<img src="images/slifep7.jpg" alt="School Life Photo Image" class="img-fluid" />
+							</a>
+						</div>
+					</div>
+					<!-- School Life Photo popups -->
+					<!-- popup-->
+					<div id="slifep1" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/slifep1.jpg" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">
+								去往教学楼的道路真宽敞啊！
+							</p>
+							<a class="close" href="#slifep">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="slifep2" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/slifep2.jpg" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">
+								今天天气很好，我们在体育场抓拍到了彩虹。
+							</p>
+							<a class="close" href="#slifep">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="slifep3" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/slifep3.jpg" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">
+								这就是我们学习小组专门的学习机房，每个人都有一个自己的位置，在这里学习环境十分的好。
+							</p>
+							<a class="close" href="#slifep">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="slifep4" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/slifep4.jpg" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">
+								机房的外面，学校几乎一大半的赛事都是在这里举行的。
+							</p>
+							<a class="close" href="#slifep">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="slifep5" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/slifep5.jpg" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">
+								计算机DIY协会，学长把协会交到我们手里，有幸当上技术部部长。
+							</p>
+							<a class="close" href="#slifep">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="slifep6" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/slifep6.jpg" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">
+								我的几个沙雕朋友，我们在一起玩耍的时候每天都很快乐。
+							</p>
+							<a class="close" href="#slifep">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="slifep7" class="pop-overlay animate">
+						<div class="popup">
+							<img src="images/slifep7.jpg" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">
+								学校的景色是真的美啊，这是我们宿舍楼下，傍晚随手拍的一张图片。
+							</p>
+							<a class="close" href="#slifep">
+								&times;
+							</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- //School Life Photo popups -->
+				</div>
+			</div>
+			<!-- //School Life Photo -->
+			<!-- contact -->
+			<section class="contact py-5" id="contact">
+				<div class="container pb-xl-5 pb-lg-3">
+					<h3 class="title mb-lg-5 mb-4 pb-4 text-center">
+						Contact Me
+					</h3>
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="webinfo_mail_grid_right">
+								<form action="#" method="post">
+									<div class="form-group">
+										<input type="text" name="Name" class="form-control" placeholder="Name"
+											required="" />
+									</div>
+									<div class="form-group">
+										<input type="email" name="Email" class="form-control" placeholder="Email"
+											required="" />
+									</div>
+									<div class="form-group">
+										<textarea name="Message" placeholder="Message......." required="">
+											</textarea>
+									</div>
+									<button type="submit" class="btn">
+										Submit
+									</button>
+								</form>
+							</div>
+						</div>
+						<div class="col-xl-5 offset-xl-1 col-lg-6 contact-left-yl mt-lg-0 mt-5">
+							<h3>
+								Contact Info
+							</h3>
+							<div class="row mb-4 pb-2">
+								<div class="col-md-3 col-sm-2 col-3 pl-sm-0">
+									<div class="contact-icon-wthree">
+										<span class="fa fa-qq">
+										</span>
+									</div>
+								</div>
+								<div class="col-md-9 col-sm-10 col-9 contact-text-webinf0">
+									<h4>
+										QQ Me
+									</h4>
+									<p>
+										233xxx9721
+									</p>
+								</div>
+							</div>
+							<div class="row mb-4 pb-3">
+								<div class="col-md-3 col-sm-2 col-3 pl-sm-0">
+									<div class="contact-icon-wthree">
+										<span class="fa fa-pencil">
+										</span>
+									</div>
+								</div>
+								<div class="col-md-9 col-sm-10 col-9 contact-text-webinf0">
+									<h4>
+										Mail Me
+									</h4>
+									<p>
+										<a href="mailto:info@example.com">
+											xxx@example.com
+										</a>
+									</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-3 col-sm-2 col-3 pl-sm-0">
+									<div class="contact-icon-wthree">
+										<span class="fa fa-phone">
+										</span>
+									</div>
+								</div>
+								<div class="col-md-9 col-sm-10 col-9 contact-text-webinf0">
+									<h4>
+										Call Me
+									</h4>
+									<p>
+										151xxxx5459
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- //contact -->
+		</div>
+	</div>
+	<!-- //main background image -->
+	<!-- move top icon -->
+	<a href="#home" class="move-top text-center">
+		<span class="fa fa-hand-o-up" aria-hidden="true">
+		</span>
+	</a>
+	<!-- //move top icon -->
+</body>
+
+</html>
