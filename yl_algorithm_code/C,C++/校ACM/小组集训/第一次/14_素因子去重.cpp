@@ -1,16 +1,60 @@
-#include <iostream> 
+#include <iostream>
+#include<cmath>
 using namespace std;
 
+int a[1000005];
+long long b[10000];
+int b_index=0;
 
+// 素数返回 true 
+bool ss(long long x){
+	int cnt = sqrt(x);
+	for(int i=2;i<=cnt;i++){
+		if(x%i == 0){
+			return false;
+		}
+	}
+	return true;
+}
 
-int main(){
-	
+int main() {
+	long long n;
+	cin >> n;
+	int cnt = sqrt(n);
+	for(int i=1; i<=cnt; i++) {
+		if(n%i == 0) {
+			long long temp = n/i;
+			// temp 和 i都是 n 的因子
+			// b 数组用来装 n 的因子，装之前判断有没有出现过，出现过就不装 
+			bool flag = false;
+			for(int j = 0; j<b_index; j++) {
+				if(b[j] == i) {
+					flag = true;
+				}
+			}
+			if(!flag) {
+				b[b_index++] = i;
+			}
+			flag = false;
+			for(int j = 0; j<b_index; j++) {
+				if(b[j] == temp) {
+					flag = true;
+				}
+			}
+			if(!flag) {
+				b[b_index++] = temp;
+			}
+		}
+	}
+	long long ans = 1;
+	for(int j = 0; j<b_index; j++) {
+		if(ss(b[j])){
+			ans *= b[j];
+		}
+	}
+	cout << ans;
 }
 /*
-考察点 
-会对一个数进行分解，能写出o(n)的素数递推表
-https://blog.csdn.net/qq_40774175/article/details/86693610
-https://blog.csdn.net/qq_42685893/article/details/86761727
 蓝桥杯的样例数据：
 533 533
 6021 669

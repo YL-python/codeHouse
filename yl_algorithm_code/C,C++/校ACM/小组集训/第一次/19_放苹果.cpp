@@ -1,10 +1,24 @@
-#include <iostream> 
+#include <iostream>
 using namespace std;
 
+int apple(int m,int n) {
+	if(m == 0 || n == 1) {
+		return 1;
+	}
+	if(n > m ) {
+		return apple(m,m);
+	}
+	return apple(m-n, n) + apple(m, n-1);
+}
 
-
-int main(){
-	
+int main() {
+	int k;
+	cin >> k;
+	for(int i=0; i<k; i++) {
+		int m,n;
+		cin >> m>> n;
+		cout << apple(m,n) << endl;
+	}
 }
 /*
 这个问题的关键是递推函数。
