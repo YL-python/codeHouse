@@ -55,12 +55,16 @@
     <!-- 配置Logger类 -->
     <bean id="logger" class="yang.muyun.utils.Logger"></bean>
 
-    <!--配置AOP-->
+    <!-- 准备织入 -->
     <aop:config>
-        <!--配置切面 -->
+        <!-- 配置切入点 -->
+        <aop:pointcut id="pc1" expression="execution(* yang.muyun.service.impl.*.*(..))"/>
+
+        <!--配置通知 ref属性告诉我们配置通知的方法属于哪个类 -->
         <aop:aspect id="logAdvice" ref="logger">
             <!-- 配置通知的类型，并且建立通知方法和切入点方法的关联-->
-            <aop:before method="printLog" pointcut="execution(* yang.muyun.service.impl.*.*(..))"></aop:before>
+            <aop:before method="printLog" pointcut-ref="pc1"></aop:before>
+            <aop:after method="printLogafter" pointcut-ref="pc1"></aop:after>
         </aop:aspect>
     </aop:config>
 
