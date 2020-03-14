@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位</title>
+    <style>
+        /* 
+        position 定位
+            浮动：解决左右排列的问题。（主要去做的）
+            定位：解决叠加排列的问题。（主要去做的）
+    
+        position取值
+            static（默认）
+            relative : 相对定位
+                如果没有定位偏移量，对元素本身没有任何影响
+                不使元素脱离文档流，空间是会被保留。
+                不影响其他元素布局
+                left、top、right、bottom是相对于当前元素自身进行偏移的
+            absolute : 绝对定位
+                使元素完全脱离文档流
+                使内联元素支持宽高 （让内联具备块特性）
+                使块元素默认宽根据内容决定（让块具备内联的特性）
+                如果有定位祖先元素相对于定位祖先元素发生偏移，没有定位祖先元素相对于整个文档发生偏移（绝对、相对、固定）
+                注：如果祖先元素中有多个元素具备定位模式，那么是已离自己最近的祖先元素进行偏移。
+
+            fixed : 固定定位
+                使元素完全脱离文档流
+                使内联元素支持宽高 （让内联具备块特性）
+                使块元素默认宽根据内容决定（让块具备内联的特性）
+                相对于整个浏览器窗口进行偏移，不受浏览器滚动条的影响
+                    不会受到祖先元素的影响。
+
+            sticky : 黏性定位
+                在没有到达指定位置的时候，是没有定位效果的，到达了指定位置，就变成了固定模式。
+
+            定位偏移量 : left top right bottom , 不能单独使用，必须得配合定位模式。
+
+            z-index定位层级
+                默认层级为0
+                嵌套时候的层级问题
+                    比较的时候，会先跟同级别的先比较。（比较的时候，必须有定位模式和z-index）
+        */
+
+        /* 相对定位 */
+        /*
+        #box1 {width: 100px;height: 100px;background: red;}
+        #box2 {width: 100px;height: 100px;background: green;position: relative;left: 100px;top: 100px;}
+        #box3 {width: 50px;height: 50px;background: blue;} 
+        */
+        /* 绝对定位 */
+        #box4 {width: 300px; height: 300px; margin: 200px; border: 1px solid black;}
+        /* #box4 {width: 300px; height: 300px; margin: 200px; border: 1px solid black; position: relative;} */
+        #box5 {width: 100px; height: 100px; position: absolute; background: red; left: 0px; top: 0px;}
+
+        /* 固定定位就是固定死在屏幕上 */
+
+        #box6 {width: 100px; height: 100px; position: absolute;background: green;left: 0px; top: 0px;}
+        /* #box4 {width: 300px; height: 300px; margin: 200px; border: 1px solid black; position: relative;} */
+        #box7 {width: 100px; height: 100px; position: absolute; background: yellow; left: 50px; top: 50px;}
+
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+
+    <div id="box4">
+        <div id="box5"></div>
+    </div>
+
+    <div id="box6">
+        <div id="box7"></div>
+    </div>
+
+</body>
+
+</html>

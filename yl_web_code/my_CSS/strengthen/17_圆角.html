@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圆角</title>
+    <style>
+        /*
+        圆角:
+            值是半径,可以写百分比和尺寸
+            当宽高不一样的情况下百分比和尺寸有区别
+            border-radius : 100px | 50% 这是有区别的
+            border-radius: 20px;  四个角
+            border-radius: 20px 40px;  左上和右下   右上和左下
+            border-radius: 20px 30px 40px 50px;  左上  右上  右下  左下 (顺时针)
+            border-radius: 20px / 40px; 是20为x半径 40为y半径的椭圆相切
+        */
+        #box {
+            width: 200px;
+            height: 200px;
+            background: red;
+            border-radius: 50%;
+        }
+        #box2 {
+            width: 200px;
+            height: 100px;
+            background: red;
+            border-radius: 100px 100px 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <div id="box2"></div>
+</body>
+
+</html>

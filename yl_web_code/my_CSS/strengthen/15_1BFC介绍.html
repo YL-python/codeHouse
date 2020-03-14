@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFC</title>
+    <style>
+        /* 
+        BFC即Block Formatting Contexts (块级格式化上下文)，它属于上述
+        中的其中一种规范。
+        具有BFC特性的元素可以看作是隔离了的独立容器，容器里面的元素不会
+        在布局影响到外面的元素， 并且BFC 具有普通容器所没有的一些特性。
+        */
+        /* 
+        触发BFC的样式:
+            浮动元素：float 除 none 以外的值
+            绝对定位元素：position (absolute、fixed) 
+            display 为 inline-block、table-cells、flex
+            overflow 除了 visible 以外的值 (hidden、auto、scroll)
+        */
+        /* 
+        BFC解决的问题
+            解决margin叠加问题
+            解决margin传递问题
+            解决浮动问题
+            解决覆盖问题
+        */
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>省略号</title>
+    <style>
+        /*
+        添加省略号
+            width
+                必须有一个固定的宽
+            white-space : nowrap
+                不让内容折行
+            overflow : hidden
+                隐藏溢出的内容
+            text-overflow : ellipsis
+                添加省略号
+
+            多行(了解)：兼容性差
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+                overflow: hidden;
+        */
+        p {
+            border: 1px black solid;
+
+            /* 下面四个一个不能少 */
+            width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+
+<body>
+    <p title="鼠标移上来试试">文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+</body>
+
+</html>

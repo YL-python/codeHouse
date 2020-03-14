@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFC</title>
+    <style>
+        /* 
+        BFC解决的问题
+            解决margin叠加问题
+            解决margin传递问题
+            解决浮动问题
+            解决覆盖问题
+        */
+        #box1{width: 200px; height: 200px;background-color: red;
+            /* overflow: hidden; */
+            /* overflow: auto; */
+            /* overflow: scroll; */
+            /* position: absolute; */
+            /* display: inline-block; */
+            /* display: flex; */
+            float: left;
+        }
+        #box2{width: 100px; height: 100px;background-color: blue; margin-top: 50px;}
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">
+            bbbbb
+        </div>
+        ccccc
+    </div>
+    aaaaa
+</body>
+</html>
