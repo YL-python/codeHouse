@@ -7,9 +7,13 @@ import requests
 
 # 会根据城市名称进行模糊查找
 city_name = "彭泽县"
+# city_name = "江西省 九江市 彭泽县"
 
 url = " {}/weather/current/{}?app_id={}&app_secret={}".format(APIconfig.HOST, city_name, APIconfig.app_id,
                                                               APIconfig.app_secret)
+
+print(url)
+
 data = requests.get(url, timeout=10).content.decode("utf-8")
 
 print(APIconfig.json_format(data))
