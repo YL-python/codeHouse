@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #container {
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+        }
+
+        #background_video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        #video_cover {
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            background: url('video_cover.jpeg') no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+    <script src="bideo.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <video id="background_video" loop muted></video>
+        <div id="video_cover"></div>
+        <div id="overlay"></div>
+
+        <div id="video_controls">
+            <span id="play">
+                <img src="play.png">
+            </span>
+            <span id="pause">
+                <img src="pause.png">
+            </span>
+        </div>
+
+        <section id="main_content">
+            <div id="head">
+                <h1>HTML5轻松实现全屏视频背景-Bideo.js</h1>
+                <p class="sub_head">一个可以轻松添加页面全屏背景视频的Javscript库</p>
+                <p class="info">(稍等片刻，视频加载需要一点点时间.)</p>
+            </div>
+        </section>
+    </div>
+
+
+    <script>
+        //    项目出处   https://rishabhp.github.io/bideo.js/
+        (function () {
+            var bv = new Bideo();
+            bv.init({
+                // Video元素
+                videoEl: document.querySelector('#background_video'),
+                // 容器元素
+                container: document.querySelector('body'),
+                // 自适应调整
+                resize: true,
+                // autoplay: false,
+                isMobile: window.matchMedia('(max-width: 768px)').matches,
+                playButton: document.querySelector('#play'),
+                pauseButton: document.querySelector('#pause'),
+                // 加载视频源, 根据实际业务更换自己的视频源文件
+                src: [
+                    {
+                        src: 'bg.mp4',
+                        type: 'video/mp4'
+                    },
+                    {
+                        src: 'night.webm',
+                        type: 'video/webm;codecs="vp8, vorbis"'
+                    }
+                ],
+                // 一旦视频加载后即将视频封面隐藏
+                onLoad: function () {
+                    document.querySelector('#video_cover').style.display = 'none';
+                }
+            });
+        }());
+
+    </script>
+
+</body>
+
+</html>
