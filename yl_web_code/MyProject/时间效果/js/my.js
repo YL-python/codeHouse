@@ -6,31 +6,33 @@ $(document).ready(function () {
     particlesJS('particles-js', {
         "particles": {
             "number": {
-                "value": 50,
-                "density": {
+                "value": 80, // 粒子个数
+                "density": {  // 密度参数，不开启，和个数差不多
                     "enable": false,
                     "value_area": 800
                 }
             },
             "color": {
-                "value": "#145768"
+                "value": "#145768"  // 颜色
             },
             "shape": {
+                // 形状  circle(圆形)，edge(正方形)，triangle(三角形)，polygon(多边形)，star(五角星)，image(图片)
+                // 还可以是形状数组  ["circle", "triangle", "image"]
                 "type": "circle",
                 "stroke": {
                     "width": 0,
                     "color": "#000000"
                 },
-                "polygon": {
+                "polygon": {   // 形状是多边形的时候
                     "nb_sides": 5
                 },
-                "image": {
+                "image": {  // 形状是图片的时候
                     "src": "img/github.svg",
                     "width": 100,
                     "height": 100
                 }
             },
-            "opacity": {
+            "opacity": {  // 透明度
                 "value": 1,
                 "random": true,
                 "anim": {
@@ -40,7 +42,7 @@ $(document).ready(function () {
                     "sync": false
                 }
             },
-            "size": {
+            "size": {  // 大小
                 "value": 5,
                 "random": true,
                 "anim": {
@@ -50,20 +52,21 @@ $(document).ready(function () {
                     "sync": false
                 }
             },
-            "line_linked": {
+            "line_linked": {  //是否用线连接
                 "enable": false,
-                "distance": 150,
+                "distance": 150,  // 线的长度
                 "color": "#ffffff",
                 "opacity": 0.4,
                 "width": 1
             },
-            "move": {
+            "move": {  // 移动
                 "enable": true,
-                "speed": 3,
-                "direction": "top",
-                "random": false,
-                "straight": false,
-                "out_modehour": "out",
+                "speed": 3,  // 时间
+                "direction": "top",  // 移动的方向
+                // "none"随机，"top"上，"top-right"，"right"，"bottom-right"，"bottom"，"bottom-left"，"left"，"top-left"
+                "random": false,  // 随机
+                "straight": false,  // 标准的移动
+                "out_modehour": "out",  // out  出去  bounce  反弹
                 "attract": {
                     "enable": false,
                     "rotateX": 600,
@@ -72,23 +75,25 @@ $(document).ready(function () {
             }
         },
         "interactivity": {
-            "detect_on": "window",
-            "events": {
-                "onhover": {
+            "detect_on": "window",  //  交互  window，canvas
+            "events": {  // 时间
+                "onhover": {  // 悬停
                     "enable": false,
-                    "modehour": "repulse"
+                    // 样式 "grab"，"bubble"，"repulse"，也可以是数组
+                    "mode": ["grab", "bubble"]
                 },
-                "onclick": {
-                    "enable": false,
-                    "modehour": "push"
+                "onclick": {  // 点击
+                    "enable": true,
+                    // 样式 "push"，"remove"，"bubble"，"repulse"，也可以是数组
+                    "mode": "bubble"
                 },
                 "resize": true
             },
-            "modehours": {
+            "mode": {  // 修改时间触发时候的样式
                 "grab": {
-                    "distance": 400,
+                    "distance": 140,
                     "line_linked": {
-                        "opacity": 1
+                        "opacity": 0.75
                     }
                 },
                 "bubble": {
@@ -96,10 +101,11 @@ $(document).ready(function () {
                     "size": 40,
                     "duration": 2,
                     "opacity": 8,
-                    "speed": 3
+                    "speed": 1
                 },
                 "repulse": {
-                    "distance": 200
+                    "distance": 200,
+                    "duration": 0.4
                 },
                 "push": {
                     "particles_nb": 4
@@ -109,16 +115,12 @@ $(document).ready(function () {
                 }
             }
         },
-        "retina_detect": true,
-        "config_demo": {
-            "hide_card": false,
-            "background_color": "#b61924",
-            "background_image": "",
-            "background_position": "50% 50%",
-            "background_repeat": "no-repeat",
-            "background_size": "cover"
-        }
+        "retina_detect": true
     });
+    // 粒子效果启动方式
+    // particlesJS.load('particles-js', 'assets/particles.json', function () {
+    //     console.log('callback - particles.js config loaded');
+    // });
 
 
     function updateTime() {

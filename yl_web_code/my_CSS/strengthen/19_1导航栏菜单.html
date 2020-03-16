@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏菜单</title>
+    <style>
+        *{ margin:0; padding:0;}
+        ul{ list-style: none;}
+        img{ display: block;}
+        a{ text-decoration: none;}
+        .clear:after{ content:""; display: block; clear:both;}
+
+        #main{width:464px; margin:20px auto;}
+        #main .nav{ line-height: 34px; text-align: center;}
+        #main .nav > li{ float:left; width:115px; height:34px; margin-right:1px; background:#eeeeee; position: relative;}
+        #main .nav > li:hover{ background:black;}
+        #main .nav > li:hover > a{ color:white;}
+        #main .nav > li:hover ul{ display: block;}
+        #main .nav ul{ position: absolute; left:0; top:34px; width:100%; display: none;}
+        #main .nav ul li{ background:#eeeeee;}
+    </style>
+</head>
+<body>
+    <div id="main">
+        <ul class="nav clear">
+            <li><a href="#">首页</a></li>
+            <li>
+                <a href="#">产品中心</a>
+                <ul>
+                    <li><a href="#">产品1</a></li>
+                    <li><a href="#">产品2</a></li>
+                    <li><a href="#">产品3</a></li>
+                </ul>
+            </li>
+            <li><a href="#">客户服务</a></li>
+            <li><a href="#">联系我们</a></li>
+        </ul>
+    </div>
+</body>
+</html>

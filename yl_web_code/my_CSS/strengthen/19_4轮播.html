@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    img{ display: block;}
+    a{ text-decoration: none;}
+    .clear:after{ content:""; display: block; clear:both;}
+
+    #banner{ width:470px; height:150px; margin:20px auto; overflow: hidden; position: relative;}
+    #banner .banner-pic{ width:2350px; position: relative; left:0; transition: 1s;}
+    #banner .banner-pic li{ float:left;}
+    #banner .banner-dot{ width:100%; text-align: center; position: absolute; left:0; bottom:10px;}
+    #banner .banner-dot li{ display: inline-block; width:10px; height:10px; background:rgb(255, 0, 0); border-radius: 50%; cursor: pointer;}
+    #banner .banner-dot li.active{ background: blue;}
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <ul class="banner-pic">
+            <li><a href="#"><img src="./img/banner/1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./img/banner/2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./img/banner/3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./img/banner/4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./img/banner/5.jpg" alt=""></a></li>
+        </ul>
+        <ul class="banner-dot">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var pic = document.querySelector('.banner-pic');
+        var dotList = document.querySelectorAll('.banner-dot li');
+        for(var i=0;i<dotList.length;i++){
+            dotList[i].index = i;
+            dotList[i].onmouseover = function(){
+                for(var i=0;i<dotList.length;i++){
+                    dotList[i].className = '';
+                }
+                this.className = 'active';
+                pic.style.left = - 470 * this.index + 'px'; 
+            };
+        }
+    </script>
+</body>
+</html>

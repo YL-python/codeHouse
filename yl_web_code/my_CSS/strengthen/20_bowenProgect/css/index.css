@@ -1,0 +1,59 @@
+/* css reset */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: "Microsoft YaHei", Tahoma, Arial, Simsun, sans-self;
+    font-size: 14px;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+img {
+    display: block;
+}
+
+a {
+    text-align: none;
+    color: black;
+}
+
+
+/* css common */
+.l {
+    float: left;
+}
+
+.r {
+    float: right;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/*通栏*/
+.container-fluid {
+    position: relative;
+}
+
+/*版心*/
+.container {
+    width: 1080px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* css header */
+/* css banner */
+/* css server */
+/* css case */
+/* css news */
+/* css footer */

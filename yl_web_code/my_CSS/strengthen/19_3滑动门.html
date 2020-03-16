@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滑动门</title>
+    <style>
+        * {margin: 0;padding: 0;}
+        ul {list-style: none;}
+        img {display: block;}
+        a {text-decoration: none;}
+        .clear:after {content: "";display: block;clear: both;}
+
+        #tab {
+            width: 312px;
+            border-top: 2px #196b93 solid;
+            border-left: 1px #cfcfcf solid;
+            border-bottom: 1px #cfcfcf solid;
+            margin: 20px auto;
+        }
+
+        #tab ul {
+            text-align: center;
+            line-height: 29px;
+        }
+
+        #tab ul li {
+            float: left;
+            width: 103px;
+            height: 29px;
+            border-right: 1px #cfcfcf solid;
+            border-bottom: 1px #cfcfcf solid;
+            background: url('./img/title-bg.png') repeat-x;
+            cursor: pointer;
+        }
+
+        #tab ul li.active {
+            background: white;
+            border-bottom: none;
+        }
+
+        #tab div {
+            padding: 50px;
+            border-right: 1px #cfcfcf solid;
+            display: none;
+        }
+
+        #tab div.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tab">
+        <ul class="clear">
+            <li class="active">娱乐</li>
+            <li>电影</li>
+            <li>音乐</li>
+        </ul>
+        <div class="show">第一个板块</div>
+        <div>第二个板块</div>
+        <div>第三个板块</div>
+    </div>
+
+    <script>
+        var lis = document.querySelectorAll('#tab li');
+        var divs = document.querySelectorAll('#tab div');
+
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].index = i;
+            lis[i].onmouseover = function () {
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                    divs[i].className = '';
+                }
+                this.className = 'active';
+                divs[this.index].className = 'show';
+            };
+        }
+
+    </script>
+</body>
+
+</html>

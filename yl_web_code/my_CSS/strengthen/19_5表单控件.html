@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单控件</title>
+    <style>
+    /* label input{ display: none;}
+    label div{ width:28px; height:28px; background:url(./img/checkbox.png) no-repeat 0 -28px;}
+    label input:checked + div{ background-position:0 0;} */
+
+    /* label input{ display: none;}
+    label div{ width:86px; height:34px; background:url(./img/upload.png) no-repeat;} */
+
+    #box{ width:86px; height:34px; position: relative;}
+    #box input{ width:100%; height:100%; position: absolute; left: 0; top:0; opacity: 0;}
+    #box div{ width:100%; height:100%; background:url(./img/upload.png) no-repeat;}
+    
+    </style>
+</head>
+<body>
+    <!-- <label>
+        <input type="checkbox">
+        <div></div>
+    </label> -->
+
+    <!-- <label>
+        <input type="file">
+        <div></div>
+    </label> -->
+
+    <div id="box">
+        <input type="file">
+        <div></div>
+    </div>
+    <input type="hidden">
+</body>

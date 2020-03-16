@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0;padding: 0;}
+
+        
+        /* #box1{ width:100%; height:600px; margin:0 auto;
+            background: url('./img/3.png') no-repeat center 0;
+        }  */
+        
+        #box2 {
+            width: 100%;
+            height: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        #box2 img {
+            position: relative;
+            left: 50%;
+            margin-left: -960px; 
+        }
+        /* 
+            1. 用背景 : background : center 0;
+            2. 用图片 : position:relative; left:50%; margin-left:图片宽度的一半。
+        */
+    </style>
+</head>
+
+<body>
+    <!-- <div id="box1"></div> -->
+
+    <div id="box2">
+        <img src="./img/3.png" alt="">
+    </div>
+
+</body>
+
+</html>
