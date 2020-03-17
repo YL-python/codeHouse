@@ -75,8 +75,11 @@ nbdist/
 
 ### python
 .idea
+test.py
+test
 
 ### web
+*.psd
 
 ### notes
 
