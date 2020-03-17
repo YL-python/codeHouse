@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过渡</title>
+    <style>
+        /* 
+        transition-property  :  规定设置过渡效果的CSS属性的名称。
+        all ( 默认值 ) , 指定 width , height;
+
+        transition-duration  :  规定完成过渡效果需要多少秒或毫秒。
+            需要添加单位：s (秒)  ms (毫秒)  1s == 1000ms
+
+        transition-delay     :  定义过渡效果何时开始。
+            2s : 延迟两秒进行过渡
+            -2s : 提前两秒进行过渡
+
+        transition-timing-function  :  规定速度效果的速度曲线。
+            运动形式：加速、减速、匀速...
+            linear  匀速
+            ease（默认值） 逐渐慢下来
+            ease-in  加速
+            ease-out  加速
+            ease-in-out  先加后减
+            cubic-bezier
+        （ http://cubic-bezier.com ）
+
+        复合写法：
+            transition:all 2s linear; √
+            transition:linear 2s all; √
+            transition:2s linear all; √
+            注意：当总时间与延迟时间同时存在的时候，就有顺序了，第一个是总时间，第二个是延迟时间。
+            transition:2s 3s linear all; √
+        注意：不要把transition放到hover中
+        */
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            transition-duration: 1s;
+            transition-delay: 500ms;
+            /* transition-property: height; */
+        }
+
+        #box:hover {
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>

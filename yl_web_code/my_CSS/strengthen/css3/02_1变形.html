@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变形</title>
+    <style>
+        /* 
+        transform 变形
+
+        translate  :  位移
+        transform:translate(100px,100px); : 两个值 分别对应  x 和 y。
+        transform:translateX(100px);
+        transform:translateY(100px);
+        transform:translateZ(100px);   ( 3d )
+
+        scale  :  缩放
+            transform:scale(num) num是一个比例值，正常比例是1。
+            transform:scale(num1 , num2)  两个值 分别对应 w 和 h
+            transform:scaleX()
+            transform:scaleY()
+            transform:scaleZ()  ( 3d )
+
+        rotate  :  旋转
+            transform:rotate(num)  num是旋转的角度 30deg
+            正值：顺时针旋转
+            负值：逆时针旋转
+            表示一个角：角度deg 或 弧度rad
+
+            rotateX()    ( 3d )
+            rotateY()    ( 3d )
+            rotateZ()  
+            注 : rotate()跟rotateZ()是等价关系。
+
+        skew  :  斜切
+            transform:skew(num1,num2) : num1和num2都是角度，针对的是x 和 y
+            transform:skewX() 
+            transform:skewY()
+            注：skew没有3d写法。
+
+        注：所有的变形操作，都不会影响到其他元素。(类似于相对定位)
+        注：变形操作对inline(内联元素)不起作用的。
+        注：transform可以同时设置多个值。
+            先执行后面的操作，在执行前面的操作。
+            位移会受到后面要执行的缩放、旋转和斜切的影响。
+            */
+        #box1 {
+            width: 300px;
+            height: 300px;
+            margin: 30px auto;
+            border: 1px solid black;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            transition: 1s;
+        }
+
+        #box1:hover #box2 {
+            transform:translate(100px, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+    </div>
+</body>
+
+</html>

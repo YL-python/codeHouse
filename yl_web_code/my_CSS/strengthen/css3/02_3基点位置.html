@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        transform-origin: x y;
+            默认值是 center center 
+            基点的位置可以在图形外
+         */
+        #box1 {
+            width: 300px;
+            height: 300px;
+            border: 1px black solid;
+            margin: 30px auto;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            transition: 1s;
+            /* transform-origin: 100px 100px; */
+            /* transform-origin: right top; */
+            transform-origin: 150px 150px;
+        }
+
+        /* #box1:hover #box2{ transform:scale(2);} */
+
+        #box1:hover #box2 {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <div id="box2">bbbbb</div>
+    </div>
+</body>
+
+</html>

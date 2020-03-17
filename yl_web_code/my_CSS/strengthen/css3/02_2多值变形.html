@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #box1{ width:100px; height: 100px; background:red;}
+    #box2{ width:100px; height: 100px; background:red;
+        /* transform: scale(.5) translateX(100px); */
+        transform: rotate(45deg) translateX(100px); 
+    }
+    #box3{ width:100px; height: 100px; background:red;
+        /* transform: translateX(100px) scale(.5); */
+        transform: translateX(100px) rotate(45deg); 
+    }
+    </style>
+</head>
+<body>
+    <div id="box1">1</div>
+    <div id="box2">2</div>
+    <div id="box3">3</div>
+</body>
+</html>

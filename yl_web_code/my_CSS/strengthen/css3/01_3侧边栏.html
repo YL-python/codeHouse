@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{ margin:0px; padding:0;}
+    body{ height:2000px;}
+    #share{ width:300px; height:300px; background:red; position: fixed;
+        left: -300px; top:50%; margin-top:-150px;
+        transition:1s;
+    }
+    #share div{ width:30px; height: 100px; background:blue; position:absolute;
+        right:-30px; top:0;
+        color:white;  font-size:30px;
+    }
+    #share:hover{ left:0;}
+    </style>
+</head>
+<body>
+    <div id="share">
+        <div>分享</div>
+    </div>
+</body>
+</html>
