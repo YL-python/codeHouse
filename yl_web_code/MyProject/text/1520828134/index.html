@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <title>Bongo Cat!</title>
+        <style type="text/css">
+            body {
+                margin:0;
+            }
+
+            img {
+                position:absolute;
+                top:45%;
+                left:45%;
+            }
+
+            #background {
+                z-index:-2;
+                position:absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+                background-image:url('./img/bg.png');
+                background-repeat:no-repeat;
+                background-size:cover;
+            }
+
+            #bongocat {
+                z-index:1;
+                filter:none;
+            }
+
+            #imgLeft {
+                width:16.72%;
+                margin-left:-9.5%;
+                margin-top:-6.9%;
+            }
+
+            #imgRight {
+                width:14.05%;
+                margin-left:7.25%;
+                margin-top:-4.9%;
+            }
+
+            #instrument img {
+                z-index:-1;
+                width:36.5%;
+                margin-left:-16.5%;
+                margin-top:2%;
+                display:none;
+                filter:none;
+            }
+
+            @media screen and (aspect-ratio:4/3) {
+                #imgLeft {
+                    width:16.72%;
+                    margin-left:-9.5%;
+                    margin-top:-8.9%;
+                }
+
+                #imgRight {
+                    width:14.05%;
+                    margin-left:7.25%;
+                    margin-top:-6.8%;
+                }
+            }
+
+            @media screen and (aspect-ratio:64/27) {
+                #imgLeft {
+                    width:16.72%;
+                    margin-left:-9.425%;
+                    margin-top:-0.6%;
+                }
+
+                #imgRight {
+                    width:14.05%;
+                    margin-left:7.25%;
+                    margin-top:1.4%;
+                }
+            }
+            
+            @media(max-height:768px) {
+                #imgLeft {
+                    margin-left:-9.45%;
+                }
+            }
+
+            @media (min-height:1440px) {
+                #imgLeft {
+                    margin-left:-9.45%;
+                    margin-top:-6.85%;
+                }
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="background"></div>
+        <!--Bongo image-->
+        <div id="instrument">
+            <img src="./img/bongos.png">
+        </div>
+        <!--Bongo Cat-->
+        <div id="bongocat">
+            <img id="imgLeft" src="./img/bongoLeft.png">
+            <img id="imgRight" src="./img/bongoRight.png">
+        </div>
+        <!--SCRIPT-->
+        <script src="main.js"></script>
+    </body>
+</html>

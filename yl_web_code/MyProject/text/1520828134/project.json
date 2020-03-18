@@ -1,0 +1,79 @@
+{
+	"contentrating" : "Everyone",
+	"description" : "Bongo Cat now plays to your music!\n\nCurrently works for all 16:9, 4:3 and 21:9 resolutions.",
+	"file" : "index.html",
+	"general" : 
+	{
+		"properties" : 
+		{
+			"bassonly" : 
+			{
+				"order" : 2,
+				"text" : "Bass only (only hear lower frequencies)",
+				"type" : "bool",
+				"value" : false
+			},
+			"darkmode" : 
+			{
+				"order" : 4,
+				"text" : "Dark mode",
+				"type" : "bool",
+				"value" : false
+			},
+			"instrument" : 
+			{
+				"options" : 
+				[
+					{
+						"label" : "None",
+						"value" : 0
+					},
+					{
+						"label" : "Bongos",
+						"value" : 1
+					},
+					{
+						"label" : "Keyboard (Real)",
+						"value" : 2
+					},
+					{
+						"label" : "Keyboard (Drawn)",
+						"value" : 3
+					},
+					{
+						"label" : "Tambourines",
+						"value" : 4
+					}
+				],
+				"order" : 3,
+				"text" : "Select instrument",
+				"type" : "combo",
+				"value" : 0
+			},
+			"schemecolor" : 
+			{
+				"order" : 5,
+				"text" : "ui_browse_properties_scheme_color",
+				"type" : "color",
+				"value" : "1 1 1"
+			},
+			"soundsensitivity" : 
+			{
+				"editable" : "true",
+				"max" : 200,
+				"min" : 10,
+				"order" : 1,
+				"text" : "Sound Sensitivity (%)",
+				"type" : "slider",
+				"value" : 100
+			}
+		},
+		"supportsaudioprocessing" : true
+	},
+	"preview" : "preview.gif",
+	"tags" : [ "Memes" ],
+	"title" : "Bongo Cat",
+	"type" : "web",
+	"visibility" : "public",
+	"workshopid" : "1520828134"
+}

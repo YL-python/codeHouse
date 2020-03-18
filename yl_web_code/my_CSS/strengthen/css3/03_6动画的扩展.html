@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #box1{ width:100px; height:100px; background:red; margin:10px;
+        animation: 3s 2s move;
+    }
+    #box2{ width:100px; height:100px; background:red; margin:10px;
+        animation: 3s 2s move;
+        animation-fill-mode : backwards;
+    }
+    #box3{ width:100px; height:100px; background:red; margin:10px;
+        animation: 3s 2s move;
+        animation-fill-mode: forwards;
+    }
+    #box4{ width:100px; height:100px; background:red; margin:10px;
+        animation: 3s 2s move;
+        animation-fill-mode: both;
+    }
+
+    @keyframes move {
+        0%{ transform:translate(0,0); background:blue;}
+        100%{ transform:translate(400px,0)}
+    }
+
+    #box{width:100px; height:100px; background:red; margin:10px;
+        animation: 3s move1 infinite;
+        /* animation-direction: alternate; */
+        animation-direction: reverse;
+    }
+    @keyframes move1 {
+        0%{ transform:translate(0,0);}
+        100%{ transform:translate(400px,0)}
+    }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="box4"></div>
+    <div id="box"></div>
+</body>
+</html>

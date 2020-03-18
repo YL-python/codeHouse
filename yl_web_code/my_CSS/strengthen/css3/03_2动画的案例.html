@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none; margin:100px;}
+    ul li{ width:50px; height:50px; float:left; margin:10px;}
+    ul li img{ margin:15px 0 0 14px;}
+    ul li:hover img{ animation: move .5s;}
+    @keyframes move {
+        0%{ transform:translate(0,0); opacity: 1;}
+        60%{ transform:translate(0,-50px); opacity: 0;}
+        61%{ transform:translate(0,30px); opacity: 0;}
+        100%{ transform:translate(0,0); opacity: 1;}
+    }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><img src="./img/1.png" alt=""></li>
+        <li><img src="./img/2.png" alt=""></li>
+        <li><img src="./img/3.png" alt=""></li>
+    </ul>
+</body>
+</html>

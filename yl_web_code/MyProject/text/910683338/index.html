@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src='./snowfall.js'></script>
+</head>
+<body style="overflow:auto;overflow-x:hidden;overflow-y:hidden;" >
+    <div class="background"></div>
+    <img class="l1_top" src="./img/l1_top.png"/>
+    <img class="l1_bot" src="./img/l1_bot.png"/>
+    <img class="l1_bot_w" src="./img/l1_bot_w.png"/>
+    <div class="img">
+        <img id="l3" src="./img/l3.png"/>
+    </div>
+    <div class="btn_box">
+            <!--<button type="button" class="reload btn" value="Refresh Page" onClick="window.location.reload()"><br>RELOAD<br><br></button>-->
+        <script>
+            //$(".btn").animate({opacity:0});
+        </script>
+    </div>
+    <div id="snow">
+        <script type='text/javascript'>
+            var collectOnMe = document.querySelectorAll('.collectonme'),
+                buttons = document.getElementsByTagName("input");
+
+            for(var i = 0; i < collectOnMe.length; i++){
+                collectOnMe[i].style.display = "none";
+            }
+        </script>
+        <div id="kanzaki1">
+            <div class="kanzaki1 kanzaki_box">
+                <script type='text/javascript'>
+                    snowFall.snow(document.querySelector('.kanzaki1'));
+                    snowFall.snow(document.querySelector('.kanzaki1'), "clear");
+                    snowFall.snow(document.querySelector('.kanzaki1'), {image : "./img/kanzaki1.png",
+                        flakeCount : 8, minSize: 55, maxSize:85, minSpeed:5, maxSpeed:15});
+                </script>
+            </div>
+            <div class="kanzaki2 kanzaki_box">
+                <script type='text/javascript'>
+                    snowFall.snow(document.querySelector('.kanzaki2'));
+                    snowFall.snow(document.querySelector('.kanzaki2'), "clear");
+                    snowFall.snow(document.querySelector('.kanzaki2'), {image : "./img/kanzaki2.png",
+                        flakeCount : 8, minSize: 55, maxSize:85, minSpeed:5, maxSpeed:15});
+                </script>
+            </div>
+            <div class="kanzaki3 kanzaki_box">
+                <script type='text/javascript'>
+                    snowFall.snow(document.querySelector('.kanzaki3'));
+                    snowFall.snow(document.querySelector('.kanzaki3'), "clear");
+                    snowFall.snow(document.querySelector('.kanzaki3'), {image : "./img/kanzaki3.png",
+                        flakeCount : 8, minSize: 55, maxSize:85, minSpeed:5, maxSpeed:15});
+                </script>
+            </div>
+            <div class="kanzaki4 kanzaki_box">
+                <script type='text/javascript'>
+                    snowFall.snow(document.querySelector('.kanzaki4'));
+                    snowFall.snow(document.querySelector('.kanzaki4'), "clear");
+                    snowFall.snow(document.querySelector('.kanzaki4'), {image : "./img/kanzaki4.png",
+                        flakeCount : 8, minSize: 55, maxSize:85, minSpeed:5, maxSpeed:15});
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

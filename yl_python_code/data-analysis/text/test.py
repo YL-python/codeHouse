@@ -1,5 +1,4 @@
-y = int(input("请输入年份："))
-if y % 400 == 0 or (y % 4 == 0 and y % 100 != 0):
-    print("闰年")
-else:
-    print("非闰年")
+for i in range(1, 10):
+    for j in range(1, i + 1):
+        print("{}*{}={} ".format(j, i, i * j), end='')
+    print()

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画</title>
+    <style>
+        /*
+        原理：逐帧动画。会把整个运动过程，划分成100份。
+            animation-name : 设置动画的名字 (自定义的)
+            animation-duration : 动画的持续时间
+            animation-delay : 动画的延迟时间
+            animation-iteration-count : 动画的重复次数 ，默认值就是1 ，infinite无限次数
+            animation-timing-function : 动画的运动形式
+                ease linear
+
+            @keyframes 动画的名字 {
+                from {}   
+                to {}
+            }
+            from : 起点位置 , 等价于 0%  to : 终点位置 ，等价于 100%
+            注：默认情况下，元素运动完毕后，会停到起始位置。
+
+        复合样式：
+            animation
+
+        animation-fill-mode : 规定动画播放之前或之后，其动画效果是否可见。
+            none (默认值) : 在运动结束之后回到初始位置，在延迟的情况下，让0%在延迟后生效
+            backwards  :  在延迟的情况下，让0%在延迟前生效
+            forwards  :  在运动结束的之后，停到结束位置
+            both  :  backwards和forwards同时生效
+
+        animation-direction  :  属性定义是否应该轮流反向播放动画。
+            alternate  :  一次正向(0%~100%)，一次反向(100%~0%)
+            reverse : 永远都是反向 , 从100%~0%
+            normal (默认值) : 永远都是正向 , 从0%~100%
+        */
+        #box1{ width:400px; height: 400px; border:1px black solid; margin:20px auto;}
+        #box2{ width:100px; height:100px; background:red;
+            /*  animation-name: myMove;
+            animation-duration: 2s;
+            animation-delay: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear; */
+            animation:myMove 2s 3s infinite linear;
+        }
+
+        /* @keyframes myMove {
+            from { transform:translate(0,0); }
+            to { transform:translate(300px,0); }
+        } */
+
+        /* @keyframes myMove {
+            0% { transform:translate(0,0); }
+            100% { transform:translate(300px,0); }
+        } */
+
+        @keyframes myMove {
+            0% { transform:translate(0,0); }
+            25%{ transform:translate(300px,0); }
+            50%{ transform:translate(300px,300px); }
+            75%{ transform:translate(0,300px); }
+            100% { transform:translate(0,0);}
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+    </div>
+</body>
+</html>

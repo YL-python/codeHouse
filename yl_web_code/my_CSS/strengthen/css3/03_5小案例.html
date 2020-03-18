@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #box{ margin:100px; width:50px; height:50px; position: relative;}
+    #box .border{ width:50px; height:50px; border:10px rgba(255,0,0,0) solid; border-radius: 50%; position: absolute; left:-10px; top:-10px;}
+    #box img{ transition:1s linear;}
+    #box:hover img{ transform:rotate(360deg) scale(1);}
+    #box:hover .border{
+        animation: 1s linear move infinite;
+    }
+    @keyframes move {
+        0%{  border:10px rgba(255,0,0,0) solid; transform:scale(1);}
+        100%{ border:10px rgba(255,0,0,0.5) solid; transform:scale(1.3);}
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img src="./img/run_code.png" alt="">
+        <div class="border"></div>
+    </div>
+</body>
+</html>

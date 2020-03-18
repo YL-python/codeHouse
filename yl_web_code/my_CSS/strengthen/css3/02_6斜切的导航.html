@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斜切导航</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style:none;}
+    #nav{ width:415px; overflow: hidden; margin:100px auto;}
+    #nav ul{ width:440px;}
+    #nav ul li{ float:left; width:100px; height:30px; background:red; color:white;
+        text-align: center; line-height: 30px; margin-right: 5px;
+        transform: skew(-30deg , 0);
+    }
+    #nav ul span{ transform: skew(30deg , 0); display: block;}
+    #nav ul li:first-of-type{ margin-left:-10px; padding-left:10px;}
+    #nav ul li:last-of-type{ padding-right:20px;}
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <ul>
+            <li><span>首页</span></li>
+            <li><span>联系我们</span></li>
+            <li><span>欢迎光临</span></li>
+            <li><span>先生慢走</span></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,11 +1,12 @@
 $(document).ready(function () {
     // 自定义地址，省 市 乡，没有值的时候会自动获取地理位置，精度不能保证！
-    var province;  // 省份，自定义时必填例如：江西，北京。不需要写省
-    var city;  // 市，自定义时必填例如：九江，不需要写市
-    var county;  // 乡/区/县   选填参数
+    var province; // 省份，自定义时必填例如：江西，北京。不需要写省
+    var city; // 市，自定义时必填例如：九江，不需要写市
+    var county; // 乡/区/县   选填参数
 
     updateTime()
-    getWeather()
+    getAddress()
+    //getWeather()
 
     // 粒子效果
     particlesJS('particles-js', {
@@ -155,39 +156,20 @@ $(document).ready(function () {
     }
 
     function updateWeather() {
-        alert(province + "," + city + "," + county)
+        req = $.getJSON('https://www.mxnzp.com/weather/current/'+city+'?app_id=hmnqziklvnthnckr&app_secret=TFZnZVdMSVdCdUlVUEhaOFVQOHBZdz09');
+        req.then(function (resp) {
+            $("#temperature").html(resp.data.temp)
+            $("#w-name").html(resp.data.weather)
+            alert(resp.data.temp)
+        });
     }
 
     function getAddress() {
-
-        // $.ajax({
-        //     type: "get",
-        //     url: "https://apis.map.qq.com/ws/location/v1/ip?key=3BFBZ-ZKD3X-LW54A-ZT76D-E7AHO-4RBD5",
-        //     data: {},
-        //     dataType: 'jsonp',
-        //     success: function (resp) {
-        //         province = resp.result.ad_info.province
-        //         city = resp.result.ad_info.city
-        //         county = resp.result.ad_info.district
-        //         updateWeather();
-        //     },
-        //     error: function (e) {
-        //         console.log(e.msg)
-        //     }
-        // });
-
-        // req = $.get('http://apis.map.qq.com/ws/location/v1/ip?key=3BFBZ-ZKD3X-LW54A-ZT76D-E7AHO-4RBD5');
-        // req.then(function (resp) {
-        //     province = resp.result.ad_info.province
-        //     city = resp.result.ad_info.city
-        //     county = resp.result.ad_info.district
-        //     updateWeather();
-        // });
-        $.getJSON('https://www.mxnzp.com/ip/self?app_id=hmnqziklvnthnckr&app_secret=TFZnZVdMSVdCdUlVUEhaOFVQOHBZdz09&callback=?',function(resp){
+        req = $.getJSON('https://www.mxnzp.com/ip/self?app_id=hmnqziklvnthnckr&app_secret=TFZnZVdMSVdCdUlVUEhaOFVQOHBZdz09');
+        req.then(function (resp) {
             province = resp.data.province
             city = resp.data.city
-            //county = resp.result.ad_info.district
-            updateWeather();
+            getWeather()
         });
     }
 
@@ -210,7 +192,11 @@ $(document).ready(function () {
         } else {
             // 获取地址在 获取天气
             getAddress()
+            //alert(province + "," + city + "," + county)
+            alert(1)
             showAddress()
+            //alert(province + "," + city + "," + county)
+            alert(1)
             updateWeather()
         }
     }

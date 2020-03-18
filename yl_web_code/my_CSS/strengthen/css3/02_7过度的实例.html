@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul,ol{ list-style: none;}
+    img{ display: block;}
+    a{ text-decoration: none; color:#646464;}
+    h1,h2,h3,h4{ font-size:14px;}
+    body{ font-size:14px; color:#9f9f9f; font-family: Arial , 微软雅黑;}
+    .l{ float:left;}
+    .r{ float:right;}
+    .clear:after{ content:""; display: block; clear:both;}
+
+    .list{ width:250px; margin:30px auto;}
+    .list li{ border-top:1px #d0d6d9 dashed; height: 95px; padding-top:20px; overflow: hidden;}
+    .list .list-pic{ width:112px; height:77px; margin-left:5px; position: relative;}
+    .list .list-pic img{ width:112px; height:77px;}
+    .list .list-pic div{ width:92px; height:57px; border:1px white solid; position: absolute; left:9px; top:-30px; transform:rotate(-90deg); transition: 1s; transform-origin: 0 0;}
+    /* 加绝对定位之后宽度由内容决定 */
+    .list .list-pic p{ width:100%; position: absolute; color:white; top:50%; margin-top:-8px; text-align: center; transform:translate(0,100px); transition: 1s;}
+    .list .list-text{ width:120px; margin-left:10px;}
+    .list .list-pic:hover div{ transform:rotate(0); top:9px;}
+    .list .list-pic:hover p{ transform:translate(0,0);}
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li>
+            <div class="list-pic l">
+                <img src="./img/xiuqin.jpg" alt="">
+                <div></div>
+                <p>亚马逊</p>
+            </div>
+            <p class="list-text l">测试文字测试文字测试文字测试文字</p>
+        </li>
+        <li>
+            <div class="list-pic l">
+                <img src="./img/xiuqin.jpg" alt="">
+                <div></div>
+                <p>亚马逊</p>
+            </div>
+            <p class="list-text l">测试文字测试文字测试文字测试文字</p>
+        </li>
+        <li>
+            <div class="list-pic l">
+                <img src="./img/xiuqin.jpg" alt="">
+                <div></div>
+                <p>亚马逊</p>
+            </div>
+            <p class="list-text l">测试文字测试文字测试文字测试文字</p>
+        </li>
+    </ul>
+</body>
+</html>

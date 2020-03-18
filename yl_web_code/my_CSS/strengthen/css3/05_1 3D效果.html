@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        perspective(景深) : 离屏幕多远的距离去观察元素，值越大幅度越小。
+            3D的眼镜
+            rotateX
+            rotateY
+            translateZ
+            scaleZ
+        注：反馈回来的立体，仅限于平面。
+
+        transform-style : 3D空间
+            flat  (默认值2d)、preserve-3d   (3d，产生一个三维空间)
+        注：只要是有厚度的立体图形，就必须添加3D控件。
+        注：在立方体中默认会沿着第一个面进行旋转。
+            tranform-origin : x y z; (z不能写单词，只能写数字)
+
+        perspective-origin : 景深-基点位置，观察元素的角度。
+        backface-visibility : 背面隐藏
+            hidden、visible (默认值)
+
+        3d写法( 扩展学习 )
+            scale3d() : 三个值 x y z
+            translate3d() : 三个值 x y z
+            rotate3d() : 四个值 0|1(x轴是否添加旋转角度)  0|1(y轴是否添加旋转角度)  0|1(z轴是否添加旋转角度)  deg
+                rotate3d(1,1,1,30deg);
+            scale translate skew
+        */
+
+        html{ overflow: hidden;}
+        #box1{ width:300px; height:300px; border:1px black solid; margin:20px auto;
+            perspective:100px;
+        }
+        #box2{ width:100px; height:100px; background:red; margin:100px; transition: 1s;}
+
+        /*  #box1:hover #box2{ transform:rotateY(180deg);} */
+        #box1:hover #box2{ transform:translateZ(100px);}
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">bbbbb</div>
+    </div>
+</body>
+</html>
