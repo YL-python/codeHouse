@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 300px;
+            height: 40px;
+            border: 1px black solid;
+            margin: 50px;
+            background-image: linear-gradient(to right top, green 25%, gray 25%, gray 50%, green 50%, green 75%, gray 75%);
+            background-size: 40px 40px;
+            animation: infinite linear 3s move;
+        }
+
+        @keyframes move {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 400px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>

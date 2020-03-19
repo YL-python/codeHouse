@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* #box{ width:50px; height:50px; position: relative; margin:100px;}
+    #box div{ width:10px; height:10px; border:1px black solid; position: absolute; border-radius: 50%;}
+    #box div:nth-of-type(1){ left:0; top:40px; animation: 2s linear move1 infinite;}
+    #box div:nth-of-type(2){ left:20px; top:0; animation: 2s linear move2 infinite;}
+    #box div:nth-of-type(3){ left:40px; top:40px; animation: 2s linear move3 infinite;}
+
+    @keyframes move1 {
+        0%{ left:0; top:40px;}
+        33%{ left:20px; top:0;}
+        66%{ left:40px; top:40px;}
+        100%{ left:0; top:40px;}
+    }
+    @keyframes move2 {
+        0%{ left:20px; top:0;}
+        33%{ left:40px; top:40px;}
+        66%{ left:0; top:40px;}
+        100%{ left:20px; top:0;}
+    }
+    @keyframes move3 {
+        0%{ left:40px; top:40px;}
+        33%{ left:0; top:40px;}
+        66%{ left:20px; top:0;}
+        100%{ left:40px; top:40px;}
+    } */
+
+    #box{ width:50px; height:50px; margin:100px; position: relative; }
+    #box div{ width:50px; height: 25px; background: blue; border-radius: 25px 25px 0 0; position: absolute; left:0; top:0; transform-origin: center bottom;}
+    /* #box div:nth-of-type(1){ transform: rotate(180deg);}
+    #box div:nth-of-type(2){ transform: rotate(-90deg); left:-13px; top:-13px;} */
+
+    /* #box div:nth-of-type(1){}
+    #box div:nth-of-type(2){ transform:rotate(180deg);} */
+
+    #box div:nth-of-type(1){ transform:rotate(-25deg); animation: infinite linear .5s move1 alternate;}
+    #box div:nth-of-type(2){ transform:rotate(205deg); animation: infinite linear .5s move2 alternate;}
+
+    @keyframes move1 {
+        0%{ transform:rotate(-25deg);}
+        100%{ transform:rotate(0);}
+    }
+    @keyframes move2 {
+        0%{ transform:rotate(205deg);}
+        100%{ transform:rotate(180deg);}
+    }
+
+    </style>
+</head>
+<body>
+    <!-- <div id="box">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div> -->
+
+    <div id="box">
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>

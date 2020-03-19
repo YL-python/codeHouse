@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        box-reflect
+            above  上
+            below  下
+            left   左
+            right  右
+            距离
+            遮罩 | 渐变
+        注：渐变必须是不透明渐变到透明
+        扩展：利用scale为-1实现翻转。
+        */
+
+        #box {
+            width: 222px;
+            height: 240px;
+            margin: 200px;
+            /* -webkit-box-reflect: below 20px url('./img/love.png'); */
+            /* -webkit-box-reflect: below 20px linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, .5)); */
+            
+            /* 翻转 */
+            /* transform: scale(-1); */
+            transform: scale(-1,1);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img src="./img/laoli.jpg" alt="">
+    </div>
+</body>
+
+</html>

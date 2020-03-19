@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子阴影</title>
+    <style>
+        /*
+        box-shadow
+            x
+            y
+            blur :  高斯模糊值
+            spread : 范围
+            color
+            inset : 内阴影  outset(默认值：外阴影 , 写上outset不会生效，不写就是外阴影)
+            多阴影
+        注：默认盒子的阴影就是黑色。
+        */
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 1px black solid;
+            margin: 100px;
+            /* x y blur spread */
+            box-shadow: -10px -10px 10px 10px red inset, 10px 10px 10px 10px green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        nihao 啦啦啦
+    </div>
+</body>
+
+</html>

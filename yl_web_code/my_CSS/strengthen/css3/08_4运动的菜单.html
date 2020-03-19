@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {margin: 0;padding: 0;}
+        ul {list-style: none;}
+        body {height: 2000px;}
+
+        /*
+        translate(50% ,50%) : 位移的百分比表示当前元素的宽高进行换算。 300px
+    */
+        #menu {
+            width: 50px;
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #menu li {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        #menu li div:first-of-type {
+            width: 100%;
+            height: 100%;
+            background: red;
+            position: relative;
+            z-index: 2;
+        }
+
+        #menu li div:last-of-type {
+            position: absolute;
+            left: 0px;
+            top: 10px;
+            background: blue;
+            width: 100px;
+            height: 30px;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            transition: .5s;
+        }
+
+        #menu li div:last-of-type:after {
+            content: "";
+            width: 0;
+            height: 0;
+            display: block;
+            border: 5px transparent solid;
+            border-left: 5px blue solid;
+            position: absolute;
+            right: -10px;
+            top: 10px;
+        }
+
+        #menu li:hover div:last-of-type {
+            left: -110px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="menu">
+        <li>
+            <div></div>
+            <div>淘宝网店</div>
+        </li>
+        <li>
+            <div></div>
+            <div>联系客服</div>
+        </li>
+        <li>
+            <div></div>
+            <div>回到顶部</div>
+        </li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背景扩展</title>
+    <style>
+        /*
+        1.background-size: cover;
+            可以写像素
+            有两个单词 cover(覆盖)  contain(包含)
+            覆盖是背景与 容器等比例方法，背景会超出容器
+            包含也是等比例放大，但是最大不会超出容器，会有白边
+        
+        2. background-origin : 背景图的填充位置
+            默认情况下，如果xy都平铺的话，border padding content 区域都有背景图。
+            padding-box (默认) : 在padding区域开始填充背景图
+            border-box : 在border区域开始填充背景图
+            content-box  : 在content区域开始填充背景图
+
+        3. background-clip : 背景图的裁切方式
+            padding-box 
+            border-box (默认) 
+            content-box 	
+            注：当位置与裁切写入复合样式中，那么第一个值表示位置，第二个值表示裁切。
+        */
+        #box {
+            width: 400px;
+            height: 400px;
+            border: 50px rgba(255, 0, 0, .5) solid;
+            background: url('./img/laoli.jpg') padding-box content-box;
+            padding: 50px;
+            color: white;
+            /* background-origin: border-box; */
+            /* background-origin: content-box;
+               background-clip: content-box; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">我是content部分</div>
+</body>
+
+</html>

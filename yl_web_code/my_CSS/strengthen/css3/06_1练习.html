@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style: none;}
+    img{ display: block;}
+    .clear:after{ display: block; content:""; clear:both;}
+    #main{ width:826px; border:1px gray solid; margin:20px auto;}
+    
+    #main ul li{ width:250px; height:250px; margin:12px; float:left; position: relative; overflow: hidden;}
+    #main li .mask-1{ position: absolute; width:100%; height:0px; left:0; top:50px; background:rgba(0,0,0,.5); z-index: 2; transition: .5s; overflow: hidden; transform:rotate(45deg);}
+    #main li .mask-1 h2{ color:white; text-align: center; font-size:30px; border-bottom: 1px white solid; line-height: 60px;}
+    #main li .mask-1 p{ text-align: center; color:white; margin-top: 20px;}
+    #main li .mask-2{ position: absolute; left:0; top:-300px; width:350px; height:350px; background:rgba(171,0,91,.5); transform: rotate(45deg) translateX(-200px); z-index: 1; transition: .5s;} 
+    #main li .mask-3{position: absolute; left:0; top:300px; width:350px; height:350px; background:rgba(171,0,91,.5); transform: rotate(45deg) translateX(50px); z-index: 1;transition: .5s;}
+    #main li:hover .mask-1{ height: 150px; transform:rotate(0);}
+    #main li:hover .mask-2{ top:0;}
+    #main li:hover .mask-3{ top:0;}
+    </style>
+</head>
+<body>
+    <div id="main">
+        <ul class="clear">
+            <li>
+                <img src="./img/img.png" alt="">
+                <div class="mask-1">
+                    <h2>测试文字</h2>
+                    <p>测试段落测试段落测试段落测试段落</p>
+                </div>
+                <div class="mask-2"></div>
+                <div class="mask-3"></div>
+            </li>
+            <li>
+                <img src="./img/img.png" alt="">
+                <div class="mask-1">
+                    <h2>测试文字</h2>
+                    <p>测试段落测试段落测试段落测试段落</p>
+                </div>
+                <div class="mask-2"></div>
+                <div class="mask-3"></div>
+            </li>
+            <li>
+                <img src="./img/img.png" alt="">
+                <div class="mask-1">
+                    <h2>测试文字</h2>
+                    <p>测试段落测试段落测试段落测试段落</p>
+                </div>
+                <div class="mask-2"></div>
+                <div class="mask-3"></div>
+            </li>
+            <li>
+                <img src="./img/img.png" alt="">
+                <div class="mask-1">
+                    <h2>测试文字</h2>
+                    <p>测试段落测试段落测试段落测试段落</p>
+                </div>
+                <div class="mask-2"></div>
+                <div class="mask-3"></div>
+            </li>
+            <li>
+                <img src="./img/img.png" alt="">
+                <div class="mask-1">
+                    <h2>测试文字</h2>
+                    <p>测试段落测试段落测试段落测试段落</p>
+                </div>
+                <div class="mask-2"></div>
+                <div class="mask-3"></div>
+            </li>
+            <li>
+                <img src="./img/img.png" alt="">
+                <div class="mask-1">
+                    <h2>测试文字</h2>
+                    <p>测试段落测试段落测试段落测试段落</p>
+                </div>
+                <div class="mask-2"></div>
+                <div class="mask-3"></div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

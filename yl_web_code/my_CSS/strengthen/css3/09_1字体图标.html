@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        font-face是CSS3中的一个模块，他主要是把自己定义的Web字体嵌入到你的网页中。
+            1.可以非常方便的改变大小和颜色
+                font-size:40px;  color:red;
+            2.放大后不会失真
+            3.减少请求次数和提高加载速度
+            4.简化网页布局
+                因为字体图标就是一个内联的元素，所以左右布局非常简单
+            5.减少设计师和前端工程师的工作量
+                用第三方库：www.iconfont.cn
+        */
+
+        @font-face {
+            font-family: mui-global-iconfont;
+            src: url(https://at.alicdn.com/t/font_1401963178_8135476.eot);
+            src: url(https://at.alicdn.com/t/font_1401963178_8135476.eot?#iefix) format('embedded-opentype'), url(https://at.alicdn.com/t/font_1401963178_8135476.woff) format('woff'), url(https://at.alicdn.com/t/font_1401963178_8135476.ttf) format('truetype'), url(https://at.alicdn.com/t/font_1401963178_8135476.svg#iconfont) format('svg')
+        }
+
+        /* div{ font-family: mui-global-iconfont; font-size:40px; color:red;}
+    i{ font-family: mui-global-iconfont;} */
+        .gouwuche:after {
+            font-family: mui-global-iconfont;
+            content: "󰅈";
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div>󰅈</div>
+    <i>㑈 我是手机</i> -->
+    <div class="gouwuche"></div>
+    <div class="gouwuche"></div>
+</body>
+
+</html>

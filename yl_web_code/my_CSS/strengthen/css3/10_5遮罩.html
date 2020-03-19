@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        mask
+            url
+            repeat
+            x
+            y
+            w
+            h
+            多遮罩
+        注：需要在服务器环境下，之前通过右键打开方式都是本地打开。
+        注：如何在服务器环境下打开这个页面，下载插件：live server
+        */
+        #box {
+            width: 400px;
+            height: 300px;
+            /* / 斜线后面的值是修改大小 */
+            -webkit-mask: url('./img/car.png') no-repeat center center / 300px 300px, url('./img/love.png') no-repeat left center / 100px 100px, url('./img/love.png') no-repeat right center / 100px 100px;
+            transition: .5s;
+        }
+
+        #xiuqiu {
+            width: 100%;
+            height: 100%;
+            background: url('./img/xiuqin.jpg');
+        }
+
+        #box:hover {
+            -webkit-mask: url('./img/love.png') no-repeat center center / 400px 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="xiuqiu"></div>
+    </div>
+</body>
+
+</html>

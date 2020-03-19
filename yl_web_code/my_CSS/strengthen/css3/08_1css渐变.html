@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渐变</title>
+    <style>
+        /*
+        线性渐变：
+            background-image:linear-gradient( 20deg , red , blue);
+            注：角度是0deg在容器的最下面bottom位置。正数就是顺时针旋转。
+            方向  to top,  to top right
+        径向渐变：
+            radial-gradient : 径向渐变
+        */
+        #box {
+            width: 300px;
+            height: 300px;
+            border: 1px black solid;
+            margin: 100px;
+            /* background-image:linear-gradient(red , blue , yellow , green); */
+            /*  background-image:linear-gradient( to right top , red , blue); */
+            /*  background-image:linear-gradient( 0deg , red , blue); */
+            /* background-image:linear-gradient( red 25% , blue 75%); */
+            /* background-image:linear-gradient( red 50% , blue 50%); */
+            /* background-image:radial-gradient(red , blue , yellow); */
+            /* background-image:-webkit-radial-gradient( right, red , blue , yellow); */
+            background-image: radial-gradient(red 25%, blue 50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* var box = document.getElementById('box');
+        var now = 0;
+        setInterval(function(){
+            now++;
+            box.style.backgroundImage = 'linear-gradient( '+ now +'deg , red , blue)';
+        },30); */
+    </script>
+</body>
+
+</html>

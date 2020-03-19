@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摩天轮</title>
+    <style>
+    *{ margin:0; padding:0;}
+    ul{ list-style:none;}
+    img{ display: block;}
+    html{ width:100%; height:100%;}
+    body{ width:100%; height:100%; background:url(./images/2.jpg); background-size:cover; }
+    #box{ width:768px; height: 768px; background:url('./images/fsw.png') no-repeat; margin:100px auto 0 auto; animation: 10s linear boxMove infinite;}
+    @keyframes boxMove {
+        0%{ transform: rotate(0);}
+        100%{ transform: rotate(360deg);}
+    }
+    #box ul{ width:100%; height:100%;/*  background:rgba(255,0,0,0.5); */ position: relative; transform: scale(1.2);}
+    /* #box ul li{ position: absolute; animation: 10s linear boxMove infinite reverse;} */
+    #box ul li{ position: absolute; /* transform-origin: center 0; */ animation: 10s linear personMove infinite;}
+    @keyframes personMove {
+        0%{ transform: rotate(0);}
+        100%{ transform: rotate(-360deg);}
+    }
+    #box ul li:nth-of-type(1){ left:50%; top:0; margin-left:-65px;}
+    #box ul li:nth-of-type(2){ left:0; top:50%; margin-top:-85px;}
+    #box ul li:nth-of-type(3){ right:0; top:50%; margin-top:-85px;}
+    #box ul li:nth-of-type(4){ left:50%; bottom:0; margin-left:-65px;}
+    #box ul li:nth-of-type(5){ left:25%; top:25%; margin-left:-65px; margin-top:-85px;}
+    #box ul li:nth-of-type(6){  left:75%; top:25%; margin-left:-65px; margin-top:-85px;}
+    #box ul li:nth-of-type(7){ left:25%; top:75%; margin-left:-65px; margin-top:-85px;}
+    #box ul li:nth-of-type(8){ left:75%; top:75%; margin-left:-65px; margin-top:-85px;}
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li><img src="./images/boy.png" alt=""></li>
+            <li><img src="./images/dog.png" alt=""></li>
+            <li><img src="./images/girl.png" alt=""></li>
+            <li><img src="./images/girls.png" alt=""></li>
+            <li><img src="./images/hairboy.png" alt=""></li>
+            <li><img src="./images/mimi.png" alt=""></li>
+            <li><img src="./images/mudog.png" alt=""></li>
+            <li><img src="./images/shamegirl.png" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>
