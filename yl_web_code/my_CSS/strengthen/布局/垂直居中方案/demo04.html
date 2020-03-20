@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方案 4</title>
+    <style>
+        #box1{
+            width: 300px;
+            height: 300px;
+            border: 1px black solid;
+            /* 弹性盒子 */
+            display: flex;
+        }
+
+        /* box2 大小未知 */
+        #box2{
+            width: 100px;
+            height: 100px;
+            background: red;
+            /* 弹性盒子的margin auto就能实现垂直居中 */
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">
+
+        </div>
+    </div>
+</body>
+</html>

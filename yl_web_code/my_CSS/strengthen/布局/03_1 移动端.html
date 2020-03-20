@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端</title>
+    <style>
+        /*
+        viewport,视口
+            PC端就没有视口。viewport视口是移动端才有的概念。
+            两个视口：
+                1. 可视视口：固定大小的，跟手机设备一样。在上面。
+                2. 布局视口：可调节大小的，默认980，压缩到可视视口的大小，在下面。
+            width : device-width 动态的,可以给固定大小，99%网站不会这么设置，因为不好适配。
+            height : 不去设置。
+            initial-scale : 1.0
+            minimum-scale : 1.0
+            maximum-scale : 1.0
+            user-scalable : no 
+            建议viewport设置：<meta name="viewport" content="width=device-width, initial-scale=1.0 , user-scalable=no">
+        
+        移动端布局方案？
+            1. 流式布局
+                好处： 大屏幕下显示更多的内容。 	
+                坏处：宽屏下比例会有一些不协调。
+            2. rem布局
+                好处： 不同设备下看起来比较协调。 	
+                坏处： 显示的内容并不会在大屏幕展示的内容多。
+                em : 是一个相对单位，1em等于当前元素或父元素的font-size值。
+                        1em == 1个font-size的大小
+                rem : 是一个相对单位，1rem等于根元素的font-size值。
+                        1rem == 1个根元素的font-size大小 就是  1个html标签的font-size大小
+                        rem -> root + em
+                rem布局的原理：
+                    页面中的元素采用rem作为尺寸或者间距的单位。
+                    想办法去动态改变html标签的font-size大小，这样就可以适配不同的设备进行等比缩放。
+                    如何做到font-size动态化？
+                        1. 通过JS （JavaScript）
+                            document.documentElement.clientWidth -> 获取布局视口的宽度。
+                            在iphone 6 -> document.documentElement.clientWidth -> 375
+                            在iphone 6 plus -> document.documentElement.clientWidth -> 414
+
+                        在iphone 6 -> font-size 100px ?
+                            document.documentElement.clientWidth(375) / 3.75 -> 100
+
+                        在iphone 6 plus -> font-size 大于 100px ?
+                            document.documentElement.clientWidth(414) / 3.75 -> 110.4
+
+
+                        2. 通过vw （vw是尺寸单位）
+
+                注：做rem布局，心里只想着iphone 6一款设备，然后测量尺寸，换算rem。
+            */
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

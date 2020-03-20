@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方案 2</title>
+    <style>
+        #box1{
+            width: 300px;
+            height: 300px;
+            border: 1px black solid;
+            position: relative;
+        }
+
+        /* box2 大小未知 */
+        #box2{
+            width: 100px;
+            height: 100px;
+            background: red;
+            /* 使用定位和位移， 位移的百分比是按照当前元素的宽高来决定 */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">
+
+        </div>
+    </div>
+</body>
+</html>

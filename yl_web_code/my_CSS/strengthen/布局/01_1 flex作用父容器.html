@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 300px;
+            height: 300px;
+            border: 1px black solid;
+            display: flex;
+            /* flex-direction: row-reverse; */
+            /* flex-wrap : wrap; */
+            /* flex-flow: row-reverse wrap; */
+            justify-content: center;
+        }
+
+        #box1 div {
+            width: 50px;
+            height: 50px;
+            /* line-height: 50px; */
+            text-align: center;
+            color: white;
+            background: red;
+        }
+
+        /* 
+        弹性盒子：
+            加到父元素身上
+                1.display : flex;把父容器变成一个弹性盒子
+                2.flex-direction: row; 布局的排列方向 （主轴排列方向）
+                    row 默认值，显示为行。方向为当前文档水平流方向，默认情况下是从左往右。
+                    row-reverse  显示为行。但方向和row属性值是反的
+                    column  显示为列
+                    column-reverse 显示为列。但方向和column属性值是反的
+                3.flex-wrap : nowrap; 用来控制子项整体单行显示还是换行显示。
+                    nowrap; 默认值，不换行处理
+                    wrap; 换行处理
+                    wrap-reverse; 反向换行
+                    换行之后位置是 父容器居中的
+                4.flex-flow : flex-direction flex-wrap 复合写法 (是有顺序的，先方向在换行)。
+                5.justify-content ; 属性决定了 主轴方向 上子项的对齐和分布方式。  
+                    flex-start ： 子项都去起始位置对齐。
+                    flex-end ： 子项都去结束位置对齐。
+                    center ： 子项都去中心位置对齐。
+                    space-between : 表现为两端对齐。between是中间的意思，意思是多余的空白间距只在元素中间区域分配。 
+                    space-around : 环绕, 视觉上边缘两侧的空白只有中间空白宽度一半。
+                    space-evenly : 匀称、平等, 视觉上，每个flex子项两侧空白间距完全相等。
+                6.align-items : 每一行中的 子元素 上下对齐方式。
+                    stretch;  默认，子项会被拉伸
+                    flex-start;
+                    center;
+                    flex-end;
+                7.align-content : 跟justify-content相反的操作。侧轴的对齐方式。(最少需要两行才能看出效果，因为他是多行的一个上下对齐方式)
+                    默认：多行下，有几行就会把容器划分为几部分，默认是stretch 拉伸的。
+                    值跟justify-content取值是相同的。
+
+
+            加到子元素身上
+
+        注：
+            弹性盒子的默认对齐方式是左右对齐
+            弹性盒子子元素的宽高不写时，宽度由内容决定，高度自适应父容器
+            当子项的总宽高大于父容器的时候，会自动收缩的（弹性的优先级是大于自身固定大小的）
+                line-height 属性会影响
+            当子项的内容已经达到了父容器最小宽高的时候，就会出现溢出的现象。
+            弹性布局的优势是做一维布局，网格布局的优势是做二维布局。
+        */
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <!-- <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+        <div>12</div>
+        <div>13</div>
+        <div>14</div>
+        <div>15</div> -->
+    </div>
+</body>
+
+</html>

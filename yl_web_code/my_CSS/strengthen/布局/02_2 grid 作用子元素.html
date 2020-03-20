@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网格布局</title>
+    <style>
+        /*
+        作用在子元素身上
+            grid-area : 找指定的区域
+                1.对应网格的名字
+                2.写对应的线的数字：grid-area : 1 / 3 / span 2 / 4; 
+                    grid-row-start / grid-column-start / grid-row-end / grid-column-end
+            grid-column-start  水平方向上占据的起始位置
+            grid-column-end    水平方向上占据的结束位置
+            grid-row-start     垂直方向上占据的起始位置
+            grid-row-end       垂直方向上占据的结束位置
+                注：只有在grid-column-end和 grid-row-end 中可以设置span操作。span去设置的不是结束位置，而是个数。 
+                    正常数字是位置，加上span是个数。
+                grid-column:3 / 4;
+                    grid-column-start / grid-column-end
+                grid-row:1 / span 2;
+                    grid-row-start / grid-row-end
+            justify-self
+            algin-self
+            place-self
+        */
+        #box{ width:300px; height: 300px; border:1px black solid; margin:100px;
+        display:grid;
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 100px 100px 100px; 
+    }
+    #box div{ background:red; border:1px yellow dashed;
+        /* grid-column-start: 3;
+        grid-column-end: 4;
+        grid-row-start: 1;
+        grid-row-end: span 1; */
+        /*  grid-column:3 / 4;
+        grid-row:1 / span 2; */
+        /* grid-area : 1 / 3 / span 2 / 4; */
+    }
+    #box div:nth-of-type(1){ /* justify-self: left; align-self: center; */
+    
+        place-self : center left;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- div{$}*12 -->
+    <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+
+</body>
+
+</html>

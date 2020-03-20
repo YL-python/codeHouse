@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 300px;
+            height: 300px;
+            border: 1px black solid;
+            display: flex;
+        }
+
+        #box1 div {
+            width: 50px;
+            height: 50px;
+            color: white;
+            background: red;
+        }
+        #box1 div:nth-of-type(2){
+            background-color: blue;
+            /* order:3; */
+            flex-grow: .1;
+        }
+        #box1 div:nth-of-type(3){
+            background-color: yellow;
+            flex-grow: .5;
+        }
+
+        /* 
+        弹性盒子：
+            加到子元素身上
+                1.order : 排序
+                    值，默认是 0 值越大越靠后
+                2.flex-grow : 扩展 ( 想看到扩展的效果，必须有空隙 )
+                    比例值：0 ~ 1
+                    0 : 默认值 , 不去扩展
+                    1 : 去扩展 , 会把空白区域全部沾满
+                    子元素会按照设置的比例值来分配空隙，如果比例值总和小于1，那么会有空隙，如果比例值总和大于等于1，那么就没有空隙。
+                3.flex-shrink : 收缩
+                    正常默认值是1
+                    0表示不收缩，.5收缩小一些，2收缩大一些。（大小是跟正常缩放1进行比较的）
+                4.flex-basis : 跟flex-shrink/flex-grow 很像。
+                    flex-shrink/flex-grow是设置一个比例值，flex-basis是设置一个具体值。
+                5.flex : 一种复合写法
+                    flex-grow  flex-shrink  flex-basis
+                    flex:1;
+                        flex : 1 1 0    
+                    flex:0;
+                        flex : 0 1 0
+                6.algin-self: 跟align-items操作很像，区别就是只是针对某一个子项。
+                    flex-start;
+                    center;
+                    flex-end;
+        */
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <!-- <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+        <div>12</div>
+        <div>13</div>
+        <div>14</div>
+        <div>15</div> -->
+    </div>
+</body>
+
+</html>

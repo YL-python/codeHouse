@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网格布局</title>
+    <style>
+        /*
+        作用在父容器身上
+            设置行列数，划分区域，行列间距，子项水平垂直对齐方式，整体网格水平垂直对齐方式
+            1.display : grid
+            2.grid-template-columns : 设置列数
+            3.grid-template-rows : 设置行数
+                fr单位  比例单位
+                repeat()方法
+            4.grid-template-areas : 划分区域的
+                注：区域必须是矩形。
+            5.grid-template:复合写法
+                    grid-template-rows
+                    grid-template-columns
+                    grid-template-areas
+                grid-template: 
+                "a1 a1 a1" 1fr
+                "a3 a3 a2" 1fr
+                "a3 a3 a2" 1fr
+                /1fr 1fr 1fr;
+            6.grid-column-gap : 列的间距
+            7.grid-row-gap : 行的间距
+            8.grid-gap : 复合写法
+                grid-row-gap  grid-column-gap
+            9.justify-items : 子项的水平居中方式
+                默认 :  stretch 默认值，拉伸。表现为水平或垂直填充。
+                start
+                center
+                end
+            10.align-items : 子项的垂直居中方式
+                默认 :  stretch 默认值，拉伸。表现为水平或垂直填充。
+                start
+                center
+                end
+            11.place-items : 复合写法
+                使用后盒子的宽度由内容决定
+                align-items justify-items
+            12.justify-content : 整体网格的水平对齐方式
+                默认：stretch
+                start
+                end
+                center
+                space-between
+                space-around
+                space-evenly
+            13.align-content : 整体网格的垂直对齐方式
+                    默认：stretch
+                    start
+                    end
+                    center
+                    space-between
+                    space-around
+                    space-evenly
+            14.place-content : 复合写法
+                align-content justify-content
+    */
+    #box{ width:300px; height: 300px; border:1px black solid; margin:100px;
+        display:grid;
+        /* grid-template-columns: 100px 100px 200px 100px;
+        grid-template-rows: 100px auto 30%; */
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+    }
+    #box div{ background:red; border:1px yellow dashed;}
+
+    #box2{ width:300px; height: 300px; border:1px black solid; margin:100px;
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        grid-template-areas: 
+        "西瓜 西瓜 猕猴桃"
+        "苹果 苹果 猕猴桃"
+        "苹果 苹果 猕猴桃";
+    }
+    #box2 div{ background:red; border:1px yellow dashed;}
+    #box2 div:nth-of-type(1){grid-area: 西瓜;}
+    #box2 div:nth-of-type(2){grid-area: 猕猴桃;}
+    #box2 div:nth-of-type(3){grid-area: 苹果;}
+
+    #box3{ width:300px; height: 300px; border:1px black solid; margin:100px;
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        /* justify-items: center; */
+        /* align-items: center; */
+        place-items: center end;
+    }
+    #box3 div{ background:red; border:1px yellow dashed;}
+
+    #box4{ width:500px; height: 500px; border:1px black solid; margin:100px;
+        display:grid;
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 100px 100px 100px;
+        /* justify-content: space-between; */
+        /* align-content: end; */
+        place-content:end space-between;
+    }
+    #box4 div{ background:red; border:1px yellow dashed;}
+    </style>
+</head>
+
+<body>
+    <!-- div{$}*12 -->
+    <div id="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+        <div>12</div>
+    </div>
+
+    <div id="box2">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+
+    <div id="box3">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+
+    
+    <div id="box4">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{ margin:0; padding:0;}
+        a{ text-decoration: none;}
+        #main{ width:750px; margin:0 auto;}
+        #main .nav {
+            height: 76px;
+            background: #161618;
+            display: flex;
+            align-items: center;
+            font-size: 32px;
+        }
+
+        #main .nav a {
+            color: #999999;
+            margin: 0 25px;
+            /* 子项不自动收缩 */
+            flex-shrink: 0;
+        }
+
+        #main .nav a.active {
+            color: #c8a06a;
+            position: relative;
+        }
+
+        #main .nav a.active:after {
+            content: "";
+            width: 40%;
+            height: 6px;
+            /* 伪类添加的默认是内联元素 */
+            display: block;
+            background: #c8a06a;
+            border-radius: 4px;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div class="nav">
+            <a href="#" class="active">精选</a>
+            <a href="#" class="active">VIP俱乐部</a>
+            <a href="#">电影</a>
+            <a href="#" class="active">电视剧</a>
+            <a href="#">综艺</a>
+            <a href="#">动漫</a>
+            <a href="#">体育</a>
+            <a href="#">洗浴</a>
+            <a href="#">SPA</a>
+        </div>
+    </div>
+</body>
+
+</html>
