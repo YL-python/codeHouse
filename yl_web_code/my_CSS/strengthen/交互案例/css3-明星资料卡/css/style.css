@@ -1,0 +1,369 @@
+@charset "utf-8";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+figure{
+	position: relative;
+	width: 33.3%;
+	height: 350px;
+	float: left;
+	/*显示多出的部分，隐藏掉*/
+	overflow: hidden;
+}
+
+h2,div,span,p{
+	transition: all 3s;
+}
+
+figure img{
+	transition: all 0.3s;
+	/*元素的不透明级，默认为1*/
+	opacity: 1;
+}
+
+figure:hover img{
+	opacity: 0.5;
+}
+
+/*第一个框格*/
+.view1 img{
+	transform: translateX(0);
+}
+
+.view1:hover img{
+	/*X移动50px*/
+	transform: translateX(50px);
+}
+
+.view1 h2{
+	position: absolute;
+	left: 50px;
+	top: 60px;
+	color: white;
+	transform: translateX(0);
+}
+
+.view1:hover h2{
+	transform: translateX(50px);
+}
+
+.view1 .pp{
+	position: absolute;
+	left: 100px;
+	width: 100px;
+	background: dodgerblue;
+	transition: all 0.3s;
+}
+
+.view1 .p1{
+	bottom: 0px;
+	transform: translateY(300px);
+}
+
+.view1:hover .p1{
+	transform: translateY(-200px);
+}
+
+.view1 .p2{
+	top: 200px;
+	transform: translateX(500px);
+}
+
+.view1:hover .p2{
+	transform: translateX(0px);
+}
+
+.view1 .p3{
+	top: 275px;
+	transform: translateX(-500px);
+}
+
+.view1:hover .p3{
+	transform: translateX(0px);
+}
+
+/*第二个框格*/
+.view2:hover img{
+	transform: translateX(-20px);
+}
+
+.view2 h2{
+	position: absolute;
+	left: 20px;
+	top: 60px;
+	color: white;
+}
+
+.view2 .info{
+	position: absolute;
+	left: 20px;
+	background: white;
+	width: 120px;
+	transform: translateX(-300px);
+}
+
+.view2 .info1{
+	top: 100px;
+	transition: all 0.3s;
+}
+
+.view2:hover .info1{
+	transform: translateX(0px);
+	width: 160px;
+}
+
+.view2 .info2{
+	top: 150px;
+	transition: all 0.3s 0.1s;
+}
+
+.view2:hover .info2{
+	transform: translateX(0px);
+}
+
+.view2 .info3{
+	top: 200px;
+	transition: all 0.3s 0.2s;
+}
+
+.view2:hover .info3{
+	transform: translateX(0px);
+}
+
+/*第三个框格*/
+.view3 img{
+	transform: translateY(0);
+}
+
+.view3:hover img{
+	transform: translateY(-20px);
+}
+
+.view3 h2{
+	position: absolute;
+	top: 100px;
+	left: 60px;
+	color: white;
+	transform: translateY(-200px);
+}
+
+.view3:hover h2{
+	transform: translateY(0);
+}
+
+.view3 p{
+	position: absolute;
+	left: 80px;
+	bottom: 0px;
+	transform: translateY(0px);
+	opacity: 0;
+}
+
+.view3:hover p{
+	transform: translateY(-100px);
+	opacity: 1;
+}
+
+/*第四个框格*/
+.view4 h2{
+	position: absolute;
+	left: 20px;
+	top: 60px;
+	color: white;
+	transform: translateY(50px);
+	opacity: 0;
+}
+
+.view4:hover h2{
+	transform: translateY(0px);
+	opacity: 1;
+}
+
+.view4 div{
+	position: absolute;
+	left: 0px;
+	bottom: -300px;
+	width: 140%;
+	height: 300px;
+	background: white;
+}
+
+.view4:hover div{
+	/*设置旋转元素的基点位置*/
+	transform-origin: 0% 0%;
+	transform: rotate(-20deg);
+	background: cornflowerblue;
+}
+
+.view4 .info4{
+	position: absolute;
+	right: 90px;
+	bottom: 80px;
+	/*显示在最上面 第99页*/
+	z-index: 99;
+	transform: translateY(100px);
+}
+
+.view4 .info5{
+	right: 20px;
+}
+
+.view4:hover .info4{
+	transform: translateY(0px);
+}
+
+/*第5个框格*/
+.view5 h2{
+	position: absolute;
+	left: 15%;
+	top: 15%;
+	color: white;
+	transform: translateX(-50px);
+}
+
+.view5:hover h2{
+	transform: translateX(0px);
+}
+
+.view5 p{
+	position: absolute;
+	left: 15%;
+	top: 25%;
+	color: white;
+	transform: translateY(100px);
+	opacity: 0;
+	width: 70%;
+}
+
+.view5:hover p{
+	transform: translateY(0px);
+	opacity: 1;
+}
+
+.view5 div{
+	position: absolute;
+	width: 80%;
+	height: 80%;
+	left: 10%;
+	top: 10%;
+	border: 3px solid black;
+	transform: rotate(0deg) translateY(-400px);
+	transform-origin: 0% 0%;
+}
+
+.view5:hover div{
+	transform: rotate(360deg) translateY(0px);
+}
+
+.view6:hover img{
+	transform: scale(1.5);
+}
+
+.view6 h2{
+	position: absolute;
+	top: 50%;
+	left: 45%;
+	/*font 定义字体的粗细
+	 normal 正常 等同400
+	 bold 粗体 等同700
+	 100|200|300|~900 字体粗细的绝对值*/
+	font: 900;
+	transform: rotate(0deg);
+}
+
+.view6:hover h2{
+	transform: rotate(315deg);
+	transition: all 3s; 
+}
+
+/*第7个框格*/
+
+.view7 img{
+	transform: scale(1);
+	transition: all 1s;
+}
+
+.view7:hover img{
+	transform: scale(0.8);
+}
+
+/*第8个框格*/
+.view8{
+	position: relative;
+}
+
+.view8 .top{
+	position: absolute;
+	left: 125px;
+	top: 70px;
+	width: 0;
+	height: 200px;
+	border-top: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+}
+
+.view8:hover .top{
+	width: 240px;
+}
+
+.view8 .left{
+	position: absolute;
+	left: 140px;
+	top: 55px;
+	width: 200px;
+	height: 0px;
+	 border-left: 2px solid #ccc;
+	 border-right: 2px solid #ccc;
+}
+
+.view8:hover .left{
+	height: 240px;
+}
+
+.view8 p{
+	color: black;
+	font-weight: 900;
+	position: absolute;
+	top: 30%;
+	left: 55%;
+	font-size: 14px;
+	opacity: 0;
+	transform: rotate(0deg) translateY(500px) scale(1);
+	transition: all 3s; 
+}
+
+.view8:hover p{
+	opacity: 1;
+	transform: rotate(360deg) translateY(0px) scale(2);
+}
+
+/*第9个框格*/
+.view9 img{
+	position: absolute;
+	transition: all 3s;
+	transform: rotate(0deg) scale(1);
+}
+
+.view9:hover img{
+	transform: rotate(10deg) scale(1.1);
+}
+
+/*音乐按钮设置CSS*/
+.musicbtn{
+	position:absolute;
+	right:20px;
+	top:20px;
+	width:40px;
+	height:40px;
+	animation:xuanzhuan 2s infinite;
+}
+
+@keyframes xuanzhuan{
+	from{}
+	to{transform:rotate(360deg);
+	 -webkit-transform:rotate(360deg);}
+}
+

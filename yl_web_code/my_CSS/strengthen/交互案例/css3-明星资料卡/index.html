@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>明星资料卡</title>
+		
+		<link rel="stylesheet" href="css/style.css" />
+		<script type="text/javascript" src="js/main.js" ></script>
+	</head>
+	<body>
+		<div id="box">
+			<!--1-->
+			<!--figure 用作文档中插图的图像-->
+			<!--第一个图片-->
+			<figure class="view1">
+				<!--alt 如果无法显示图像，浏览器将显示替代文本-->
+				<img src="1989 Polaroid/1.png" alt=""/>
+				<!--<figcaption> 标签定义 figure 元素的标题。-->
+				<!--"figcaption" 元素应该被置于 "figure" 元素的第一个或最后一个子元素的位置。-->
+				<figcaption>
+					<h2>Billboard三首排行第一</h2>
+					<p class="pp p1">Shake It Off</p>
+					<p class="pp p2">Black Space</p>
+					<p class="pp p3">Bad Blood</p>
+				</figcaption>
+			</figure>
+			
+			<!--第二张图片-->
+			<figure class="view2">
+				<img src="1989 Polaroid/2.png" alt="">
+				<figcaption>
+					<h2>Taylor Swift</h2>
+					<p class="info info1">Birthday:1989.12.13</p>
+					<p class="info info2">Height:180cm</p>
+					<p class="info info3">Weight:56kg</p>
+				</figcaption>
+			</figure>
+			
+			<figure class="view3">
+				<img src="1989 Polaroid/3.png" alt="">	
+				<figcaption>
+					<h2>Back To December</h2>
+					<p>
+						I'm so glad you made time to see me.
+						How's life, tell me how's your family?
+						I haven't seen them in a while.
+						You've been good, busier then ever.
+						We small talk, work and the weather
+						Your guard is up and I know why...
+					</p>
+				</figcaption>
+			</figure>
+			
+			<figure class="view4">
+				<img src="1989 Polaroid/4.png" alt="">	
+				<figcaption>
+					<h2>1989</h2>
+					<span class="info4">Taylor Swift</span>
+					<span class="info4 info5">《1989》</span>
+				</figcaption>
+				<div class="box1"></div>
+			</figure>
+			
+			<figure class="view5">
+				<img src="1989 Polaroid/5.png" />
+				<figcaption>
+					<h2>Taylor Swift-《22》</h2>
+					<p style="color: black;">
+						I don't know about you, but I’m feeling 22,
+						Everything will be alright if you keep me next to you,
+						You don't know about me, but I bet you want to,
+						Everything will be alright if we just keep dancing like we're... 22  22
+					</p>
+				</figcaption>
+				<div class="box2"></div>
+			</figure>
+			
+			<figure class="view6">
+				<img src="1989 Polaroid/6.png" />
+				<figcaption>
+					<h2>Out of the Woods</h2>
+				</figcaption>
+			</figure>
+			
+			<figure class="view7">
+				<img src="1989 Polaroid/7.png" />
+			</figure>
+			
+			<figure class="view8">
+				<img src="1989 Polaroid/8.png" />
+				<figcaption>
+					<h2></h2>
+					<p>Taylor Swift</p>
+					<div class="top"></div>
+					<div class="left"></div>
+				</figcaption>
+			</figure>
+			
+			<figure class="view9">
+				<img src="1989 Polaroid/9.png" />
+			</figure>
+		</div>
+		<!--添加音乐图标-->
+		<img src="1989 Polaroid/musicBtn.png" class="musicbtn" onClick="playPause(this)"/>
+		<audio src="mp3/Taylor Swift - We Are Never Ever Getting Back Together.mp3" autoplay="autoplay" id="musicPlayer"></audio>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input:enabled {
+            background: pink;
+        }
+
+        input:disabled {
+            background: blue;
+        }
+
+        p::selection {
+            background: red;
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text">
+    <br>
+    <input type="text" disabled>
+    <br>
+    <input type="text" disabled>
+    <br>
+    <input type="text" disabled>
+    <br>
+    <input type="text">
+    <br>
+    <input type="radio">
+    <br>
+
+    <p>文本文本文本文本文本文本文本文本文本文本文本文本文本</p>
+</body>
+
+</html>
+<!--
+    E:enabled
+  		匹配所有用户界面（form表单）中处于可用状态的E元素
+  	E:disabled
+  		匹配所有用户界面（form表单）中处于不可用状态的E元素
+  	E:checked
+  		匹配所有用户界面（form表单）中处于选中( 单选、多选 )状态的元素E
+  	E::selection
+  		匹配E元素中被用户选中或处于高亮状态的部分
+-->
+
+
+<!--
+    遗留的问题：
+        ：checked
+-->

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul,li{
+            list-style:none;
+        }
+        body{
+            background:#000;
+        }
+        .box{
+            width:300px;
+            height: 300px;
+            /* 定位 */
+            position:fixed;
+            left:0;right:0;
+            top:0;bottom:0;
+            margin:auto;
+            /* 形成3D场景 */
+            transform-style: preserve-3d;
+            /* 倾斜一个角度 */
+            transform:rotateX(51deg) rotateY(26deg);
+            /* 调用关键帧 */
+            animation:ulRotate 10s linear infinite;
+        }
+        .box li{
+            width:298px;
+            height:298px;
+            border:1px solid blue;
+            /* 形成一个正圆 */
+            border-radius: 100%;
+            /* 以定位的形式叠加在一起 */
+            position:absolute;
+        }
+        .rotateX1{
+            transform:rotateX(20deg);
+        }
+        .rotateX2{
+            transform:rotateX(40deg);
+        }
+        .rotateX3{
+            transform:rotateX(60deg);
+        }
+        .rotateX4{
+            transform:rotateX(80deg);
+        }
+        .rotateX5{
+            transform:rotateX(100deg);
+        }
+        .rotateX6{
+            transform:rotateX(120deg);
+        }
+        .rotateX7{
+            transform:rotateX(140deg);
+        }
+        .rotateX8{
+            transform:rotateX(160deg);
+        }
+        .rotateX9{
+            transform:rotateX(180deg);
+        }
+
+        .rotateY1{
+            transform:rotateY(20deg);
+        }
+        .rotateY2{
+            transform:rotateY(40deg);
+        }
+        .rotateY3{
+            transform:rotateY(60deg);
+        }
+        .rotateY4{
+            transform:rotateY(80deg);
+        }
+        .rotateY5{
+            transform:rotateY(100deg);
+        }
+        .rotateY6{
+            transform:rotateY(120deg);
+        }
+        .rotateY7{
+            transform:rotateY(140deg);
+        }
+        .rotateY8{
+            transform:rotateY(160deg);
+        }
+        .rotateY9{
+            transform:rotateY(180deg);
+        }
+
+
+        @keyframes ulRotate{
+            0%{
+                transform:rotateX(51deg) rotateY(26deg) rotateZ(0deg);
+            }
+            100%{
+                transform:rotateX(51deg) rotateY(26deg) rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <ul class="box">
+        <li class="rotateX1"></li>
+        <li class="rotateX2"></li>
+        <li class="rotateX3"></li>
+        <li class="rotateX4"></li>
+        <li class="rotateX5"></li>
+        <li class="rotateX6"></li>
+        <li class="rotateX7"></li>
+        <li class="rotateX8"></li>
+        <li class="rotateX9"></li>
+
+        <li class="rotateY1"></li>
+        <li class="rotateY2"></li>
+        <li class="rotateY3"></li>
+        <li class="rotateY4"></li>
+        <li class="rotateY5"></li>
+        <li class="rotateY6"></li>
+        <li class="rotateY7"></li>
+        <li class="rotateY8"></li>
+        <li class="rotateY9"></li>
+    </ul>
+</body>
+</html>

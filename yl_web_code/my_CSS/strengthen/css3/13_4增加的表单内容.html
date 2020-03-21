@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input::-webkit-input-placeholder{
+            /* 谷歌 */
+            color:blue;
+        }
+        input::-moz-placeholder{
+            /* 火狐19+ */
+            color:blue;
+        }
+        input:-moz-placeholder{
+            /* 火狐4 - 18 */
+            color:blue;
+        }
+        input:-ms-input-placeholder{
+            /* ie 高版本 10 */
+            color:blue;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="" novalidate>
+        <!-- <input type="text" value="" placeholder="请输入您的姓名" autofocus>
+        <input type="text" value="" placeholder="请输入您的年龄">
+        <input type="text" value="" placeholder="请输入您的性别">
+        <input type="text" value="" placeholder="请输入您的住址"> -->
+        <!-- <input type="text" placeholder="请输入手机号" pattern="^1[3|5|8|7]\d{9}$">
+        <input type="submit"> -->
+
+        <!-- <input type="file" multiple> -->
+
+
+        <!-- <input type="url" list="urlList">
+        <datalist id="urlList">
+            <option value="http://www.baidu.com" label="百度"></option>
+            <option value="http://www.sina.com" label="新浪"></option>
+            <option value="http://www.qq.com" label="腾讯"></option>
+            <option value="http://www.taobao.com" label="淘宝"></option>
+            <option value="http://www.jd.com" label="京东"></option>
+        </datalist> -->
+
+
+
+        
+    </form>
+</body>
+</html>
+<!--
+    新增type类型
+        Type=“email”   限制用户必须输入email类型
+        Type=“url”        限制用户必须输入url类型
+        Type=“range”   产生一个滑动条表单
+        Type=“number”
+        Type=“search”   产生一个搜索意义的表单
+        Type=“color”     生成一个颜色选择的表单
+
+        Type=“time”      限制用户必须输入时间类型
+        Type=“month”        限制用户必须输入月类型
+        Type=“week”        限制用户必须输入周类型
+        Type=“datetime-local”        选取本地时间
+        type=”date”
+
+    新增表单属性
+        required     监测是否为空。
+        min      最小
+        max      最大
+        step     步幅  确定一个法定值。 -3 0 3 6 9
+        autocomplete    是否自动提示信息    属性值   on    off
+        placeholder    文本框的提示信息
+        autofocus      自动聚焦。一个页面只能由一个。
+
+        pattern    后面的属性值是一个正则表达式。  
+                        //手机号验证pattern="^1[3|5|8|7]\d{9}$"
+
+        novalidate     取消验证
+        multiple     选择（上传）多个文件
+
+        list     必须结合datalist标签，绑定datalist  id名称。
+-->
+<!--
+    H5增加的表单标签
+
+        <datalist></datalist>
+            给绑定id的list属性的元素，做提示信息的。
+
+
+        <output></output>
+            计算结果的输出，脚本的输出
+-->

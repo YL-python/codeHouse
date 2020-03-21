@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* 重置样式 */
+*{
+    margin:0;
+    padding:0;
+}
+*{
+    /* 让所有的元素触发怪异盒模型 */
+    box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6{
+    font-size:16px;
+    font-weight:normal; /*清除加粗*/
+}
+ul,ol,li{
+    list-style:none; /*去掉列表符号*/
+}
+b,strong{
+    font-weight:normal; /*清除加粗*/
+}
+em,i{
+    font-style: normal; /*倾斜清除*/
+}
+a,u{
+    text-decoration: none; /*去掉下划线*/
+}
+img{
+    border:0;
+    display:block;
+    /*清除图片下面的大于3px的间距*/
+}
+input{
+    outline:none;
+    display:block;
+}

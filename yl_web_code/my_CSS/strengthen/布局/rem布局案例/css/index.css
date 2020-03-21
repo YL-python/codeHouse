@@ -1,0 +1,165 @@
+@charset "utf-8";
+html,body{
+    height:100%;
+}
+html{
+    font-size:31.25vw;
+    /* 31.25vw == 100px   目的：为了给rem提供一个比例 */
+    /* 320的设备里面 1rem == 100px */
+}
+
+/* header */
+header{
+    width:100%;
+    height:0.44rem;
+    background:#0dc441;
+    /*
+        从设计图上量出header的高 88px
+        设计图为640px
+        设备像素比 dpr     2      ==    物理像素 / 逻辑像素
+        88px / 2 == 44px
+        因为要适配：
+            44px 转成 rem
+            44px == ?rem
+
+        因为html{font-size:31.25vw}
+        31.25vw == 100px
+            1rem == 100px
+            ?rem == 44px
+            0.44rem == 44px 
+    */
+    /* 利用定位把header放在最上方 */
+    position: absolute;
+    top:0;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+header span{
+    width:.605rem;
+    height:.24rem;
+    background:#64d985;
+    font-size: 12px;
+    line-height:.24rem;
+    text-align: center;
+    color:#fff;
+}
+header span:nth-child(1){
+    border-radius: .12rem 0 0 .12rem;
+}
+header span:nth-child(2){
+    background:#3dd067;
+    color:#a3e9b7;
+    border-radius: 0 .12rem .12rem 0;
+}
+/* nav */
+nav{
+    width:100%;
+    height:.355rem;
+    /* 利用定位把nav放在最上方 */
+    position: absolute;
+    top:.44rem;
+    /* 底部边框 */
+    border-bottom:.5px solid #d9d9d9;
+    /* 让nav形成弹性盒子 */
+    display:flex;
+}
+nav li{
+    font-size:14px;
+    color:#666;
+    height:.355rem;
+    flex:1;
+    text-align: center;
+    line-height:.355rem;
+}
+nav .active{
+    color:#0dc441;
+    border-bottom:3px solid #0dc441;
+}
+
+/* main */
+main{
+    width:100%;
+    height:100%;
+    /* 利用padding  把 show-wrap 挤到中间 */
+    padding:.795rem 0 .44rem;
+}
+/* show-wrap */
+.show-wrap{
+    width:100%;
+    height:100%;
+    /* 滚动条 */
+    overflow-y:auto;
+}
+
+.show-con figure{
+    /* width:1.575rem; */
+    width:49.2%;
+    border:.5px solid #e5e5e5;
+    margin-bottom:0.05rem;
+}
+.show-con figure img{
+    width:100%;
+}
+.show-con figcaption{
+    height:.295rem;
+    border-top:.5px solid #e5e5e5;
+    font-size:12px;
+    color:#333;
+    line-height:.295rem;
+    padding-left:.11rem;
+}
+
+.show-con{
+    display:flex;
+    /* 弹性盒子控制 figrue布局 */
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+
+
+
+/* footer */
+footer{
+    width:100%;
+    height:.44rem;
+    /* 利用定位 放在页面最下面 */
+    position: absolute;
+    bottom:0;
+    /* padding */
+    padding:0 .15rem;
+    display:flex;
+    justify-content: space-between;
+}
+footer a{
+    font-size:12px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:#e7eaf0;
+}
+footer a .iconfont{
+    font-size:20px;
+}
+footer a:nth-child(3){
+    width:.525rem;
+    height:.44rem;
+    position: relative
+}
+footer a:nth-child(3) img{
+    width:100%;
+    position: absolute;
+    bottom:0;
+}
+
+
+
+/* 媒体查询 微调样式 */
+@media all and (min-width:321px) and (max-width:375px){
+    header span{
+        font-size:14px;
+    }
+}

@@ -1,0 +1,86 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "741948",
+      "name": "退出 (4)",
+      "font_class": "tuichu4",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "1314475",
+      "name": "我的",
+      "font_class": "daohanglan-05",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "1348254",
+      "name": "退出",
+      "font_class": "tuichu",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "1516910",
+      "name": "退出 #8f8f8f & 14px",
+      "font_class": "tuichufffpx",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    },
+    {
+      "icon_id": "4409280",
+      "name": "发现",
+      "font_class": "ziyuan",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "5147498",
+      "name": "退出",
+      "font_class": "app_icons--",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "8798020",
+      "name": "我的",
+      "font_class": "wode",
+      "unicode": "e7d3",
+      "unicode_decimal": 59347
+    },
+    {
+      "icon_id": "8835447",
+      "name": "首页",
+      "font_class": "shouye-xianxing",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
+      "icon_id": "9874523",
+      "name": "KHCFDC_首页",
+      "font_class": "shouye",
+      "unicode": "e6da",
+      "unicode_decimal": 59098
+    },
+    {
+      "icon_id": "11271596",
+      "name": "发现 查询_壹米滴答",
+      "font_class": "faxianchaxun",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "13160281",
+      "name": "我的",
+      "font_class": "wode1",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    }
+  ]
+}

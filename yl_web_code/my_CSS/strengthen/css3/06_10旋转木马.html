@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body,html{
+            height:100%;
+        }
+        body{
+            background:url(./img/bg2.jpg) no-repeat;
+            background-size:100% 100%;
+            /* 添加景深：近大远小 */
+            perspective:2000px;
+        }
+        .box{
+            width:280px;
+            height:400px;
+            background:url(./img/a.gif) no-repeat center;
+            position: fixed;
+            left:0;top:0;
+            right:0;bottom:0;
+            margin:auto;
+            /* 形成3D空间 */
+            transform-style: preserve-3d;
+            /* 调用关键帧 */
+            animation: imgRotate 20S linear infinite;
+        }
+        .box .imgBox{
+            width:280px;
+            height:400px;
+            position:absolute;
+            /* 把所有的图片盒子的变形原点 放在父元素上面 */
+            transform-origin:center center -600px; /*把Z轴的变形原点放在父元素上面*/
+        }
+        .box img{
+            display:block;
+            width:100%;
+            height:100%; 
+        }
+
+        /* 放置每一张图片的位置 */
+        .imgBox1{
+            transform:translateZ(600px);
+        }
+        .imgBox2{
+            transform:translateZ(600px) rotateY(36deg);
+        }
+        .imgBox3{
+            transform:translateZ(600px) rotateY(72deg);
+        }
+        .imgBox4{
+            transform:translateZ(600px) rotateY(108deg);
+        }
+        .imgBox5{
+            transform:translateZ(600px) rotateY(144deg);
+        }
+        .imgBox6{
+            transform:translateZ(600px) rotateY(180deg);
+        }
+        .imgBox7{
+            transform:translateZ(600px) rotateY(216deg);
+        }
+        .imgBox8{
+            transform:translateZ(600px) rotateY(252deg);
+        }
+        .imgBox9{
+            transform:translateZ(600px) rotateY(288deg);
+        }
+        .imgBox10{
+            transform:translateZ(600px) rotateY(324deg);
+        }
+
+        /* 设置关键帧 */
+        @keyframes imgRotate{
+            0%{
+                transform:rotateX(0deg) rotateY(0deg);
+            }
+            25%{
+                transform:rotateX(10deg) rotateY(90deg);
+            }
+            50%{
+                transform:rotateX(0deg) rotateY(180deg);
+            }
+            75%{
+                transform:rotateX(-10deg) rotateY(270deg);
+            }
+            100%{
+                transform:rotateX(0deg) rotateY(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="imgBox imgBox1">
+            <img src="./img/pic1.jpg" alt="">
+        </div>
+        <div class="imgBox imgBox2">
+            <img src="./img/pic2.png" alt="">
+        </div>
+        <div class="imgBox imgBox3">
+            <img src="./img/pic3.png" alt="">
+        </div>
+        <div class="imgBox imgBox4">
+            <img src="./img/pic4.png" alt="">
+        </div>
+        <div class="imgBox imgBox5">
+            <img src="./img/pic5.jpg" alt="">
+        </div>
+        <div class="imgBox imgBox6">
+            <img src="./img/pic6.png" alt="">
+        </div>
+        <div class="imgBox imgBox7">
+            <img src="./img/pic7.png" alt="">
+        </div>
+        <div class="imgBox imgBox8">
+            <img src="./img/pic8.png" alt="">
+        </div>
+        <div class="imgBox imgBox9">
+            <img src="./img/pic9.png" alt="">
+        </div>
+        <div class="imgBox imgBox10">
+            <img src="./img/pic10.png" alt="">
+        </div>
+    </div>
+</body>
+</html>

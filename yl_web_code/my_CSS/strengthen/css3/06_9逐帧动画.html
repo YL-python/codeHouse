@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        .box{
+            width:600px;
+            height:400px;
+            background:orange;
+            margin:10px auto;
+            position:relative;
+        }
+        h2{
+            width:100px;
+            height:100px;
+            background:blue;
+            position:absolute;
+            animation:h2Move 5s step-start;
+            
+        }
+        @keyframes h2Move{
+            0%{
+                left:0;top:0;
+            }
+            25%{
+                left:500px;top:0;
+            }
+            50%{
+                left:500px;top:300px;
+            }
+            75%{
+                left:0;top:300px;
+            }
+            100%{
+                left:0;top:0;
+            }
+        }
+
+
+        h3{
+            width:180px;
+            height:300px;
+            background:pink url(./img/bg.png) no-repeat;
+            margin:50px auto;
+            /* 调用关键帧 */
+            animation:bgMove .5s step-start infinite;
+        }
+        @keyframes bgMove{
+            0%{
+                background-position:0 0;
+            }
+            14%{
+                background-position:-180px 0;
+            }
+            28%{
+                background-position:-360px 0;
+            }
+            42%{
+                background-position:-540px 0;
+            }
+            56%{
+                background-position:-720px 0;
+            }
+            70%{
+                background-position:-900px 0;
+            }
+            84%{
+                background-position:-1080px 0
+            }
+            100%{
+                background-position:0 0;
+            }
+        }
+    </style>
+<body>
+    <!-- <div class="box">
+        <h2></h2>
+    </div> -->
+
+    <h3></h3>
+</body>
+</html>
+<!--
+    animation-timing-function:
+        动画的类型：
+            linear
+            ease
+            ease-in
+            step-start  //没有动画中间的过渡效果。每次直接跳到下一帧开始的地方
+            ......
+-->

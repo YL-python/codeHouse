@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background:gray;
+        }
+
+        /* 
+            媒体查询： 
+        */
+        /* @media not all and (min-width:1000px) and (max-width:1200px){
+            body{
+                background:red;
+            }
+        } */
+        /* not:  不在当前这个范围的时候。执行里面的样式 */
+
+
+
+
+        @media all and (orientation:portrait){
+            body{
+                /* 竖屏红色 */
+                background:red;
+            }
+        }
+        @media all and (orientation: landscape){
+            body{
+                /* 横屏蓝色 */
+                background:blue;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        需求： 
+            默认颜色为 灰色
+            当窗口的宽 1200 - 1000  背景为红色
+                      750 - 999 背景为蓝色
+                      320 - 749 背景为绿色
+    -->
+</body>
+</html>
+
+<!--
+    媒体查询：
+        监测设备的特性，根据所指定的条件，设置不同的css样式。
+        （例如：监测浏览器窗口的宽度，如果小于320px  body背景为红色）
+
+
+        媒体查询一般监测：视口的宽度、浏览器窗口的宽、屏幕的比例、横屏、竖屏......
+
+
+    媒体查询的组成：
+        @media 设备类型[all\screen] and (条件表达式) and (条件表达式){
+            css样式
+        }
+
+        注：and关键字两侧必须有空格，条件表达式不需要分号结束
+
+
+
+
+    设备范围
+	默认样式    注意：默认样式要写在最前面
+        /* 打印样式 */
+            @media print {}
+        /* 手机等小屏幕手持设备 */
+            @media screen and (min-width: 320px) and (max-width: 480px) {}
+        /* 平板之类的宽度 1024 以下设备 */
+            @media only screen and (min-width: 321px) and (max-width: 1024px) {}
+        /* PC客户端或大屏幕设备: 1028px 至更大 */
+            @media only screen and (min-width: 1029px) {}
+        /* 竖屏 */
+            @media screen and (orientation:portrait) {对应样式}
+        /* 横屏 */
+            @media screen and (orientation:landscape){对应样式}
+-->
+
+
+
+<!--
+    媒体查询注意的点：
+        媒体查询做样式微调。
+
+        常见的样式的调整：
+            font-size:
+            float:
+            display:
+            width:
+            height:
+-->

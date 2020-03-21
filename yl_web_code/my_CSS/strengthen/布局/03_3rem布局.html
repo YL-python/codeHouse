@@ -1,22 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-    *{ margin:0; padding:0;}
-    #box{ width:1rem; height:1rem; background:red;}
+        /* rem原理
+        设计图为640   html{font-size:31.25vw}
+        设计图为750   html{font-size:26.67vw} */
+        /*
+            vw  视口宽度，0~100
+            100vw  和 width：100% 区别
+                PC端界面有滚动条的时候，wv是不算滚动条的宽度，宽度取决于视口
+                width 是算上滚动条的宽度，宽度取决于父元素
+            rem是根据html跟标签的字体大小算值的，rem布局有两种方法
+                1：动态设置html根标签字体大小为100px
+                    淘宝网手机端用的是这种方法
+                2:知道手机端页面视口宽度计算 100px 像素是多少的 vw值
+                    手机端宽度375px  1vw就是3.75px   26.67vw就是100px
+                    手机端宽度320px  1vw就是3.2px   31.25vw就是100px
+        */
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 1rem;
+            height: 1rem;
+            background: red;
+        }
     </style>
     <script>
-    
-    var html = document.getElementsByTagName('html')[0];
-    var number = document.documentElement.clientWidth / 3.75;
-    html.style.fontSize = number + 'px';
-
+        // 动态设置html根标签字体大小为100px
+        var html = document.getElementsByTagName('html')[0];
+        var number = document.documentElement.clientWidth / 3.75;
+        html.style.fontSize = number + 'px';
     </script>
 </head>
+
 <body>
     <div id="box"></div>
 </body>
+
 </html>

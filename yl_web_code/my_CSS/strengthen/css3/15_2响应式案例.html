@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            /* 触发怪异盒子 */
+            box-sizing: border-box;
+        }
+        img{
+            display: block;
+        }
+        section{
+            max-width: 1200px;
+            background:grey;
+            margin:0 auto;
+            /* 触发弹性盒子 */
+            display:flex;
+            /* 让div布局换行 */
+            flex-wrap:wrap;
+            /* 在主轴两端对齐 */
+            justify-content:space-between;
+        }
+        div{
+            border:2px solid pink;
+            /* div的宽度必须设置，div宽度section放不下的情况下，div才会换行 */
+            /* 1行是4个内容块 */
+            width:23%;
+            margin-bottom:15px;
+            
+        }
+        div img{
+            width:100%;
+        }
+
+
+        /* div的宽  决定了 一行能放几个    90% 只能放一个*/
+        /* 用媒体查询改变div的宽度 */
+        @media all and (min-width:1000px) and (max-width:1200px){
+            div{
+                width:23%;
+            }
+        }
+        @media all and (min-width:750px) and (max-width:999px){
+            div{
+                width:30%;
+            }
+        }
+        @media all and (max-width:749px){
+            div{
+                width:45%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <section>
+        <div>
+            <img src="./img/4.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/4.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/4.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/4.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/4.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/4.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/4.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/4.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/4.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/4.jpg" alt="">
+        </div>
+        <div>
+            <img src="./img/4.jpg" alt="">
+        </div>
+    </section>
+</body>
+</html>
+<!--
+    媒体查询做样式微调！！
+-->

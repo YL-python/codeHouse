@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        a{
+            display:block;
+            width:100px;
+            height:50px;
+            background:red;
+            margin:10px auto;
+        }
+        div{
+            width:200px;
+            height:100px;
+            margin:10px auto;
+            text-align: center;
+            font-size:60px;
+            font-weight: 900;
+        }
+
+
+        div:target{
+            /* 当div被锚点连接指向：css背景发生变化 */
+            background:orange;
+        }
+    </style>
+</head>
+<body>
+    <a href="#box1">连接div1</a>
+    <a href="#box2">连接div2</a>
+    <a href="#box3">连接div3</a>
+
+    <div id="box1">1</div>
+    <div id="box2">2</div>
+    <div id="box3">3</div>
+    <!--
+        需求：
+            当点击a  对应的div发生背景的改变。
+    -->
+</body>
+</html>
+<!--
+    目标伪类选择器：
+        :当元素被相关连接（锚点）指向的时候，放生css样式的改变！
+
+        选择符:target{
+
+        }
+-->
