@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>v-for遍历数组</title>
+		<script src="js/vuejs-2.5.16.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<ul>
+				<li v-for="(item,index) in list">{{item+" "+index}}</li>
+			</ul>
+		</div>
+	</body>
+	<script>
+		//view model
+		new Vue({
+			el:'#app', //表示当前vue对象接管了div区域
+			data:{
+				list:["a",1,"tom",520]
+			}
+		});
+	</script>
+</html>

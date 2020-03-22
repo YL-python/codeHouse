@@ -15,7 +15,7 @@ public class JedisTest {
     @Test
     public void test1(){
         // 获取连接
-        Jedis jedis = new Jedis("localhost", 6379);  // ip地址和端口
+        Jedis jedis = new Jedis("120.26.39.212", 6379,10000);  // ip地址和端口
         // 操作
         jedis.set("username","zhansan");
         // 关闭连接
@@ -25,7 +25,7 @@ public class JedisTest {
     @Test
     public void testString(){
         // 1. 获取连接
-        Jedis jedis = new Jedis();  // 空参构造默认是  "localhost", 6379
+        Jedis jedis = new Jedis("120.26.39.212", 6379,10000);  // ip地址和端口
         // 2. 操作
         //存储
         jedis.set("username","zhangsan");

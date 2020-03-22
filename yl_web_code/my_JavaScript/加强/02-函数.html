@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数</title>
+</head>
+<body>
+    <script>
+    /*
+        咋定义函数啥的就不写了  主要是有一个函数默认参数
+
+    */
+        function myfun(){
+            alert(arguments.length)
+            for(var i=0;i<arguments.length;i++){
+                document.write(arguments[i]+',')
+            }
+        }
+        myfun(111,11)
+    /*
+        内置函数
+        （1）eval()函数
+        （2）isFinite()函数
+        （3）isNaN()函数
+        （4）parseInt()函数
+        （5）parseFloat()函数
+        （6）escape()函数：编码函数
+        （7）unescape()函数：解码函数
+    */
+    </script>
+</body>
+</html>

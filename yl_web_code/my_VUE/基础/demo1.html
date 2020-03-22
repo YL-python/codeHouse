@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>快速入门</title>
+    <script src="js/vuejs-2.5.16.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- vue的插值表达式 两个{{}} 用于吧data中定义的数据进行显示 -->
+    {{message}}
+    <br>
+    <!-- 三元运算符 -->
+    {{true ? "ok" : "no"}}
+    <br>
+    <!-- 数学运算 -->
+    {{number * 3.14}}
+    <br>
+
+</div>
+</body>
+<script>
+    //view model
+    // 创建vue对象
+    new Vue({
+        el: "#app", // vue 接管id为app的区域
+        data: {
+            message: "hello Vue!", // 没有分号，json格式
+            number: 100
+        }
+    });
+</script>
+</html>

@@ -76,10 +76,11 @@ nbdist/
 ### python
 .idea
 test.py
-test
+test/
 
 ### web
 *.psd
+看板娘/
 
 ### notes
 
