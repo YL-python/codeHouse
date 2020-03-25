@@ -1,0 +1,20 @@
+{
+  "name": "hehe",
+  "version": "1.0.0",
+  "description": "我好帅",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "帅"
+  ],
+  "author": "YL",
+  "license": "ISC",
+  "devDependencies": {
+    "jquery": "^3.4.1"
+  },
+  "dependencies": {
+    "nodemailer": "^6.4.6"
+  }
+}
