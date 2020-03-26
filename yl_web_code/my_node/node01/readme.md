@@ -33,7 +33,7 @@ npm
    npm uninstall  包名
 
    查看镜像源
-   $ npm config get  registry  http://registry.npmjs.org/
+   $ npm config get registry  http://registry.npmjs.org/
    $ npm config set registry  淘宝镜像的连接地址 https://registry.npm.taobao.org
   ```
 

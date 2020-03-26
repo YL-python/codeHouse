@@ -81,6 +81,7 @@ test/
 ### web
 *.psd
 看板娘/
+node_modules/
 
 ### notes
 
