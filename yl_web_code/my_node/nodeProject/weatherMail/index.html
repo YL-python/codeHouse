@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <table width="400" border="1" style="width: 400px; background-color: #fff;" align="center" cellspacing="0"
+        cellpadding="0">
+        <tr style="height: 50px;">
+            <td align="center" colspan="3">来自node服务器的每日定时天气信息</td>
+            <td align="center" colspan="1">江西-九江-彭泽</td>
+        </tr>
+        <tr>
+            <td align="center"><span style="color: #384c78;">今天</span> <br> <span style="color: #8a9baf;">03月12日</span>
+            </td>
+            <td align="center">
+                小雨 转 小雨 <br> 8° ~ 8°
+            </td>
+            <td align="center">
+                <img src="http://mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/day/07.png" alt="">
+            </td>
+            <td align="center">
+                <img src="http://mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/day/07.png" alt="">
+            </td>
+
+        </tr>
+        <tr>
+            <td align="center"><span style="color: #384c78;">今天</span> <br> <span style="color: #8a9baf;">03月12日</span>
+            </td>
+            <td align="center">
+                小雨 转 小雨 <br> 8° ~ 8°
+            </td>
+            <td align="center">
+                <img src="http://mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/day/07.png" alt="">
+            </td>
+            <td align="center">
+                <img src="http://mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/day/07.png" alt="">
+            </td>
+
+        </tr>
+        <tr>
+            <td align="center"><span style="color: #384c78;">今天</span> <br> <span style="color: #8a9baf;">03月12日</span>
+            </td>
+            <td align="center">
+                小雨 转 小雨 <br> 8° ~ 8°
+            </td>
+            <td align="center">
+                <img src="http://mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/day/07.png" alt="">
+            </td>
+            <td align="center">
+                <img src="http://mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/day/07.png" alt="">
+            </td>
+
+        </tr>
+        <tr>
+            <td align="center" colspan="5">有疑问联系QQ：2336739721</td>
+        </tr>
+    </table>
+
+    <table width="400" border="1" style="width: 400px; background-color: #fff;" align="center" cellspacing="0"
+        cellpadding="0">
+        <tr style="height: 50px;">
+            <td align="center" colspan="3">来自node服务器的每日定时天气信息</td>
+            <td align="center" colspan="1">${userAddress.province}-${userAddress.city}-${userAddress.county}</td>
+        </tr>
+        <tr>
+            <td align="center"><span style="color: #384c78;">今天</span> <br> <span style="color: #8a9baf;">${firstDay.time}</span>
+            </td>
+            <td align="center">
+                ${firstDay.day_weather} 转 ${firstDay.night_weather} <br> ${firstDay.max_degree}° ~ ${firstDay.min_degree}°
+            </td>
+            <td align="center">
+                <img src="http://mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/day/${firstDay.day_weather_code}.png" alt="">
+            </td>
+            <td align="center">
+                <img src="http://mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/night/${firstDay.night_weather_code}.png" alt="">
+            </td>
+        </tr>
+        <tr>
+            <td align="center"><span style="color: #384c78;">明天</span> <br> <span style="color: #8a9baf;">${secondDay.time}</span>
+            </td>
+            <td align="center">
+                ${secondDay.day_weather} 转 ${secondDay.night_weather} <br> ${secondDay.max_degree}° ~ ${secondDay.min_degree}°
+            </td>
+            <td align="center">
+                <img src="http://mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/day/${secondDay.day_weather_code}.png" alt="">
+            </td>
+            <td align="center">
+                <img src="http://mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/night/${secondDay.night_weather_code}.png" alt="">
+            </td>
+        </tr>
+        <tr>
+            <td align="center"><span style="color: #384c78;">后台</span> <br> <span style="color: #8a9baf;">${thirdDay.time}</span>
+            </td>
+            <td align="center">
+                ${thirdDay.day_weather} 转 ${thirdDay.night_weather} <br> ${thirdDay.max_degree}° ~ ${thirdDay.min_degree}°
+            </td>
+            <td align="center">
+                <img src="http://mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/day/${thirdDay.day_weather_code}.png" alt="">
+            </td>
+            <td align="center">
+                <img src="http://mat1.gtimg.com/pingjs/ext2020/weather/pc/icon/weather/night/${thirdDay.night_weather_code}.png" alt="">
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="5">发生错误可以联系QQ：2336739721</td>
+        </tr>
+    </table>
+</body>
+
+</html>
