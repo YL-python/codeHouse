@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let和const</title>
+</head>
+
+<body>
+    <script>
+        // var 定义变量有 变量提升 和 全局变量 的概念
+        for (var i = 0; i < 5; i++) {
+            console.log(i);
+        }
+        console.log("循环外：", i);
+    </script>
+
+    <script>
+        // let 定义局部变量  没有 变量提升  暂时性死区 被绑定在块级作用域
+        for (let j = 0; j < 5; j++) {
+            console.log(j);
+        }
+        // console.log("循环外：", j);
+    </script>
+
+    <script> 
+        // const 定义的是常量 （地址不会改变）    也是块级作用域  要赋初始值
+        // 基本数据类型赋值之后不可修改，复杂数据类型可以修改内部的值
+        const num = 1;
+        console.log(num++);
+    </script>
+</body>
+
+</html>

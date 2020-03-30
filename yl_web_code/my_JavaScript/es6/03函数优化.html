@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数优化</title>
+</head>
+
+<body>
+    <script>
+        function add1(x, y) {
+            return x + y;
+        }
+
+        // 匿名函数  箭头函数  一般吧箭头函数赋值个变量，变量就是函数名  
+        // 函数体只有一句话 且是return语句的时候括号和return可以省略可以省略
+        // 参数只有一个的时候小括号可以省略
+        // 箭头函数中没有this关键字，箭头函数中的this是箭头函数定义的时候的this
+        const add2 = (x, y) => {
+            x + y
+        }
+
+        const log1 = x => x;
+
+        const p = {
+            name:"jack",
+            age : 18,
+            sayHello: function () {
+                console.log("heool");
+            }
+        }
+        p.sayHello();
+
+        // es6优化写法
+        const p1 = {
+            name:"jack",
+            age : 18,
+            sayHello() {
+                console.log("heool");
+            }
+        }
+        p1.sayHello();
+
+        const hello = function(person){
+            console.log(person.name,person.age);
+        }
+        hello(p1);
+
+        // es6
+        const hello = ({name,age}) => console.log(name,age);
+        hello(p1);
+    </script>
+</body>
+
+</html>

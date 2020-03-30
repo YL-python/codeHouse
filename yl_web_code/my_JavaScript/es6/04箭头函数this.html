@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var age = 100;
+        var obj = {
+            age = 10,
+            say:()=>{
+                alert(this.age)
+            }
+        }
+        // 对象不能产生作用域
+        obj.say();
+    </script>
+</body>
+</html>

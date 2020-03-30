@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="1"></div>
+    <div id="2"></div>
+    <div id="3"></div>
+    <div id="4"></div>
+    <script>
+        const sun = (...args) => {
+            let sum = 0;
+            // 箭头函数缩写，参数和语句体 都只有一句就省略了
+            args.forEach(item => sum += item)
+            return sum;
+        }
+        sum(1, 1, 1);
+        sum(2, 2, 2, 2);
+
+        // 拆分数组
+        arr1 = [1, 2, 3];
+        console.log(...arr1);
+
+        // 合并数组
+        arr2 = [1, 2, 3];
+        arr3 = [1, 2, 3];
+        arr4 = [...arr2, ...arr3]
+        console.log(arr4);
+
+        arr5 = [1, 2, 3];
+        arr6 = [1, 2, 3];
+        arr6.push(...arr5)
+        console.log(arr6);
+
+        // 伪数组转真数组
+        let divs = document.getElementsByTagName("div");
+        console.log(divs);
+        let arr7 = [...divs];
+        console.log(arr7);
+        
+    </script>
+</body>
+
+</html>

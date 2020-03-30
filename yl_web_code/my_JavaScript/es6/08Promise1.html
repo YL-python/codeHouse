@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <script>
+        // 异步，操作之间没有关系，同时执行多个操作， 代码复杂
+        // 同步，同时只能做一件事，代码简单
+
+        let p1 = new Promise(function (resolve, reject) {
+            $.ajax({
+                url: 'data/arr.text',
+                dataType: 'json',
+                success(arr) {
+                    resolve(arr);
+                },
+                error(err) {
+                    reject(err);
+                }
+            })
+        })
+
+        p1.then(function (arr) {
+            alert("成功了");
+            console.log(arr);
+        }, function (err) {
+            alert("失败了");
+            console.log(err);
+        })
+    </script>
+</body>
+
+</html>

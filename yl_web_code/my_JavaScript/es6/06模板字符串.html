@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let a = `这是一个模板字符串`;
+
+        // 解析变量
+        let name = "zhangsan";
+        let sayHello = `hello ${name}`;
+        console.log(sayHello);
+
+        // 换行
+        let p = {
+            name: "zhangsan",
+            age: 18,
+            sex: "nan"
+        }
+        let html = `<div>
+        <span>${p.name}</span>
+        <span>${p.age}</span>
+        <span>${p.sex}</span>
+        </div>`;
+        console.log(html);
+
+        // 调用函数
+        const fn = () => {
+			return '我是fn函数'
+		}
+
+		let html2 = `我是模板字符串 ${fn()}`;
+		console.log(html2)
+    </script>
+</body>
+
+</html>

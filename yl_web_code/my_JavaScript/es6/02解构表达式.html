@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 解构数组  数组有索引，值在数组中的位置能确定值
+        let arr = [2, 5, 0, -1];
+        // 相同结构的会对比解构
+        let [x, y] = arr; // 取前两个元素
+        console.log(x, y);
+        let [, , m, n] = arr;
+        console.log(m, n); // 取后两个元素
+
+        // 剩余参数和解构
+        let [, ...zzz] = arr; // 第一个元素不要，只要后面的
+        console.log(zzz);
+
+        // 解构对象  对象的键要一致才行
+        let p1 = { name: "zhangsan", age: 12 };
+        let { name, age } = p1;
+        console.log(name, age);
+
+        let p2 = { name: "zhangsan", age: 12 };
+        let { name:n } = p2;  // 取name值给 n
+        console.log(n);
+
+        let p3 = { name: "zhangsan", age: 12,girl:{name:"rose",age:1} };
+        let {girl:{name}} = p3;
+        console.log(name);  // 多重解构
+
+        let p4 = { name: "zhangsan", age: 12,girl:{name:"rose",age:1} };
+        let {...obj} = p4;
+        console.log(obj);  // 深拷贝
+    </script>
+</body>
+
+</html>
