@@ -12,6 +12,20 @@ const fs = require('fs')
 // 被允许的文件类型
 const types = ['jpg','png','gif','jpeg'];
 
+/**
+ * @api {post} /admin/upload/img   上传图片
+ * @apiName img
+ * @apiGroup Upload
+ *
+ * @apiParam {File} file 图片.
+ *
+ * @apiSuccess {String} err 状态码.
+ * @apiSuccess {String} msg  信息提示.
+ * @apiSuccess {String} path  图片存储在服务器的路径.
+ * 
+ * @apiError {String} err 状态码.
+ * @apiError {String} msg  信息提示.
+ */
 router.post('/img', upload.single('file'), (req, res) => {
     // console.log(req.file);
     let {buffer, mimetype, size} = req.file;

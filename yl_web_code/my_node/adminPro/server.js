@@ -14,11 +14,16 @@ require('./db/connect')
     路由
         1.文件路由
         2.食品路由
+        3.用户路由
 */
 const fileRouter = require('./router/uploadRouter')
 app.use('/admin/upload', fileRouter)
+
 const foodRouter = require('./router/foodRouter')
 app.use('/admin/food', foodRouter)
+
+const userRouter = require('./router/userRouter')
+app.use('/admin/user', userRouter)
 
 app.use('/public',express.static(path.join(__dirname,'./public')))
 

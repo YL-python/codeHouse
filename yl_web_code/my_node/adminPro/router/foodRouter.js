@@ -51,7 +51,18 @@ router.post('/add',(req, res) => {
     // 返回数据
 })
 
-// 查询所有
+/**
+ * @api {post} /admin/food/findAll   查询所有
+ * @apiName findAll
+ * @apiGroup Food
+ *
+ * @apiSuccess {String} err 状态码.
+ * @apiSuccess {String} msg  信息提示.
+ * @apiSuccess {Array} list  所有菜品信息数组
+ *
+ * @apiError {String} err 状态码.
+ * @apiError {String} msg  信息提示.
+ */
 router.post('/findAll',(req, res) => {
     findAllFood()
         .then((allFood)=>{
@@ -62,7 +73,19 @@ router.post('/findAll',(req, res) => {
         })
 })
 
-// 根据ID 删除一个
+/**
+ * @api {post} /admin/food/delOne   根据id删除菜品
+ * @apiName delOne
+ * @apiGroup Food
+ * 
+ * @apiParam {String} _id 菜品id.
+ * 
+ * @apiSuccess {String} err 状态码.
+ * @apiSuccess {String} msg  信息提示.
+ *
+ * @apiError {String} err 状态码.
+ * @apiError {String} msg  信息提示.
+ */
 router.post('/delOne',(req, res) => {
     let { _id } = req.body
     delFoodById(_id)
@@ -74,7 +97,24 @@ router.post('/delOne',(req, res) => {
         })
 })
 
-// 修改菜品
+/**
+ * @api {post} /admin/food/update   更新菜品
+ * @apiName update
+ * @apiGroup Food
+ * 
+ * @apiParam {String} _id 菜品id.
+ * @apiParam {String} name 菜品name.
+ * @apiParam {String} price 菜品price.
+ * @apiParam {String} img 菜品img.
+ * @apiParam {String} desc 菜品desc.
+ * @apiParam {String} foodType 菜品foodType.
+ * 
+ * @apiSuccess {String} err 状态码.
+ * @apiSuccess {String} msg  信息提示.
+ *
+ * @apiError {String} err 状态码.
+ * @apiError {String} msg  信息提示.
+ */
 router.post('/update',(req, res) => {
     let {_id,name,price,img,desc,foodType} = req.body 
     updateFood(
@@ -88,7 +128,23 @@ router.post('/update',(req, res) => {
         })
 })
 
-// 分页查询
+/**
+ * @api {post} /admin/food/page   分页查询
+ * @apiName page
+ * @apiGroup Food
+ * 
+ * @apiParam {Number} page 第几页.
+ * @apiParam {Number} pageSize 每一页多少条数据.
+ * 
+ * @apiSuccess {Number} err 状态码.
+ * @apiSuccess {String} msg  信息提示.
+ * @apiSuccess {Array} list  当前页的信息.
+ * @apiSuccess {Number} maxPage  最多的页数.
+ * @apiSuccess {Number} total  总共有多少条数据.
+ *
+ * @apiError {Number} err 状态码.
+ * @apiError {String} msg  信息提示.
+ */
 router.post('/page',(req, res) => {
     let page = req.body.page || 1;
     let pageSize = req.body.pageSize || 3;
@@ -106,7 +162,20 @@ router.post('/page',(req, res) => {
         })
 })
 
-// 分类查询
+/**
+ * @api {post} /admin/food/findByType   分类查询
+ * @apiName findByType
+ * @apiGroup Food
+ * 
+ * @apiParam {String} findByType 菜品的种类.
+ * 
+ * @apiSuccess {Number} err 状态码.
+ * @apiSuccess {String} msg  信息提示.
+ * @apiSuccess {Array} list  查询到的数据.
+ *
+ * @apiError {Number} err 状态码.
+ * @apiError {String} msg  信息提示.
+ */
 router.post('/findByType',(req, res) => {
     let {foodType} = req.body;
     findFoodByType(foodType)
@@ -118,7 +187,20 @@ router.post('/findByType',(req, res) => {
         });
 })
 
-// 模糊查询
+/**
+ * @api {post} /admin/food/findByKw   模糊查询
+ * @apiName findByKw
+ * @apiGroup Food
+ * 
+ * @apiParam {String} kw 模糊查询的字段.
+ * 
+ * @apiSuccess {Number} err 状态码.
+ * @apiSuccess {String} msg  信息提示.
+ * @apiSuccess {Array} list  查询到的数据.
+ *
+ * @apiError {Number} err 状态码.
+ * @apiError {String} msg  信息提示.
+ */
 router.post('/findByKw',(req, res) => {
     let kw = req.body.kw || '';
     findFoodByKw(kw)
