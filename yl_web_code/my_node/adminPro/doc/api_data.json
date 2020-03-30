@@ -212,8 +212,78 @@
   },
   {
     "type": "post",
+    "url": "/admin/food/findById",
+    "title": "根据ID查询",
+    "name": "findById",
+    "group": "Food",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "_id",
+            "description": "<p>菜品的 _id.</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>状态码.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息提示.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Array",
+            "optional": false,
+            "field": "list",
+            "description": "<p>所有菜品信息数组</p>"
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "err",
+            "description": "<p>状态码.</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>信息提示.</p>"
+          }
+        ]
+      }
+    },
+    "version": "0.0.0",
+    "filename": "router/foodRouter.js",
+    "groupTitle": "Food"
+  },
+  {
+    "type": "post",
     "url": "/admin/food/findByKw",
-    "title": "模糊查询",
+    "title": "模糊查询带分页功能",
     "name": "findByKw",
     "group": "Food",
     "parameter": {
@@ -224,6 +294,20 @@
             "type": "String",
             "optional": false,
             "field": "kw",
+            "description": "<p>模糊查询的字段.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "page",
+            "description": "<p>模糊查询的字段.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "pageSize",
             "description": "<p>模糊查询的字段.</p>"
           }
         ]
@@ -321,7 +405,21 @@
             "type": "Array",
             "optional": false,
             "field": "list",
-            "description": "<p>查询到的数据.</p>"
+            "description": "<p>当前页的信息.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "maxPage",
+            "description": "<p>最多的页数.</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "total",
+            "description": "<p>总共有多少条数据.</p>"
           }
         ]
       }

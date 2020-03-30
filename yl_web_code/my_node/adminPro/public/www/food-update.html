@@ -1,0 +1,160 @@
+<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="Bookmark" href="favicon.ico">
+	<link rel="Shortcut Icon" href="favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+	<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+	<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+	<title>新增菜品</title>
+	<style>
+		#img {
+			width: 300px;
+			height: 100px;
+		}
+	</style>
+</head>
+
+<body>
+	<food class="page-container">
+		<div class="form form-horizontal" id="form-food-add">
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>菜品名称：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="" placeholder="" id="name" name="">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>菜品价格：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="" placeholder="" id="price" name="">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>菜品描述：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<input type="text" class="input-text" value="" placeholder="" id="desc" name="">
+				</div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">菜品类型：</label>
+				<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+						<select name="" class="select" id="foodType">
+							<option>荤菜</option>
+							<option>素菜</option>
+							<option>酒水</option>
+							<option>汤</option>
+							<option>小菜</option>
+						</select>
+					</span> </div>
+			</div>
+			<div class="row cl">
+				<label class="form-label col-xs-4 col-sm-2">缩略图：</label>
+				<div class="formControls col-xs-8 col-sm-9">
+					<div class="uploader-thum-container">
+						<input type="file" id='file'>
+						<button onclick="upload()" class="btn btn-default btn-uploadstar radius ml-10">开始上传</button>
+					</div>
+					<img src="" alt="" id="img">
+				</div>
+
+			</div>
+			<div class="row cl">
+				<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+					<button onClick="submit();" class="btn btn-primary radius" type="submit"><i
+							class="Hui-iconfont">&#xe632;</i>提交</button>
+					<button onClick="removeIframe();" class="btn btn-default radius"
+						type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+				</div>
+			</div>
+		</div>
+	</food>
+
+	<!--_footer 作为公共模版分离出去-->
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+	<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+	<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.page.js"></script>
+	<!--/_footer /作为公共模版分离出去-->
+
+	<!--请在下方写此页面业务相关的脚本-->
+	<script type="text/javascript">
+		let img = '';
+		let updateId = window.localStorage.getItem('updateId');
+
+		init();
+
+		function init() {
+			if (updateId) {
+				let url = 'http://localhost:3000/admin/food/findById'
+				$.post(url, {
+					_id: updateId
+				}, (res) => {
+					if (res.err == 0) {
+						let data = res.data[0];
+						$("#name").val(data.name),
+							$("#price").val(data.price),
+							$("#desc").val(data.desc),
+							$("#foodType").val(data.foodType),
+							$('img').attr('src', data.img)
+						img = data.img
+					}
+				})
+			}
+		}
+
+		function submit() {
+			let obj = {
+				_id: updateId,
+				name: $("#name").val(),
+				price: $("#price").val(),
+				desc: $("#desc").val(),
+				foodType: $("#foodType").val(),
+				img
+			}
+			let url = 'http://localhost:3000/admin/food/update';
+			$.post(url, obj, (res) => {
+				if (res.err == 0) {
+					// 刷新父级页面 并且主动的关闭弹框
+					window.parent.location.reload();
+				}
+			})
+		}
+
+		function upload() {
+			let file = document.getElementById('file').files[0]
+			let data = new FormData()
+			data.append('file', file)
+			$.ajax({
+				method: 'post',
+				url: 'http://localhost:3000/admin/upload/img',
+				data: data,
+				contentType: false,
+				processData: false,
+				success(res) {
+					let {
+						err,
+						path
+					} = res
+					if (res.err == 0) {
+						$('img').attr('src', path)
+						img = path;
+					}
+				}
+			})
+		}
+	</script>
+	<!--/请在上方写此页面业务相关的脚本-->
+</body>
+
+</html>

@@ -15,6 +15,12 @@ let findAllFood = async ()=>{
     return result;
 }
 
+// 根据id查询
+let findById = async (_id)=>{
+    let result = await foodModel.find({_id});
+    return result;
+}
+
 // 根据ID删除
 let delFoodById = async (_id)=>{
     let result = await foodModel.deleteOne({_id:_id});
@@ -44,10 +50,10 @@ let findFoodByType = async (foodType)=>{
 }   
 
 // 模糊查询
-let findFoodByKw = async (kw)=>{
+let findFoodByKw = async (kw,page, pageSize)=>{
     // 通过正则表达式匹配
     let re = new RegExp(kw)
-    let result = await foodModel.find({
+    let foodList = await foodModel.find({
         $or:[
             {price:{$regex:re}},
             {name:{$regex:re}},
@@ -55,8 +61,10 @@ let findFoodByKw = async (kw)=>{
             {foodType:{$regex:re}},
             {desc:{$regex:re}}
         ]
-    })
-    return result;
+    }).skip(Number((page -1)*pageSize)).limit(Number(pageSize));
+    let totalFood = foodList.length;
+    let totalPage = Math.ceil(totalFood / pageSize);
+    return {foodList,totalFood,totalPage};
 }
 
 module.exports = {
@@ -66,5 +74,6 @@ module.exports = {
     updateFood,
     findFoodByPage,
     findFoodByType,
-    findFoodByKw
+    findFoodByKw,
+    findById
 }

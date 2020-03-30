@@ -16,7 +16,8 @@ const {
     updateFood,
     findFoodByPage,
     findFoodByType,
-    findFoodByKw
+    findFoodByKw,
+    findById
 } = require('../controls/foodControls')
 
 /**
@@ -55,7 +56,7 @@ router.post('/add',(req, res) => {
  * @api {post} /admin/food/findAll   查询所有
  * @apiName findAll
  * @apiGroup Food
- *
+ * 
  * @apiSuccess {String} err 状态码.
  * @apiSuccess {String} msg  信息提示.
  * @apiSuccess {Array} list  所有菜品信息数组
@@ -70,6 +71,30 @@ router.post('/findAll',(req, res) => {
         }).catch((err)=>{
             console.log(err);
             res.send({err:-1,msg:'查询全部失败请重试'});
+        })
+})
+
+/**
+ * @api {post} /admin/food/findById   根据ID查询
+ * @apiName findById
+ * @apiGroup Food
+ *
+ * @apiParam {String} _id 菜品的 _id.
+ * 
+ * @apiSuccess {String} err 状态码.
+ * @apiSuccess {String} msg  信息提示.
+ * @apiSuccess {Array} list  所有菜品信息数组
+ *
+ * @apiError {String} err 状态码.
+ * @apiError {String} msg  信息提示.
+ */
+router.post('/findById',(req, res) => {
+    let { _id } = req.body
+    findById(_id)
+        .then((data)=>{
+            res.send({err:0, msg:'查询成功', data});
+        }).catch((err)=>{
+            res.send({err:-1,msg:'查询失败请重试'});
         })
 })
 
@@ -171,7 +196,9 @@ router.post('/page',(req, res) => {
  * 
  * @apiSuccess {Number} err 状态码.
  * @apiSuccess {String} msg  信息提示.
- * @apiSuccess {Array} list  查询到的数据.
+ * @apiSuccess {Array} list  当前页的信息.
+ * @apiSuccess {Number} maxPage  最多的页数.
+ * @apiSuccess {Number} total  总共有多少条数据.
  *
  * @apiError {Number} err 状态码.
  * @apiError {String} msg  信息提示.
@@ -188,11 +215,13 @@ router.post('/findByType',(req, res) => {
 })
 
 /**
- * @api {post} /admin/food/findByKw   模糊查询
+ * @api {post} /admin/food/findByKw   模糊查询带分页功能
  * @apiName findByKw
  * @apiGroup Food
  * 
  * @apiParam {String} kw 模糊查询的字段.
+ * @apiParam {String} page 模糊查询的字段.
+ * @apiParam {String} pageSize 模糊查询的字段.
  * 
  * @apiSuccess {Number} err 状态码.
  * @apiSuccess {String} msg  信息提示.
@@ -203,9 +232,16 @@ router.post('/findByType',(req, res) => {
  */
 router.post('/findByKw',(req, res) => {
     let kw = req.body.kw || '';
-    findFoodByKw(kw)
-        .then((list)=>{
-            res.send({err:0, msg:'查询成功', list:list});
+    let page = req.body.page || 1;
+    let pageSize = req.body.pageSize || 3;
+    findFoodByKw(kw,page,pageSize)
+    .then((data)=>{
+        res.send({
+            err:0, msg:'查询成功', 
+            list:data.foodList, 
+            maxPage:data.totalPage, 
+            total:data.totalFood
+        });
         }).catch((err)=>{
             console.log(err);
             res.send({err:-1,msg:'查询失败请重试'});

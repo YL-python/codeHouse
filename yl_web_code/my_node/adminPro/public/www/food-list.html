@@ -1,0 +1,438 @@
+﻿<!--_meta 作为公共模版分离出去-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="Bookmark" href="favicon.ico">
+	<link rel="Shortcut Icon" href="favicon.ico" />
+
+	<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+	<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+	<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+
+	<title>食品列表 - 食品管理</title>
+</head>
+
+<body>
+	<!--_header 作为公共模版分离出去-->
+	<header class="navbar-wrapper">
+		<div class="navbar navbar-fixed-top">
+			<div class="container-fluid cl">
+				<a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">H-ui.admin</a>
+				<a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a>
+				<span class="logo navbar-slogan f-l mr-10 hidden-xs">v3.0</span>
+				<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
+				<nav class="nav navbar-nav">
+					<ul class="cl">
+						<li class="dropDown dropDown_hover">
+							<a href="javascript:;" class="dropDown_A"><i class="Hui-iconfont">&#xe600;</i> 新增 <i
+									class="Hui-iconfont">&#xe6d5;</i></a>
+							<ul class="dropDown-menu menu radius box-shadow">
+								<li>
+									<a href="javascript:;" onclick="food_add('添加食品','food-add.html')"><i
+											class="Hui-iconfont">&#xe616;</i> 食品</a>
+								</li>
+								<li>
+									<a href="javascript:;" onclick="picture_add('添加食品','picture-add.html')"><i
+											class="Hui-iconfont">&#xe613;</i> 图片</a>
+								</li>
+								<li>
+									<a href="javascript:;" onclick="product_add('添加食品','product-add.html')"><i
+											class="Hui-iconfont">&#xe620;</i> 产品</a>
+								</li>
+								<li>
+									<a href="javascript:;" onclick="member_add('添加用户','member-add.html','','510')"><i
+											class="Hui-iconfont">&#xe60d;</i> 用户</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+					<ul class="cl">
+						<li>超级管理员</li>
+						<li class="dropDown dropDown_hover">
+							<a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+							<ul class="dropDown-menu menu radius box-shadow">
+								<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
+								<li>
+									<a href="#">切换账户</a>
+								</li>
+								<li>
+									<a href="#">退出</a>
+								</li>
+							</ul>
+						</li>
+						<li id="Hui-msg">
+							<a href="#" title="消息">
+								<span class="badge badge-danger">1</span>
+								<i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a>
+						</li>
+						<li id="Hui-skin" class="dropDown right dropDown_hover">
+							<a href="javascript:;" class="dropDown_A" title="换肤"><i class="Hui-iconfont"
+									style="font-size:18px">&#xe62a;</i></a>
+							<ul class="dropDown-menu menu radius box-shadow">
+								<li>
+									<a href="javascript:;" data-val="default" title="默认（黑色）">默认（黑色）</a>
+								</li>
+								<li>
+									<a href="javascript:;" data-val="blue" title="蓝色">蓝色</a>
+								</li>
+								<li>
+									<a href="javascript:;" data-val="green" title="绿色">绿色</a>
+								</li>
+								<li>
+									<a href="javascript:;" data-val="red" title="红色">红色</a>
+								</li>
+								<li>
+									<a href="javascript:;" data-val="yellow" title="黄色">黄色</a>
+								</li>
+								<li><a href="javascript:;" data-val="orange" title="橙色">橙色</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<!--/_header 作为公共模版分离出去-->
+
+	<!--_menu 作为公共模版分离出去-->
+	<aside class="Hui-aside">
+		<div class="menu_dropdown bk_2">
+			<dl id="menu-article">
+				<dt><i class="Hui-iconfont">&#xe616;</i> 食品管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+				</dt>
+				<dd>
+					<ul>
+						<li><a href="food-list.html" title="食品管理">食品管理</a></li>
+					</ul>
+				</dd>
+			</dl>
+		</div>
+	</aside>
+	<div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a>
+	</div>
+	<!--/_menu 作为公共模版分离出去-->
+
+	<section class="Hui-article-box">
+		<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页
+			<span class="c-gray en">&gt;</span>
+			食品管理
+			<span class="c-gray en">&gt;</span>
+			食品列表
+			<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px"
+				href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
+		</nav>
+		<div class="Hui-article">
+			<article class="cl pd-20">
+
+				<div class="cl pd-5 bg-1 bk-gray mt-20">
+					<span class="l">
+						<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i
+								class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+						<a class="btn btn-primary radius" data-title="添加食品" _href="food-add.html"
+							onclick="food_add('添加食品','food-add.html')" href="javascript:;"><i
+								class="Hui-iconfont">&#xe600;</i> 添加食品</a>
+					</span>
+					<span class="r">共有数据：<strong id='allCount'>54</strong> 条</span>
+					<span>关键字查询:</span> <input type="text" id='kw'> <button onclick='getKw()'>查询</button>
+				</div>
+				<div class="mt-20">
+					<table class="table table-border table-bordered table-bg table-hover table-sort table-responsive">
+						<!-- 表头 -->
+						<thead>
+							<tr class="text-c">
+								<th width="25">序号</th>
+								<th width="80">ID</th>
+								<th>名称</th>
+								<th width="80">分类</th>
+								<th width="80">价格</th>
+								<th width="120">描述</th>
+								<th width="75">缩略图</th>
+								<th width="120">操作</th>
+							</tr>
+						</thead>
+						<tbody id='tbody'>
+						</tbody>
+					</table>
+					<div>
+						<span onclick="jump('frist')">首页</span>
+						<span onclick="jump('prev')">上一页</span>
+						<span id='pageInfo'>1/3</span>
+						<input type="text" id='goPage'>
+						<span onclick="jump('go')">go</span>
+						<span onclick="jump('next')">下一夜</span>
+						<span onclick="jump('last')">尾页</span>
+					</div>
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<!--_footer 作为公共模版分离出去-->
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+	<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+	<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.page.js"></script>
+	<!--/_footer /作为公共模版分离出去-->
+
+	<!--请在下方写此页面业务相关的脚本-->
+	<script type="text/javascript">
+		/*
+		1.获取数据列表显示  v
+			a 调用接口获取数据
+			b 把数据循环成表格
+			c 渲染显示
+		2.分页  v
+			用户点击按钮 
+			发起请求 需要的页码数
+			更新页面
+		3.模糊查询 v
+		4.分类查询 委托任务
+		5.添加新商品  v
+		6.删除商品  v
+			a.获取删除id
+			b.调用接口
+			c.获取最新的数据
+			d.根据最新的数据更新界面
+		7.修改商品 v
+		*/
+
+		let nowPage = 1 //当前第几页
+		let allPage = 1 //总页数
+		let pageSize = 3 //每页几条 
+		let condition = 'all' //all查询所有  kw关键字   type 分类
+
+		getFoodData()
+
+		/*食品-获取数据*/
+		function getFoodData() {
+			url = 'http://localhost:3000/admin/food/page';
+			let kw = ''
+			switch (condition) {
+				case 'kw':
+					kw = $('#kw').val()
+					url = 'http://localhost:3000/admin/food/findByKw'
+					break;
+				case 'type':
+					break;
+				default:
+					break;
+			}
+			$.post(url, {
+				page: nowPage,
+				pageSize: pageSize,
+				kw
+			}, (res) => {
+				if (res.err == 0) {
+					allPage = res.maxPage
+					$('#allCount').html(res.total)
+					$('#pageInfo').html(`${nowPage}/${allPage}`)
+					renderTable(res.list)
+				} else {
+					alert(res.msg)
+				}
+			})
+		}
+
+		/*食品-加载数据*/
+		function renderTable(data) {
+			let tr = ''
+			data.map((item, index) => {
+				tr += `
+						<tr class="text-c">
+							<td>${index+1}</td>
+							<td>${item._id}</td>
+							<td>${item.name}</td>
+							<td>${item.foodType}</td>
+							<td>${item.price}</td>
+							<td>${item.desc}</td>
+							<td><img src ='${item.img}' style="width:400px;height:200px;"></td>
+							<td class="f-14 td-manage">
+								<a style="text-decoration:none" class="ml-5" 
+								onclick="food_edit('食品修改','food-update.html','${item._id}')" 
+								href="javascript:;" title="编辑">
+									<i class="Hui-iconfont">&#xe6df;</i>
+								</a> 
+								<a style="text-decoration:none" class="ml-5" onclick="food_del(this,'${item._id}')" href="javascript:;" title="删除">
+									<i class="Hui-iconfont">&#xe6e2;</i>
+								</a>
+							</td>
+						</tr>
+					`
+				return item
+			})
+			$('#tbody').html(tr)
+		}
+
+		/*食品-删除*/
+		function food_del(obj, _id) {
+			// 第三方库提供的确认确认弹框
+			layer.confirm('确认要删除吗？', function (index) {
+				let url = 'http://localhost:3000/admin/food/delOne'
+				$.post(url, {
+					_id
+				}, (res) => {
+					// console.log(res)
+					// 关闭弹框
+					layer.msg('已删除!', {
+						icon: 1,
+						time: 1000
+					});
+					// 将表格进行 更新
+					getFoodData()
+				})
+			});
+		}
+
+		/*食品-分页跳转*/
+		function jump(jumpType) {
+			switch (jumpType) {
+				case 'frist':
+					nowPage = 1
+					break;
+				case 'last':
+					nowPage = allPage
+					break;
+				case 'prev':
+					if (nowPage > 1) {
+						nowPage = nowPage - 1
+					}
+					break;
+				case 'next':
+					if (nowPage < allPage) {
+						nowPage++
+					}
+					break;
+				default:
+					let val = $('#goPage').val()
+					if (val >= 1 && val <= allPage) {
+						nowPage = val
+					} else {
+						layer.msg('参数错误请重试!', {
+							icon: 2,
+							time: 500
+						});
+					}
+					break;
+			}
+			// 根据最新的页码数请求数据 刷新界面
+			getFoodData()
+		}
+
+		// 关键字查询
+		function getKw() {
+			if($('#kw').val()){
+				// 更改请求类型
+				condition = 'kw'
+			}else{
+				condition = 'all'
+			}
+			getFoodData()
+		}
+
+		/*食品-添加*/
+		function food_add(title, url) {
+			var index = layer.open({
+				type: 2,
+				title: title,
+				content: url
+			});
+			layer.full(index);
+		}
+
+		/*食品-编辑*/
+		function food_edit(title, url, id) {
+			localStorage.setItem("updateId",id);
+			var index = layer.open({
+				type: 2,
+				title: title,
+				content: url
+			});
+			layer.full(index);
+		}
+
+
+
+		/*食品-审核*/
+		function food_shenhe(obj, id) {
+			layer.confirm('审核文章？', {
+					btn: ['通过', '不通过', '取消'],
+					shade: false,
+					closeBtn: 0
+				},
+				function () {
+					$(obj).parents("tr").find(".td-manage").prepend(
+						'<a class="c-primary" onClick="food_start(this,id)" href="javascript:;" title="申请上线">申请上线</a>'
+					);
+					$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
+					$(obj).remove();
+					layer.msg('已发布', {
+						icon: 6,
+						time: 1000
+					});
+				},
+				function () {
+					$(obj).parents("tr").find(".td-manage").prepend(
+						'<a class="c-primary" onClick="food_shenqing(this,id)" href="javascript:;" title="申请上线">申请上线</a>'
+					);
+					$(obj).parents("tr").find(".td-status").html('<span class="label label-danger radius">未通过</span>');
+					$(obj).remove();
+					layer.msg('未通过', {
+						icon: 5,
+						time: 1000
+					});
+				});
+		}
+		/*食品-下架*/
+		function food_stop(obj, id) {
+			layer.confirm('确认要下架吗？', function (index) {
+				$(obj).parents("tr").find(".td-manage").prepend(
+					'<a style="text-decoration:none" onClick="food_start(this,id)" href="javascript:;" title="发布"><i class="Hui-iconfont">&#xe603;</i></a>'
+				);
+				$(obj).parents("tr").find(".td-status").html('<span class="label label-defaunt radius">已下架</span>');
+				$(obj).remove();
+				layer.msg('已下架!', {
+					icon: 5,
+					time: 1000
+				});
+			});
+		}
+
+		/*食品-发布*/
+		function food_start(obj, id) {
+			layer.confirm('确认要发布吗？', function (index) {
+				$(obj).parents("tr").find(".td-manage").prepend(
+					'<a style="text-decoration:none" onClick="food_stop(this,id)" href="javascript:;" title="下架"><i class="Hui-iconfont">&#xe6de;</i></a>'
+				);
+				$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已发布</span>');
+				$(obj).remove();
+				layer.msg('已发布!', {
+					icon: 6,
+					time: 1000
+				});
+			});
+		}
+		/*食品-申请上线*/
+		function food_shenqing(obj, id) {
+			$(obj).parents("tr").find(".td-status").html('<span class="label label-default radius">待审核</span>');
+			$(obj).parents("tr").find(".td-manage").html("");
+			layer.msg('已提交申请，耐心等待审核!', {
+				icon: 1,
+				time: 2000
+			});
+		}
+	</script>
+	<!--/请在上方写此页面业务相关的脚本-->
+</body>
+
+</html>
