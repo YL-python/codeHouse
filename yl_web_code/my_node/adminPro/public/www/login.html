@@ -65,6 +65,8 @@
 			$.post(url,{mail,password},(res)=>{
 				// console.log(res);
 				if(res.err == 0){
+					// 保存token
+					localStorage.setItem('userInfo',JSON.stringify(res.userInfo));
 					window.location.href = './index.html'
 				}else{
 					alert(res.msg)

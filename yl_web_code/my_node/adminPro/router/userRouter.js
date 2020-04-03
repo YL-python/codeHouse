@@ -13,6 +13,9 @@ const mails = {}
 
 const userDao= require('../controls/userControls')
 
+// token 中间件
+let tokenMiddleWare = require('./middleware/tokenMiddleWare')
+
 /**
  * @api {post} /admin/user/getCode   获取验证码
  * @apiName getCode
@@ -78,6 +81,7 @@ router.post('/reg',(req,res)=>{
  *
  * @apiSuccess {String} err 状态码.
  * @apiSuccess {String} msg  信息提示.
+ * @apiSuccess {String} token 用户的token.
  * 
  * @apiError {String} err 状态码.
  * @apiError {String} msg  信息提示.
@@ -85,13 +89,35 @@ router.post('/reg',(req,res)=>{
 router.post('/login',(req,res)=>{
     let {mail,password} = req.body;
     userDao.userLogin(mail,password)
-    .then(()=>{
-        res.send({err:0,msg:'登陆 ok'})
-    }).catch((errinfo)=>{
-        res.send({err:-1,msg:errinfo})
+    .then((userInfo)=>{
+        res.send({err:0,msg:'登陆 ok',userInfo})
+    }).catch((errInfo)=>{
+        res.send({err:-1,msg:errInfo})
     })
 })
 
-
+/**
+ * @api {post} /admin/user/logout   退出登陆
+ * @apiName logout
+ * @apiGroup User
+ * 
+ * @apiParam {String} id 用户id.
+ *
+ * @apiSuccess {String} err 状态码.
+ * @apiSuccess {String} msg  信息提示.
+ * 
+ * @apiError {String} err 状态码.
+ * @apiError {String} msg  信息提示.
+ */
+// 需要在登陆情况下才能退出，就是说需要验证token
+router.post('/logout',tokenMiddleWare,(req,res)=>{
+    let {_id} = req.body;
+    userDao.userLogout(_id)
+    .then(()=>{
+        res.send({err:0,msg:'退出 ok'})
+    }).catch((errInfo)=>{
+        res.send({err:-1,msg:errInfo})
+    })
+})
 
 module.exports = router;

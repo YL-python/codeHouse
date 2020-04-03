@@ -211,7 +211,8 @@
 		let allPage = 1 //总页数
 		let pageSize = 3 //每页几条 
 		let condition = 'all' //all查询所有  kw关键字   type 分类
-
+		let { token } = JSON.parse(localStorage.getItem('userInfo'))
+		
 		getFoodData()
 
 		/*食品-获取数据*/
@@ -231,7 +232,8 @@
 			$.post(url, {
 				page: nowPage,
 				pageSize: pageSize,
-				kw
+				kw,
+				token
 			}, (res) => {
 				if (res.err == 0) {
 					allPage = res.maxPage
@@ -280,7 +282,8 @@
 			layer.confirm('确认要删除吗？', function (index) {
 				let url = 'http://localhost:3000/admin/food/delOne'
 				$.post(url, {
-					_id
+					_id,
+					token
 				}, (res) => {
 					// console.log(res)
 					// 关闭弹框
@@ -331,10 +334,10 @@
 
 		// 关键字查询
 		function getKw() {
-			if($('#kw').val()){
+			if ($('#kw').val()) {
 				// 更改请求类型
 				condition = 'kw'
-			}else{
+			} else {
 				condition = 'all'
 			}
 			getFoodData()
@@ -352,7 +355,7 @@
 
 		/*食品-编辑*/
 		function food_edit(title, url, id) {
-			localStorage.setItem("updateId",id);
+			localStorage.setItem("updateId", id);
 			var index = layer.open({
 				type: 2,
 				title: title,

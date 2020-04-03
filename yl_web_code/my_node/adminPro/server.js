@@ -10,6 +10,9 @@ app.use(bodyParser.json())
 // 启动数据库链接
 require('./db/connect') 
 
+// token 中间件
+let tokenMiddleWare = require('./middleware/tokenMiddleWare')
+
 /*
     路由
         1.文件路由
@@ -20,7 +23,7 @@ const fileRouter = require('./router/uploadRouter')
 app.use('/admin/upload', fileRouter)
 
 const foodRouter = require('./router/foodRouter')
-app.use('/admin/food', foodRouter)
+app.use('/admin/food',tokenMiddleWare, foodRouter) // 添加token验证中间件
 
 const userRouter = require('./router/userRouter')
 app.use('/admin/user', userRouter)
