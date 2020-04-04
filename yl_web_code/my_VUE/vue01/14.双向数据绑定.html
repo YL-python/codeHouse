@@ -14,12 +14,29 @@
         <input v-model="message" placeholder="edit me">
         <p>Message is: {{ message }}</p>
     </div>
+    <hr>
+    <div id='app2'>
+        <!-- v-model 和 value值绑定 -->
+        <select v-model='xixi'>
+            <option value="苹果">苹果</option>
+            <option value="香蕉">香蕉</option>
+            <option value="栗子">栗子</option>
+        </select>
+        {{xixi}}
+    </div>
 
     <script>
         let vm = new Vue({
             el: '#app',
             data: {
-                message:''
+                message: ''
+            }
+        })
+
+        let vm2 = new Vue({
+            el: '#app2',
+            data: {
+                xixi: '苹果'
             }
         })
         /*
@@ -31,7 +48,7 @@
         v-model 
         所有的表单元素都能用
         组件也可用
-        */ 
+        */
     </script>
 </body>
 

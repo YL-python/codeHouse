@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全局组件</title>
+    <script src='../vue.js'></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id='app1'>
+        {{name}}
+        <xixi></xixi>
+    </div>
+    <hr>
+    <div id='app2'>
+        {{name}}
+        <xixi></xixi>
+    </div>
+
+    <script>
+        // 全局组件的定义
+        let component = Vue.extend({
+            template: "<h1>这里是组件</h1>"
+        })
+        Vue.component('xixi', component)
+
+        let vm1 = new Vue({
+            el: '#app1',
+            data:{
+                name:'实例1'
+            }
+        })
+
+        let vm2 = new Vue({
+            el: '#app2',
+            data:{
+                name:'实例2'
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
