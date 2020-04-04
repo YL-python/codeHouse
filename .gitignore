@@ -82,6 +82,7 @@ test/
 *.psd
 看板娘/
 node_modules/
+H-ui.admin.page/
 
 ### notes
 
