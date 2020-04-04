@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件绑定</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="example-2">
+        <!-- `greet` 是在下面定义的方法名 -->
+        <button v-on:click="greet(1999,2020,$event)">Greet1</button>
+        <button @click="greet2">Greet2</button>
+    </div>
+
+    <script>
+        var example2 = new Vue({
+            el: '#example-2',
+            data: {
+                name: 'data,name属性'
+            },
+            // 在 `methods` 对象中定义方法
+            methods: {
+                greet: function (num1,num2,event) {
+                    // `this` 在方法里指向当前 Vue 实例
+                    alert('Hello ' + this.name + '!')
+                    console.log("num1:"+num1+"   num2:"+num2)
+                    // `event` 是原生 DOM 事件
+                    if (event) {
+                        alert(event.target.tagName)
+                        console.log(event)
+                    }
+                },
+                greet2: function (event) {
+                    console.log("gree2点击了");
+                }
+            }
+        })
+        // 也可以用 JavaScript 直接调用方法
+        example2.greet() // => 'Hello Vue.js!'
+        /*
+            v-on:事件名='事件处理函数' 事件名和原生js一样 
+            onclick  v-on:click
+            onblur   v-on:blur
+            事件处理函数一定要写在实例的 methods内部
+            默认参数（啥参数都不传都有的参数）是事件对象  
+            如果有其他参数 事件对象需要通过 $event 手动传递
+            简写方式
+            v-on:click  ===  @click 
+        */
+    </script>
+</body>
+
+</html>

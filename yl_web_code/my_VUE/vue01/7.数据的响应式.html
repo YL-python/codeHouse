@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据的响应式</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{name}}
+        <br>
+        {{num}}
+        <button @click='add'>add</button>
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: 'data,name属性',
+                num: 1
+            },
+            methods: {
+                add(){
+                    console.log(this); // 当前实例的 vue对象
+                    this.num++;
+                }
+            }
+        })
+        /*
+        数据的响应式
+        数据变 页面自动变 不需要开发者操作dom
+        将开发者的精力从dom操作解放 转移到数据操作上
+        */
+    </script>
+</body>
+
+</html>

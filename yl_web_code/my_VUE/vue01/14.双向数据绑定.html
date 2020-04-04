@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性绑定</title>
+    <script src="../vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <input v-model="message" placeholder="edit me">
+        <p>Message is: {{ message }}</p>
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                message:''
+            }
+        })
+        /*
+        官网 v-model介绍：https://cn.vuejs.org/v2/guide/forms.html
+
+        v-model 叫双向数据绑定 相当于 事件绑定和属性绑定的综合
+        可以绑定一个表单元素的value 修改表单元素的 
+        data里的数据也会发生改变
+        v-model 
+        所有的表单元素都能用
+        组件也可用
+        */ 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性绑定</title>
+    <script src="../vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- 每一次输入都会出发一个输入事件  input事件 -->
+        <input type="text" @input='input' :value='value' placeholder="edit me">
+        <p>Message is: {{ value }}</p>
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                value: ''
+            },
+            methods: {
+                input(e) {
+                    // 事件对面里面就有很多属性和方法，其中就有我们需要的
+                    console.log(e.target.value)
+                    this.value = e.target.value
+                }
+            }
+        })
+        /*
+        
+        */
+    </script>
+</body>
+
+</html>

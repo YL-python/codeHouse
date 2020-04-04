@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tab</title>
+  <script src='../vue.js'></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .box {
+      width: 400px;
+      height: 600px;
+      border: 1px solid red;
+    }
+
+    .nav {
+      list-style: none;
+      height: 80px;
+      width: 400px;
+      background: skyblue;
+      /* li 标签之间的回车会渲染出一个空格在页面上占位置 */
+      font-size: 0px;
+    }
+
+    .nav li {
+      display: inline-block;
+      height: 80px;
+      width: 100px;
+      border: 1px solid green;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    .sel {
+      background: yellowgreen;
+    }
+
+    .content div {
+      width: 400px;
+      height: 420px;
+      background: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='app'>
+    <div class='box'>
+      <ul class="nav">
+        <li v-bind:class='item===selected?"sel":""' v-for='item in list' v-on:click='change(item)'>
+          {{item}}
+        </li>
+      </ul>
+      <div class='content'>
+        <!-- v-if   v-show 都行  v-if 和 v-for 有权重问题 -->
+        <div v-show='item===selected?true:false' v-for='item in list'>
+          {{item}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        list: ['爱情', '科幻', '恐怖', '悬疑'],
+        selected: '爱情'
+      },
+      methods: {
+        change(item) {
+          console.log('点到了:' + item)
+          this.selected = item
+        }
+      }
+    })
+    /*
+    用 vue实现tab选项卡
+    1. 渲染界面
+    2. 点击切换tab
+    3. 导航条高亮
+    4. 内容要切换
+
+    a. 先把静态处理出来
+    b. 哪些元素可以用指令
+    */
+  </script>
+</body>
+
+</html>

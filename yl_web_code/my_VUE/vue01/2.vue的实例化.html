@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 的实例化</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <!-- 和实例绑定了 就会用vue的语法进行处理 -->
+    <div id="xixi">
+        {{name}}
+    </div>
+
+    <!-- 没有被实例绑定 和原始的页面没有区别 -->
+    <div id='hehe'>
+        {{name}}
+    </div>
+
+    <script>
+        // 实例化一个 Vue对象
+        let vm = new Vue({
+            el: '#xixi', // 将vue的实例和dom中的某一个元素进行绑定 绑定的元素以及子节点都会被实例进行处理
+            data: { // data里的数据直接可以通过插值法 {{表达式变量}} 进行渲染
+                name: '你好 hello world!'
+            }
+        });
+    </script>
+</body>
+
+</html>

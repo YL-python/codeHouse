@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+    <script src="../vue.js"></script>
+    <style>
+        .test {
+            width: 100px;
+            height: 100px;
+            background: lightgreen;
+        }
+        .test2 {
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+        }
+        #app2 div{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        {{name}}
+        <div v-if='show' class="test">
+            test1
+        </div>
+
+        <div v-else class='test2'>
+            test2
+        </div>
+    </div>
+
+    <div id="app2">
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name: '韩梅梅',
+                show: false
+            }
+        })
+        /*
+            v-if 是一个指令 条件渲染 控制一个元素的渲染不渲染 
+            <目标元素 v-if='变量或者表达式'></目标元素>
+            指令后面跟是变量(我们自己定义的)或者表达式(Vue的data域里面的键值就是一个表达式)
+        */
+        let vm2 = new Vue({
+            el: '#app2',
+            data: {
+                type:'A'
+            }
+        })
+    </script>
+</body>
+
+</html>
