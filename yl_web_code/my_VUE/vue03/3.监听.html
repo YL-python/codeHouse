@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>监听</title>
+    <script src='../vue.js'></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <p id='p'>{{num}}</p>
+        {{name}}
+        <button @click='add'>add</button>
+        <button @click='change'>change</button>
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                num: 0,
+                name: '韩梅梅'
+            },
+            methods: {
+                add: function () {
+                    this.num++;
+                },
+                change() {
+                    this.name = '李雷雷'
+                }
+            },
+            watch: {
+                // key是监听的数据，value是一个函数
+                num: (newValue, oldValue) => {
+                    console.log('num你变了')
+                    console.log('new', newValue)
+                    console.log('old', oldValue)
+                    console.log('p', document.getElementById('p')) //假的
+                    console.log('p', document.getElementById('p').innerText) //真的
+                },
+                // es6写法
+                name() {
+                    console.log('改名')
+                }
+            },
+        })
+        /*
+        监听 是配置项的一种
+        监听数据的改变 有2个参数一个是更新前的值 一个更新之后的值
+        watch监听触发的时候 dom 还没有更新 所以数据是更改之后的但是dom 是更改之前的
+        */
+    </script>
+</body>
+
+</html>

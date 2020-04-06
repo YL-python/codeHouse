@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>局部组件嵌套</title>
+    <script src='../vue.js'></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <!-- 并列关系写法 
+        <tp1></tp1>
+        <tp2></tp2> -->
+
+        <!-- 父子关系写法 -->
+        <tp1></tp1>
+    </div>
+
+    <!-- 组件1 -->
+    <template id="tp1">
+        <div>
+            这里是组件1
+            <!-- 父子关系，tp2只能写在 tp1 内部 -->
+            <tp2></tp2>
+        </div>
+    </template>
+
+    <!-- 组件2 -->
+    <template id="tp2">
+        <div>
+            这里是组件2
+        </div>
+    </template>
+
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            // 并列关系
+            // components: {
+            //     tp1: {
+            //         template: "#tp1"
+            //     },
+            //     tp2: {
+            //         template: "#tp2"
+            //     }
+            // }
+            // 父子关系
+            components: {
+                tp1: {
+                    template: "#tp1",
+                    components: {
+                        tp2: {
+                            template: "#tp2"
+                        }
+                    }
+                }
+            }
+        })
+        /*
+        局部组件在注册的过程中 已经确定了嵌套关系
+        使用的过程中 必须要找这种嵌套关系来使用
+        */
+    </script>
+</body>
+
+</html>

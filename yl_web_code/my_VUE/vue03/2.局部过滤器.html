@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>局部过滤器</title>
+  <script src='../vue.js'> </script>
+  <style>
+    .test {
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    {{time|hehe}}<br>
+    {{time|hehe('-')}}<br>
+    {{time|hehe('、')}}<br>
+    {{time|hehe('/')}}<br>
+  </div>
+  <script>
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        time: (new Date()).getTime()
+      },
+      filters: {
+        'hehe': (data, params = '.') => {
+          // 对数据做处理
+          console.log('需要过滤的数据', data)
+          let y = (new Date(data)).getFullYear()
+          let m = (new Date(data)).getMonth() + 1
+          let d = (new Date(data)).getDate()
+          // 处理数据
+          // 一定要返回
+          return `${y}${params}${m}${params}${d}`
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

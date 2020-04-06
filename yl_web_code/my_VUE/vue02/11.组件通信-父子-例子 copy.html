@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父子组件通信案例</title>
+    <script src='../vue.js'></script>
+    <style>
+        .test {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <button @click='toggle'>显示隐藏</button>
+        app show:{{show}}
+        <br>
+        <tp1 :xixi='show'></tp1>
+    </div>
+
+    <!-- 组件1 -->
+    <template id="tp1">
+        <div>
+            xixi:{{xixi}}
+            <div class="test" v-show='xixi'>
+                这里是组件1
+            </div>
+        </div>
+    </template>
+
+    <script>
+        Vue.component('tp1', {
+            template: "#tp1",
+            props: ['xixi']
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                show: true
+            },
+            methods: {
+                toggle() {
+                    this.show = !this.show
+                }
+            }
+        })
+        /*
+        写2个组件是一个嵌套关系
+        父组件有一个按钮
+        子组件有一个div
+        父组件的按钮控制自己
+        子组件div的显示隐藏
+        */
+    </script>
+</body>
+
+</html>

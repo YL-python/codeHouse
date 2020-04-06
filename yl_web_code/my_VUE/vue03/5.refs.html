@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>refs</title>
+    <script src='../vue.js'></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p id='hehe'>呵呵</p>
+        <p ref='xixi'>嘻嘻</p>
+        <span ref='xixi'>嘿嘿</span>
+        <button @click='getEl'>get</button>
+    </div>
+
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            methods: {
+                getEl() {
+                    let hehe = document.getElementById('hehe')
+                    console.log(hehe)
+                    console.log(this)
+                    console.log(this.$refs.xixi)
+                }
+            }
+        })
+        /*
+        通过ref绑定一个dom元素
+        通过 this.$refs 获取绑定的dom 元素 this 实例对象组件对象
+        */ 
+    </script>
+</body>
+
+</html>

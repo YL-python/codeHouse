@@ -50,8 +50,14 @@ vue      尤玉溪  双向数据绑定+虚拟dom
   :要绑定的属性名  <img :src=''>
 列表渲染
 v-for
+<td v-for ="(item,index) in/of 数据源"> </td> 
+<td v-for ="(value,key,index) in/of 数据源"> </td> 
 
-
+双向数据绑定 v-model 
+v-model 相当于 事件绑定v-on 和属性 v-bind 集合体
+将表单元素和data里的数据进行绑定 任何一方发生改变另一方都会跟着变
+1. 表单元素可以使用
+2. 组件也可用
 #### 作业
 1. todolist 敲熟
 2. 实现一个99乘法表
@@ -59,3 +65,29 @@ v-for
      a.隔行变色
      b.鼠标滑过有特效
      c.写一个下拉菜单 可以控制隔行变色的颜色
+
+v-html 相当于innerhtml
+v-text 相当于innerText
+#### 自定义指令
+全局自定义指令
+```
+Vue.directive('指令的名字',{
+  insterted(el){
+    el  自定义指令绑定的元素
+  }
+})
+v-自定义指令的名字
+```
+局部自定义指定 在哪注册在哪用 
+组件和实例都可以注册局部自定义指令
+```
+new Vue({
+  directives:{
+    自定义指令的名字:{
+      inserted(el){
+
+      }
+    }
+  }
+})
+```

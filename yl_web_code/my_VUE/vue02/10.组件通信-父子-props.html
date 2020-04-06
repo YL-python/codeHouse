@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父子组件通信</title>
+    <script src='../vue.js'></script>
+    <style>
+        #app {
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        .tp1 {
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        实例
+        {{money}}
+        <!-- 在tp1组件标签上使用 xixi自定义属性 -->
+        <tp1 :xixi='money'></tp1>
+    </div>
+
+    <!-- 组件1 -->
+    <template id="tp1">
+        <div class="tp1">
+            这里是组件1
+            {{xixi}}
+        </div>
+    </template>
+
+    <script>
+        Vue.component('tp1', {
+            template: "#tp1",
+            // props:['xixi']  // 接收自定义属性
+            props: {
+                xixi: { type: Number } //传值的同时检查数据的类型
+            }
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                money: 123
+            }
+        })
+        /*
+        不管是组件还是实例 自己的数据只能自己使用
+        父组件不能控制子组件的数据，但是可以改变子组件标签的属性值，从而达到传值的目的
+        父组件用 v-bind控制 子组件标签的属性值，子组件通过 props 接收标签属性值
+        1.在组件标签上使用自定属性
+        2.在组件内部通过props来接受自定义属性
+        3.接受完了 既可以在组件里直接使用 只能用不能改
+        */
+    </script>
+</body>
+
+</html>

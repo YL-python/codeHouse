@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全局组件嵌套</title>
+    <script src='../vue.js'></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <!-- 全局组件并列写法 -->
+        <!-- <tp1></tp1>
+        <tp2></tp2> -->
+
+        <tp2></tp2>
+    </div>
+
+    <!-- 组件1 -->
+    <template id="tp1">
+        <div>
+            这里是组件1
+            <!-- tp1嵌套tp2 -->
+            <!-- <tp2></tp2> -->
+        </div>
+    </template>
+
+    <!-- 组件2 -->
+    <template id="tp2">
+        <div>
+            这里是组件2
+            <!-- tp2嵌套tp1 -->
+            <tp1></tp1>
+        </div>
+    </template>
+
+    <script>
+        Vue.component('tp1', {
+            template: '#tp1'
+        })
+        Vue.component('tp2', {
+            template: '#tp2'
+        })
+
+        let vm = new Vue({
+            el: '#app'
+        })
+        /*
+        全局组件的嵌套 
+        全局组件没有固定的嵌套关系 ，嵌套关系由书写方式决定的
+            并列，1嵌套2，2嵌套1 都行没有明确的父子关系
+        */
+    </script>
+</body>
+
+</html>

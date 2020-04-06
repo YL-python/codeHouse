@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子父组件通信例子</title>
+    <script src='../vue.js'></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        这是是爸爸
+        爸爸的钱包余额:{{money}}
+        <hr>
+        <!--在子组件上注册父组件的方法 -->
+        <son @xixi='fatherBuyCry'></son>
+    </div>
+
+    <!-- 组件模板 -->
+    <template id="tp1">
+        <div>
+            儿子看到玩具了
+            <button @click='buy'>buybuybuy</button>
+        </div>
+    </template>
+
+    <script>
+        Vue.component('son', {
+            template: "#tp1",
+            methods: {
+                buy() {
+                    console.log('我想买玩具')
+                    this.$emit('xixi', 3)
+                }
+            }
+        })
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                money: 20
+            },
+            methods: {
+                fatherBuyCry: function (num) {
+                    this.money-= num;
+                }
+            }
+        })
+        /*
+        
+        */
+    </script>
+</body>
+
+</html>
