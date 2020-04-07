@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>销毁 demo</title>
+    <script src='../vue.js'></script>
+    <style>
+        .test {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <button @click='toggle'>toggle</button>
+        <!-- 按钮控制 组件的销毁和创建 -->
+        <hehe v-if='show'></hehe>
+    </div>
+    <template id="tp1">
+        <div class="test">
+            <p ref="p">{{num}}</p>
+            <button @click='add'>add</button>
+        </div>
+    </template>
+
+    <script>
+        Vue.component('hehe', {
+            template: "#tp1",
+            data() {
+                return {
+                    msg: 'Hello World',
+                    num: 1
+                }
+            },
+            methods: {
+                add() {
+                    this.num++;
+                }
+            },
+            mounted() {
+                // 全局计时器，组件销毁之后还能运行
+                // 计时器挂载到 当前实例上
+                this.timer = setInterval(()=>{
+                    console.log(1);
+                },1000)
+            },
+            destroyed() {
+                // 回顾一生，看看有没有遗憾和错事，然后擦屁股
+                // 全局计时器，全局事件监听
+                clearInterval(this.timer)
+            },
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                show: false
+            },
+            methods: {
+                toggle() {
+                    this.show = !this.show
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

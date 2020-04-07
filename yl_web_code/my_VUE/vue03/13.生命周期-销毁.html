@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>销毁</title>
+    <script src='../vue.js'></script>
+    <style>
+        .test {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <button @click='toggle'>toggle</button>
+        <hehe v-if='show'></hehe>
+    </div>
+    <template id="tp1">
+        <div class="test">
+            <p ref="p">{{num}}</p>
+            <button @click='add'>add</button>
+        </div>
+    </template>
+
+    <script>
+        Vue.component('hehe', {
+            template: "#tp1",
+            data() {
+                return {
+                    msg: 'Hello World',
+                    num: 1
+                }
+            },
+            methods: {
+                add() {
+                    this.num++;
+                }
+            },
+            mounted() {
+                console.log("组件挂载结束");
+            },
+            beforeDestroy() {
+                // 有数据，有this，有dom
+                console.log("销毁之前");
+                console.log('this:', this);
+                console.log('data:', this.num);
+                console.log('dom', this.$refs.p.innerHTML);
+            },
+            destroyed() {
+                console.log("销毁之后");
+                console.log('this:', this);
+                console.log('data:', this.num);
+                // 没有dom  销毁了
+                // console.log('dom', this.$refs.p.innerHTML);
+            },
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                show: false
+            },
+            methods: {
+                toggle() {
+                    this.show = !this.show
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

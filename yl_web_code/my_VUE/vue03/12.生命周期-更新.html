@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新</title>
+    <script src='../vue.js'></script>
+    <style>
+        .test {
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <hehe></hehe>
+    </div>
+    <template id="tp1">
+        <div class="test">
+            <p ref="p">{{num}}</p>
+            <button @click='add'>add</button>
+        </div>
+    </template>
+
+    <script>
+        Vue.component('hehe', {
+            template: "#tp1",
+            data() {
+                return {
+                    msg: 'Hello World',
+                    num: 1
+                }
+            },
+            methods: {
+                add() {
+                    this.num++;
+                }
+            },
+            beforeCreate() {
+                // 创建之前 没有初始化数据 没有真实dom
+                console.log("创建之前");
+            },
+            created() {
+                // 创建结束 有初始化数据 没有真实dom
+                // 这个生命周期就可以来修改数据，在这里修改数据不会触发运行中的更新的生命周期
+                // 可以进行网络请求
+                console.log("创建结束");
+            },
+            beforeMount() {
+                // 挂载之前 有初始化数据 没有真实dom  和created 差不多
+                // 也能做网络请求
+                console.log("挂载之前");
+            },
+            // 在 created(),beforeMount()内修改数据，不会触发 更新的生命周期
+            // 在 mounted() 方法内修改数据就会触发 更新的生命周期
+            mounted() {
+                // 挂载结束 有初始化数据 有真实dom
+                // 可以修改数据 可以修改dom
+                // 用来做一些初始化操作
+                console.log("挂载结束");
+            },
+            beforeUpdate() {
+                // 更新之前  数据更新了，dom没有更新
+                // 在挂载结束之后数据更新的时候触发，挂载之前更新数据不会触发
+                console.log("更新之前");
+                console.log('this:', this);
+                console.log('data:', this.num);
+                console.log('dom', this.$refs.p.innerHTML);
+            },
+            updated() {
+                // 更新之后 数据，dom都更新了
+                console.log("更新之后");
+                console.log('this:', this);
+                console.log('data:', this.num);
+                console.log('dom', this.$refs.p.innerHTML);
+                // 在这个里面千万别修改数据，不然会死循环
+                // this.num = Math.random()
+            },
+        })
+        let vm = new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+
+</html>
