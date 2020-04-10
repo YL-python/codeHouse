@@ -5,6 +5,9 @@
 </template>
 <script>
 export default {
-  
+  mounted() {
+    console.log('这里是组件一',this.$route);
+    
+  },
 };
 </script>

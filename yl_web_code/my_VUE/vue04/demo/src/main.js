@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue' // 引入一个单文件组件
-import router from './router/router'
+// import router from './router/router'
+import router from './childRouter/router'
 
 Vue.config.productionTip = false
 

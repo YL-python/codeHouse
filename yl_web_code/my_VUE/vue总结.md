@@ -184,3 +184,38 @@ xxx
 ```
 
 ##### 路由传参
+
+```
+动态路由   
+路由的路径中的有1项或者几项是变量可以变化
+在目标组件 通过 $route.params 来接受数据
+routes:[
+  {
+    path:'/login/:hehe/:xixi'
+  }
+]
+query传参 
+  相当于get 传递参数 数据会出现在地址栏上 缺少安全性 有数据长度限制
+  this.$router.push('/name?us=123$ps=123')
+  this.$router.push({path:'/name',query:{us:123,ps:123}})
+  在目标组件里通过this.$route.query()进行接受
+params传参
+  不会出现在地址栏上 没有长度限制问题
+  不能和path一起使用
+  this.$router.push({name:"hehe",params:{us:123,ps:123}})
+  在目标组件里通过  this.$route.param()接受
+```
+
+##### 嵌套路由 (子路由)
+
+```
+1. 路由表形成嵌套 子路由路径不加/
+2. 在目标组件里 在嵌套一个router-view
+```
+
+##### 路由守卫 （拦截器）[官网](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E5%85%A8%E5%B1%80%E5%89%8D%E7%BD%AE%E5%AE%88%E5%8D%AB)
+
+```
+前置守卫，后置守卫，独享守卫
+```
+
