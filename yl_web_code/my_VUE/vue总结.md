@@ -219,3 +219,92 @@ params传参
 前置守卫，后置守卫，独享守卫
 ```
 
+#### vue07 - vuex
+##### 简介
+
+```
+全局状态管理
+1. 多组件共享状态 多个组件使用同一个数据
+2. 任何一个组件发生改变 其他的组件也要跟着发生相应的变化
+```
+
+##### 核心
+
+```
+state
+	存放全局状态数据
+	this.$store.state.XXX  使用XXX属性
+mutation
+	规定只有mutation才能修改state 组件中通过commit方法触发
+	this.$store.commit('changeName',{name:123})
+action
+	可以放异步操作 触发mutation,组件中通过dispatch触发
+	this.$store.dispatch('changeAge',{name:123,age:456})
+	在action内定义的函数通过commit触发mutation
+getter
+	vuex里的计算属性 和state值进行关联
+	组件内：this.$store.getters.XXX 使用XXX属性
+```
+
+##### 一般流程
+
+```
+0. store内定义全局变量方法等
+1. 组件里通过 this.$store.state.XXX 获取全局状态数据进行渲染
+2. 组件里通过  this.$store.dispatch('方法名',参数)方法 触发action里的方法
+3. action内的方法通过commit触发mutation进行修改全局状态值
+```
+
+##### 辅助函数
+
+```
+我们发现使用vuex内的值还是要写一大推，就推出了辅助函数简化
+值类型向计算属性映射，（State，Getters）=> computed
+mapState: 将全局状态管理的state值映射到 组件的计算属性
+	computed: {
+    	...mapState(["name", "age", "sex"])
+  	}  或者
+  	computed: {
+    	...mapState({
+    		XXX:state=>state.YYY
+    	})
+  	}
+ mapGetters: 将全局状态管理的getters值映射到使用组价的计算属性
+ 	computed: {
+    	...mapGetters(["name", "age", "sex"])
+  	}  或者
+  	computed: {
+    	...mapGetters({
+    		XXX:'YYY'  // 把YYY Getters属性在组件内取名为XXX
+    	})
+  	}
+函数类型向methods进行映射，（State，Getters）=> computed
+mapMutations: 将mutation的值映射到方法里,**使用的时候  this.方法名**
+	methods: {
+    	...mapMutations(["changeName"])
+  	}  或者
+  	methods: {
+    	...mapMutations({
+    		XXX:"YYY"  // 把YYY方法注册为XXX
+    	})
+  	}
+mapActions：将actions里的值映射到方法
+	methods: {
+    	...mapActions(["changeNameAction"])
+  	}  或者
+  	methods: {
+    	...mapActions({
+    		XXX:"YYY"  // 把YYY方法注册为XXX
+    	})
+  	}
+```
+
+##### 模块化
+
+```
+1.模块化之后state的取值需要添加一级模块名 其他的三个核心不变
+2.可以在模块里添加命名空间  namespaced:true
+	作用就是在 mutation getters actions的名字前面 添加模块名
+	用处就是防止名字冲突
+```
+
