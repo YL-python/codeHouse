@@ -6,6 +6,7 @@ import Recommend from '../components/Recommend/index.vue'
 import Singer from '../components/Singer/index.vue'
 import My from '../components/My/index.vue'
 import Rank from '../components/Rank/index.vue'
+import Detail from '../components/Detail/index.vue'
 
 Vue.use(VueRouter)
 
@@ -15,7 +16,13 @@ const routes = [{
 },
 {
   path: '/singer',
-  component: Singer
+  component: Singer,
+  children: [
+    {
+      path: ':singermid',
+      component: Detail
+    }
+  ]
 },
 {
   path: '/my',

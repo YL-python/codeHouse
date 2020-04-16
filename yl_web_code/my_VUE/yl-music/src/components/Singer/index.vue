@@ -9,7 +9,9 @@
             <h3>{{item.Findex}}</h3>
             <!-- 对应的歌手信息 -->
             <ol>
-              <li v-for="(sItem,sIndex) in item.list" :key="sIndex">
+              <li v-for="(sItem,sIndex) in item.list"
+              :key="sIndex"
+              @click="goDetail(sItem.Fsinger_mid)">
                 <img v-lazy="sItem.avator" alt />
                 <span>{{sItem.Fsinger_name}}</span>
               </li>
@@ -33,6 +35,12 @@
         >{{item}}</li>
       </ul>
     </div>
+    <!-- 详情页 -->
+    <transition
+      enter-active-class="animated faster slideInRight"
+      leave-active-class="animated faster slideOutRight">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 <script>
@@ -90,6 +98,10 @@ export default {
     })
   },
   methods: {
+    goDetail (mid) {
+      // console.log('goDetail:', mid)
+      this.$router.push(`/singer/${mid}`)
+    },
     // 手指的触摸移动事件
     touchStart (e) {
       // 设定距离屏幕顶部的位置是140
@@ -118,6 +130,7 @@ export default {
       const wapper = this.$refs.singerWrapper
       /* eslint-disable no-new */
       this.Bs = new BS(wapper, { probeType: 3, click: true })
+      // BS 默认不能点击， click: true配置可以点击
       // 获取距离数组
       const distance = []
       for (const key in this.$refs) {
@@ -125,7 +138,7 @@ export default {
           distance.push(this.$refs[key][0].offsetTop)
         }
       }
-      console.log(distance)
+      // console.log(distance)
       // 监听滚动
       this.Bs.on('scroll', (pos) => {
         const y = Math.abs(pos.y)
@@ -150,7 +163,7 @@ export default {
       // 点击每一项之后 触发事件需要知道点到谁了
       // 根据字母获取到固定的元素
       const dom = this.$refs[Findex][0]
-      // console.log('点到我了',item,dom)
+      // console.log('点到我了', Findex, dom)
       // //  用bs 内部的方法直接跳转到固定元素
       this.Bs.scrollToElement(dom, 500)
     }
@@ -159,11 +172,7 @@ export default {
   computed: {
     quickData: function () {
       const result = this.singers.map(item => {
-        if (item.Findex === 'hot') {
-          return '热'
-        } else {
-          return item.Findex
-        }
+        return item.Findex
       })
       return result
     }

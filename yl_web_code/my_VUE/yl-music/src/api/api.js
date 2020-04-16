@@ -40,11 +40,27 @@ const getSingersData = () => {
     })
   })
 }
+const getSongByMid = (mid) => {
+  const url = `https://c.y.qq.com/v8/fcg-bin/fcg_v8_singer_track_cp.fcg?g_tk=1928093487&inCharset=utf-8&outCharset=utf-8&notice=0&format=jsonp&hostUin=0&needNewCode=0&platform=yqq&order=listen&begin=0&num=80&songstatus=1&singermid=${mid}`
+  return new Promise((resolve, reject) => {
+    jsonp(url, {
+      param: 'jsonpCallback'
+    }, (err, data) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(data)
+      }
+    })
+  })
+}
+
 /** ********************排行**********************/
 /** ********************我的**********************/
 
 export {
   getBannerData,
   getRecommendData,
-  getSingersData
+  getSingersData,
+  getSongByMid
 }

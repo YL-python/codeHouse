@@ -6,7 +6,7 @@ function nomalData (data) {
   for (let index = 0; index < data.length; index++) {
     const { Findex, Fother_name, Fsinger_mid, Fsinger_name } = data[index]
     const avator = `https://y.gtimg.cn/music/photo_new/T001R300x300M000${Fsinger_mid}.jpg?max_age=2592000`
-    const temp = { Findex, Fother_name, Fsinger_name, avator }
+    const temp = { Findex, Fother_name, Fsinger_name, avator, Fsinger_mid }
     if (index <= 9) {
       obj.hot.push(temp)
     }
@@ -23,7 +23,7 @@ function nomalData (data) {
   const other = []
   for (const key in obj) {
     if (key === 'hot') {
-      hot.push({ Findex: key, list: obj[key] })
+      hot.push({ Findex: '热', list: obj[key] })
     } else if (key !== '9') {
       other.push({ Findex: key, list: obj[key] })
     }
