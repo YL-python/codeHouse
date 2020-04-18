@@ -5,14 +5,14 @@
 ## Build Setup
 
 ``` bash
-# install dependencies
+# Project setup
 npm install
-# serve with hot reload at localhost:8080
-npm run dev
-# build for production with minification
+# Compiles and hot-reloads for development
+npm run serve
+# Compiles and minifies for production
 npm run build
-# build for production and view the bundle analyzer report
-npm run build --report
+# Lints and fixes files
+npm run lint
 ```
 
 ## 准备工作
@@ -26,6 +26,7 @@ devDependencies选项末尾添加
 dependencies选项末尾添加
 	"babel-runtime": "^6.0.0", # 对es6语法解析加强的库，辅助es6的编译
     "fastclick": "^1.0.6"  # 解决移动端点击有300ms延迟的库
+    fastclick 会阻止click事件  标签上添加一个 needclick的class属性就可以跳过
 并且重新 npm install
 ```
 
@@ -73,6 +74,18 @@ better-scroll默认是Y方向滚动，所以X方向滚动的时候要进行一�
 	子元素个数乘以视口宽度和
 初始化better-scroll 监听scrollEnd事件
 自动滚动使用next方法，而且每次结束之后还会触发scrollEnd事件，要先清楚计时器在执行自动滚动的方法
+缓存使用
+销毁生命周期清楚计时器
+```
+
+#### 推荐歌单
+
+```
+推荐歌单需要用到 better-scroll ，但是每一次用到我们就初始化一次是很机械的写代码
+所以把初始化 better-scroll 写成了一个组件
+然后重写 一些better-scroll 的方法
+推荐页面完全加载完成的时候调用
+完全加载这个在代码里面有体现，轮播图的图片第一次加载成功
 ```
 
 
@@ -94,5 +107,31 @@ github:https://github.com/webmodules/jsonp
 
 ```
 keep-alive 标签包裹的组件会缓存
+官网介绍：https://cn.vuejs.org/v2/api/#keep-alive
+```
+
+### axios
+
+```
+github:https://github.com/axios/axios
+```
+
+### 懒加载
+
+```
+github:https://github.com/hilongjw/vue-lazyload
+main.js：
+    import VueLazyload from 'vue-lazyload'
+    Vue.use(VueLazyload, {
+      preLoad: 1.3,
+      error: require('common/image/default.png'),
+      // webpack会解析require语法，解析不了ico文件
+      loading: '/favicon.ico',  // 引入public目录下文件
+      attempt: 1
+    })
+需要加载图片的地方：
+    <img width="60px" height="60px" :src="item.imgurl" alt />
+    :src 换成 v-lazy 即可
+    <img width="60px" height="60px" v-lazy="item.imgurl" alt />
 ```
 

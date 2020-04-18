@@ -1,22 +1,28 @@
+const path = require('path')
+function resolve (dir) {
+  return path.join(__dirname, dir)
+}
 module.exports = {
+  lintOnSave: true, // eslint开启
   devServer: {
     proxy: { // 配置代理服务器
-      // 接口小暗号
       '/xixi': {
         target: 'http://ustbhuangyi.com', // 要转发的目标网址目标网址
         changeOrigin: true,  // 是否跨域
         pathRewrite: {
-          '^/xixi': '/' // 重写路径
-        }
-      },
-      // 接口小暗号
-      '/hehe': {
-        target: 'https://www.mxnzp.com', // 要转发的目标网址目标网址
-        changeOrigin: true,  // 是否跨域
-        pathRewrite: {
-          '^/hehe': '' // 重写路径
+          '^/xixi': '' // 将路径中多余的暗号 删除
         }
       }
     }
+  },
+  chainWebpack: (config) => {
+    config.resolve.alias
+      .set('@', resolve('./src')) // src的绝对路径起一个别名叫@
+      .set('common', resolve('./src/common'))
+      .set('components', resolve('./src/components'))
+      .set('router', resolve('./src/router'))
+      .set('store', resolve('./src/store'))
+      .set('api', resolve('./src/api'))
+      .set('base', resolve('./src/base'))
   }
 }
