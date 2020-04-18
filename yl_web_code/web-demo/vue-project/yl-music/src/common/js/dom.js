@@ -15,6 +15,7 @@ export function addClass(el, className) {
 }
 
 export function getData(el, name, val) {
+  // 获取 el 的 data-name 属性值，传入val参数时我们就给 el对象 data-name属性赋值
   const prefix = 'data-'
   if (val) {
     return el.setAttribute(prefix + name, val)

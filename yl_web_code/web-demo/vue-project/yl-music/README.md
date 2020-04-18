@@ -64,6 +64,7 @@ tab.vue
 用router-link 放四个路由，路由要先注册好，简单的布局，在APP.vue中引入并使用
 ```
 
+
 ### 推荐页面
 
 #### 轮播图
@@ -86,6 +87,25 @@ better-scroll默认是Y方向滚动，所以X方向滚动的时候要进行一�
 然后重写 一些better-scroll 的方法
 推荐页面完全加载完成的时候调用
 完全加载这个在代码里面有体现，轮播图的图片第一次加载成功
+```
+
+#### loading组件
+
+```
+布局用定位在最中间
+创建一个loading组件可以复用
+```
+
+### 歌手页面
+
+```
+请求数据-处理数据
+头部标题和快速入口数据使用计算属性
+快速入口点击事件可以直接跳转到对应下标的元素
+快速入口移动事件就要获取两次的距离差从而计算移动了多少个
+监听滚动事件，获取滚动Y坐标，看Y坐标在那个 group里面（需要计算出每一个group的高度）
+点击边界，拖动边界的处理
+监听 滚动的Y值，来设置当前选中的值，点击事件自己触发Y值的改变
 ```
 
 
@@ -133,5 +153,11 @@ main.js：
     <img width="60px" height="60px" :src="item.imgurl" alt />
     :src 换成 v-lazy 即可
     <img width="60px" height="60px" v-lazy="item.imgurl" alt />
+```
+
+### better-scroll
+
+```
+https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/
 ```
 

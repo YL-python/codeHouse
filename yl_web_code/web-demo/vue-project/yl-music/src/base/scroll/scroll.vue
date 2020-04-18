@@ -18,7 +18,7 @@ export default {
       default: true
     },
     listenScroll: {
-      //
+      // 父组件是否需要监听滚动事件
       type: Boolean,
       default: false
     },
@@ -54,6 +54,29 @@ export default {
         probeType: this.probeType,
         click: this.click
       });
+
+      // 父组件需要监听滚动事件
+      if (this.listenScroll) {
+        let me = this;
+        this.scroll.on("scroll", pos => {
+          // 父组件需要自己实现一个 scroll 方法
+          me.$emit("scroll", pos);
+        });
+      }
+
+      if (this.pullup) {
+        this.scroll.on("scrollEnd", () => {
+          if (this.scroll.y <= this.scroll.maxScrollY + 50) {
+            this.$emit("scrollToEnd");
+          }
+        });
+      }
+
+      if (this.beforeScroll) {
+        this.scroll.on("beforeScrollStart", () => {
+          this.$emit("beforeScroll");
+        });
+      }
     },
     disable() {
       this.scroll && this.scroll.disable();
@@ -72,7 +95,8 @@ export default {
     }
   },
   watch: {
-    data() {  // 监听数据变化重新更新数据
+    data() {
+      // 监听数据变化重新更新数据
       setTimeout(() => {
         this.refresh();
       }, this.refreshDelay);
