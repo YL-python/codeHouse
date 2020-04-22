@@ -12,3 +12,8 @@ export function getDiscList() {
   const url = '/xixi/music/api/getDiscList?g_tk=1928093487&inCharset=utf-8&outCharset=utf-8&notice=0&format=json&platform=yqq&hostUin=0&sin=0&ein=29&sortId=5&needNewCode=0&categoryId=10000000&rnd=0.04592075560594222'
   return axios.get(url)
 }
+
+export function getSongList(discid) {
+  const url = `/xixi/music/api/getCdInfo?g_tk=1928093487&inCharset=utf-8&outCharset=utf-8&notice=0&format=jsonp&disstid=${discid}&type=1&json=1&utf8=1&onlysong=0&platform=yqq&hostUin=0&needNewCode=0`
+  return axios.get(url)
+}

@@ -11,7 +11,7 @@
       <li v-for="(group,gIndex) in data" class="list-group" ref="listGroup" :key="gIndex">
         <h2 class="list-group-title">{{group.title}}</h2>
         <ul>
-          <li v-for="(item,iIndex) in group.items" class="list-group-item" :key="iIndex">
+          <li @click="selectItem(item)" v-for="(item,iIndex) in group.items" class="list-group-item" :key="iIndex">
             <img class="avatar" v-lazy="item.avatar" />
             <span class="name">{{item.name}}</span>
           </li>

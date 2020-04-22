@@ -23,7 +23,7 @@ export default {
       default: false
     },
     data: {
-      // 自己传数据
+      // 自己传数据  保证scroll组件有高度
       type: Array,
       default: null
     },

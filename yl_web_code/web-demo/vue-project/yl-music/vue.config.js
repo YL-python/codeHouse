@@ -12,6 +12,13 @@ module.exports = {
         pathRewrite: {
           '^/xixi': '' // 将路径中多余的暗号 删除
         }
+      },
+      '/hehe': {
+        target: 'https://api.qq.jsososo.com', // 要转发的目标网址目标网址
+        changeOrigin: true,  // 是否跨域
+        pathRewrite: {
+          '^/hehe': '' // 将路径中多余的暗号 删除
+        }
       }
     }
   },

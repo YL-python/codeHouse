@@ -39,9 +39,8 @@ let vendor = (() => {
       return key
     }
   }
-
   return false
-})()
+})
 
 export function prefixStyle(style) {
   if (vendor === false) {
@@ -52,5 +51,6 @@ export function prefixStyle(style) {
     return style
   }
 
+  // console.log(elementStyle);
   return vendor + style.charAt(0).toUpperCase() + style.substr(1)
 }
