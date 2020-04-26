@@ -315,3 +315,10 @@ vconsole
 在main中导入就行 不需要使用
 ```
 
+## 优化
+
+```
+路由懒加载
+<keep-alive></keep-alive> 缓存动态组件
+```
+
