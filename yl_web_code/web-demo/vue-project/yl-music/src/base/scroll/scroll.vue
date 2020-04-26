@@ -27,6 +27,7 @@ export default {
       type: Array,
       default: null
     },
+    // 是否开启上拉加载
     pullup: {
       type: Boolean,
       default: false
@@ -35,6 +36,7 @@ export default {
       type: Boolean,
       default: false
     },
+    // 自定义刷新事件，解决 动画组的动画事件之内不能自动刷新高度
     refreshDelay: {
       type: Number,
       default: 20

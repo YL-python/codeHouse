@@ -57,6 +57,7 @@ function filterSinger(singer) {
 }
 
 export function filterSong(songList, list) {
+  songList = songList.slice()
   songList.forEach(song => {
     song.url = list[song.mid]
   });

@@ -82,7 +82,7 @@
               <i class="icon-next" @click="next"></i>
             </div>
             <div class="icon i-right">
-              <i class="icon icon-not-favorite"></i>
+              <i @click="toggleFavorite(currentSong)" class="icon" :class="getFavoriteIcon(currentSong)"></i>
             </div>
           </div>
         </div>
@@ -98,16 +98,17 @@
           <h2 class="name" v-html="currentSong.name"></h2>
           <p class="desc" v-html="currentSong.singer"></p>
         </div>
-        <div class="control">
+        <div class="control" @click.stop="showPlaylist">
           <progress-circle :radius="radius" :percent="percent">
             <i @click.stop="togglePlaying" class="icon-mini" :class="miniIcon"></i>
           </progress-circle>
         </div>
-        <div class="control">
+        <div class="control" @click.stop="showPlaylist">
           <i class="icon-playlist"></i>
         </div>
       </div>
     </transition>
+    <playlist ref="playlist"></playlist>
     <audio
       ref="audio"
       @play="ready"
@@ -121,7 +122,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapMutations,mapActions } from "vuex";
 import animations from "create-keyframe-animation";
 import ProgressBar from "base/progress-bar/progress-bar";
 import ProgressCircle from "base/progress-circle/progress-circle";
@@ -129,7 +130,11 @@ import { playMode } from "common/js/config";
 import { shuffle } from "common/js/util";
 import Lyric from "lyric-parser";
 import Scroll from "base/scroll/scroll";
+import Playlist from "components/playlist/playlist";
+import {playerMixin} from 'common/js/mixin'
+
 export default {
+  mixins: [playerMixin],
   data() {
     return {
       songReady: false, // 歌曲有没有准备好
@@ -165,12 +170,12 @@ export default {
       if (!this.songReady) {
         return;
       }
-      if (this.playlist.length === 1) {
+      if (this.playList.length === 1) {
         this.loop();
         return;
       } else {
         let index = this.currentIndex + 1;
-        if (index === this.playlist.length) {
+        if (index === this.playList.length) {
           index = 0;
         }
         this.setCurrentIndex(index);
@@ -185,13 +190,13 @@ export default {
       if (!this.songReady) {
         return;
       }
-      if (this.playlist.length === 1) {
+      if (this.playList.length === 1) {
         this.loop();
         return;
       } else {
         let index = this.currentIndex - 1;
         if (index === -1) {
-          index = this.playlist.length - 1;
+          index = this.playList.length - 1;
         }
         this.setCurrentIndex(index);
         if (!this.playing) {
@@ -206,7 +211,9 @@ export default {
       if (this.currentLyric) {
         this.currentLyric.seek(0);
       }
-      // this.savePlayHistory(this.currentSong);
+      console.log("ready",this.currentSong);
+      
+      this.savePlayHistory(this.currentSong);
     },
     // 发送错误的时候执行
     error() {
@@ -288,6 +295,9 @@ export default {
       this.currentSong
         .getLyric()
         .then(lyric => {
+          if (this.currentSong.lyric !== lyric) {
+            return
+          }
           // console.log(lyric);
           this.currentLyric = new Lyric(lyric, this.handleLyric);
           // console.log(this.currentLyric);
@@ -312,9 +322,6 @@ export default {
         this.$refs.lyricList.scrollTo(0, 0, 1000);
       }
       this.playingLyric = txt;
-    },
-    showPlaylist() {
-      this.$refs.playlist.show();
     },
     // 左右移动事件
     middleTouchStart(e) {
@@ -380,6 +387,10 @@ export default {
       this.$refs.middleL.style["transitionDuration"] = `${time}ms`;
       this.touch.initiated = false;
     },
+    // 歌曲列表点击显示
+    showPlaylist() {
+      this.$refs.playlist.show();
+    },
     // 下面五个方法是动画
     enter(el, done) {
       const { x, y, scale } = this._getPosAndScale();
@@ -438,7 +449,8 @@ export default {
       setCurrentIndex: "SET_CURRENT_INDEX",
       setPlayMode: "SET_PLAY_MODE",
       setplayList: "SET_PLAYLIST"
-    })
+    }),
+    ...mapActions(['savePlayHistory'])
   },
   computed: {
     // 根据播放状态设置显示图标
@@ -485,6 +497,8 @@ export default {
   },
   watch: {
     currentSong(newSong, oldSong) {
+      console.log("player watch currentSong", this.currentSong.name);
+
       if (!newSong.id) {
         return;
       }
@@ -517,7 +531,8 @@ export default {
   components: {
     ProgressBar,
     ProgressCircle,
-    Scroll
+    Scroll,
+    Playlist
   }
 };
 </script>

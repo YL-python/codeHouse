@@ -59,7 +59,7 @@ export const playerMixin = {
       })
       this.setCurrentIndex(index)
     },
-    toggleFavorite(song) {
+    toggleFavorite(song) { 
       if (this.isFavorite(song)) {
         this.deleteFavoriteList(song)
       } else {
@@ -70,7 +70,7 @@ export const playerMixin = {
       if (this.isFavorite(song)) {
         return 'icon-favorite'
       }
-      return 'icon-not-favorite'
+        return 'icon-not-favorite'
     },
     isFavorite(song) {
       const index = this.favoriteList.findIndex((item) => {
