@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  <title>明亮控制</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      background: url(../kanna.png) no-repeat center;
+      background-size: cover;
+      min-height: 98vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brightness-box {
+      width: 400px;
+      height: 60px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brightness-box i {
+      margin: 0 10px;
+    }
+
+    #range {
+      width: 100%;
+      /* 进度条不显示 */
+      -webkit-appearance: none;
+      background-color: #0a85ff;
+      height: 3px;
+      /* 取消选择框线 */
+      outline: none;
+    }
+
+    #range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      background: #333;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="brightness-box">
+      <i class="fas fa-sun"></i>
+      <input id="range" type="range" min="10" max="100" value="100">
+      <i class="far fa-sun"></i>
+    </div>
+  </div>
+
+  <script>
+    rangeInput = document.getElementById("range");
+    container = document.getElementsByClassName("container")[0];
+    // console.log("rangeInput",rangeInput);
+    // console.log("container",container);
+    // console.log("container.style",container.style);
+    rangeInput.addEventListener("change", function () {
+      value = rangeInput.value
+      container.style.filter = `brightness(${value}%)`
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>扩展小球</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .main {
+      width: 300px;
+      height: 300px;
+      border: 1px red solid;
+      margin: 0 auto;
+      position: relative;
+      text-align: center;
+    }
+
+    .center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 100px;
+      width: 100px;
+      border: 3px solid skyblue;
+      line-height: 94px;
+      font-size: 24px;
+      border-radius: 50%;
+    }
+
+    .one,
+    .two,
+    .three,
+    .four,
+    .five,
+    .six {
+      border: 2px solid skyblue;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      line-height: 76px;
+      font-size: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3D(-50%, -50%, 0);
+      opacity: 0;
+      /* 只让 transform opacity 属性有过度效果 */
+      transition: transform .5s, opacity .5s;
+    }
+
+    .one:hover,
+    .two:hover,
+    .three:hover,
+    .four:hover,
+    .five:hover,
+    .six:hover {
+      border: 2px solid greenyellow;
+    }
+
+
+    .main:hover .center {
+      animation: jello 1s;
+      background: rgba(0, 0, 0, 0)
+    }
+
+    .main:hover .one {
+      transform: translate3D(-50%, -190%, 0);
+      opacity: 1;
+    }
+
+    .main:hover .two {
+      transform: translate3D(80%, -100%, 0);
+      opacity: 1;
+    }
+
+    .main:hover .three {
+      transform: translate3D(80%, 50%, 0);
+      opacity: 1;
+    }
+
+    .main:hover .four {
+      transform: translate3D(-50%, 90%, 0);
+      opacity: 1;
+    }
+
+    .main:hover .five {
+      transform: translate3D(-180%, 50%, 0);
+      opacity: 1;
+    }
+
+    .main:hover .six {
+      transform: translate3D(-180%, -100%, 0);
+      opacity: 1;
+    }
+
+    @keyframes jello {
+
+      0%,
+      11.1%,
+      to {
+        transform: translate(-50%, -50%) translateZ(0)
+      }
+
+      22.2% {
+        transform: translate(-50%, -50%) skewX(-12.5deg) skewY(-12.5deg)
+      }
+
+      33.3% {
+        transform: translate(-50%, -50%) skewX(6.25deg) skewY(6.25deg)
+      }
+
+      44.4% {
+        transform: translate(-50%, -50%) skewX(-3.125deg) skewY(-3.125deg)
+      }
+
+      55.5% {
+        transform: translate(-50%, -50%) skewX(1.5625deg) skewY(1.5625deg)
+      }
+
+      66.6% {
+        transform: translate(-50%, -50%) skewX(-.78125deg) skewY(-.78125deg)
+      }
+
+      77.7% {
+        transform: translate(-50%, -50%) skewX(.390625deg) skewY(.390625deg)
+      }
+
+      88.8% {
+        transform: translate(-50%, -50%) skewX(-.1953125deg) skewY(-.1953125deg)
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="center">中心</div>
+    <div class="one">第1</div>
+    <div class="two">第2</div>
+    <div class="three">第3</div>
+    <div class="four">第4</div>
+    <div class="five">第5</div>
+    <div class="six">第6</div>
+  </div>
+</body>
+
+</html>

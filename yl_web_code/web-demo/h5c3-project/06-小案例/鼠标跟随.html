@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鼠标跟随</title>
+  <style>
+    .heart-eye {
+      position: absolute;
+      animation: pulse 1s ease-out infinite;
+    }
+
+    .heart {
+      display: block;
+      width: 16px;
+      height: 16px;
+      background: #e25d5d;
+      transform: rotate(-45deg);
+    }
+
+    .heart:before,
+    .heart:after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #e25d5d;
+    }
+
+    .heart:before {
+      top: -8px;
+      left: 0;
+    }
+
+    .heart:after {
+      left: 8px;
+      top: 0;
+    }
+
+    @keyframes pulse {
+      30% {
+        transform: scale(1.2, 1.2);
+      }
+
+      70% {
+        transform: scale(1, 1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <span class="heart-eye">
+    <span class="heart"></span>
+  </span>
+  <script>
+    var heart = document.querySelector('.heart-eye');
+    console.log(heart);
+
+    document.onmousemove = function (e) {
+      heart.style.top = 20 + e.pageY + 'px';
+      heart.style.left = 30 + e.pageX + 'px';
+    }
+  </script>
+</body>
+
+</html>

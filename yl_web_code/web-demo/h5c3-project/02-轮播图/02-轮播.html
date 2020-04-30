@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Fullscreen Slider</title>
+  <style>
+    /* reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #333;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .slider {
+      position: relative;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out;
+    }
+
+    .slide.current {
+      opacity: 1;
+    }
+
+    /* background images */
+    .slide:first-child {
+      background: url('../images/image01.jpg') no-repeat center center/cover;
+    }
+
+    .slide:nth-child(2) {
+      background: url('../images/image02.jpg') no-repeat center center/cover;
+    }
+
+    .slide:nth-child(3) {
+      background: url('../images/image03.jpg') no-repeat center center/cover;
+    }
+
+    .slide:nth-child(4) {
+      background: url('../images/image04.jpg') no-repeat center center/cover;
+    }
+
+    .slide:nth-child(5) {
+      background: url('../images/image05.jpg') no-repeat center center/cover;
+    }
+
+    .slide:nth-child(6) {
+      background: url('../images/image01.jpg') no-repeat center center/cover;
+    }
+
+    /* content */
+    .slide .content {
+      position: absolute;
+      bottom: 70px;
+      left: -600px;
+      width: 600px;
+      opacity: 0;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #333;
+      padding: 35px;
+    }
+
+    .slide .content h1 {
+      margin-bottom: 10px;
+    }
+
+    .slide.current .content {
+      opacity: 1;
+      transform: translateX(600px);
+      transition: all 0.7s ease-in-out 0.3s;
+    }
+
+    .buttons button#prev {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+    }
+
+    .buttons button#next {
+      position: absolute;
+      top: 50%;
+      right: 15px;
+    }
+
+    .buttons button {
+      border: 2px solid #fff;
+      background-color: transparent;
+      color: #fff;
+      cursor: pointer;
+      padding: 13px 15px;
+      border-radius: 50%;
+      outline: none;
+    }
+
+    .buttons button:hover {
+      background-color: #fff;
+      color: #333;
+    }
+
+    /* media queries */
+    @media(max-width: 500px) {
+      .slide .content {
+        bottom: -300px;
+        left: 0;
+        width: 100%;
+      }
+
+      .slide.current .content {
+        transform: translateY(-300px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider">
+    <div class="slide current">
+      <div class="content">
+        <h1>第一页</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum consectetur esse doloremque quo
+          laudantium error aspernatur cupiditate amet consequuntur magni?</p>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="content">
+        <h1>第二页</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum consectetur esse doloremque quo
+          laudantium error aspernatur cupiditate amet consequuntur magni?</p>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="content">
+        <h1>第三页</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum consectetur esse doloremque quo
+          laudantium error aspernatur cupiditate amet consequuntur magni?</p>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="content">
+        <h1>第四页</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum consectetur esse doloremque quo
+          laudantium error aspernatur cupiditate amet consequuntur magni?</p>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="content">
+        <h1>第五页</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum consectetur esse doloremque quo
+          laudantium error aspernatur cupiditate amet consequuntur magni?</p>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="content">
+        <h1>第六页</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum consectetur esse doloremque quo
+          laudantium error aspernatur cupiditate amet consequuntur magni?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button id="prev"><i class="fas fa-arrow-left"></i></button>
+    <button id="next"><i class="fas fa-arrow-right"></i></button>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const next = document.querySelector('#next');
+    const prev = document.querySelector('#prev');
+    const auto = true; //自动翻页
+    const intervalTime = 5000; //间隔时间
+    let slideInterval;
+
+    const nextSlide = function () {
+      //get current class
+      const current = document.querySelector('.current');
+
+      if (current.nextElementSibling) {
+        // add current to next sibling
+        current.nextElementSibling.classList.add('current');
+      } else {
+        // add current to start
+        slides[0].classList.add('current');
+      }
+      //clear current
+      setTimeout(() => current.classList.remove('current'));
+    };
+
+    const prevSlide = function () {
+      //get current class
+      const current = document.querySelector('.current');
+
+      if (current.previousElementSibling) {
+        // add current to prev sibling
+        current.previousElementSibling.classList.add('current');
+      } else {
+        // add current to end
+        slides[slides.length - 1].classList.add('current');
+      }
+      //clear current
+      setTimeout(() => current.classList.remove('current'));
+    };
+
+    //button event
+    next.addEventListener('click', function () {
+      nextSlide();
+      if (auto) {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, intervalTime);
+      }
+    });
+
+    prev.addEventListener('click', function () {
+      prevSlide();
+      if (auto) {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, intervalTime);
+      }
+    });
+
+    // Auto slide
+    if (auto) {
+      // Run next slide at interval time
+      slideInterval = setInterval(nextSlide, intervalTime);
+    }
+  </script>
+</body>
+
+</html>

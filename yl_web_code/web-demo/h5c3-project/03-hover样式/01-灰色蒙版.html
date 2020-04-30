@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>灰色蒙版</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #333;
+    }
+    .image{
+      width: 500px;
+      overflow: hidden;
+      height: 500px;
+      background-size: cover;
+      filter: grayscale(100%);
+      transition: all .5s;
+    }
+    .image img{
+      width: 100%;
+    }
+
+    .image:hover{
+      filter: grayscale(0);
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="image">
+    <img src="../images/image01.jpg" alt="">
+  </div>
+</body>
+
+</html>

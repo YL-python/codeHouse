@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+  <title>轮播</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      /* box-sizing: border-box; */
+    }
+
+    .carousel-container {
+      width: 990px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel-slide {
+      display: flex;
+      width: 100%;
+      height: 310px;
+    }
+
+    #prevBtn {
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      z-index: 5;
+    }
+    #nextBtn{
+      position: absolute;
+      top: 50%;
+      right: 5%;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      z-index: 5;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="carousel-container">
+    <i class="fas fa-arrow-circle-left" id="prevBtn"></i>
+    <i class="fas fa-arrow-circle-right" id="nextBtn"></i>
+    <div class="carousel-slide">
+      <img src="../images/banner05.jpg" alt="" id="lastClone">
+      <img src="../images/banner01.jpg" alt="">
+      <img src="../images/banner02.jpg" alt="">
+      <img src="../images/banner03.jpg" alt="">
+      <img src="../images/banner04.jpg" alt="">
+      <img src="../images/banner05.jpg" alt="">
+      <img src="../images/banner01.jpg" alt="" id="firstClone">
+    </div>
+  </div>
+  <script>
+    const carouselSlide = document.querySelector('.carousel-slide')
+    const carouselImages = document.querySelectorAll('.carousel-slide img')
+
+    const prevBtn = document.querySelector("#prevBtn")
+    const nextBtn = document.querySelector("#nextBtn")
+
+    let counter = 1;
+    // 一开始是获取图片的宽度，但是图片的宽度 是资源加载，在获取的时候，图片还没加载上
+    let size = carouselSlide.clientWidth;
+
+    carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+
+    nextBtn.addEventListener('click', () => {
+      if (counter >= carouselImages.length - 1) return;
+      console.log(carouselImages[0].clientWidth);
+      carouselSlide.style.transition = "transform 0.4s ease-in-out"
+      counter++;
+      carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    })
+
+    prevBtn.addEventListener('click', () => {
+      if (counter <= 0) return;
+      carouselSlide.style.transition = "transform 0.4s ease-in-out"
+      counter--;
+      carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+    })
+
+    carouselSlide.addEventListener('transitionend', () => {
+      if (carouselImages[counter].id === 'lastClone') {
+        carouselSlide.style.transition = 'none'
+        counter = carouselImages.length - 2
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+      }
+      if (carouselImages[counter].id === 'firstClone') {
+        carouselSlide.style.transition = 'none'
+        counter = carouselImages.length - counter
+        carouselSlide.style.transform = 'translateX(' + (-size * counter) + 'px)';
+      }
+    })
+    // const timer = setInterval(()=>{
+    //   nextBtn.click()
+    // },3000)
+  </script>
+</body>
+
+</html>

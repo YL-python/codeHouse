@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul#related span {
+      color: red;
+    }
+
+    #favorite .highlight {
+      color: orange;
+    }
+
+    .highlight {
+      color: black;
+    }
+
+    /* 
+      标签的权重是1，类的权重是10 ，id的权重是100
+      ul#related span 的权重为 1+100+1=102
+      #favorite .highlight 的权重为 100+10=110
+      highlight 的权重为 10
+    */
+  </style>
+</head>
+
+<body>
+  <ul class="authors" id="favorite">
+    <li>
+      <span>Martin Fowler</span>
+    </li>
+    <li id="related">
+      <span class="hightlight">text</span>
+    </li>
+  </ul>
+
+</body>
+
+</html>
