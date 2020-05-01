@@ -1,0 +1,274 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix:after {
+  clear: both;
+  content: ".";
+  display: block;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  visibility: hidden
+}
+
+.clearfix {
+  clear: both;
+  zoom: 1
+}
+
+.oh:hover {
+  opacity: .8;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#home {
+  width: 100%;
+  background: url(../images/indexbg.jpg) no-repeat center center;
+  background-size: cover;
+  position: relative;
+  text-align: center;
+}
+
+#home .nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 220px;
+  height: 200px;
+  background-color: rgba(5, 211, 235, 0.9);
+}
+
+#home .nav ul.nav-items {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#home .nav .nav-item {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 20px 0 20px;
+}
+
+#home .nav ul.nav-items2 {
+  width: 120px;
+  display: none;
+  position: absolute;
+  top: 80px;
+  left: -20px;
+  background: rgb(149, 202, 251);
+}
+
+#home .nav ul.nav-items2 li {
+  margin: 10px 0 10px;
+  color: #000;
+  font-size: 14px;
+}
+
+#home .nav-item:nth-child(2):hover ul.nav-items2 {
+  display: block;
+}
+
+
+
+.banner {
+  padding: 15vw 0 16vw;
+}
+
+.banner-content {
+  padding: 3em;
+  max-width: 550px;
+  background: rgba(255, 255, 255, 0.167);
+  box-shadow: 7px 7px 10px 0 rgba(56, 56, 56, 0.21);
+}
+
+.banner-title {
+  font-size: 50px;
+}
+
+.banner-text {
+  margin: 10px 0 10px;
+  font-style: italic;
+}
+
+.banner-other {
+  overflow: hidden;
+}
+
+.banner-icons {
+  width: 200px;
+  margin: 30px 0 15px;
+  padding: 15px 0 15px;
+  border-top: 1px rgb(201, 201, 201) solid;
+  border-bottom: 1px rgb(201, 201, 201) solid;
+  transform: rotate(-10deg);
+}
+
+.banner-icons li {
+  float: left;
+  margin: 0 16px 0;
+}
+
+
+.banner-btn {
+  margin-top: 50px;
+  width: 140px;
+  height: 50px;
+  background-color: rgb(220, 244, 254);
+  line-height: 50px;
+}
+
+.banner-btn a {
+  color: #000;
+  font-weight: 700;
+}
+
+.yl-body {
+  background: url(../images/bg.png) no-repeat center fixed;
+  background-size: cover;
+  padding: 50px 0;
+}
+
+.warp {
+  width: 1200px;
+  margin: 0 auto;
+  border-radius: 0.25em;
+  background: #fff;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, .3);
+}
+
+h3.title {
+  text-align: center;
+  font-size: 40px;
+  padding: 50px 0 40px;
+  position: relative;
+  font-weight: 600;
+}
+
+h3.title:before {
+  position: absolute;
+  width: 80px;
+  height: 2px;
+  content: "";
+  background: #f10900;
+  bottom: 20%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.welcome {
+  margin-top: 40px;
+}
+
+.welcome .welcome-left {
+  width: 440px;
+  border-right: 1px dashed #05d3eb;
+  padding-right: 20px;
+}
+
+.welcome .welcome-left h2 {
+  margin-bottom: 25px;
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.welcome .welcome-left h3 {
+  margin-bottom: 25px;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.welcome .welcome-left p {
+  line-height: 30px;
+  text-indent: 2em;
+  color: #888888;
+}
+
+.welcome .welcome-left a {
+  display: inline-block;
+  width: 150px;
+  height: 50px;
+  border: 1px solid black;
+  line-height: 50px;
+  text-align: center;
+  margin-top: 30px;
+  background-color: black;
+  color: #ffffff;
+}
+
+.welcome-right img {
+  border-radius: 50%;
+  border: 2px solid #05d3eb;
+  padding: 6px;
+}
+
+#hobby {
+  margin-top: 70px;
+}
+
+#hobby .hobby-item {
+  display: inline-block;
+  width: 45%;
+  margin-bottom: 70px;
+}
+
+#hobby .hobby-item:nth-child(2),#hobby .hobby-item:nth-child(4) {
+  margin-left: 70px;
+}
+
+.hobby-item .icon {
+  width: 80px;
+  height: 80px;
+  border: 1px black solid;
+  transform: rotate(-45deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hobby-item .icon i {
+  font-size: 40px;
+  color: red;
+  transform: rotate(45deg);
+}
+
+.hobby-item .content {
+  margin-left: 30px;
+  width: 50%;
+}
+
+.hobby-item .content h3{
+  margin-bottom: 15px;
+}
+
+.hobby-item .content p{
+  font-size: 12px;
+  color: rgba(0, 0, 0, .5);
+}

@@ -223,3 +223,85 @@ animation-play-state	规定动画是否正在运行或暂停。默认是 "runnin
 
 ## CSS3 3D转换-transform
 
+```
+
+```
+
+## [选择器](https://www.w3cschool.cn/cssref/css-selectors.html) 
+
+### * （通配选择器）
+
+```
+*{ margin: 0;  padding: 0; }
+#container * { border: 1px solid black; }
+```
+
+### #X （id选择器）
+
+```
+因为id不能重复，所以在使用的时候要十分严谨
+```
+
+### .X （类选择器）
+
+### CSS 组合选择符
+
+```
+后代选取器(以空格分隔)
+	div p { background-color:yellow; }
+子元素选择器(以大于号分隔）
+	div>p { background-color:yellow; }
+相邻兄弟选择器（以加号分隔）
+	div+p { background-color:yellow; }
+普通兄弟选择器（以波浪号分隔）
+	div~p { background-color:yellow; }
+```
+
+### CSS 伪类
+
+> CSS伪类是用来添加一些选择器的特殊效果。由于状态的变化是非静态的，所以元素达到一个特定状态时，它可能得到一个伪类的样式；当状态改变时，它又会失去这个样式。
+
+```
+:link			a:link			选择所有未访问链接
+:visited		a:visited		选择所有访问过的链接
+:active			a:active		选择正在活动链接
+:hover			a:hover			把鼠标放在链接上的状态
+:focus			input:focus		选择元素输入后具有焦点
+:first-letter	p:first-letter	选择每个<p> 元素的第一个字母
+:first-line		p:first-line	选择每个<p> 元素的第一行
+:first-child	p:first-child	选择器匹配属于任意元素的第一个子元素的 <]p> 元素
+:before			p:before		在每个<p>元素之前插入内容
+:after			p:after			在每个<p>元素之后插入内容
+:lang(language)	p:lang(it)		为<p>元素的lang属性选择一个开始值
+:checked	单选框被 选择的时候
+:disabled	单选框被 禁止的时候
+:focus 		当标签能够获取焦点的时候，会触发 :focus
+结构性伪类选择器：
+:nth-of-type(num)：选择组里面的第 num 个 选择器
+:first-of-type：选择组里面的第 1 个
+:last-of-type：选择组里面的 最后1 个
+:only-of-type：选择组里面的 唯一1 个  只有一个时候生效       
+:nth-child(num)：选择组里面的第 num 个 选择器, 并判断是不是这个类型的选择器
+:first-child 
+:last-child
+:only-child
+目标伪类选择器：
+:target{ }	当元素被相关连接（锚点）指向的时候，放生css样式的改变！
+注意： 在CSS定义中，a:hover 必须被置于 a:link 和 a:visited 之后，才是有效的。
+注意： 在 CSS 定义中，a:active 必须被置于 a:hover 之后，才是有效的。
+注意：伪类的名称不区分大小写。
+匹配所有<p> 元素中的第一个 <i> 元素  p > i:first-child{ color:blue; }
+匹配所有作为第一个子元素的<p> 元素中的所有 <i> 元素 p:first-child i{ color:blue; }
+```
+
+### 属性选择器
+
+```
+[attr]{} 		 包含这个属性的选择器 起作用
+[attr=value]{} 	 包含这个属性且值相等的选择器 起作用
+[attr*=value]{}	 包含这个属性且值 包含 value 的选择器 起作用
+[attr^=value]{}  包含这个属性且值 起始值 是value 的选择器 起作用
+[attr$=value]{}  包含这个属性 结束值 是value 的选择器 起作用
+[attr1][attr2]{} 多个属性选择器
+```
+
