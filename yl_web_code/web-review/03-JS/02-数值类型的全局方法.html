@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数值类型的全局方法</title>
+</head>
+
+<body>
+  <script>
+    /* parseInt() 方法用于将字符串转为 **整数**
+    如果字符串头部有空格，空格会被自动去除。
+      parseInt('   81') // 81
+    如果parseInt的参数不是字符串，则会先转为字符串再转换。
+      parseInt(1.23) // 1
+      // 等同于
+      parseInt('1.23') // 1
+    字符串转为整数的时候，是一个个字符依次转换，如果遇到不能转为数字的字符，就不再进行下去，返回已经转好的部分。
+      parseInt('8a') // 8
+      parseInt('12**') // 12
+      parseInt('12.34') // 12
+      parseInt('15e2') // 15
+      parseInt('15px') // 15
+    如果字符串的第一个字符不能转化为数字（后面跟着数字的正负号除外），返回NaN。
+      parseInt('abc') // NaN
+      parseInt('.3') // NaN
+      parseInt('') // NaN
+      parseInt('+') // NaN
+      parseInt('+1') // 1
+    如果字符串以0x或0X开头，parseInt会将其按照十六进制数解析。
+      parseInt('0x10') // 16
+    如果字符串以0开头，将其按照10进制解析。
+      parseInt('011') // 11
+    对于那些会自动转为科学计数法的数字，parseInt会将科学计数法的表示方法视为字符串
+      parseInt(1000000000000000000000.5) // 1
+      // 等同于
+      parseInt('1e+21') // 1
+      parseInt(0.0000008) // 8
+      // 等同于
+      parseInt('8e-7') // 8
+    parseInt方法还可以接受第二个参数（2到36之间），表示被解析的值的进制，返回该值对应的十进制数。
+      parseInt('1000') // 1000
+      // 等同于
+      parseInt('1000', 10) // 1000
+      parseInt('1000', 2) // 8
+      parseInt('1000', 6) // 216
+      parseInt('1000', 8) // 512
+    */
+    /*
+    parseFloat()  方法用于将一个字符串转为浮点数。
+    isNaN()       方法可以用来判断一个值是否为NaN。
+    isFinite()    方法返回一个布尔值，表示某个值是否为正常的数值。
+    */ 
+  </script>
+</body>
+
+</html>

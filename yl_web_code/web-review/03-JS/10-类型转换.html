@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>类型转换</title>
+</head>
+
+<body>
+  <script>
+    // 强制类型转换，三种 Number()、String()和Boolean()
+    // Number()是将任意类型的转换成数值，转换失败就是 NaN
+    // 转换的原理就是看这个参数，是不是原始数据类型，如果不是，就使用 valueOf()方法
+    // 使用valueOf()之后，如果是原始类型就用Number()转换，如果不是就用toString()方法
+    // toString之后，如果是原始值就用Number()转换，如果还不是就报错
+    // 一般都不会报错，除非我们自己重写了这两个方法
+
+    Number({
+      valueOf: function () {
+        return 2;
+      },
+      toString: function () {
+        return 3;
+      }
+    })
+
+
+    // String()强制理性转换有点不同，它是先执行toString()方法，如果是原始类型就用String()转换，
+    // 如果不是就在使用valueOf()转换，如果是原始类型就用String()转换，如果还不是就报错
+    // 一般都不会报错，除非我们自己重写了这两个方法
+
+    String({
+      valueOf: function () {
+        return 2;
+      },
+      toString: function () {
+        return 3;
+      }
+    })
+
+    // Boolean()方法简单，除了undefined，null，0（包含-0和+0），NaN，''（空字符串），false以外，返回值都是true
+  
+    // 自动类型转换
+    // 发生在下面三个情况，1不同类型的数据互相运算，2对非布尔值类型的数据求布尔值，3对非数值类型的值使用一元运算符（即+和-）。
+    // 自动转换的时候会有判断，预期是字符串就用String()方法，预期是数值就用Number()方法，
+    // 预期数值或者是字符串都行的时候就转成数字
+    // 注意：null转为数值时为0，而undefined转为数值时为NaN。
+    // 字符串加 [数字，对象，函数。。。] 预期结果是字符串，后者用String()转换
+    // 没有字符串参加的加法，任何的 - * / 预期结果是数字
+    // 在if中，会预期是Boolean类型，所以会自动转成 Boolean类型
+    // 所以 &&和|| 返回值不是布尔类型，但是在if判断的时候有个自动转换的过程
+
+    // 运算过程中，会先把值转成原始值，如果有字符串，就把另外一个也转成字符串，如果没有就都转成数值类型
+    // []+[] ==> '' [].valueOf()是数组就继续使用toString()变成了 ''空字符串
+    // +[] ==> 0   [] 变成 '' 但是一个+是单目运算，期待值是数字，双目的+才会有重载
+    // +{} ==>  NaN  期待值是数字，{}变成'[object Object]' 就转成NaN 了
+    // {}+{}  不同的引擎有不一样，有的把第一个{}认为是空代码块就跳过变成了 +{}
+    // 有的引擎不这样认为 是双目加法，就是 '[object Object][object Object]'
+  </script>
+</body>
+
+</html>

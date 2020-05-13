@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array</title>
+</head>
+
+<body>
+  构造方法
+  <br>
+  在数组首尾添加元素
+  <br>
+  在数组首尾删除元素
+  <br>
+  join()
+  <br>
+  颠倒数组方法，数组拼接方法
+  <br>
+  提取数组的一部分。
+  <br>
+  删除数组的一部分。在指定位置插入元素
+  <br>
+  sort()排序,map()遍历操作，forEach()遍历
+  <br>
+  
+  <br>
+  删除数组的一部分。在指定位置插入元素
+  <br>
+  删除数组的一部分。在指定位置插入元素
+  <br>
+  <script>
+    // 构造函数
+    // 不推荐使用构造函数来创建数组，因为不同的参数生成的数组不一样
+    // bad
+    var arr = new Array(1, 2);
+    // good
+    var arr = [1, 2];
+
+    // 静态方法
+    // Array.isArray()  判断参数是不是数组
+    var arr = [1, 2, 3];
+    typeof arr // "object"
+    Array.isArray(arr) // true
+
+    // valueOf()，toString()
+    // 数组的valueOf() 方法返回数组本身
+    // toString()返回数组的字符串形式，用逗号分隔每一个元素
+    var arr = [1, 2, 3, [4, 5, 6]];
+    arr.toString() // "1,2,3,4,5,6"
+
+    // push()在 **原**数组末尾追加元素，可以有多个，返回新数组的长度
+    // pop() 删除 **原**数组的最后一个元素，并返回该元素。注意，该方法会改变原数组。
+
+    // shift() 删除 **原**数组的第一个元素，并返回该元素。注意，该方法会改变原数组。
+    // unshift() 法用于在数组的第一个位置添加元素，并返回添加新元素后的数组长度。注意，该方法会改变原数组。
+    // push()和pop()就是先进后出的栈，push和shift()就是先进先出的队列
+
+    // join()方法用指定的分隔符连接数组的每一个元素，默认是逗号
+    var a = [1, 2, 3, 4];
+    a.join(' ') // '1 2 3 4'
+    a.join(' | ') // "1 | 2 | 3 | 4"
+    a.join() // "1,2,3,4"
+    // 数组成员是undefined或null或空位，会被转成空字符串。
+    // a.join(',') <==> Array.prototype.join.call(a, ',')
+    // 这样，就能让类似数组的对象也拥有join方法
+    Array.prototype.join.call('hello', '-') // "h-e-l-l-o"
+    var obj = {
+      0: 'a',
+      1: 'b',
+      length: 2
+    };
+    Array.prototype.join.call(obj, '-') // 'a-b'
+
+    // concat()  方法实现数组的合并，会返回一个新数组，不改变原数组
+    ['hello'].concat(['world']) // ["hello", "world"]
+    // 如果数组成员包括对象，concat方法返回当前数组的一个浅拷贝。
+
+    // reverse() 方法用来颠倒一个数组，会改变原数组
+    var a = ['a', 'b', 'c'];
+    a.reverse() // ["c", "b", "a"]
+
+    // arr.slice(start, end); 方法用于提取目标数组的一部分，返回一个新数组，原数组不变。
+    // [start,end) ,可以不传参数（返回数组的拷贝），可以传一个（从当前位置提取到最后）
+    // 可以是负值（反取），可以最后一个值很大（就和传一个一样）
+    var a = ['a', 'b', 'c'];
+    a.slice(1, 2); // ["b"]
+    // slice()方法的一个重要应用，是将类似数组的对象转为真正的数组。
+    Array.prototype.slice.call({
+      0: 'a',
+      1: 'b',
+      length: 2
+    }) // ['a', 'b']
+    // Array.prototype.slice.call(arguments);
+
+    // splice()方法用于删除原数组的一部分成员，并可以在删除的位置添加新的数组成员，返回值是被删除的元素。注意，该方法会改变原数组。
+    // arr.splice(start, count, addElement1, addElement2, ...);
+    var a = ['a', 'b', 'c', 'd', 'e', 'f'];
+    a.splice(4, 2, 1, 2) // ["e", "f"]
+    a // ["a", "b", "c", "d", 1, 2]
+      // 可以是负值，可以第二个参数是0，任何就可以实现当前位置插入元素，可以传一个参数就把一个数组分成两个数组了
+
+      // sort() 
+      [{
+        name: "张三",
+        age: 30
+      }, {
+        name: "李四",
+        age: 24
+      }, {
+        ame: "王五",
+        age: 28
+      }].sort(function (o1, o2) {
+        return o1.age - o2.age;
+      })
+    // [
+    //   { name: "李四", age: 24 },
+    //   { name: "王五", age: 28  },
+    //   { name: "张三", age: 30 }
+    // ]
+    // sort的参数函数本身接受两个参数，表示进行比较的两个数组成员。
+    // 如果该函数的返回值大于0，表示第一个成员排在第二个成员后面；
+    // 其他情况下，都是第一个元素排在第二个元素前面。
+    // bad
+    [1, 4, 2, 6, 0, 6, 2, 6].sort((a, b) => a > b)
+    // good
+    [1, 4, 2, 6, 0, 6, 2, 6].sort((a, b) => a - b) // 搜索引擎不同，- 比 > 更好
+
+    // map() 将数组的所有成员依次传入参数函数，然后把每一次的执行结果组成一个新数组返回。
+    [1, 2, 3].map(function (n) {
+      return n + 1;
+    }); // [2, 3, 4]
+
+    [1, 2, 3].map(function (elem, index, arr) {
+      return elem * index;
+    }); // [0, 2, 6]
+    // map方法向它传入三个参数：当前成员、当前位置和数组本身。
+    // map方法还可以接受第二个参数，用来绑定回调函数内部的this变量
+    var arr = ['a', 'b', 'c'];
+    [1, 2].map(function (e) {
+      return this[e];
+    }, arr); // ['b', 'c']
+
+
+  </script>
+</body>
+
+</html>

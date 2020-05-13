@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>比较运算符</title>
+</head>
+
+<body>
+  <script>
+    // 比较运算符在比较的时候有隐藏的数据类型转换，所以比较推荐平时使用 === 和 !== 进行比较
+    // 比较运算符会先看比较双方是不是字符串，如果是，就会逐个的使用 Unicode 码 进行比较
+    // 这里用的是 Unicode 码不是字典序，所以可以进行中文的比较
+    console.log('大' > '小'); // “大”的 Unicode 码点是22823，“小”是23567，因此返回false
+    // 如果不是字符串就会转成数值类型进行比较
+    // 转成数值好理解，'2' 转成数值就是 2
+    // 如果不是基本数据类型，比如对象，数组等等，就会先转变成原始类型的值，进行比较
+    console.log([2] > [1]);  // true
+    console.log([2] > [11]);  // true
+    // 对象转变成原始类型就是调用了Object.valueOf().toString()  方法
+    // [2].valueOf().toString() > [11].valueOf().toString()  即 '2' > '11'
+
+    // true 和 false 比较的时候也是转变成原始值，他们转变成原始值的方法是
+    // Number(true)和Number(false)
+
+    // 特殊的 null和undefined 在比较时，与任何值比较都是false
+    // 但是他们两只之间比较时是true ， 前面也说了 undefined是null派生出来的
+  </script>
+</body>
+
+</html>

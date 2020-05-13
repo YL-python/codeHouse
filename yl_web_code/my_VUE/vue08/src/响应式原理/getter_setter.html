@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>响应式原理</title>
+</head>
+
+<body>
+  <h1>响应式原理</h1>
+  <script>
+    let data = {
+      name: "韩梅梅"
+    }
+    let middle = 6
+    // 给数据赋予getter，setter方法
+    Object.defineProperty(data, 'age', {
+      get() {
+        console.log("获取 age 数据");
+        return middle
+      },
+      set(params) {
+        console.log("使用 age 数据",params);
+        // 在这里修改dom？？？
+        middle = params
+      }
+    })
+    console.log(data);
+    // 获取 age
+    console.log(data.age);
+    // 使用 age 
+    data.age = 15
+    console.log(data.age);
+
+  </script>
+</body>
+
+</html>

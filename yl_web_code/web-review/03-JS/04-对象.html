@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>对象</title>
+</head>
+
+<body>
+  <script>
+    // 以前以为是python中的字典类型，但是在js中却是叫对象。
+    // 类似python中的字典类型，对象是key: value形式的键值对，value可以是对象，值，方法等等
+    // 创建一个对象都是动态创建的
+    var obj = {
+      p1 = 5
+    }
+    // 实际上是
+    // var obj = {}
+    // obj.p1 = 5
+
+    // 表达式还是语句？
+    {
+      foo: 123
+    }
+    // 上面的语句可以是对象也可以是一个表达式
+
+    // 在js引擎中，为了避免这样的奇异，对上面语句解析成一个表达式，
+    // 要是想让js引擎解析成对象，应该这样写
+    ({
+      foo: 123
+    })
+
+    // 对象的方法
+    // Object.keys() 方法
+    var obj = {
+      key1: 1,
+      key2: 2
+    };
+
+    Object.keys(obj);
+    // 返回值是包含所有的key['key1', 'key2']
+
+    // delete命令用于删除对象的属性，删除成功后返回true。
+    var obj = {
+      p: 1
+    };
+    Object.keys(obj) // ["p"]
+
+    delete obj.p // true
+    obj.p // undefined
+    Object.keys(obj) // []
+
+    // 判断属性是否存在
+    var obj = {
+      p: 1
+    };
+    'p' in obj // true
+      'toString' in obj // true
+    // 这个时候 toString是继承来的
+    // 可以使用对象的hasOwnProperty方法判断一下， 是否为对象自身的属性。
+    var obj = {};
+    if ('toString' in obj) {
+      console.log(obj.hasOwnProperty('toString')) // false
+    }
+
+    // with 语句
+    // https://wangdoc.com/javascript/types/object.html
+  </script>
+</body>
+
+</html>

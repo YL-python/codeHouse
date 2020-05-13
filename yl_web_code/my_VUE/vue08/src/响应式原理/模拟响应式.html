@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>响应式原理-demo</title>
+  <style>
+    #test{
+      height: 50px;
+      border: 1px red solid;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>响应式原理-demo</h1>
+  <div id="test">
+    5
+  </div>
+  <button onclick="change()">change</button>
+  <script>
+    let data = {}
+    let middle = 5
+    Object.defineProperty(data, 'age', {
+      get() {
+        return middle
+      },
+      set(params) {
+        middle = params
+        watcher()
+      }
+    })
+    console.log(data);
+
+    // 监听数据改变 进行diff  算法，判断是否修改dom
+    function watcher() {
+      renderDom()
+    }
+    // 重新渲染dom的方法
+    function renderDom(params) {
+      let test = document.getElementById("test")
+      let age = data.age
+      test.innerHTML = age
+    }
+    function change() {
+      data.age ++ 
+    }
+  </script>
+</body>
+
+</html>

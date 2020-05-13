@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>加法运算</title>
+</head>
+
+<body>
+  <script>
+    // 数值 + 数值 = 数值和
+    // 字符串 + 数值 = 字符串连接
+    // 加法有点时候是求和，有的时候是连接，就是运算符的重载，
+    // 在 + - * / 中，只有加法有重载
+    // 字符串 */- 数值的时候会把字符串转成数值类型在进行计算
+    // '2' * 2 = 4
+
+    // 对象相加,必须先转成原始类型的值，然后再相加。
+    var obj = {
+      p: 1
+    };
+    console.log(obj + 2); // "[object Object]2"
+
+    // 对象转成原始类型的值会调用object的 valueOf方法，在用toString方法转成字符串，进行拼接
+    var obj = {
+      p: 1
+    };
+    console.log(obj.valueOf());  // { p: 1 }
+    console.log(obj.valueOf().toString());  // "[object Object]"
+    // 我们就可以自己重新 object对象的这两个方法来达到我们想要的情况
+  </script>
+</body>
+
+</html>

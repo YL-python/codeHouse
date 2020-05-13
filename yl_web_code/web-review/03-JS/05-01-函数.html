@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>函数</title>
+</head>
+
+<body>
+  <script>
+    // 作用域
+    var a = 1;
+    var x = function () {
+      console.log(a);
+    };
+
+    function f() {
+      var a = 2;
+      x();
+    }
+
+    f() // 1
+
+    // 函数x是在函数f的外部声明的，所以它的作用域绑定外层，内部变量a不会到函数f体内取值，所以输出1，而不是2。
+    // 总之，函数执行时所在的作用域，是定义时的作用域，而不是调用时所在的作用域。
+
+    // 在函数内部修改值的时候，修改基本数据类型不会影响到外部定义的值
+    // 修改引用数据类型的时候就会修改外部定义的值
+
+    // arguments 对象
+    var f1 = function (one) {
+      console.log(arguments);
+    }
+    f1(1, 2, 3)
+    // 修改arguments 会影响到实际参数
+    var f2 = function (a, b) {
+      arguments[0] = 3;
+      arguments[1] = 2;
+      return a + b;
+    }
+    f2(1, 1) // 5
+    // 可以开启严格模式，就不会影响了
+    var f3 = function (a, b) {
+      'use strict'; // 开启严格模式
+      arguments[0] = 3;
+      arguments[1] = 2;
+      return a + b;
+    }
+    f3(1, 1) // 2
+
+    // argument类似一个数组，但实际上是一个对象，所以不能使用数组的方法
+    // argument转数组 常用的两种方法
+    /*
+    var args = Array.prototype.slice.call(arguments);
+    // 或者
+    var args = [];
+    for (var i = 0; i < arguments.length; i++) {
+      args.push(arguments[i]);
+    }
+    */
+
+    // 立即执行函数  https://wangdoc.com/javascript/types/function.html#%E7%AB%8B%E5%8D%B3%E8%B0%83%E7%94%A8%E7%9A%84%E5%87%BD%E6%95%B0%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88iife%EF%BC%89
+    // emm总结一下就是下面的写法最好，最通用
+    // 写法二
+    (function () {
+      //函数体
+    }());
+  </script>
+</body>
+
+</html>

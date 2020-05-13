@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // console.log()方法
+    /* 占位符
+      %s 字符串
+      %d 整数
+      %i 整数
+      %f 浮点数
+      %o 对象的链接
+      %c CSS 格式字符串
+    */
+    console.log(
+      '%cThis text is styled!',
+      'color: red; background: yellow; font-size: 24px;'
+    );
+    // console对象的所有方法，都可以被覆盖。因此，可以按照自己的需要，定义console.log方法。
+    ['log', 'info', 'warn', 'error'].forEach(function (method) {
+      console[method] = console[method].bind(
+        console,
+        new Date().toISOString()
+      );
+    });
+
+    console.log("出错了！");
+  </script>
+</body>
+
+</html>
