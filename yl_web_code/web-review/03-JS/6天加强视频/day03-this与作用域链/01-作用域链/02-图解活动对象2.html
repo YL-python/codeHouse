@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var num = 123
+    function func1(){
+      var num = 456;
+      function func2(){
+        var num = 789;
+      }
+
+      func2()
+    }
+    func1();
+
+    /*
+    全局预解析，运行
+    func1的预解析和运行
+    func2的运行和解析
+
+    使用完之后会被垃圾回收
+    */ 
+
+  </script>
+</body>
+</html>

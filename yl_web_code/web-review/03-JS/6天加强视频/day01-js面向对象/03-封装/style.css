@@ -1,0 +1,64 @@
+/* 产品项 */
+.product-item {
+  margin: 0 10px 20px 0;
+  float: left;
+
+  width: 190px;
+  height: 266px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 链接容器 */
+.product-item>.link {
+  display: block;
+  text-decoration: none;
+}
+
+/* 产品图片 */
+.product-item .item-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 190px;
+  height: 190px;
+}
+
+.product-item .item-cell .image {
+  width: 120px;
+  height: 120px;
+}
+
+/* 产品介绍 */
+.product-item .desc {
+  padding: 0 10px;
+  font-size: 10px;
+  color: #000;
+  width: 170px;
+  height: 38px;
+  line-height: 19px;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.product-item .desc .mark {
+  font-size: 8px;
+  padding: 0px 4px;
+  background-color: rgb(225, 37, 27);
+  border-radius: 2px;
+  color: #fff;
+}
+
+/* 产品价格 */
+.product-item .price {
+  margin: 6px 0;
+  padding: 0 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: rgb(225, 37, 27);
+}
+
+.product-item .price .rmb {
+  font-size: 10px;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // js的执行模型，
+    // 首先是线性执行，然后是函数调用栈模型，然后是事件队列模型
+
+    // 演示函数的调用栈
+    // 一开始所有的代码都是在一个大的匿名函数中使用
+    // 每执行一个函数都把这个函数加入到函数栈中，只有函数执行完了才会出栈
+
+    debugger  // 代码中设置断点
+
+    // 线性执行
+    console.log(1);
+    console.log(2);
+    console.log(3);
+    console.log(4);
+    console.log(5);
+    
+
+    function f1(){
+      console.log('f1 调用 f2 之前');
+      f2()
+      console.log('f1 调用 f2 之后');
+    }
+    function f2(){
+      console.log('f2 调用 f3 之前');
+      f3()
+      console.log('f2 调用 f3 之后');
+    }
+    function f3(){
+      console.log('这里是 f3 ');
+    }
+
+    // 函数调用栈模型
+    f1()
+  </script>
+</body>
+</html>

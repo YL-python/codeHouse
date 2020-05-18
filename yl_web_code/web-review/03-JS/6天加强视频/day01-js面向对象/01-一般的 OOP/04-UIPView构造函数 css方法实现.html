@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    function UIPView() {
+      this.__TYPE__ = document.createElement('p')
+      this.init()
+    }
+
+    UIPView.prototype.init = function () {
+      var that = this;
+      'innerText,title,id,className'.split(',').forEach(function (propName) {
+        Object.defineProperty(that, propName, {
+          get() {
+            return that.__TYPE__[propName]
+          },
+          set(value) {
+            that.__TYPE__[propName] = value
+          }
+        })
+      })
+    }
+    
+    UIPView.prototype.appendTo = function (parent_node) {
+      parent_node.appendChild(this.__TYPE__)
+    }
+
+    // css 函数我们设计的复杂一点，可以传一个参数读取属性，可以传键值设置属性，可以传对象设置多个
+    UIPView.prototype.css = function(cssName, cssValue){
+      // 应该有一个参数校验等等细节操作
+
+      if(cssValue == null ){  // 只传递了一个参数
+        if(typeof cssName === 'string'){  // 传递了一个参数
+          return this.__TYPE__.style[cssName]
+        }else if(typeof cssName === 'object'){  // 传递了一个对象
+          for (const key in cssName) {
+            // this.__TYPE__.style[key] = cssName[key]
+            this.css(key, cssName[key])
+          }
+        }
+      }else{  // 设置某一个样式
+        this.__TYPE__.style[cssName] = cssValue
+      }
+    }
+
+    // 创建对象
+    var p = new UIPView();
+    // 设置属性（innerText）
+    p.innerText = '1111'
+    p.id = 'p1'
+    p.className = 'c1'
+    p.title = 'title 文本'
+    p.css({
+      width : "100px",
+      height : "100px",
+      border : "1px red solid"
+    })
+    // p.css("backgroundColor",'red')
+    // 添加到 DOM节点中
+    p.appendTo(document.body)
+  </script>
+</body>
+
+</html>

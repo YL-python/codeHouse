@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function f1() {
+      return new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          console.log('延迟 1 秒执行');
+          resolve()
+        }, 1000)
+      })
+    }
+
+    function f2() {
+      return new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          console.log('延迟 2 秒执行');
+          resolve()
+        }, 2000)
+      })
+    }
+
+    function f3() {
+      return new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          console.log('延迟 3 秒执行');
+          resolve()
+        }, 3000)
+      })
+    }
+    f3().then(()=>{
+      f2().then(()=>{
+        f1()
+      })
+    })
+  </script>
+</body>
+
+</html>

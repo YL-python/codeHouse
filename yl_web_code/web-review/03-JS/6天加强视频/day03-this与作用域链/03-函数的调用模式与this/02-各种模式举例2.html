@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var o = {
+      name:"o",
+      foo : function (){
+        console.log('foo 方法',this);
+      }
+    }
+    // o.foo();
+    // var fn = o.foo;
+    // fn();
+
+    var f;
+    (o.foo)();  // 函数调用  引用对象是 o
+    (f = o.foo)();  // 方法调用
+    // 主要就是这个 = 符号（赋值操作）
+    // 赋值运算：将等号右边的值 求出，右边会有一些计算等等操作，最终得到一个值，是一个新的值，结果和右边的表达式的值相同
+    // 再把右边的值赋给 左边(是把右值给到左边的容器内)，赋值表达式的值就是右边求出来的值（只是一个地址值），没有引导
+
+
+  </script>
+</body>
+</html>

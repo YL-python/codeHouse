@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    函数的声明一定是形如
+
+    // 前面也不允许有代码与函数的代码结合
+    function 函数名 ( ... ) {
+    } // 后面不允许有其他的代码与函数的代码结合
+
+    */
+
+    // 这是一个真正的函数声明
+    function f1(){
+      console.log('f1');
+    }
+
+    // 这个就不是真正的函数声明，是一个函数表达式
+    // 前面有逻辑了
+    var f = function f2(){
+      console.log('f2');
+    }
+
+    // 这个就不是真正的函数声明，是一个函数表达式
+    // 前面有逻辑了
+    !function f3(){
+      console.log('f3');
+    }
+
+
+  </script>
+</body>
+
+</html>

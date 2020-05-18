@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function f1() {
+      return new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          console.log('延迟 1 秒执行');
+          resolve()
+        }, 1000)
+      })
+    }
+
+    function f2() {
+      return new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          console.log('延迟 2 秒执行');
+          resolve()
+        }, 2000)
+      })
+    }
+
+    function f3() {
+      return new Promise(function (resolve, reject) {
+        setTimeout(() => {
+          console.log('延迟 3 秒执行');
+          resolve()
+        }, 3000)
+      })
+    }
+    
+    // 之前的需求是 f3()字行完才能执行 f2(), f2()执行完才能执行 f1()
+    // 新需求是 f3() f2()执行完才能执行 f1()  但是 f3 f2的执行顺序我们不管
+
+    // async 和 await 是只能等待一个执行完成在执行下一个，所以会非常的耗时，一般只有一个请求的时候才考虑用这个
+    // promise 提供了一个all()方法就可以用来解决这个问题
+    Promise.all([f3(),f2()]).then(()=>{
+      f1()
+    })
+
+    // 如果需求是执行完1 才能执行2，执行完2才能执行3 这样的用promise的嵌套和async await 没有区别
+    // 如果 1，2 请求没有关联，但是要执行完成才能执行3，这个时候用 Promise.all()最好
+  </script>
+</body>
+
+</html>

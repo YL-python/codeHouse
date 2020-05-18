@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    
+    var str = 'global';
+    
+    function foo() {
+      var str = 'local foo scopoe';
+
+      // console.log( str );
+
+
+      var myEval = eval;
+
+      myEval( 'console.warn( str );' ); // 所处的作用域为全局作用域
+    }
+
+    foo();
+    
+  </script>
+</body>
+</html>

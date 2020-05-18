@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // 如果 call 与 apply 不传入任何参数, 那么就相当于函数调用
+    // 如果 call 和 apply 只传入一个参数, 那么久相当于方法调用
+
+
+    // 我们的 call 与 apply 除了第一个参数以外, 其他的所有参数都是与 源函数 参数相对应的, 只是形式不同
+    function foo(num1, num2) {
+      console.log(`num1 = ${num1}, num2 = ${num2}, this: `, this)
+    }
+
+    // 下面三个调用等价
+    foo(1, 2);
+
+    foo.call(null, 123, 456); // call 从 第二个参数开始, 描述的就是正常函数调用时需要提供的参数
+
+    foo.apply(null, [1, 2]); // apply 的第二个参数是数组的形式, 用数组的形式描述正常函数的参数
+  
+    foo.apply({name:'aaa对象'}, [1, 2]);
+  </script>
+</body>
+
+</html>

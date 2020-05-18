@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    console.log('全局 定义前 num:', num);
+    var num = 1;
+    console.log('全局 定义后 num:', num);
+
+    function f1() {
+
+      console.log('f1 定义前 num:', num);
+      var num = 2;  // 把 var num = 2 改成 num = 2 就是修改当前活动对象内不存在的值
+      console.log('f1 定义后 num:', num);
+
+
+      function f2() {
+
+        console.log('f2 定义前 num:', num);
+        var num = 3;  // 注释时候就会向上找
+        console.log('f2 定义后 num:', num);
+
+      }
+      f2()
+    }
+    f1()
+
+    /*
+      var 有变量提升，如果使用let就会报错
+      当前活动对象没有就会向上找，一直向上找，找不到就报错
+
+      如果在函数内修改num而不是定义num，在修改的时候当前对象没有就会向上找
+      然后修改上一层活动对象上的值
+
+    */
+  </script>
+</body>
+
+</html>

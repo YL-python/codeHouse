@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function func(){
+      var num = 123;
+    }
+    func();
+
+    /*
+    第一步：全局预解析
+      1.创建一个活动对象（针对全局代码的匿名函数的活动对象）
+      2.将 func 这个名称记录到这个活动对象上
+      3.将函数体与 func 关联
+    第二步：执行阶段
+      只有一句话，func() 语句执行 func函数
+      此时就会为 func 分配内存空间，得到一个 func的活动对象
+      在之后，会有函数内的预解析和函数内的执行两步
+        函数内的预解析：
+          发现有一个var声明的变量，就会把 num 记录到当前的活动对象上
+        函数内的执行：
+          给 num 变量赋值为 123
+    */ 
+
+  </script>
+</body>
+</html>

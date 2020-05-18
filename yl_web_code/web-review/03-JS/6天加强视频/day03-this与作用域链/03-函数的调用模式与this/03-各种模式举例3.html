@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 上下文 ( context ) 模式: this 可以使用参数来动态的描述 ( 动态绑定 )
+    // 语法
+    // 1. 函数名.call(上下文对象, 参数1, 参数2, ...) 可以有任意个参数
+    // 2. 函数名.apply(上下文对象, [参数, ...]) 最多两个参数
+
+    function foo(){
+      console.log('foo方法：',this);
+    }
+    foo();  // 函数调用
+    // 不穿参数默认是当前环境的  window  是方法调用
+    foo.call();
+    foo.apply();
+    
+    // 函数在执行的之后会创建活动对象，活动对象中会存在上下文，也就是this
+    // call 和 apply 方法就是来指定上下文的
+    // 传入是一个引用类型，this就是指这个引用类型
+    // 传入是基本类型会自动转换成包装类型
+    // 如果传入 空（null,undefined） 表示 Window 对象
+    foo.call({name:'对象1'});
+    foo.apply(1);
+    foo.call(null);
+
+    
+
+  </script>
+  
+</body>
+
+</html>

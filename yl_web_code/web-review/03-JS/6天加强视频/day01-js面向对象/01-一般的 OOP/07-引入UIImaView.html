@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    // 原型
+    var baseObject = {
+      // 建立共有属性数组
+      __props__: 'title,id,className'.split(','),
+      init: function () {
+        var that = this;
+        this.__props__.forEach(function (propName) {
+          Object.defineProperty(that, propName, {
+            get() {
+              return that.__TYPE__[propName]
+            },
+            set(value) {
+              that.__TYPE__[propName] = value
+            }
+          })
+        })
+      },
+      appendTo: function (parent_node) {
+        parent_node.appendChild(this.__TYPE__)
+      },
+      css: function (cssName, cssValue) {
+        // 应该有一个参数校验等等细节操作
+
+        if (cssValue == null) { // 只传递了一个参数
+          if (typeof cssName === 'string') { // 传递了一个参数
+            return this.__TYPE__.style[cssName]
+          } else if (typeof cssName === 'object') { // 传递了一个对象
+            for (const key in cssName) {
+              // this.__TYPE__.style[key] = cssName[key]
+              this.css(key, cssName[key])
+            }
+          }
+        } else { // 设置某一个样式
+          this.__TYPE__.style[cssName] = cssValue
+        }
+      }
+    }
+
+    function UIPView() {
+      this.__TYPE__ = document.createElement('p')
+      // 我们子对象特有的属性我们自己添加
+      this.__props__.push('innerText')
+      this.init()
+    }
+    // 继承
+    UIPView.prototype = Object.create(baseObject)
+
+    function UIImgView() {
+      // img 标签有src属性但是没有 innerText属性
+      // 没有innerText 属性我们修改原型，让他只提供公共的属性
+      // 我们子对象特有的属性我们自己添加
+      // 能访问到__props__是因为找不到的时候就在原型链上找
+      this.__props__.push('src')
+      this.__TYPE__ = document.createElement('img')
+
+      this.init()
+    }
+    // 继承
+    UIImgView.prototype = Object.create(baseObject)
+
+
+    // 创建对象
+    var p = new UIPView();
+    // 设置属性
+    p.innerText = '1111'
+    p.id = 'p1'
+    p.className = 'c1'
+    p.title = 'title 文本'
+    p.css({
+      width: "100px",
+      height: "100px",
+      border: "1px red solid"
+    })
+    // 添加到 DOM节点中
+    p.appendTo(document.body)
+
+    var img = new UIImgView();
+    img.src = '../resource/1.jpg'
+    img.appendTo(document.body)
+
+    //  现在的需求是我们有很多的标签要创建，不可能写很多的对象，而且代码也是重复的
+    // 现在要把img添加到 p元素内应该怎么办
+  </script>
+</body>
+
+</html>

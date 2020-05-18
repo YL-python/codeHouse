@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    var num = 123;
+
+    function num() {
+      console.log('Hello js');
+    }
+
+    console.log(num);
+
+    /*
+    第一步：预编译阶段，这里我们只考虑变量和函数的声明
+      函数的声明和 var变量是一致的，只不过函数声明会把函数体绑定到函数名变量上
+        第一行，在 js引擎中缓存 num变量，值是 undefined
+        第二行，函数声明，覆盖了 var变量，在把函数体绑定到了num上
+
+      预编译阶段的时候 num指向的是函数体
+      
+    第二部：运行阶段，逐行运算
+      第一行：给num 赋值了13，这个时候又改变了num 的指向
+      最后一行：打印
+    */
+  </script>
+</body>
+
+</html>

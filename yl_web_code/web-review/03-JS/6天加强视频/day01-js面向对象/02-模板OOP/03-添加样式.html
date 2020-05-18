@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    // 如果需要使用 样式 该怎么使用
+    //  :style="{ backgroundColor: 'red', width: '100px' }" <==
+    //  还有数组的形式
+    //  实际上使用的方式如下:
+
+    /*
+      <div :style="css"></div>
+
+      data: {
+        css: {
+          width: '100px',
+          height: '200px',
+          border: '1px solid blue',
+        }
+      }
+    */
+    // 难点: 与属性用法是冲突  ==》 先处理样式，处理之后处理属性的时候就匹配不到了
+
+    // 一个方法, 将 驼峰命名规则转换为 连字符 命名规则
+    var r = /([a-z])([A-Z])/g;
+
+    function parse(str) {
+      return str.replace(r, function (_, g1, g2) {
+        return g1 + '-' + g2.toLowerCase(); // vue 源码中的实现
+      });
+    }
+
+    var r1 = /\{\{\s*(.+?)\s*\}\}/g;
+
+    // 用于匹配 形如  `:属性名="占位符"`
+    var r2 = /:(\w+)="(\w+)"/g;
+
+    // 匹配央视
+    var r3 = /:style="(\w+)"/g;
+
+    function MyComponent(obj) {
+      // 约定
+      // opt.el  表示容器元素
+      // opt.template 表示模板
+      // opt.data  表示特换占位符的数据
+      // ... 还可以有其他的
+
+      // 需要有参数校验
+
+      // 利用数据 替换模板，得到需要显示的HTML
+      var template = obj.template;
+      template = template.replace(r1, function (match, propName) {
+        console.log(match, propName);
+        return obj.data[propName]
+      })
+
+      // 处理样式
+      // ...
+      template = template.replace(r3, function (_, cssObj) {
+        // 返回形如: style="width: 100px; height: 200px; border: 1px solid blue;"
+        var style = obj.data[cssObj]; // { backgroundColor: '...' }
+        var _temp = [];
+        for (var k in style) {
+          _temp.push(parse(k) + ": " + style[k]);
+        }
+        return 'style="' + _temp.join(';') + ';"';
+      });
+
+      // 处理属性
+      template = template.replace(r2, function (_, attrName, propName) {
+        // 假如 attrName 为 title, 而 data 中提供 { title: '一个文本' }
+        //      'title' + '="' + '一个文本' + '"'
+        //      'title="一个文本"'
+        return attrName + '="' + obj.data[propName] + '"';
+      });
+
+      // 2. 找到容器元素
+      var root = document.querySelector(obj.el);
+
+      // 3. 使用 innerHTML
+      root.innerHTML = template;
+    }
+
+    // 使用
+    new MyComponent({
+      el: "#root",
+      template: '<div :style="css" :title="abc" :id="id" :class="cccc" >{{ text }}</div>',
+      data: {
+        text: '一段文本',
+        abc: '一个 title 文本',
+        id: '唯一标识',
+        cccc: '类样式',
+        css: {
+          width: '100px',
+          height: '200px',
+          border: '1px solid blue',
+          backgroundColor: 'pink',
+          borderBottomWidth: '10px'
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

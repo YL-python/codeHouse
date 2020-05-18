@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    if ('a' in window) {
+      var a = 123;
+    }
+    console.log('a = ', a);
+
+    /*
+    js 代码两个过程，预编译 和 执行
+
+    第一步 js引擎读取代码 进行 预编译，这里我们只考虑变量和函数的声明
+      逐行读取代码，看看有没有var声明
+      读到第二行的时候发现有，就在 js引擎运行时的内存环境 中开辟了一个空间指向a ,初始值是undefined
+
+    第二步 逐行执行代码
+      第一行 'a' in window  真，a在window对象中，初始值是undefined
+      第二行 赋值
+      第三行 打印
+    */
+  </script>
+</body>
+
+</html>

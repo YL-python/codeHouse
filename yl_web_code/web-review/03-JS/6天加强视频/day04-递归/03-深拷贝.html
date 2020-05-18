@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function deepCopy(obj, cache = []) {
+      if (obj === null || typeof obj !== 'object') {
+        return obj
+      }
+
+      const hit = find(cache, c => c.original === obj)
+      if (hit) {
+        return hit.copy
+      }
+
+      const copy = Array.isArray(obj) ? [] : {}
+
+      cache.push({
+        original: obj,
+        copy
+      })
+
+      Object.keys(obj).forEach(key => {
+        copy[key] = deepCopy(obj[key], cache)
+      })
+
+      return copy
+    }
+
+    var obj = {
+      a: new Date(),
+      b: () => {}
+    }
+    var newObj = deepCopy(obj);
+    console.log(obj);
+    console.log(newObj);
+    // 深拷贝代码来自 vuex 的源码，不能解决特殊对象，比如日期对象，正则对象等等
+    // 其实很多的深拷贝都不能解决这个问题，只能加很多的if判断，不必太钻牛角尖
+    // https://www.jianshu.com/p/ad3750e8db26
+  </script>
+</body>
+
+</html>

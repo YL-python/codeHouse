@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function normal(n) {
+      return 2 * n + 1
+    }
+
+    function f(n) {
+      if (n == 0) {
+        return 1;
+      }
+      return f(n - 1) + normal(n);
+    }
+
+    for (let index = 0; index < 100; index++) {
+      console.log(normal(index), f(index));
+    }
+  </script>
+</body>
+
+</html>

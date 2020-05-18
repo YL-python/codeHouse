@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./myComponent.js"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <script>
+    var template = `
+        <div class="product-item">
+          <a href="#" class="link">
+            <div class="item-cell">
+              <img :src="img" class="image" />
+            </div>
+            <div class="desc">
+              <span class="mark">自营</span>
+              {{ name }}
+            </div>
+            <div class="price">
+              <span class="rmb">¥</span>
+              {{ price }}
+            </div>
+          </a>
+        </div>
+`;
+
+    var p = new MyComponent({
+
+      el: '#root',
+
+      template: template,
+
+      data: {
+        name: '照相机, 好玩, 照相机就是好啊',
+        price: '6599',
+        img: 'https://img14.360buyimg.com/mobilecms/s140x140_jfs/t23278/273/2130010586/118207/38eac1b3/5b753798N4a080a6e.jpg.webp'
+      }
+
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    // 需求
+    // 需要一个P标签，展示在页面中，在标签内添加文本
+
+    // new MyComponent('root', '<p>{占位符}</p>','占位符的数据')
+    // 利用数据替换占位符，得到需要的HTML字符串，在放到root标签下
+
+    var r1 = /\{\{\s*(.+?)\s*\}\}/g
+
+    function MyComponent(obj) {
+      // 约定
+      // opt.el  表示容器元素
+      // opt.template 表示模板
+      // opt.data  表示特换占位符的数据
+      // ... 还可以有其他的
+
+      // 需要有参数校验
+
+      // 利用数据 替换模板，得到需要显示的HTML
+      var template = obj.template;
+      template = template.replace(r1, function (match, propName) {
+        console.log(match, propName);
+        return obj.data[propName]
+      })
+
+      // 找到容器
+      var el = document.querySelector(obj.el);
+
+      // 使用 innerText
+      el.innerHTML = template
+      console.log(el,template);
+      
+    }
+
+    // 使用
+    new MyComponent({
+      el: "#root",
+      template: '<p> {{ text }} </p>',
+      data: {
+        text: "一段文本"
+      }
+    })
+  </script>
+</body>
+
+</html>

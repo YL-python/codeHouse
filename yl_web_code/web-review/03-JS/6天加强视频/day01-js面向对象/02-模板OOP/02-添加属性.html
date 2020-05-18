@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    // 如果需要使用属性该怎么使用
+    //  v-bind 或 :
+    // 假定: 
+    //  <div :title="占位符"></div>   要替换    格式 :属性名="占位符" => 属性名="对应 data 中那个占位符对应的数据"
+    //  <div title="占位符" />        不替换
+
+    // 如果需要使用 样式 该怎么使用
+
+
+    var r1 = /\{\{\s*(.+?)\s*\}\}/g;
+
+    // 用于匹配 形如  `:属性名="占位符"`
+    var r2 = /:(\w+)="(\w+)"/g;
+
+    function MyComponent(obj) {
+      // 约定
+      // opt.el  表示容器元素
+      // opt.template 表示模板
+      // opt.data  表示特换占位符的数据
+      // ... 还可以有其他的
+
+      // 需要有参数校验
+
+      // 利用数据 替换模板，得到需要显示的HTML
+      var template = obj.template;
+      template = template.replace(r1, function (match, propName) {
+        console.log(match, propName);
+        return obj.data[propName]
+      })
+
+      // 处理属性
+      template = template.replace(r2, function (_, attrName, propName) {
+        // 假如 attrName 为 title, 而 data 中提供 { title: '一个文本' }
+        //      'title' + '="' + '一个文本' + '"'
+        //      'title="一个文本"'
+        return attrName + '="' + obj.data[propName] + '"';
+      });
+
+      // 处理样式
+      // ...
+
+      // 2. 找到容器元素
+      var root = document.querySelector(obj.el);
+
+      // 3. 使用 innerHTML
+      root.innerHTML = template;
+    }
+
+    // 使用
+    new MyComponent({
+      el: "#root",
+      template: '<div :title="abc" :id="id" :class="cccc" >{{ text }}</div>',
+      data: {
+        text: '一段文本',
+        abc: '一个 title 文本',
+        id: '唯一标识',
+        cccc: '类样式'
+      }
+    })
+  </script>
+</body>
+
+</html>
