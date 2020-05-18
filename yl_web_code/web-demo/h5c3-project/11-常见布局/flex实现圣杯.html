@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      display: flex;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .left,
+    .right {
+      flex: 0 0 200px;
+      height: 200px;
+      background: lightblue;
+    }
+
+    .center {
+      flex: 1;
+      min-height: 400px;
+      background: rgb(218, 159, 136);
+    }
+  </style>
+</head>
+
+<body>
+
+  <body class="container">
+    <div class="left"></div>
+    <div class="center"></div>
+    <div class="right"></div>
+  </body>
+</body>
+
+</html>

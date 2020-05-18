@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj = {
+      a: 100,
+      b: [10, 20, 30],
+      c: {
+        x: 10
+      },
+      d: /^\d+$/
+    };
+
+    let arr = [10, [100, 200], {
+      x: 10,
+      y: 20
+    }];
+
+    //=>浅克隆
+    let obj2 = {...obj}
+
+    //=>浅克隆
+    let obj3 = {}
+    for (const key in obj) {
+      // 判断是不是私有属性，是对象本身的属性，不是继承来的
+      if (obj.hasOwnProperty(key)) {
+        obj3[key] = obj[key];
+      }
+    }
+
+    //=>深克隆
+    let obj4 = JSON.parse(JSON.stringify(obj))
+    //=>弊端，一些引用类型会被修改，正则，日期，函数等待
+
+    //=>深克隆
+    function deepClone(obj) {
+      if (typeof obj !== "object") return obj;
+      if (obj instanceof RegExp) return new RegExp(obj);
+      if (obj instanceof Date) return new Date(obj);
+      // 这句话可以处理函数类型
+      let cloneObj = new obj.constructor;
+      for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {  
+          cloneObj[key] = deepClone(obj[key]);
+        }
+      }
+      return cloneObj;
+    }
+  </script>
+</body>
+
+</html>

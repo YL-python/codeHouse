@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body{
+      height: 100%;
+      background-color: pink;
+      overflow: hidden;
+    }
+    .box{
+      width: 200px;
+      height: 100px;
+      background-color: blue;
+      line-height: 100px;
+      text-align: center;
+    }
+    /* 弹性盒子 */
+    body{
+      display: flex;
+    }
+    .box{
+      /* 弹性盒子的margin auto就能实现垂直居中 */
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    盒子垂直居中的实现
+  </div>
+</body>
+</html>

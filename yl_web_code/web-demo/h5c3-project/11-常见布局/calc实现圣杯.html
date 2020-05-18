@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .container {
+      width: 100%;
+    }
+
+    .center {
+      /* 兼容到ie9  css写表达式性能会急速下降 */
+      width: calc(100% - 400px);
+      min-height: 400px;
+      background: lightsalmon;
+    }
+
+    .center,
+    .left,
+    .right {
+      /* 这个时候  container满屏款把左右挤到下一行了*/
+      float: left;
+    }
+
+    .left,
+    .right {
+      width: 200px;
+      min-height: 200px;
+      background: lightblue;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <body class="clearfix container">
+    <div class="left"></div>
+    <div class="center "></div>
+    <div class="right"></div>
+  </body>
+</body>
+
+</html>

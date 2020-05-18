@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      height: 100%;
+    }
+
+    .left,
+    .right {
+      position: absolute;
+      top: 0;
+      width: 200px;
+      min-height: 200px;
+      background: lightblue;
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      right: 0;
+    }
+
+    .center {
+      margin: 0 200px;
+      min-height: 400px;
+      background: lightsalmon;
+    }
+  </style>
+</head>
+
+<body>
+
+  <body class="container">
+    <div class="left"></div>
+    <div class="center"></div>
+    <div class="right"></div>
+  </body>
+</body>
+
+</html>

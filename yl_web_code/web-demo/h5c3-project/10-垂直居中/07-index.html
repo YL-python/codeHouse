@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body{
+      height: 100%;
+      background-color: pink;
+      overflow: hidden;
+    }
+    .box{
+      width: 200px;
+      height: 100px;
+      background-color: blue;
+      line-height: 100px;
+      text-align: center;
+    }
+    /* 表格 */
+    body{
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      /* 并且父元素的宽高需要是固定值 */
+      width: 500px;
+      height: 500px;
+      background-color: red;
+    }
+    .box{
+      /* 子元素需要是文本才能左右居中 */
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    盒子垂直居中的实现
+  </div>
+</body>
+</html>

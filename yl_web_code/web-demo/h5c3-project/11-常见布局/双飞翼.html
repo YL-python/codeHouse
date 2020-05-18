@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .container {
+      /* 满屏宽 */
+      width: 100%;
+    }
+
+    .container .center {
+      /* 左右有个间距 */
+      margin: 0 200px;
+      min-height: 400px;
+      background: lightsalmon;
+    }
+
+    .container,
+    .left,
+    .right {
+      /* 这个时候  container满屏款把左右挤到下一行了*/
+      float: left;
+    }
+
+    .left,
+    .right {
+      width: 200px;
+      min-height: 200px;
+      background: lightblue;
+    }
+
+    .left {
+      margin-left: -100%;
+    }
+
+    .right {
+      margin-left: -200px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <body class="clearfix">
+    <div class="container">
+      <div class="center"></div>
+    </div>
+    <div class="left"></div>
+    <div class="right"></div>
+  </body>
+</body>
+
+</html>

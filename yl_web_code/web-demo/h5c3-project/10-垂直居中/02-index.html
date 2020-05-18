@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body{
+      height: 100%;
+      background-color: pink;
+      overflow: hidden;
+    }
+    .box{
+      width: 200px;
+      height: 100px;
+      background-color: blue;
+      line-height: 100px;
+      text-align: center;
+    }
+    /* 定位实现，此时子元素必须要有确定的宽高 */
+    body{
+      position: relative;
+    }
+    .box{
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin:auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    盒子垂直居中的实现
+  </div>
+</body>
+</html>

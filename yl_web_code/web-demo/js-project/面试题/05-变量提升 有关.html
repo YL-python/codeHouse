@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Foo() {
+      getName = function () {
+        console.log(1);
+      };
+      return this;
+    }
+    Foo.getName = function () {
+      console.log(2);
+    };
+    Foo.prototype.getName = function () {
+      console.log(3);
+    };
+    var getName = function () {
+      console.log(4);
+    };
+
+    function getName() {
+      console.log(5);
+    }
+
+    Foo.getName();
+    getName();
+    Foo().getName();
+    getName();
+    new Foo.getName();
+    new Foo().getName();
+    new new Foo().getName();
+
+    /*
+    new Foo.getName();
+    new Foo().getName();
+    这里考了运算符优先级，
+    . 表示成员访问 优先级是19
+    new Foo 表示无参数的 new 对象 ， 优先级是18
+    new Foo()是有参数的 new 对象， 优先级是 19
+    19 同优先级会从左往右
+    所以
+      new Foo.getName(); 先执行 Foo.getName() 在 new
+      new Foo().getName(); 先执行 new Foo() 返回一个对象 在执行 getName()
+    */
+
+    /*  变量提升
+    编译期：
+      第 12 行 声明一个变量Foo 创建堆内存存放关于函数的内容 并将其关联 Foo
+      第 18 行 Foo 中定义了一个属性叫 getName  (getName这个属性在12行创建的函数堆内存中已经存在了)
+      第 21 行 Foo 的原型上绑定了一个 getName属性
+      第 24 行 声明一个变量getName 创建堆内存存放关于函数的内容 并将其关联 getName
+      第 28 行 创建堆内存存放关于函数的内容 并将其重新关联 getName
+    运行期：
+      第 18 行 Foo getName 属性赋值一个函数
+      第 21 行 Foo 的原型上的 getName属性 赋值一个函数
+      第 24 行 创建一个函数堆内存赋值给 getName变量
+      第 32 行 执行 Foo 对象上绑定的 getName 方法  输出 2
+      第 33 行 执行getName变量存放的函数  输出 4
+      第 34 行 
+        先执行Foo方法 内部有 getName 变量，找不到就回去上一级找（全局），找到了之后给这个变量赋值一个函数，然后返回this ，函数模式中的this是window，
+        执行 this（window）.getName()  输出 1
+      第 35 行 执行getName方法  输出1
+      第 36 行
+      第 37 行
+      第 38 行
+    */
+
+
+    /*
+    function f1 (){
+    }
+    var f2 = function(){
+    }
+
+    编译期：
+      声明变量 f1 创建函数堆内存并关联f1
+      声明变量 f2
+    运行期：
+      创建一个函数堆内存 赋值给 f2
+    */
+  </script>
+</body>
+
+</html>

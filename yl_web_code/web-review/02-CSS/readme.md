@@ -2,7 +2,7 @@
 
 ## css背景属性-Background
 
-```
+```txt
 + background：在一个声明中设置所有的背景属性。
 + background-attachment：属性设置背景图像是否固定或者随着页面的其余部分滚动。
 	scroll	默认值。背景图像会随着页面其余部分的滚动而移动。根据当前容器进行定位。

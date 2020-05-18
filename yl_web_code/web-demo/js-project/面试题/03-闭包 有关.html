@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var a = 0,
+      b = 0;
+
+    function A(a) {
+      A = function (b) {
+        alert(a + b++);
+      };
+      alert(a++);
+    }
+    A(1);
+    A(2);
+    /*
+    函数的形参和全局作用域的同名参数 无关
+
+    第一次执行 A(1) 的时候
+      创建了一个活动对象绑定了 上下文，
+      编译器 先是有一个 变量 a  和变量A
+      运行期 
+        a 赋值成 1
+        A 被赋值成另外一个函数的地址
+        alert(a++)  输出 '1' 并修改 a 的值 为 2
+      运行完成之后，A的值被修改了就有 值被占用，就不会销毁这个活动对象就形成了闭包
+    
+    第二次执行 A(2);
+      创建一个活动对象 绑定了 上下文
+      编译期 有个 b
+      运行期 b 赋值成 2 
+      alert(a + b++)  当前没有a 就去上一级去找 a 是2 最后输出 '4' 
+      运行完成之后 内部没有值被占用就被销毁了
+
+    因为全局环境中 会一直存在一个 A 所以第一次调用 A 方法的时候生成的 活动对象 中又生成了一个方法
+    这个方法会一直存在 形成了闭包，并且这个方法的上下文对象也一直存在
+
+    闭包内的 a 的值会变化，但是全局中的 a  b 都不变  就是闭包的保护作用
+
+    */
+  </script>
+</body>
+
+</html>

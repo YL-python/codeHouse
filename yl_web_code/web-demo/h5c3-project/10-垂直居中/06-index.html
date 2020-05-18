@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      background-color: pink;
+      overflow: hidden;
+    }
+
+    .box {
+      width: 200px;
+      height: 100px;
+      background-color: blue;
+      line-height: 100px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="boxId">
+    盒子垂直居中的实现
+  </div>
+
+  <script>
+    //  js获取元素用定位来实现
+    let box = document.querySelector('.box');
+    let father = box.parentElement // 获取父节点
+    let boxW = box.clientWidth,
+      boxH = box.clientHeight
+
+    let fW = father.clientWidth,
+      fH = father.clientHeight
+
+    father.style.position = 'relative';
+    box.style.position = 'absolute'
+    box.style.top = (fH - boxH) / 2 + 'px'
+    box.style.left = (fW - boxW) / 2 + 'px'
+
+    // 元素有id  可以直接通过 id获得到dom元素
+    console.log(boxId);
+  </script>
+</body>
+
+</html>

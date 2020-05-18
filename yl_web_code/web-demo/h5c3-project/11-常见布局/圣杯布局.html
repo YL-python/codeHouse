@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .container {
+      height: 100%;
+      /* 左右两百是 圣杯两边的宽度 */
+      padding: 0 200px;
+    }
+
+    .left,
+    .right {
+      width: 200px;
+      min-height: 200px;
+      background: lightblue;
+    }
+
+    .center {
+      /* 沾满父容器 */
+      width: 100%;
+      min-height: 400px;
+      background: lightsalmon;
+    }
+
+    .left,
+    .center,
+    .right {
+      float: left;
+      /* center宽度是100%，会把 left 和 right 挤到下面 */
+    }
+
+    .left {
+      /* 把自己移到父容器左上角 */
+      margin-left: -100%;
+      position: relative;
+      /* 相对自己偏移 200px */
+      left: -200px;
+    }
+
+    .right {
+      margin-right: -200px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container clearfix">
+    <div class="center"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+</body>
+
+</html>

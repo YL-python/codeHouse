@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //example 1
+    // let a = {},
+    //   b = '0',
+    //   c = 0;
+    // a[b] = '珠峰';
+    // a[c] = '培训';
+    // console.log(a[b]);
+    /*
+    堆栈内存
+      堆：存储引用类型值的空间
+      栈：存储基本数据类型和指定代码的空间
+
+    对象内属性名不能重复，键值一般都是字符串，数字会隐士转换成字符串
+    */
+
+    //example 2
+    // let a = {},
+    //   b = Symbol('1'),
+    //   c = Symbol('1');
+    // a[b] = '珠峰';
+    // a[c] = '培训';
+    // console.log(a[b]);
+    /*
+      Symbol() 创建的值是唯一值
+      b和c 是不一样的属性
+    */
+
+    //example 3
+    let a = {},
+      b = { n: '1' },
+      c = { m: '2' };
+    a[b] = '珠峰';
+    a[c] = '培训';
+    console.log(a[b]);
+    /*
+    引用类型值作为对象的键时，还会调用 toString()方法转换成字符串
+    对象 作为键 ==> [object Object]
+    */
+
+    /*
+    第 1 问加深 ： 对象和数组的区别
+    第 2 问加深 ： 实现一个 Symbol
+    第 3 问加深 ： toString 和 valueOf
+
+    */ 
+  </script>
+</body>
+
+</html>
