@@ -208,7 +208,7 @@ server_name ip地址;
 location / {
     root   html;
     index  index.html index.htm;
-    proxy_pass http://ip地址:8080;
+    proxy_pass http://ip地址:8080/;
 }
 ```
 
@@ -230,12 +230,12 @@ server {
     listen       9001;
     server_name  127.0.0.1;
 
-    location ~ /edu {  # 正则写法
-        proxy_pass http://127.0.0.1:8081;
+    location ~ /edu/ {  # 正则写法
+        proxy_pass http://127.0.0.1:8081/;
     }
     
-    location ~ /vod {  # 正则写法
-        proxy_pass http://127.0.0.1:8082;
+    location ~ /vod/ {  # 正则写法
+        proxy_pass http://127.0.0.1:8082/;
     }
 }
 ```
@@ -243,8 +243,10 @@ server {
 ## location指令说明
 
 > 注意 location 匹配的是 uri
+>
+> 详细说明：https://blog.csdn.net/qq_33862644/article/details/79337348
 
-![指令](./location指令说明.png)
+![指令](./img/location指令说明.png)
 
 ## 负载均衡的配置
 
@@ -479,13 +481,13 @@ ps -ef | grep keepalived
 
 ### 1、mater 和 worker
 
-![master&worker.png](./master&worker.png)
+![master&worker.png](./img/master&worker.png)
 
-![进程](./进程.png)
+![进程](./img/进程.png)
 
 ### 2、worker 工作方式
 
-![worker](./worker.png)
+![worker](./img/worker.png)
 
 一个请求（client）发送过来的时候会先经过master，会通知所有的worker来争抢这个请求，抢到之后再来做请求转发，反向代理等等操作。
 
