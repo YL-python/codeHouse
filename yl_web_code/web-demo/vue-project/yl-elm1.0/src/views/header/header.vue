@@ -12,7 +12,8 @@
         <div class="description">{{seller.description}}/{{seller.deliveryTime}}分钟内送达</div>
         <!-- v-if 判断是必须的，一开始还没有数据，传进来的是空对象，没有supports属性 -->
         <div v-if="seller.supports" class="support">
-          <span class="icon" :class="classMap[seller.supports[0].type]"></span>
+          <!-- <span class="icon" :class="classMap[seller.supports[0].type]"></span> -->
+          <icon :iconType="seller.supports[0].type" iconNum="1" mr="4"></icon>
           <span class="text">{{seller.supports[0].description}}</span>
         </div>
       </div>
@@ -45,7 +46,8 @@
             <lineText info="优惠信息"></lineText>
             <ul v-if="seller.supports" class="supports">
               <li class="support-item" v-for="(item,index) in seller.supports" :key="index">
-                <span class="icon" :class="classMap[seller.supports[index].type]"></span>
+                <!-- <span class="icon" :class="classMap[seller.supports[index].type]"></span> -->
+                <icon :iconType="seller.supports[index].type" iconNum="2" mr="6"></icon>
                 <span class="text">{{seller.supports[index].description}}</span>
               </li>
             </ul>
@@ -66,6 +68,7 @@
 <script>
 import star from "components/star/star.vue";
 import lineText from "components/twoLineTextCenter/twoLineTextCenter.vue";
+import icon from "components/icon/icon.vue";
 export default {
   props: {
     seller: {
@@ -78,17 +81,15 @@ export default {
       detailShow: false
     };
   },
-  created() {
-    this.classMap = ["decrease", "discount", "special", "invoice", "guarantee"];
-  },
   components: {
     star,
-    lineText
+    lineText,
+    icon
   }
 };
 </script>
 <style scoped lang='stylus'>
-@import '../../common/stylus/mixin.styl';
+@import '~common/stylus/mixin.styl';
 
 .header {
   color: #fff;
@@ -144,36 +145,6 @@ export default {
       }
 
       .support {
-        .icon {
-          display: inline-block;
-          margin: 0 4px 0 0;
-          vertical-align: top;
-          width: 12px;
-          height: 12px;
-          background-size: 12px 12px;
-          background-repeat: no-repeat;
-
-          &.decrease {
-            bg-image('decrease_1');
-          }
-
-          &.discount {
-            bg-image('discount_1');
-          }
-
-          &.guarantee {
-            bg-image('guarantee_1');
-          }
-
-          &.invoice {
-            bg-image('invoice_1');
-          }
-
-          &.special {
-            bg-image('special_1');
-          }
-        }
-
         .text {
           font-size: 10px;
           line-height: 12px;
@@ -306,36 +277,6 @@ export default {
 
             &:last-child {
               margin: 0;
-            }
-
-            .icon {
-              display: inline-block;
-              vertical-align: top;
-              width: 16px;
-              height: 16px;
-              margin: 0 6px 0 0;
-              background-size: 16px 16px;
-              background-repeat: no-repeat;
-
-              &.decrease {
-                bg-image('decrease_2');
-              }
-
-              &.discount {
-                bg-image('discount_2');
-              }
-
-              &.guarantee {
-                bg-image('guarantee_2');
-              }
-
-              &.invoice {
-                bg-image('invoice_2');
-              }
-
-              &.special {
-                bg-image('special_2');
-              }
             }
 
             .text {

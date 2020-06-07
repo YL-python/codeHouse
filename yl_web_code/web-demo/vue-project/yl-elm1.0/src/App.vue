@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import header from "./components/header/header";
+import header from "views/header/header";
 import { getSeller } from "api/api.js";
 const ERR_OK = 0;
 

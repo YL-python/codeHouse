@@ -13,5 +13,6 @@ module.exports = {
       .set('api', resolve('./src/api'))
       .set('common', resolve('./src/common'))
       .set('utils', resolve('./src/utils'))
+      .set('views', resolve('./src/views'))
   }
 }

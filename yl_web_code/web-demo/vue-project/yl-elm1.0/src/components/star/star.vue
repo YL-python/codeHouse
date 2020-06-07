@@ -45,14 +45,14 @@ export default {
       while (result.length < LENGTH) {
         result.push(CLS_OFF);
       }
-      console.log(result);
+      // console.log(result);
       return result;
     }
   }
 };
 </script>
 <style scoped lang="stylus">
-@import '../../common/stylus/mixin.styl';
+@import '~common/stylus/mixin.styl';
 
 .star {
   font-size: 0px;
