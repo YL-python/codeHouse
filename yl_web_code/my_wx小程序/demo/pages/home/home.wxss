@@ -1,0 +1,15 @@
+/* 首页样式 */
+.home-wrapper {}
+
+swiper {
+  width: 750rpx;
+  height: 300px;
+  background-color: chartreuse;
+}
+
+swiper-item{
+  /* 有内联样式，高度宽度不生效。 */
+  /* width: 100rpx;
+  height: 100rpx; */
+  background-color: pink;
+}

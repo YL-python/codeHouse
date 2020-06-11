@@ -1,0 +1,24 @@
+<view>这里是小程序的 块级元素 相当于 div</view>
+<text>这里是小程序的 行内元素 相当于 span</text>
+<view>名字是 {{name}}</view>
+<!-- 传参需要用data-变量名  然后在定义的方法内用事件对象接收
+传递对象数据的时候要用插值法 不加空格识别不出来你敢信 -->
+<button bindtap="changeName"
+  data-hehe="xx123" data-xixi="123456"
+  data-arr="{{[1,2,3,4]}}"
+  data-obj="{{ {us:123,ps:456} }}"
+>改名</button>
+<!-- <button bind:tap="changeName">改名</button> -->
+<view>列表渲染</view>
+<view wx:for="{{ arr }}" wx:key="index"> 
+{{index}} - {{item}}
+</view>
+
+<view 
+  wx:for="{{obj}}" 
+  wx:for-index="key" 
+  wx:for-item="value" 
+  wx:key="key"
+>
+  {{key}}: {{value}}
+</view>

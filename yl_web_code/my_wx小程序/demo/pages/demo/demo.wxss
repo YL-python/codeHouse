@@ -1,0 +1,6 @@
+/* 
+home 页面局部样式，局部样式和全局样式采用就近原则 
+*/
+view{
+  background-color: brown;
+}
