@@ -1,0 +1,5 @@
+server:
+  port: 22100
+
+fastdfs:
+  upload_location: D:\\
