@@ -82,7 +82,7 @@ App.vue 中
 
 服务器简单搭建了一个express 接口，数据都是视频给的死数据
 
-http://coderyl.top/node2/elm/goods
+http://coderyl.top/node/elm/goods
 
 ## 路由配置
 
@@ -117,7 +117,7 @@ const router = new VueRouter({
 
 没啥好说的，注意一下箭头函数的this指向和function函数的this指向
 
-## 数据区别
+## 不同地方定义数据的数据区别
 
 vue中有4种变量的定义
 
@@ -252,3 +252,32 @@ v-if判断是否加载，可以减轻服务器的压力，在需要时加载,但
 ## css3 backdrop filter 和 filter
 
 emm  也没啥好说的，百度一下，filter 是当前模糊，backdrop filter是背景模糊
+
+## bs数据渲染
+
+获取数据之后进行渲染
+
+发送agax是异步请求，setTimeout和$nextTick 会重新开一个事件队列，也是异步请求，所以为了能同步，setTimeout需要在agax的then方法里面使用
+
+```js
+_getGoods() {
+    getGoods().then(res => {
+        if (res.status === STATUS) {
+            this.goods = res.data;
+            this.$nextTick(() => {
+                this._initScroll();
+                this._calculateHeight();
+            });
+        }
+    });
+},
+```
+
+
+
+bs滚动
+
+```js
+new BScroll(this.$refs.mw, {});
+```
+

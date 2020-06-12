@@ -7,7 +7,7 @@
       <router-link tag="div" class="tab-item" to="/seller" active-class>商家</router-link>
     </div>
     <keep-alive>
-      <router-view></router-view>
+      <router-view :seller="seller"></router-view>
     </keep-alive>
   </div>
 </template>
@@ -15,7 +15,7 @@
 <script>
 import header from "views/header/header";
 import { getSeller } from "api/api.js";
-const ERR_OK = 0;
+const STATUS = 0;
 
 export default {
   created() {
@@ -30,7 +30,7 @@ export default {
   methods: {
     _getSeller() {
       getSeller().then(res => {
-        if (res.errno === ERR_OK) {
+        if (res.status === STATUS) {
           this.seller = res.data;
         }
       });

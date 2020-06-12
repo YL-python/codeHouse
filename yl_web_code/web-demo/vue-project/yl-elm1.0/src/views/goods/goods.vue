@@ -3,7 +3,13 @@
     <!-- 左侧导航列表 -->
     <div class="menu-wrapper" ref="mw">
       <ul>
-        <li v-for="(good,index) in goods" :key="index" class="menu-item">
+        <li
+          v-for="(good,index) in goods"
+          :key="index"
+          class="menu-item"
+          :class="{'current': currentIndex===index}"
+          @click="selectMnue(index,$event)"
+        >
           <span class="text border-1px">
             <icon :iconType="good.type" iconNum="3"></icon>
             {{good.name}}
@@ -38,13 +44,21 @@
         </li>
       </ul>
     </div>
+    <!-- 购物车 -->
+
+    <shopcart
+      :selectFood="selectedFood"
+      :deliveryPrice="seller.deliveryPrice"
+      :minPrice="seller.minPrice"
+    ></shopcart>
   </div>
 </template>
 <script>
 import { getGoods } from "api/api.js";
 import icon from "components/icon/icon.vue";
+import shopcart from "components/shopcart/shopcart.vue";
 import BScroll from "better-scroll";
-const ERR_OK = 0;
+const STATUS = 0;
 export default {
   props: {
     seller: {
@@ -53,31 +67,92 @@ export default {
   },
   data() {
     return {
-      goods: []
+      goods: [],
+      listHeight: [],
+      scrollY: 0,
+      selectedFood: []
     };
+  },
+  computed: {
+    currentIndex() {
+      for (let index = 0; index < this.listHeight.length - 1; index++) {
+        let height1 = this.listHeight[index];
+        let height2 = this.listHeight[index + 1];
+        if (this.scrollY >= height1 && this.scrollY < height2) {
+          return index;
+        }
+      }
+      return 0;
+    }
   },
   created() {
     this._getGoods();
+    // this.$nextTick(() => {
+    //   this._initScroll();
+    //   this._calculateHeight();
+    // });
+    // setTimeout(() => {
+    //   this._initScroll();
+    //   this._calculateHeight();
+    // }, 20);
   },
   mounted() {
-    this._initScroll();
+    // setTimeout(() => {
+    //   this._initScroll();
+    //   this._calculateHeight();
+    // }, 20);
+    // this.$nextTick(() => {
+    //   this._initScroll();
+    //   this._calculateHeight();
+    // });
   },
   methods: {
+    selectMnue(index, event) {
+      // bs 派发的原生事件 和浏览器事件冲突
+      if (!event._constructed) {
+        return;
+      }
+      let foodList = this.$refs.fw.firstChild.childNodes;
+      let el = foodList[index];
+      this.foodsScroll.scrollToElement(el, 300);
+    },
     _getGoods() {
       getGoods().then(res => {
-        if (res.errno === ERR_OK) {
+        if (res.status === STATUS) {
           this.goods = res.data;
+          this.$nextTick(() => {
+            this._initScroll();
+            this._calculateHeight();
+          });
         }
       });
     },
     _initScroll() {
-      console.log(this.$refs.mw);
-      this.menuScroll = new BScroll(this.$refs.mw, {});
-      this.foodsScroll = new BScroll(this.$refs.fw, {});
+      this.menuScroll = new BScroll(this.$refs.mw, {
+        click: true
+      });
+      this.foodsScroll = new BScroll(this.$refs.fw, {
+        probeType: 3
+      });
+      this.foodsScroll.on("scroll", pos => {
+        // console.log(pos);
+        this.scrollY = Math.abs(Math.round(pos.y));
+      });
+    },
+    _calculateHeight() {
+      let foodList = this.$refs.fw.firstChild.childNodes;
+      let heihgt = 0;
+      this.listHeight.push(heihgt);
+      for (let index = 0; index < foodList.length; index++) {
+        const element = foodList[index];
+        heihgt += element.clientHeight;
+        this.listHeight.push(heihgt);
+      }
     }
   },
   components: {
-    icon
+    icon,
+    shopcart
   }
 };
 </script>
@@ -110,6 +185,18 @@ export default {
         width: 56px;
         vertical-align: middle;
         border-1px(rgba(7, 17, 27, 0.1));
+      }
+    }
+
+    .current {
+      background-color: rgb(255, 255, 255);
+      position: relative;
+      margin-top: -1px;
+      z-index: 10;
+      font-weight: 700;
+
+      .text {
+        border-none();
       }
     }
   }
@@ -166,14 +253,14 @@ export default {
           }
 
           .price {
-            font-size: 14px;
+            font-size: 0px;
             padding: 8px 0 0 0;
             font-weight: 700;
-            line-height: 14px;
 
             .now {
               margin-right: 8px;
               font-size: 14px;
+              line-height: 14px;
               color: rgb(240, 20, 20);
             }
 
