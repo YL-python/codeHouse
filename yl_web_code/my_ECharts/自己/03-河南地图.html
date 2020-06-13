@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>疫情地图展示</title>
+  <style>
+    #myEcharts {
+      width: 800px;
+      height: 500px;
+      border: solid 1px red;
+      margin: 0 auto;
+    }
+  </style>
+  <!-- 引入 echarts.js -->
+  <script src="./node_modules/echarts/dist/echarts.min.js"></script>
+  <!--引入中国的地图数据js文件，引入后会自动注册地图名字和数据-->
+  <!-- <script src="./node_modules/echarts/map/js/china.js"></script> -->
+  <script src="./node_modules/echarts/map/js/province/jiangxi.js"></script>
+
+</head>
+
+<body>
+  <!--为echarts准备一个dom容器-->
+  <div id="myEcharts"></div>
+  <script>
+    //初始化echarts实例
+    var myChart = echarts.init(document.getElementById('myEcharts'));
+    // 指定图表的配置项和数据
+    option = {
+      backgroundColor: "#FFFFFF",
+      title: {
+        text: "江西省份地图",
+        subtext: "",
+        x: "center"
+      },
+      tooltip: {
+        trigger: "item"
+      },
+
+      //左侧小导航图标
+      visualMap: {
+        min: 0,
+        max: 100,
+        text: ["高", "低"],
+        inRange: {
+          color: ["lightskyblue", "yellow", "orangered"]
+        }
+      },
+
+      //配置属性
+      series: [{
+        name: '江西xxx数据',
+        type: 'map',
+        mapType: '江西', // 自定义扩展图表类型
+        label: {
+          show: true
+        },
+        itemStyle: { // 定义样式
+          normal: { // 普通状态下的样式
+            areaColor: 'rgba(18, 125, 161, 1)',
+            borderColor: 'red',
+            boxShadow: '10px 10px 5px green'
+          },
+          emphasis: { // 高亮状态下的样式
+            areaColor: 'rgba(61, 140, 226, 1)'
+          }
+        },
+        data: [
+
+          {
+            name: '南昌市',
+            value: 20057.34
+          },
+
+          {
+            name: '上饶市',
+            value: 15477.48
+          },
+
+          {
+            name: '抚州市',
+            value: 31686.1
+          },
+
+          {
+            name: '宜春市',
+            value: 6992.6
+          },
+
+          {
+            name: '吉安市',
+            value: 44045.49
+          },
+
+          {
+            name: '赣州市',
+            value: 40689.64
+          },
+
+          {
+            name: '鹰潭市',
+            value: 37659.78
+          },
+
+          {
+            name: '新余市',
+            value: 45180.97
+          },
+
+          {
+            name: '九江市',
+            value: 55204.26
+          },
+
+          {
+            name: '萍乡市',
+            value: 21900.9
+          },
+
+          {
+            name: '景德镇市',
+            value: 4918.26
+          }
+
+        ] //数据
+      }]
+    }
+
+    //使用指定的配置项和数据显示图表
+    myChart.setOption(option);
+  </script>
+</body>
+
+</html>

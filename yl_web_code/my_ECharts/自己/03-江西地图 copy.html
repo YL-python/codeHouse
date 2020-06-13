@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>疫情地图展示</title>
+  <style>
+    #myEcharts {
+      width: 800px;
+      height: 500px;
+      border: solid 1px red;
+      margin: 0 auto;
+    }
+  </style>
+  <!-- 引入 echarts.js -->
+  <script src="./node_modules/echarts/dist/echarts.min.js"></script>
+  <!--引入中国的地图数据js文件，引入后会自动注册地图名字和数据-->
+  <!-- <script src="./node_modules/echarts/map/js/china.js"></script> -->
+  <script src="./node_modules/echarts/map/js/province/henan.js"></script>
+  <script src="./node_modules/echarts/map/json/province/henan.json"></script>
+
+</head>
+
+<body>
+  <!--为echarts准备一个dom容器-->
+  <div id="myEcharts"></div>
+  <script>
+    //初始化echarts实例
+    var myChart = echarts.init(document.getElementById('myEcharts'));
+    // 指定图表的配置项和数据
+    option = {
+      backgroundColor: "#FFFFFF",
+      title: {
+        text: "河南省份地图",
+        subtext: "",
+        x: "center"
+      },
+      tooltip: {
+        trigger: "item"
+      },
+
+      //左侧小导航图标
+      visualMap: {
+        min: 0,
+        max: 100,
+        text: ["高", "低"],
+        inRange: {
+          color: ["lightskyblue", "yellow", "orangered"]
+        }
+      },
+
+      //配置属性
+      series: [{
+        name: "报名人数",
+        type: "map",
+        mapType: "河南",
+        roam: true,
+        label: {
+          normal: {
+            show: false //省份名称
+          },
+          emphasis: {
+            show: false
+          }
+        },
+        data: [{
+            name: "郑州市",
+            value: "100"
+          },
+          {
+            name: "洛阳市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "商丘市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "安阳市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "南阳市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "开封市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "平顶山市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "焦作市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "新乡市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "鹤壁市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "濮阳市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "许昌市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "漯河市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "三门峡市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "信阳市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "周口市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "驻马店市",
+            value: Math.round(Math.random() * 100)
+          },
+          {
+            name: "济源市",
+            value: Math.round(Math.random() * 100)
+          }
+        ] //数据
+      }]
+    }
+
+    //使用指定的配置项和数据显示图表
+    myChart.setOption(option);
+  </script>
+</body>
+
+</html>
