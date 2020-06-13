@@ -41,6 +41,7 @@ nbdist/
 ### VS Code ###
 *.project
 *.factorypath
+.vscode
 
 # Compiled class file
 *.class
@@ -83,6 +84,8 @@ test/
 看板娘/
 node_modules/
 H-ui.admin.page/
+*课件
+00-课件
 
 ### notes
 
