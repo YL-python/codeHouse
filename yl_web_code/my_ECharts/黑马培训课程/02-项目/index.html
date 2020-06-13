@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 数据可视化 </title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <header>
+    <h1>疫情数据可视化</h1>
+    <div class="showTime">当前时间：XXX年X月XX-XX时XX分XX秒</div>
+  </header>
+
+  <!-- 主体盒子 -->
+  <div class="mainBox">
+    <div class="main-left ">
+      <!-- 条形图 -->
+      <div class="panel bar1">
+        <div class="panel-footer">
+          <h2>左 上 标题</h2>
+          <div class="chart"></div>
+        </div>
+      </div>
+      <!-- 现状图 -->
+      <div class="panel line">
+        <div class="panel-footer">
+          <h2>左 上 标题</h2>
+          <div class="chart"></div>
+        </div>
+      </div>
+      <!-- 饼状图 -->
+      <div class="panel pie">
+        <div class="panel-footer">
+          <h2>左 上 标题</h2>
+          <div class="chart"></div>
+        </div>
+      </div>
+    </div>
+    <div class="main-center">
+      <div class="center-header">
+        <ul class="center-num">
+          <li>123</li>
+          <li>456</li>
+          <li>456</li>
+          <li>456</li>
+        </ul>
+        <ul class="center-desc">
+          <li>描述</li>
+          <li>描述</li>
+          <li>描述</li>
+          <li>描述</li>
+        </ul>
+      </div>
+      <div class="center-content">
+        <div class="bg1"></div>
+        <div class="bg2"></div>
+        <div class="bg3"></div>
+        <div class="chart"></div>
+      </div>
+    </div>
+    <div class="main-right">
+      <!-- 条形图 -->
+      <div class="panel bar2">
+        <div class="panel-footer">
+          <h2>左 上 标题</h2>
+          <div class="chart"></div>
+        </div>
+      </div>
+      <!-- 现状图 -->
+      <div class="panel line">
+        <div class="panel-footer">
+          <h2>左 上 标题</h2>
+          <div class="chart"></div>
+        </div>
+      </div>
+      <!-- 饼状图 -->
+      <div class="panel pie">
+        <div class="panel-footer">
+          <h2>左 上 标题</h2>
+          <div class="chart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="./js/flexible.js"></script>
+  <script src="./js/echarts.min.js"></script>
+  <script src="./js/index.js"></script>
+  <script>
+    // 格式： 当前时间：2020年3月17-0时54分14秒
+    function time() {
+      dt = new Date();
+      var y = dt.getFullYear();
+      var mt = dt.getMonth() + 1;
+      var day = dt.getDate();
+      var h = dt.getHours(); //获取时
+      var m = dt.getMinutes(); //获取分
+      var s = dt.getSeconds(); //获取秒
+      document.querySelector(".showTime").innerHTML = '当前时间：' + y + "年" + mt + "月" + day + "-" + h + "时" + m + "分" + s +
+        "秒";
+    }
+    time()
+    setInterval(time, 1000)
+  </script>
+</body>
+
+</html>
