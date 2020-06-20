@@ -37,9 +37,13 @@ app.get('/', (req, res) => {
         // 使用cheerio 分析数据内容
         // const $ = cheerio.load(res.data)
         // console.log($("script#captain-config").text);
-        let html = adata.data
-        let data = html.match(/<script type=\"application\/json\" id=\"captain-config\">(.*?)<\/script>/)
-        res.send(reconvert(data[1]))
+        let data = adata.data.match(/<script type=\"application\/json\" id=\"captain-config\">(.*?)<\/script>/)
+        // console.log(data);
+        data = reconvert(data[1])
+        console.log(typeof data);
+        let jsonData = JSON.parse(data)
+        console.log(jsonData.component[0].mapLastUpdatedTime);
+        res.send(jsonData)
     })
 })
 

@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px !important
+}
+
+a {
+  text-decoration: none
+}
+
+a,
+a:visited {
+  color: #000
+}
+
+body {
+  background-color: #00bac5;
+  font-size: 1rem;
+  font-family: Arial
+}
+
+.main {
+  margin: 0 auto;
+  max-width: 768px;
+  overflow: hidden;
+
+  header {
+    height: 187px;
+    background-image: url('../images/bg.png');
+    background-size: 695px 189px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    margin-bottom: -.625rem;
+    position: relative;
+
+    h3 {
+      display: inline-block;
+      margin-top: 71px;
+      margin-left: 17px;
+      font-size: .875rem;
+      color: #c4faff;
+      letter-spacing: .125rem;
+    }
+
+    h1 {
+      margin-top: 10px;
+      font-size: 2rem;
+      height: 2rem;
+      line-height: 2rem;
+      padding-left: 17px;
+      font-weight: 700;
+      color: #fff;
+      position: relative;
+
+      &:after {
+        content: "疫情实时大数据报告";
+        display: block;
+        position: absolute;
+        color: #afdade;
+        top: 0;
+        -webkit-mask-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0, 0, 255, 0)), to(#afdade));
+        mask-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0, 0, 255, 0)), to(#afdade));
+      }
+    }
+  }
+}
+
+.content {
+  background-color: #fff;
+  position: relative;
+  border-radius: .625rem;
+  margin: -.5rem 0 1.5rem;
+  padding: .917rem 1.0625rem 1.875rem;
+
+  .tab {
+    display: flex;
+    justify-content: space-around;
+    height: 2.1rem;
+    border-bottom: 1px solid #f5f6f7;
+    margin: auto -.9375rem .75rem;
+    padding: 0 1.0625rem;
+    z-index: 99990000;
+    width: 100%;
+
+    a {
+      font-size: 1rem;
+      font-weight: 700;
+
+      &.active {
+        color: #10aeb5;
+        border-bottom: 3px solid #10aeb5;
+      }
+    }
+  }
+}
+
+.chart {
+  height: 561px;
+  width: 734px;
+  background-color: #F8F9FA;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    display: flex;
+  }
+}
