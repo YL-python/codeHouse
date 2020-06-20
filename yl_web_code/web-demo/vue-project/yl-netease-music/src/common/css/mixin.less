@@ -1,0 +1,15 @@
+// 对样式的封装
+@import './variable.less';
+
+.w(@px) {
+  // 宽度和单位
+  width: unit(@px/@remSize, rem);
+}
+
+.h(@px) {
+  height: unit(@px/@remSize, rem);
+}
+
+.l_h(@px) {
+  line-height: unit(@px/@remSize, rem);
+}

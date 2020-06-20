@@ -17,7 +17,7 @@ npm run lint
 
 ## 准备工作
 
-```
+```js
 package.json
 devDependencies选项末尾添加
     "stylus": "^0.54.5"  # css使用 stylus
