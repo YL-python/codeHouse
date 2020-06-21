@@ -1,6 +1,6 @@
-### vue总结
+## vue总结
 
-#### vue01 - 基础指令
+### vue01 - 基础指令
 ##### 数据绑定
 
 ##### v-if   v-show
@@ -29,7 +29,7 @@
 
 ##### v-html     v-text
 
-#### vue02 - 组件
+### vue02 - 组件
 ##### 组件的介绍
 
   ```
@@ -80,7 +80,7 @@
 方法二事件总线：两个多层嵌套组件通信时注册一个空实例（观察者），在一个组件里面把数据和方法绑定到这个观察者上，在另一个组件内使用这个观察者
   ```
 
-#### vue03 - 边边角角和生命周期
+### vue03 - 边边角角和生命周期
 ##### [过滤器](https://cn.vuejs.org/v2/guide/filters.html#ad)
 
   用管道符号使用过滤器，用呵呵方法处理time值，呵呵是一个方法，默认参数就是管道符号前面的，当然也可以自定义参数
@@ -161,7 +161,7 @@ xxx
     	销毁之后发生，虚拟dom数据有，页面渲染数据丢失
 ```
 
-#### vue04 - 脚手架以及路由
+### vue04 - 脚手架以及路由
 ##### 一个轮播图，一个todolist例子
 
 ##### 单页面开发
@@ -306,5 +306,152 @@ mapActions：将actions里的值映射到方法
 2.可以在模块里添加命名空间  namespaced:true
 	作用就是在 mutation getters actions的名字前面 添加模块名
 	用处就是防止名字冲突
+```
+
+### vue08 - 响应式原理
+
+#### 路由实现原理
+
+```
+router-link 控制地址栏改变
+	window.location.hash = this.to
+router-view 根据地址栏的改变来控制组件的切换
+	在某个生命周期内通过 hashchange监听地址栏改变
+	<component :is="componentId"></component> 根据路由表和地址栏修改动态组件
+	
+hash 通过 hashchange 监听地址栏的改变
+history 通过 popState 监听地址栏的改变
+```
+
+#### vue中的响应式
+
+```
+数据发生改变页面也就改变
+https://cn.vuejs.org/v2/guide/reactivity.html
+vue 在组件和实例初始化的时候会把data中的数据劫持，使用Object.defineProperty为数据绑定getter/setter属性，修改数据的时候会触发setter，触发底层的watcher监听，通知dom修改刷新，getter在数据使用的时候触发
+在vue给data绑定的setter方法在使用watcher 监听数据改变，进行diff算法，判断是否修改dom,如果修改dom就执行真正的修改dom的方法，getter中记录数据改变的路径
+```
+
+#### vue中数据变页面一定变吗
+
+```
+不一定，数据变页面也变是因为在vue初始化的时候劫持了data的数据绑定了 getter/setter属性
+	在对象属性的添加，数组长度的改变
+着两种方法不会添加 get/set方法，就不会数据便页面也变，
+```
+
+### vue09 - 细节
+
+#### vue 的更新队列
+```
+vue 会将一个事件循环中的所有数据操作合并，然后在执行更新
+并不是数据改变一次就更新一次
+1 2 3 4 5 4 3 2 1  这样的只会更新一次
+```
+
+#### vue.use()
+```
+自动执行引入的模块 内部的 install 方法
+install 方法 一般是进行全局注册组件
+
+vue.use() 就相当于是全局注册组件。一般是写组件给别人用的时候
+```
+
+#### 双向数据绑定 v-model
+```
+自定义事件和自定义属性的结合
+可以使用在 表单元素上  和组件上
+
+组件上使用 v-model 就
+提供一个 input 的自定义事件
+提供一个 value 的自定义属性
+```
+
+#### 事件修饰符
+
+把事件的方法进行简化
+
+ [https://cn.vuejs.org/v2/guide/events.html#%E4%BA%8B%E4%BB%B6%E4%BF%AE%E9%A5%B0%E7%AC%A6](https://cn.vuejs.org/v2/guide/events.html#事件修饰符) 
+
+```
+.stop
+.prevent
+.capture
+.self
+.once
+.passive
+```
+
+```
+<!-- 阻止单击事件继续传播 -->
+<a v-on:click.stop="doThis"></a>
+
+<!-- 提交事件不再重载页面 -->
+<form v-on:submit.prevent="onSubmit"></form>
+
+<!-- 修饰符可以串联 -->
+<a v-on:click.stop.prevent="doThat"></a>
+
+<!-- 只有修饰符 -->
+<form v-on:submit.prevent></form>
+
+<!-- 添加事件监听器时使用事件捕获模式 -->
+<!-- 即内部元素触发的事件先在此处理，然后才交由内部元素进行处理 -->
+<div v-on:click.capture="doThis">...</div>
+
+<!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+<!-- 即事件不是从内部元素触发的 -->
+<div v-on:click.self="doThat">...</div>
+
+// 2.1.4 新增
+<!-- 点击事件将只会触发一次 -->
+<a v-on:click.once="doThis"></a>
+
+2.3.0 新增
+
+Vue 还对应 addEventListener 中的 passive 选项提供了 .passive 修饰符。
+<!-- 滚动事件的默认行为 (即滚动行为) 将会立即触发 -->
+<!-- 而不会等待 `onScroll` 完成  -->
+<!-- 这其中包含 `event.preventDefault()` 的情况 -->
+<div v-on:scroll.passive="onScroll">...</div>
+```
+
+有事件修饰符，按钮修饰符，鼠标修饰符
+
+#### 前端优化
+
++ 分析引入文件的大小  -- 没成功
+
+```
+下载安装 npm install webpack-bundle-analyzer --save-dev
+
+vue.config.js 中配置：
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+module.exports = {
+    ...
+    chainWebpack:(config)={
+        if(process.env.NODE_ENV === 'production'&&process.env.npm_config_report){
+            config
+            .plugin('webpack-bundel-analyze')
+            .use(BundleAnalyzerPlugin)
+            .end()
+        }
+    }
+}
+
+在 package.json scripts 中配置分析指令
+"report":"npm_config_report= true npm run build "
+
+运行
+npm run report
+```
+
++ 检测网页运行效率
+
+```
+npm install lighthouse -g
+
+lighthouse 要检查的网址 --view
+lighthouse http://coderyl.top/ --view
 ```
 

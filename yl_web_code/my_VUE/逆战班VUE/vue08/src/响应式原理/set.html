@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../../../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    {{user}}
+    <hr>
+    <button @click='changName'>changName</button>
+  </div>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        user: {
+          age: 18
+        }
+      },
+      methods: {
+        changName() {
+          // this.user.name = '小王'
+          // name 没有被绑定 get和set
+
+          // 自己添加 set方法 用 Object.defineProperty 劫持数据
+          this.$set(user, "name", "韩梅梅")
+          console.log(this.user);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

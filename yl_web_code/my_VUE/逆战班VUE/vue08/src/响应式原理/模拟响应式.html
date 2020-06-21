@@ -33,6 +33,11 @@
     })
     console.log(data);
 
+    function change() {
+      data.age ++ 
+    }
+
+    // vue源码思路
     // 监听数据改变 进行diff  算法，判断是否修改dom
     function watcher() {
       renderDom()
@@ -42,9 +47,6 @@
       let test = document.getElementById("test")
       let age = data.age
       test.innerHTML = age
-    }
-    function change() {
-      data.age ++ 
     }
   </script>
 </body>

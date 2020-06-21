@@ -1,4 +1,6 @@
 const path = require('path')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
 function resolve (dir) {
   return path.join(__dirname, dir)
 }
@@ -29,5 +31,12 @@ module.exports = {
       .set('api', resolve('./src/api'))
       .set('style', resolve('./src/style'))
       .set('components', resolve('./src/components'))
+    // 配置分析工具
+    if (process.env.NODE_ENV === 'production' && process.env.npm_config_report) {
+      config
+        .plugin('webpack-bundle-analyze')
+        .use(BundleAnalyzerPlugin)
+        .end()
+    }
   }
 }
