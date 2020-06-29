@@ -418,7 +418,7 @@ Vue 还对应 addEventListener 中的 passive 选项提供了 .passive 修饰符
 
 有事件修饰符，按钮修饰符，鼠标修饰符
 
-#### 前端优化
+#### 前端优化 插件
 
 + 分析引入文件的大小  -- 没成功
 
@@ -455,3 +455,14 @@ lighthouse 要检查的网址 --view
 lighthouse http://coderyl.top/ --view
 ```
 
+### vue10
+
+#### 手机端调试问题
+
+#### vue-router 历史模式刷新404
+
+直接看官方文档
+
+#### Gzip压缩功能
+
+#### 首屏加载白屏的时候添加动画
