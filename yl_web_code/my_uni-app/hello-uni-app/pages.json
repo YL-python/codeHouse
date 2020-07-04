@@ -1,0 +1,104 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index"
+			// 页面级的样式回覆盖全局样式
+			// "style": {
+			// 	"navigationBarTitleText": "uni-app"
+			// }
+		},
+		{
+			"path": "pages/message/message",
+			"style": {
+				"navigationBarTitleText": "message页面",
+				"navigationBarBackgroundColor": "yellow",
+				// 给 h5 单独设置样式
+				"h5": {
+					"pullToRefresh": {
+						"color": "skyblue"
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/contact/contact"
+		},
+		{
+			"path": "pages/text/text"
+		},
+		{
+			"path": "pages/view/view"
+		},
+		{
+			"path": "pages/button/button"
+		},
+		{
+			"path": "pages/image/image"
+		},
+		{
+			"path": "pages/detail/detail"
+		},
+		{
+			"path": "pages/uni-style/uni-style"
+		}, {
+			"path": "pages/date/date"
+		}, {
+			"path": "pages/list/list",
+			"style": {
+				// 下拉刷新一般那个需要给那个开启
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 50
+			}
+		}, {
+			"path": "pages/api/api",
+			"style": {}
+		}, {
+			"path": "pages/upload/upload",
+			"style": {}
+		}, {
+			"path": "pages/navigator/navigator",
+			"style": {}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "全局标题",
+		"navigationBarBackgroundColor": "red",
+		"backgroundColor": "blue"
+	},
+	"tabBar": {
+		"color": "black",
+		"selectedColor": "red",
+		"backgroundColor": "skyblue",
+		"borderStyle": "white",
+		// 状态栏在顶部只有微信小程序支持而且不显示图标
+		"position": "top",
+		"list": [{
+				"text": "首页",
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabs/home.png",
+				"selectedIconPath": "static/tabs/home-active.png"
+			},
+			{
+				"text": "信息",
+				"pagePath": "pages/message/message",
+				"iconPath": "static/tabs/message.png",
+				"selectedIconPath": "static/tabs/message-active.png"
+			},
+			{
+				"text": "我们",
+				"pagePath": "pages/contact/contact",
+				"iconPath": "static/tabs/contact.png",
+				"selectedIconPath": "static/tabs/contact-active.png"
+			}
+		]
+	},
+	"condition": {
+		"current": 0,
+		"list": [{
+			"name": "详情页",
+			"path": "pages/detail/detail",
+			"query": "id=80"
+		}]
+	}
+}
