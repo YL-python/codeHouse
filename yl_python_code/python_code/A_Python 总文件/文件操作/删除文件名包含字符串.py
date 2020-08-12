@@ -16,6 +16,6 @@ def file_rename(root, del_name):
 
 
 if __name__ == '__main__':
-    file_path = 'E:\A 视频教程\A 前端\慕课网-黄奕Vue-饿了么项目一二期'
-    del_name = '--【IT视频学习网-www.itspxx.com】'
+    file_path = r'E:\A 视频教程\A 前端\uniapp 项目\uni-app 社区交友项目'
+    del_name = '   '
     file_rename(file_path, del_name)
