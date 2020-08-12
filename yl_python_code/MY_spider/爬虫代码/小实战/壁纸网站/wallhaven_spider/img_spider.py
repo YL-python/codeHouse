@@ -9,7 +9,7 @@ topRangeList = ["1d", "3d", "1M", "6M","3M", "1y", "1w"]
 sortingList = ["toplist", "favorites", "views"]
 IMG_SEAVE_PATH = 'E:\\图片\\day\\'
 # IMG_SEAVE_PATH = 'E:\\wallhaven_img\\SFW\\'
-MAIN_URL = 'https://wallhaven.cc/search?categories=010&purity=100&topRange=abcd&sorting=efgh&order=desc&page={}'
+MAIN_URL = 'https://wallhaven.cc/search?categories=010&purity=010&topRange=abcd&sorting=efgh&order=desc&page={}'
 HEADERS = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3724.8 Safari/537.36'}
 MAX_PAGE = 10
 
