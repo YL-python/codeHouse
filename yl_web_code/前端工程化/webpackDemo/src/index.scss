@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "myfront";
+  src: url("./myfront.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+}
+
+body {
+  background-color: green;
+}
+.hello {
+  color: red;
+  font-family: "myfront";
+  background-image: url("./happy.jpg");
+}
