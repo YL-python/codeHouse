@@ -27,17 +27,35 @@ key是下面爬的
 import requests
 import json
 from bs4 import BeautifulSoup
+import functools
+import time
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3724.8 Safari/537.36'}
 url = "https://bing.ioliu.cn/?p={}"
-
+time_filter = []
 try:
     allData = json.load(open("by.json", "r", encoding='utf-8'))
 except:
     allData = []
+print("当前数量：{}".format(len(allData)))
 
-for i in range(1, 137):
+
+def fun_filter(obj):
+    if obj['time'] in time_filter:
+        return False
+    else:
+        time_filter.append(obj['time'])
+        return True
+
+
+def cmp(obj_a, obj_b):
+    time_a = time.mktime(time.strptime(obj_a['time'], "%Y-%m-%d"))
+    time_b = time.mktime(time.strptime(obj_b['time'], "%Y-%m-%d"))
+    return time_b - time_a
+
+
+for i in range(1, 2):
     print("正在爬取第 {} 页".format(i))
     html_doc = requests.get(url.format(i), headers=HEADERS).content.decode('utf-8')
     soup = BeautifulSoup(html_doc, 'lxml')
@@ -58,4 +76,8 @@ for i in range(1, 137):
         item["key"] = keyList[index].get('href').replace("/photo/", "").replace("?force=download", "")
         allData.append(item)
 
+allData = list(filter(fun_filter, allData))
+allData.sort(key=functools.cmp_to_key(cmp))
+
+print("爬取完成数量：{}".format(len(allData)))
 json.dump(allData, open("by.json", "w", encoding='utf-8'), ensure_ascii=False)

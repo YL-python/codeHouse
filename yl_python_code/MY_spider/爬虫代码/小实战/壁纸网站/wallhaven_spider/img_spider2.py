@@ -8,7 +8,7 @@ from lxml import etree
 # 种类 按顺序三个参数是 General（一般）/ Anime（动漫）/ People（人物） 1表示选择，0表示不选择
 categories = "010"  # 种类
 # 图片纯度  按顺序是 sfw(安全的) / sketchy(粗略的) / nsfw(不安全的)  1表示选择，0表示不选择
-purity="100"
+purity="110"
 topRangeList = ["1M", "3M", "6M", "1y", "1w", "1d", "3d"]  # 时间
 sortingList = ["toplist", "favorites", "toplist-beta", "views"]  # 规则
 MAX_PAGE = 10  # 爬取最大页数
