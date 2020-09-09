@@ -1,12 +1,9 @@
 <!-- 首页 -->
 <view class="home-wrapper">
-<!-- 轮播图 -->
-  <swiper
-  indicator-dots="true"
-  autoplay="true"
-  >
-    <swiper-item wx:for="{{imgs}}" wx:key="index">
-      <image src="{{item}}"></image>
-    </swiper-item>
-  </swiper>
+	<!-- 轮播图 -->
+	<swiper indicator-dots="true" autoplay="true">
+		<swiper-item wx:for="{{imgs}}" wx:key="index">
+			<image src="{{item}}"></image>
+		</swiper-item>
+	</swiper>
 </view>

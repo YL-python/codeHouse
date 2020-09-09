@@ -1,0 +1,34 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index"
+		}, {
+			"path": "pages/collection/collection",
+			"style": {
+				"navigationBarTitleText": "收藏"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "遇见天气",
+		"navigationBarBackgroundColor": "#65A3F8",
+		"backgroundColor": "#F6F9FE"
+	},
+	"tabBar": {
+		"backgroundColor": "#F6F9FE",
+		"selectedColor": "#1296db",
+		"color": "#ccc",
+		"list": [{
+			"text": "首页",
+			"pagePath": "pages/index/index",
+			"iconPath": "static/icon/index.png",
+			"selectedIconPath": "static/icon/index-active.png"
+		}, {
+			"text": "收藏",
+			"pagePath": "pages/collection/collection",
+			"iconPath": "static/icon/collection.png",
+			"selectedIconPath": "static/icon/collection-active.png"
+		}]
+	}
+}
