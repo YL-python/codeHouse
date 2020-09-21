@@ -21,7 +21,7 @@ yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/d
 ### 3.安装Docker
 
 ```c++
-yum makecache fastyum -y install docker-ce
+yum install docker-ce  docker-ce-cli containerd.io
 ```
 
 ### 4.启动Docker并测试
