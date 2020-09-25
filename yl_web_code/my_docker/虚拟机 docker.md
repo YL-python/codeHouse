@@ -158,6 +158,17 @@ NETMASK=255.255.255.0  # 掩码 默认就是这个
 
 完美，不放心的可以重启一下再来看看。
 
+### 修改DNS
+
+```c
+vi /etc/resolv.conf
+# 添加一行
+nameserver 8.8.8.8
+
+# 保存后重启网络服务
+service network restart
+```
+
 ### xshell 链接虚拟机
 
 ![1600339458225](%E8%99%9A%E6%8B%9F%E6%9C%BA%20docker.assets/1600339458225.png)
