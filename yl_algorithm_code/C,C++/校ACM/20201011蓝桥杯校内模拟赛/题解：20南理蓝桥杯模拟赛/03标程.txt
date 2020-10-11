@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    long long sum=0;
+    for (int i=0; i<=20201006; i++){
+        int k=i;
+        while (k>=996){
+            if (k%1000==996){
+                sum++;
+                k=0;
+            }
+            k=k/10;
+        }
+    }
+    printf("%lld\n",sum);
+    return 0;
+}

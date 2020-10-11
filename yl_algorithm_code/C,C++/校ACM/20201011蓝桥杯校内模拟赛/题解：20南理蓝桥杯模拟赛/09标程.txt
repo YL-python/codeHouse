@@ -1,0 +1,104 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+struct point {
+    int x,y,step,Begin,End;
+    bool operator < (const point &a) const {
+        return step>a.step;//最小值优先
+    }
+};
+
+
+char Map[1100][1100];
+int Step[1100][1100];
+int yet[1100][1100];
+int Move[4][2]={{1,0},{0,1},{-1,0},{0,-1}};
+point A[100],C[100];
+int sum=0x7f7f7f;
+int N,M;
+int pA=0,pC=0;
+
+int BFS(int x,int y,int k){
+    memset(Step,1,sizeof(Step));
+    memset(yet,0,sizeof(yet));
+    priority_queue <point> que;
+    point temp,p;
+    p.x=x;
+    p.y=y;
+    p.step=0;
+    que.push(p);
+    while (!que.empty()){
+        p=que.top();
+        que.pop();
+        for (int i=0; i<4; i++){
+            temp=p;
+            temp.x+=Move[i][0];
+            temp.y+=Move[i][1];
+            temp.step++;
+            if ( (temp.x<1) || (temp.y<1) || (temp.x>N) || (temp.y>M) ) continue;
+            if ( ( yet[temp.x][temp.y]==0 ) && ( Map[temp.x][temp.y]=='0' ) && ( temp.step < Step[temp.x][temp.y] ) ){
+                yet[temp.x][temp.y]=1;
+                Step[temp.x][temp.y] = temp.step;
+                que.push(temp);
+            }
+        }
+    }
+    if (x==1 && y==1){
+        for (int i=0; i<pA; i++) A[i].Begin = Step[A[i].x][A[i].y];
+        for (int i=0; i<pC; i++) C[i].Begin = Step[C[i].x][C[i].y];
+        return 0;
+    }
+    if (x==N && y==M){
+        for (int i=0; i<pA; i++) A[i].End = Step[A[i].x][A[i].y];
+        for (int i=0; i<pC; i++) C[i].End = Step[C[i].x][C[i].y];
+        return 0;
+    }
+
+    ///bfs A to C
+    for (int i=0; i<pC; i++) {
+        /// Step[C[i].x][C[i].y] == A to C step
+        int s;
+        s = A[k].Begin + Step[C[i].x][C[i].y] + C[i].End;
+        sum = min(sum,s);
+        s = A[k].End + Step[C[i].x][C[i].y] + C[i].Begin;
+        sum = min(sum,s);
+    }
+    return 0;
+}
+
+
+int main(){
+    memset(Map,'1',sizeof(Map));
+    scanf("%d%d",&N,&M);
+    for (int i=1; i<=N; i++){
+        getchar();
+        for (int j=1; j<=M; j++){
+            scanf("%c",&Map[i][j]);
+        }
+    }
+    for (int i=1; i<=N; i++){
+        for (int j=1; j<=M; j++){
+            if (Map[i][j]=='B') Map[i][j]=0;
+            else if (Map[i][j]=='A'){
+                Map[i][j]='0';
+                A[pA].x=i;
+                A[pA].y=j;
+                pA++;
+            }
+            else if (Map[i][j]=='C'){
+                Map[i][j]='0';
+                C[pC].x=i;
+                C[pC].y=j;
+                pC++;
+            }
+        }
+    }
+    BFS(1,1,0);
+    BFS(N,M,0);
+    for (int i=0; i<pA; i++) BFS(A[i].x,A[i].y,i); ///bfs A to C
+    printf("%d\n",sum);
+    return 0;
+}
+
+//    freopen("1.in","r",stdin);
+//    freopen("1.out","w",stdout);

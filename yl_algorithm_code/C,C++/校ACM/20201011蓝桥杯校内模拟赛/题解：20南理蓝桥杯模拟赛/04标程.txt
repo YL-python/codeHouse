@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+
+long long a[20];
+
+int main() {
+    int sum=0;
+    for (int i=1; i<=2020; i++){
+        for (int q=1; q<=300; q++){
+            a[1]=i;
+            for (int j=2; j<=10; j++){
+                a[j]=a[j-1]+q;
+            }
+            if (a[10]<=2020){
+                sum++;
+//                printf("%d   ",sum);
+//                for (int k=1; k<=10; k++){
+//                    printf("%d ",a[k]);
+//                }
+//                printf("\n");
+            }
+        }
+    }
+    printf("%d\n",sum);
+    return 0;
+}

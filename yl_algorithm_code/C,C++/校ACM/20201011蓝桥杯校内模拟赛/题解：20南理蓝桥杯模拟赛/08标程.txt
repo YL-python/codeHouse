@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+struct point {
+    int x,y,step;
+    bool operator < (const point &a) const {
+        return step>a.step;//最小值优先
+    }
+};
+
+priority_queue <point> que;
+
+int dij[5100];
+int yet[5100];
+int Map[5100][5100];
+
+int main(){
+    memset(Map,1,sizeof(Map));
+    memset(dij,1,sizeof(dij));
+    memset(yet,0,sizeof(yet));
+    int N,M,K;
+    int Xi,Yi,Pi;
+    scanf("%d%d%d",&N,&M,&K);
+    for (int i=0; i<M; i++){
+        scanf("%d%d%d",&Xi,&Yi,&Pi);
+        if ( Map[Yi][Xi] > Pi ) Map[Xi][Yi] = Map[Yi][Xi] = Pi;
+
+    }
+    point temp,p;
+    p.x=K;
+    p.step=0;
+    dij[K]=0;
+    yet[K]=1;
+    que.push(p);
+    while ( !que.empty() ){
+        if ( (yet[1]==1) && (yet[N]==1) ) break;
+        p=que.top();
+        que.pop();
+        yet[p.x]=1;
+        if ( dij[p.x] < p.step ) continue;
+        for (int i=1; i<=N; i++){
+            if ( dij[i] > p.step + Map[p.x][i] ){
+                dij[i] = p.step + Map[p.x][i];
+                temp.x = i;
+                temp.step = p.step + Map[p.x][i];
+                que.push(temp);
+            }
+        }
+//        printf("%d %d\n",p.x,p.step);
+    }
+    int sum = dij[1] + dij[N];
+    cout << sum << endl;
+    return 0;
+}

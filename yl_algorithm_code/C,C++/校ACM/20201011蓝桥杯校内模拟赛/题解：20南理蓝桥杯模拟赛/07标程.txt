@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+struct point {
+    int x,y,p;
+    bool operator < (const point &a) const {
+        return p<a.p;//最小值优先
+    }
+};
+
+int fa[51000];
+point a[210000];
+int Num;
+ll sum=0;
+
+int Find(int x){
+    if (fa[x]==x) return x;
+    fa[x]=Find(fa[x]); ///路径压缩
+    return fa[x];
+}
+
+int Union(int u,int v){
+    u=Find(u); v=Find(v);
+    if (u==v) return 0;
+    Num--;
+    if (u>v) fa[u]=fa[v];
+    else fa[v]=fa[u];
+    return 1;
+}
+
+int main(){
+    int N,M,Q;
+    scanf("%d%d%d",&N,&M,&Q);
+    Num=N;
+    for (int i=0; i<=N; i++){
+        fa[i]=i;
+    }
+    int Xi,Yi,Pi;
+    for (int i=0; i<M-Q; i++){
+        scanf("%d%d%d",&Xi,&Yi,&Pi);
+        Union(Xi,Yi);
+    }
+    for (int i=0; i<Q; i++){
+        scanf("%d%d%d",&a[i].x,&a[i].y,&a[i].p);
+    }
+    sort(a,a+Q);
+    for (int i=0; i<Q; i++){
+//        printf("==%d %d %d\n",a[i].x,a[i].y,a[i].p);
+        if (Union(a[i].x,a[i].y)) sum+=a[i].p;
+    }
+    cout << sum << endl;
+    return 0;
+}

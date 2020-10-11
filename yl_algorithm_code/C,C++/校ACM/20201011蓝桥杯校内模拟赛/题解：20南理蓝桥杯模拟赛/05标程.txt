@@ -1,0 +1,130 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int n=5; /// cube size
+int a[10][10];
+long long sum=0;
+
+int dfs(int step){
+    if (step==1){
+        for (int i=1; i<=n; i++){
+            for (int j=1; j<=n-2; j++){
+                if (a[i][j]==0 && a[i][j+1]==0 && a[i][j+2]==0){
+                    a[i][j] = a[i][j+2] = 'n';
+                    a[i][j+1] = 'a';
+                    dfs(2);
+                    a[i][j] = a[i][j+1] = a[i][j+2] = 0;
+                }
+                if (a[j][i]==0 && a[j+1][i]==0 && a[j+2][i]==0){
+                    a[j][i] = a[j+2][i] = 'n';
+                    a[j+1][i] = 'a';
+                    dfs(2);
+                    a[j][i] = a[j+1][i] = a[j+2][i] = 0;
+                }
+            }
+        }
+    }
+    if (step==2){
+        for (int i=1; i<=n; i++){
+            for (int j=1; j<=n-1; j++){
+                if (a[i][j]==0 && a[i][j+1]==0){
+                    a[i][j] = 'l';
+                    a[i][j+1] = 'i';
+                    dfs(3);
+
+                    a[i][j] = 'i';
+                    a[i][j+1] = 'l';
+                    dfs(3);
+                    a[i][j] = a[i][j+1] = 0;
+                }
+                if (a[j][i]==0 && a[j+1][i]==0){
+                    a[j][i] = 'l';
+                    a[j+1][i] = 'i';
+                    dfs(3);
+
+                    a[j][i] = 'i';
+                    a[j+1][i] = 'l';
+                    dfs(3);
+                    a[j][i] = a[j+1][i] = 0;
+                }
+            }
+        }
+    }
+    if (step==3){
+        for (int i=1; i<=n; i++){
+            for (int j=1; j<=n-2; j++){
+                if (a[i][j]==0 && a[i][j+1]==0 && a[i][j+2]==0){
+                    a[i][j] = 'n';
+                    a[i][j+1] = 'e';
+                    a[i][j+2] = 'w';
+                    //dfs(4);
+                    sum=sum+n*n-8;
+                    a[i][j] = a[i][j+1] = a[i][j+2] = 0;
+
+                    a[i][j] = 'w';
+                    a[i][j+1] = 'e';
+                    a[i][j+2] = 'n';
+                    //dfs(4);
+                    sum=sum+n*n-8;
+                    a[i][j] = a[i][j+1] = a[i][j+2] = 0;
+                }
+                if (a[j][i]==0 && a[j+1][i]==0 && a[j+2][i]==0){
+                    a[j][i] = 'n';
+                    a[j+1][i] = 'e';
+                    a[j+2][i] = 'w';
+                    //dfs(4);
+                    sum=sum+n*n-8;
+                    a[j][i] = a[j+1][i] = a[j+2][i] = 0;
+
+                    a[j][i] = 'w';
+                    a[j+1][i] = 'e';
+                    a[j+2][i] = 'n';
+                    //dfs(4);
+                    sum=sum+n*n-8;
+                    a[j][i] = a[j+1][i] = a[j+2][i] = 0;
+                }
+            }
+        }
+        for (int i=1; i<=n; i++){
+            for (int j=1; j<=n-2; j++){
+                if (a[i][j]=='n' && a[i][j+1]==0 && a[i][j+2]==0){
+                    a[i][j+1] = 'e';
+                    a[i][j+2] = 'w';
+                    //dfs(4);
+                    sum=sum+n*n-7;
+                    a[i][j+1] = a[i][j+2] = 0;
+                }
+                if (a[j][i]=='n' && a[j+1][i]==0 && a[j+2][i]==0){
+                    a[j+1][i] = 'e';
+                    a[j+2][i] = 'w';
+                    //dfs(4);
+                    sum=sum+n*n-7;
+                    a[j+1][i] = a[j+2][i] = 0;
+                }
+                if (a[i][j]==0 && a[i][j+1]==0 && a[i][j+2]=='n'){
+                    a[i][j+1] = 'e';
+                    a[i][j] = 'w';
+                    //dfs(4);
+                    sum=sum+n*n-7;
+                    a[i][j+1] = a[i][j] = 0;
+                }
+                if (a[j][i]==0 && a[j+1][i]==0 && a[j+2][i]=='n'){
+                    a[j+1][i] = 'e';
+                    a[j][i] = 'w';
+                    //dfs(4);
+                    sum=sum+n*n-7;
+                    a[j+1][i] = a[j][i] = 0;
+                }
+            }
+        }
+//        cout << sum << endl;
+    }
+    return 0;
+}
+
+int main() {
+    memset(a,0,sizeof(a));
+    dfs(1);
+    printf("%lld\n",sum);
+    return 0;
+}

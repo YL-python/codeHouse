@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+long long a[10000];
+
+int main() {
+    long long sum=0;
+    char ch[100]={"ILOVENANLI"};
+    for (int i=0; i<=9; i++){
+        sum=sum*36+ch[i]-'A'+10;
+        cout << sum << endl;
+    }
+//    printf("=%lld\n",sum);
+    int p=0;
+    while (sum>0){
+        a[p]=sum%3;
+        sum=sum/3;
+        p++;
+    }
+    for (int i=p-1; i>=0; i--){
+        printf("%lld",a[i]);
+    }
+    printf("\n");
+    return 0;
+}
