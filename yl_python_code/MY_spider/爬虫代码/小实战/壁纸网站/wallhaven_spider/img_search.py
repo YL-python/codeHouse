@@ -124,7 +124,7 @@ def read_jsan_to_save(search_txt):
 
 def main(search_txt):
     # 先爬取全部信息保存到本地
-    # get_all_img_info(search_txt)
+    get_all_img_info(search_txt)
     # 读取文件遍历保存图片
     read_jsan_to_save(search_txt)
 
@@ -134,7 +134,8 @@ if __name__ == '__main__':
     # search_txt = 'Kaguya-Sama'
     # search_txt = 'Chika Fujiwara'
     # search_txt = 'Miku'
-    search_txt = 'Eromanga-sensei'
+    # search_txt = 'Eromanga-sensei'
+    search_txt = 'genshin%20impact'
     try:
         IMG_SEAVE_PATH = os.path.join(IMG_SEAVE_PATH, search_txt)
         os.makedirs(IMG_SEAVE_PATH)

@@ -55,7 +55,7 @@ def cmp(obj_a, obj_b):
     return time_b - time_a
 
 
-for i in range(1, 2):
+for i in range(1, 10):
     print("正在爬取第 {} 页".format(i))
     html_doc = requests.get(url.format(i), headers=HEADERS).content.decode('utf-8')
     soup = BeautifulSoup(html_doc, 'lxml')
