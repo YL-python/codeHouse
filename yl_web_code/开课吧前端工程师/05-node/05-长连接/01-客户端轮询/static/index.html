@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <title>文章信息展示</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      a {
+        text-decoration: none;
+        color: #404040;
+      }
+
+      .wrap {
+        width: 600px;
+        margin: 0 auto;
+      }
+
+      .news-list {
+        width: 600px;
+      }
+
+      .news {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 0;
+        border-bottom: 1px solid #999;
+      }
+
+      .info {
+        display: flex;
+        width: 170px;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #888;
+      }
+
+      .tips {
+        display: flex;
+        width: 100px;
+        justify-content: space-between;
+      }
+
+      .news-list li:nth-child(5) {
+        border-bottom: none;
+      }
+
+      .pagination {
+        display: flex;
+        width: 210px;
+        text-align: center;
+        background-color: rgb(252, 238, 238);
+        border-radius: 25px;
+        overflow: hidden;
+        margin: 0 auto;
+        justify-content: center;
+      }
+
+      .pagination a {
+        width: 30px;
+        line-height: 30px;
+        color: #404040;
+      }
+
+      .pagination a:nth-child(1) {
+        transform: rotate(-45deg);
+      }
+
+      .next {
+        transform: rotate(45deg);
+      }
+
+      .pagination a:hover {
+        color: rgb(247, 73, 73);
+      }
+
+      .news div {
+        width: 420px;
+      }
+
+      /* 聊天框样式 */
+      .message-box {
+        width: 320px;
+        height: 480px;
+        border: 1px solid;
+        position: fixed;
+        bottom: 20px;
+        right: 10px;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .message-header {
+        width: 100%;
+        height: 40px;
+        background: rgb(0, 175, 242);
+        text-align: center;
+        line-height: 40px;
+        color: white;
+      }
+
+      .input-text {
+        position: absolute;
+        bottom: 0px;
+      }
+
+      .input-text textarea {
+        width: 300px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        height: 100px;
+      }
+
+      .input-text button {
+        float: right;
+        margin-right: 10px;
+        margin-bottom: 20px;
+      }
+
+      .chat-show {
+        height: 200px;
+        margin-top: 20px;
+      }
+
+      .chat-show li {
+        margin: 10px;
+      }
+
+      .chat-left {
+        /* float: left; */
+        text-align: left;
+      }
+
+      .chat-right {
+        text-align: right;
+      }
+
+      ul {
+        overflow: scroll;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <ul class="news-list">
+        <li class="news">
+          <a href="javascript:;">
+            <img src="./img/img.png" alt="" />
+          </a>
+          <div>
+            <h3>
+              <a href="javascript:;">18人死伤！韩国一男子纵火后持凶器伤害避险邻居</a>
+            </h3>
+            <div class="info">
+              <span class="tips"><span>韩国</span></span>
+              <!-- <span class="line"></span> -->
+              <span class="time">| &nbsp;&nbsp;1小时前</span>
+            </div>
+          </div>
+        </li>
+        <li class="news">
+          <a href="javascript:;">
+            <img src="./img/img.png" alt="" />
+          </a>
+          <div>
+            <h3>
+              <a href="javascript:;">18人死伤！韩国一男子纵火后持凶器伤害避险邻居</a>
+            </h3>
+            <div class="info">
+              <span class="tips"><span>韩国</span></span>
+              <!-- <span class="line"></span> -->
+              <span class="time">| &nbsp;&nbsp;1小时前</span>
+            </div>
+          </div>
+        </li>
+        <li class="news">
+          <a href="javascript:;">
+            <img src="./img/img.png" alt="" />
+          </a>
+          <div>
+            <h3>
+              <a href="javascript:;">18人死伤！韩国一男子纵火后持凶器伤害避险邻居</a>
+            </h3>
+            <div class="info">
+              <span class="tips"><span>韩国</span></span>
+              <!-- <span class="line"></span> -->
+              <span class="time">| &nbsp;&nbsp;1小时前</span>
+            </div>
+          </div>
+        </li>
+        <li class="news">
+          <a href="javascript:;">
+            <img src="./img/img.png" alt="" />
+          </a>
+          <div>
+            <h3>
+              <a href="javascript:;">18人死伤！韩国一男子纵火后持凶器伤害避险邻居</a>
+            </h3>
+            <div class="info">
+              <span class="tips"><span>韩国</span></span>
+              <!-- <span class="line"></span> -->
+              <span class="time">| &nbsp;&nbsp;1小时前</span>
+            </div>
+          </div>
+        </li>
+        <li class="news">
+          <a href="javascript:;">
+            <img src="./img/img.png" alt="" />
+          </a>
+          <div>
+            <h3>
+              <a href="javascript:;">18人死伤！韩国一男子纵火后持凶器伤害避险邻居</a>
+            </h3>
+            <div class="info">
+              <span class="tips"><span>韩国</span></span>
+              <!-- <span class="line"></span> -->
+              <span class="time">| &nbsp;&nbsp;1小时前</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="pagination">
+        <a href="javascript:;" class="prev">⌜</a>
+        <a href="javascript:;">1</a>
+        <a href="javascript:;">2</a>
+        <a href="javascript:;">3</a>
+        <a href="javascript:;">4</a>
+        <a href="javascript:;">5</a>
+        <a href="javascript:;" class="next">⌝</a>
+      </div>
+    </div>
+    <!-- 聊天框模板 -->
+    <div class="message-box">
+      <div class="message-header">聊天框</div>
+      <ul class="chat-show">
+        <li class="chat-left">A:大家好</li>
+        <li class="chat-right">B:你好啊</li>
+        <li class="chat-left">A:你好啊</li>
+        <li class="chat-right">B:很高兴见到大家</li>
+        <li class="chat-left">B:哈哈</li>
+        <li class="chat-left">B:哈哈</li>
+        <li class="chat-left">B:哈哈</li>
+        <li class="chat-left">B:哈哈</li>
+        <li class="chat-left">B:哈哈</li>
+      </ul>
+      <form class="input-text" onsubmit="return false;">
+        <textarea class="input-frame"></textarea>
+        <button class="btn" type="submit">发送</button>
+      </form>
+    </div>
+  </body>
+  <script>
+    // 客户端不停的发送请求；
+    // document.querySelector("ul").scrollTop = 10000000;
+    function render() {
+      $.ajax({
+        url: '/getData',
+        success(res) {
+          console.log(res);
+          let str = '';
+          res.forEach((item) => {
+            str += `<li>${item.content}</li>`;
+          });
+          $('.chat-show').html(str);
+          $('.chat-show')[0].scrollTop = 10000;
+        },
+      });
+    }
+    setInterval(() => {
+      render();
+    }, 500);
+
+    $('.btn').click(function () {
+      let textData = $('.input-frame').val();
+      $.ajax({
+        url: '/addData',
+        method: 'post',
+        data: {
+          content: textData,
+        },
+        success(res) {
+          console.log(res);
+          if (res.status == 1) {
+            render();
+          }
+        },
+      });
+    });
+  </script>
+</html>

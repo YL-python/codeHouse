@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="btn1">
+    <button style="background: red;">按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <p>内容一</p>
+    <p style='display:none'>内容二</p>
+    <p style='display:none'>内容三</p>
+  </div>
+
+  <div class="btn2">
+    <button style="background: red;">按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <button>按钮四</button>
+    <p>内容一</p>
+    <p style='display:none'>内容二</p>
+    <p style='display:none'>内容三</p>
+    <p style='display:none'>内容四</p>
+  </div>
+  <button class="nextPre">下一页</button>
+  <button class="autoPlay">自动轮播</button>
+
+  <script>
+    // 工厂模式 --> 构造函数
+    // 独有的单独处理  特有的自己处理
+    function Tab(btns, ps) {
+      this.btns = btns
+      this.ps = ps
+      this.btnFor()
+    }
+
+    Tab.prototype.btnFor = function () {
+      this.btns.forEach((vb, ib) => {
+        vb.onclick = () => {
+          this.pFor(ib)
+        }
+      })
+    }
+    Tab.prototype.pFor = function (key) {
+      this.ps.forEach((vp, ip) => {
+        if (ip === key) {
+          this.btns[ip].style.background = 'red'
+          this.ps[ip].style.display = 'block'
+        } else {
+          this.btns[ip].style.background = ''
+          this.ps[ip].style.display = 'none'
+        }
+      })
+    }
+
+    let btns1 = document.querySelectorAll(".btn1 button")
+    let ps1 = document.querySelectorAll(".btn1 p")
+    let tab1 = new Tab(btns1, ps1)
+    let num1 = 0
+    document.querySelector('.nextPre').onclick = () => {
+      num1++
+      num1 = num1 > tab1.btns.length - 1 ? 0 : num1
+      tab1.pFor(num1)
+    }
+
+    let btns2 = document.querySelectorAll(".btn2 button")
+    let ps2 = document.querySelectorAll(".btn2 p")
+    let tab2 = new Tab(btns2, ps2)
+    let num2 = 0
+    document.querySelector('.autoPlay').onclick = () => {
+      setInterval(() => {
+        num2++
+        num2 = num2 > tab2.btns.length - 1 ? 0 : num2
+        tab2.pFor(num2)
+      }, 1000)
+    }
+  </script>
+</body>
+
+</html>

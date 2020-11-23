@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function loadImg() {
+      //   let img = new Image()
+      //   img.src = 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1819216937,2118754409&fm=26&gp=0.jpg'
+      //   img.src = 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/0.jpg'
+      //   img.onload = function () {
+      //     console.log('图片加载 完成')
+      //   }
+      //   img.onerror = function () {
+      //     console.log('图片加载 失败')
+      //   }
+      // }
+      // loadImg()
+
+      // promise 改造
+      function loadImg() {
+        return new Promise((res, rej) => {
+          let img = new Image()
+          img.src = 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1819216937,2118754409&fm=26&gp=0.jpg'
+          img.src = 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/0.jpg'
+          img.onload = function () {
+            console.log('图片加载 完成')
+            res('图片加载 完成')
+          }
+          img.onerror = function () {
+            console.log('图片加载 失败')
+            rej('图片加载 失败')
+          }
+        })
+      }
+      let pImg = loadImg()
+      pImg.then(
+        (res) => {
+          console.log(res)
+        },
+        (err) => {
+          console.log(err)
+        }
+      )
+    </script>
+  </body>
+</html>

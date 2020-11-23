@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj = {
+      name: "zhangsan"
+    }
+    obj.__proto__.age = 30
+
+    // for in 循环会遍历到原型上
+    for (const i in obj) {
+      console.log(obj[i]);
+    }
+
+    console.log(obj.hasOwnProperty("name"));
+    console.log(obj.hasOwnProperty("age"));
+  </script>
+</body>
+
+</html>s

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // es6写法
+    class Drag {
+      // 静态属性
+      static height = '178cm'
+      constructor(age) {
+        this.name = '张三'
+        this.age = age
+      }
+      hobby() {
+        console.log("父类 hobby");
+      }
+      setStyle() {
+        console.log("父类 setStyle");
+      }
+    }
+
+    // es6写法
+    class LimitDrag extends Drag {
+      constructor(age) {
+        super(age)
+      }
+      hobby() {
+        console.log("子类 hobby");
+      }
+      setStyle() {
+        super.setStyle()
+        console.log("子类 setStyle");
+      }
+    }
+
+    // 子类获取不到父类的静态属性
+    let ldrag = new LimitDrag()
+    console.log(ldrag.height);
+    console.log(ldrag.hobby());
+    console.log(ldrag.setStyle());
+  </script>
+</body>
+
+</html>

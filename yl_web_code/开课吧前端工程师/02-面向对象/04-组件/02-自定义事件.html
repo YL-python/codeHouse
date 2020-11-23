@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn">点击</button>
+</body>
+<script>
+    // 函数当成事件来执行
+    function fn1() {
+        console.log('逻辑1 ');
+        console.log('逻辑2 ');
+        console.log('逻辑3 ');
+        console.log('逻辑A ');
+        console.log('逻辑B ');
+    }
+    fn1()
+
+    function fn2() {
+        console.log('逻辑1 ');
+        console.log('逻辑2 ');
+        console.log('逻辑3 ');
+    }
+
+    function fn2() {
+        console.log('逻辑A ');
+        console.log('逻辑B ');
+    }
+    fn2()
+    fn3()
+
+    document.querySelector('.btn').addEventListener('click', fn1)
+    document.querySelector('.btn').addEventListener('click', fn2)
+
+    // 事件名称：需要执行的函数列表
+    let handle = {
+        'myevent1': [fn1, fn2],
+        'myevent1': [fn1, fn2],
+        'myevent1': [fn1, fn2]
+    }
+
+    // 给对应事件添加需要执行的方法
+    function addEvent(eventName, fn) {
+        if (typeof handle[eventName] === 'undefined') {
+            handle[eventName] = []
+        }
+        handle[eventName].push(fn)
+    }
+
+    // 对应事件执行对应方法
+    function trigger(eventName) {
+        if (!(eventName in handle)) return;
+        handle[eventName].forEach(v => {
+            v();
+        });
+    }
+
+    // 给对应事件删除需要执行的方法
+    function removeEvent(eventName, fn) {
+        if (!(eventName in handle)) return;
+        for (let i = 0; i < hanle[eventName].length; i++) {
+            if (handle[eventName] === fn) {
+                handle[eventName].split(i, 1)
+            }
+        }
+    }
+</script>
+
+</html>

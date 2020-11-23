@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="btn1">
+    <button style="background: red;">按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <p>内容一</p>
+    <p style='display:none'>内容二</p>
+    <p style='display:none'>内容三</p>
+  </div>
+
+  <div class="btn2">
+    <button style="background: red;">按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <button>按钮四</button>
+    <p>内容一</p>
+    <p style='display:none'>内容二</p>
+    <p style='display:none'>内容三</p>
+    <p style='display:none'>内容四</p>
+  </div>
+  <button class="nextPre">下一页</button>
+  <button class="autoPlay">自动轮播</button>
+  <script>
+    // 工厂模式
+    function Tab() {
+      //添加原料
+      let obj = {}
+      //加工原料
+      obj.length = 1;
+      obj.pFor = function () {
+        console.log('123');
+      }
+      // 出厂
+      return obj
+    }
+
+    let tab1 = Tab();
+    tab1.pFor()
+
+    let tab2 = Tab();
+    tab2.pFor()
+
+    // 工厂模式问题
+    // 1不能区分出两个工厂产生的对象分别属于哪个工厂生产的
+    // 2性能问题 工厂生产出100个对象就会生成一百个独有空间
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="./axios.js" type="text/javascript"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>测试</h1>
+    <button onclick="login()">模拟登录</button>
+    <button onclick="checkApi()">请求接口</button>
+    <!-- <button onclick="checkApi()">请求接口2</button> -->
+  </body>
+  <script>
+    // 拦截器； 请求拦截器； 返还拦截器；
+    axios.interceptors.request.use((config) => {
+      console.log('request111....');
+      // config.headers.
+      if (localStorage.getItem('token')) {
+        config.headers.withCredentials = true;
+        config.headers.Authorization = 'Bearer ' + localStorage.getItem('token');
+      }
+      return config;
+    });
+    // axios.interceptors.request.use((config)=>{
+    //     console.log("request2222....");
+    //     return config;
+    // })
+
+    // axios.interceptors.response.use((res)=>{
+    //     console.log("response111....");
+    //     return res;
+    // })
+
+    function login() {
+      // axios({
+      //     method:"post",
+      //     url:"http://localhost:5000/checkUser",
+      //     data:{
+      //         username:'李四',
+      //         pwd:123
+      //     }
+      // }).then(res=>{
+      //     console.log(res);
+      //     if(res.data.token){
+      //         localStorage.setItem("token",res.data.token);
+      //     }
+      // })
+      // axios.get()
+      // axios.put()
+      // axios.patch();
+      // axios.head();
+      axios
+        .post('http://localhost:5000/checkUser', {
+          username: '李四',
+          pwd: 123,
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    }
+
+    // 接口一
+    function checkApi() {
+      axios({
+        method: 'post',
+        url: 'http://localhost:5000/checkApi',
+        data: {
+          username: '李四',
+          pwd: 123,
+        },
+        // ,headers:{
+        //     withCredentials:true,
+        //     Authorization:"Bearer " + localStorage.getItem("token")
+        // }
+      })
+        .then((res) => {
+          console.log(res);
+          if (res.data.token) {
+            localStorage.setItem('token', res.data.token);
+          }
+        })
+        .catch((err) => {
+          // console.log(err.reponse.status === 401);
+        });
+    }
+  </script>
+</html>

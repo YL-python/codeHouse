@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="sub()">发送fetch请求</button>
+    <button onclick="changeRequest()">点击我转发请求</button>
+    <!-- <form action="" enctype="application/x-www-form-urlencoded"></form> -->
+  </body>
+  <script>
+    function sub() {
+      // fetch 默认get请求
+      // fetch("/getData").then(res=>{
+      //     // console.log(res);
+      //     // return res.text();
+      //     return res.json();
+      //     // let mydata = res.clone();
+      //     // console.log(mydata);
+      //     return mydata;
+      // }).then(res=>{
+      //     console.log(res);
+      // })
+      // data:{name:zhangsan,age}
+      let myheaders = new Headers();
+      myheaders.append('content-type', 'application/json');
+      myheaders.append('x-com', 'myvalue');
+      fetch('/getData', {
+        method: 'post',
+        // body:"name=zhangsan&age=20",
+        body: JSON.stringify({ name: 'zhangsan', age: 20 }),
+        // headers:{
+        //     // "content-type":"application/x-www-form-urlencoded"
+        //     "content-type":"application/json",
+        //     "x-com":"myvalue"
+        // }
+        headers: myheaders,
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    }
+    // fetch:1.兼容性；2.没有文件上传接口
+
+    function changeRequest() {
+      fetch('/changeRequest')
+        .then((res) => {
+          return res.json();
+        })
+        .then((res) => {
+          console.log(res);
+        });
+    }
+  </script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="./myaxios.js" type="text/javascript"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="sub()">点击我发送请求</button>
+  </body>
+  <script>
+    // 请求拦截器
+    // console.dir(axios)
+    axios.Intercepters.request.use(
+      (config) => {
+        console.log('request...1111');
+        return config;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    axios.Intercepters.request.use(
+      (config) => {
+        console.log('request...2222');
+        return config;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+    //  放一个队列；【请求拦截器--请求---返还拦截器】;
+
+    function sub() {
+      // axios({})
+      // let axios = new Axios();
+      // axios.request({
+      //     url:"/getData"
+      // }).then(res=>{
+      //     console.log("结果",res);
+      // });
+      // axios()
+      // console.log(axios)
+      axios({
+        url: '/getData',
+      }).then((res) => {
+        console.log(res);
+      });
+      // axios();
+      // axios.get()
+      // axios.post();
+      // axios.post("/getData").then(res=>{
+      //     console.log(res);
+      // })
+    }
+  </script>
+</html>

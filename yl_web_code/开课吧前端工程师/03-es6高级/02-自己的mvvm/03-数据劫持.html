@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let data = {
+        message: '测试数据',
+      }
+      Object.defineProperty(data, 'message', {
+        configurable: true, // 是否可修改  默认不可修改
+        enumerable: true, // 是否可枚举  默认不可枚举
+        get() {
+          console.log('get...')
+          return '测试数据'
+        },
+        set(newValue) {
+          console.log('set...', newValue)
+        },
+      })
+    </script>
+  </body>
+</html>

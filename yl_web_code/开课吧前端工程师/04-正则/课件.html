@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 正则表达式；["12312","2312"]
+    // 字符串里找到对应的数字；
+    // let str = "fdsafd12312dfaf3443fds2312dafd1111";
+    // 方式一；
+    // function getNumber(str){
+    //     let arr = [];
+    //     let temp = "";
+    //     for(let i=0;i<str.length;i++){
+    //         // console.log(typeof str[i]);
+    //         if(!isNaN(str[i])){
+    //             // console.log("数字");
+    //             temp += str[i];
+    //         }else{
+    //             // console.log("非数字");
+    //             if(temp!=""){
+    //                 arr.push(temp);
+    //                 temp = "";
+    //             }
+    //         }
+    //     }
+    //     if(temp!=""){
+    //         arr.push(temp);
+    //     }
+    //     return arr;
+    // }
+    // let res = getNumber(str);
+    // console.log(res);
+
+    // 正则实现；方式二； + 出现1次到多次； \d；数字；\D:非数字；
+    // let reg = /\d+/g;
+    // let arr = str.match(reg);
+    // console.log(arr);
+
+    // 正则创建；
+    // 方式一:字面量创建；
+    // let str = "fdsadf12313fdaf";
+    // let a = "ad";
+    // let reg = /a/;
+    // let res = str.match(reg);
+    // console.log(res);
+
+    // 创建方式二 ：构造函数创建；
+    // let str = "fdsadf12313fdaf";
+    // let a = "ad";
+    // let reg = new RegExp(a,"g");
+    // let res = str.match(reg);
+    // console.log(res);
+
+    //正则方法；
+    // 1.test 2.exce;
+    // let str = "dfasfd342234fda2342342f";
+    // let reg = /\d+/;
+    // let res = reg.test(str);
+    // console.log(res);
+    // let reg = /\d+/g;
+    // let res = reg.exec(str);
+    // console.log(res);
+    // let res1 = reg.exec(str);
+    // console.log(res1);
+
+    // 字符串方法；
+    // 1.split 2.replace; 3.search; 4.match;
+    // 1.split
+    // let str = "fdafdafdsfdsafsddarer";
+    // let arr = str.split(/a/);
+    // console.log(arr);
+
+    //2.replace;
+    // let str = "fdafdaf1dsfdsa2fsdda33rer";
+    // let reg = /\d+/g;
+    // let res = str.replace(reg,"*");
+    // console.log(res);
+    // 敏感词过滤；
+    // let str = "据中国教育部数据显示，2007年至2018年，中国出国留学人数由14万增至66.2万，年均增长约14%；而同期的留学归国人数由4万增至51.9万，年均增长近24%。归国热潮下，海归就业的供需市场如何，成为留学人员与国内用人单位的共同关注。";
+    // // 教育部 、 人员；
+    // let reg = /教育部|人员/g;
+    // // let res = str.replace(reg,"*");
+    // let res = str.replace(reg,function(arg){
+    //     return "*".repeat(arg.length);
+    // })
+    // console.log(res);
+
+    // 3.match;
+    // let str = "fdsa1231dfaf232fda";
+    // let reg = /\d+/g;
+    // let res =  str.match(reg);
+    // console.log(res);
+
+    // 4.search:匹配第一个符合结果的索引值位置；如果找不到 就返还-1；
+    // 忽略全部匹配；
+    // let str = "fdsfda323fdaf1232";
+    // let reg = /\d+/;
+    // let res = str.search(reg);
+    // console.log(res);
+
+    // 元字符：正则中有特殊含义的非字母字符；
+    // . *(0次或者多次) + ? $ ^ | \ () [] {};
+
+    // .  匹配除了 \n \r \u2028 或 \u2029  以外的所有字符；
+    // let str = `<div>some<div></div> value..</div>`;
+    // let reg = /<div>.*<\/div>/g;
+    // // “\” 转义：将特殊含义转换成字面量含义；
+    //   let res =   reg.test(str);
+    //   console.log(res);
+
+    // ^开头  $ 结尾； \w:数字 字母 下划线；
+    // let str = "cde__111fg";
+    // let reg = /^c\w+g$/g;
+    // let res = reg.test(str);
+    // console.log(res);
+
+    // []：字符集合；
+    // let str = "dffdabfds123fdabfdb435afdsa";
+    // let reg = /a|b/g;
+    // let reg = /[^ab]/g;
+    // let res = str.replace(reg,"*");
+    // console.log(res);
+    // let reg = /\d+/g;
+    // let reg = /[0-9]+/g;
+    // let res = str.replace(reg,"*");
+    // console.log(res);
+    // let reg = /[0-20]+/g;
+    // let res = str.replace(reg,"*");
+    // console.log(res);
+    // let str = "this knife is 5cM";
+    // let reg = /[kKCc]?[Mm]/;
+    // let res = str.replace(reg,"米");
+    // console.log(res);
+
+    // . ===> [^\r\n];  \d===>[0-9];
+    // \w ===>[a-zA-Z_0-9];
+
+    // 边界符：\b  : 非 \w 都被称为边界；
+    // let str = "is this a book?";
+    // let reg = /\bis\b/g;
+    // let reg = new RegExp("\\bis\\b","g");
+    // let arr =  str.match(reg);
+    // console.log(arr);
+
+    // ():分组；
+    // let str = "fdssafdsababljljabssfd";
+    // ? ---> {0,1}  + ---> {1,}  * ---> {0,}     {2};
+    // let reg = /s{2}/g;
+    // let reg = /(ab){2}/g;  //abb
+    // let res = str.replace(reg,"*");
+    // console.log(res);
+
+    // let str = "My name is Lilei";
+    // // LiLei替换成李雷；
+    // let reg = /Li(L|l)ei/g;
+    // let res = str.replace(reg,"李雷");
+    // console.log(res);
+
+    // 转换时间格式：2019-10-19  ---->  19/10/2019;
+    // 反向引用；
+    // let mytime = "2019-10-19";
+    // let reg = /(\d{4})-(\d{1,2})-(\d{1,2})/g;
+    // let res = mytime.replace(reg,"$3/$2/$1");
+    // // console.log( RegExp.$1 );
+    // console.log(res);
+
+    // 命名分组；?<分组名>  ES2018新增特性；
+    // let str = "$name=zhangsan&age=20";
+    // let reg = /\$(?<str>\w+)/;
+    // let res = str.match(reg);
+    // console.log(res.groups.str);
+
+    // 零宽断言：正向（后面）  负向（前面）  ---》 肯定断言、否定断言 ；
+    // es2018
+    // 正向肯定断言；
+    // let str = "iphone3iphone4iphone11iphoneNumber";
+    // // iphone 换成“苹果”;
+    // let reg = /iphone(?=\d{1,2})/g;
+    // let res = str.replace(reg,"苹果");
+    // console.log(res);
+    // 正向否定断言；
+    // let str = "iphone3iphone4iphone11iphoneNumber";
+    // // iphone 换成“苹果”;
+    // let reg = /iphone(?!\d{1,2})/g;
+    // let res = str.replace(reg,"苹果");
+    // console.log(res);
+
+    // 负向肯定断言；
+    // let str = "10px20px30pxipx";
+    // // px-->像素；
+    // let reg =  /(?<=\d{2})px/g;
+    // let res = str.replace(reg,"像素");
+    // console.log(res);
+    // 负向否定断言；
+    // let str = "10px20px30pxipx";
+    // // px-->像素；
+    // let reg =  /(?<!\d{2})px/g;
+    // let res = str.replace(reg,"像素");
+    // console.log(res);
+
+    // 匹配模式
+    // g:全局匹配
+    // i:忽略大小写；
+    // let str = "afdafdAdfafd";
+    // let reg = /a/gi;
+    // let res = str.replace(reg,"*");
+    // console.log(res);
+
+    // m多行模式
+    // let str = `adfsf
+    // dfdsa`;
+    // let reg = /^\w/gm;
+    // let res = str.replace(reg,"*");
+    // console.log(res);
+
+    // s . 可以匹配换行符
+    // let str = `<div>som
+    //     e value..</div>`;
+    // let reg = /<div>.*<\/div>/gs;
+    // // “\” 转义：将特殊含义转换成字面量含义；
+    //   let res =   reg.test(str);
+    //   console.log(res);
+
+    // console.log(/^.$/.test("\uD842\uDFB7"));
+    // console.log(/^.$/u.test("\uD842\uDFB7"));
+
+    // y 粘性模式;
+    // let str = "1234dfafd43243fdsdf";
+    // let reg = /\d+/g;
+    // console.log(reg.exec(str));
+    // console.log(reg.exec(str));
+  </script>
+</html>

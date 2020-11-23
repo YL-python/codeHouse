@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn">点击</button>
+</body>
+<script>
+    // 函数当成事件来执行
+    function fn1() {
+        console.log('逻辑1 ');
+        console.log('逻辑2 ');
+        console.log('逻辑3 ');
+        console.log('逻辑A ');
+        console.log('逻辑B ');
+    }
+    //fn1()
+
+    function fn2() {
+        console.log('逻辑1 ');
+        console.log('逻辑2 ');
+        console.log('逻辑3 ');
+    }
+
+    function fn3() {
+        console.log('逻辑A ');
+        console.log('逻辑B ');
+    }
+    //fn2()
+    //fn3()
+
+    document.querySelector('.btn').addEventListener('click', fn1)
+    document.querySelector('.btn').addEventListener('click', fn2)
+
+    class myEvent {
+        constructor() {
+            this.handle = {}
+        }
+        // 给对应事件添加需要执行的方法
+        addEvent(eventName, fn) {
+            if (typeof this.handle[eventName] === 'undefined') {
+                this.handle[eventName] = []
+            }
+            this.handle[eventName].push(fn)
+        }
+
+        // 对应事件执行对应方法
+        trigger(eventName) {
+            if (!(eventName in this.handle)) return;
+            this.handle[eventName].forEach(v => {
+                v();
+            });
+        }
+
+        // 给对应事件删除需要执行的方法
+        removeEvent(eventName, fn) {
+            if (!(eventName in this.handle)) return;
+            for (let i = 0; i < hanle[eventName].length; i++) {
+                if (this.handle[eventName] === fn) {
+                    this.handle[eventName].split(i, 1)
+                }
+            }
+        }
+    }
+    let mye = new myEvent()
+    mye.addEvent('myevent', fn2)
+    mye.addEvent('myevent', fn3)
+    mye.trigger('myevent')
+</script>
+
+</html>

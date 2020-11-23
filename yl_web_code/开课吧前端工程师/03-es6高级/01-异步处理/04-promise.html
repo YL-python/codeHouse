@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 使用 prmomise解决回调地狱  底层是一个类
+      let p = new Promise((resolve, reject) => {
+        console.log('111')
+        resolve(111)
+        // reject(222)
+      })
+
+      // promise 对象有三种状态 pending 、resolved 和 rejectd
+      console.log(p)
+
+      // promise 对象 提供 then 方法：有两个参数和三个返回值
+      // 两个参数分别是成功的回调和失败的回调，每个回调函数的参数是 resolve和reject传递的值
+      // p.then(
+      //   function (res) {
+      //     console.log('成功的回调', res)
+      //   },
+      //   function (err) {
+      //     console.log('失败的回调', err)
+      //   }
+      // )
+
+      // 三个返回值
+      // 1 then 的回调函数中不返回值，默认返回一个 resolved 状态的 promise 对象
+      let p2 = p.then()
+      console.log(p2)
+      // 2 then 的回调函数中返回 非 promise 对象，默认返回一个 resolved 状态的 promise 对象 会把返回值绑定到这个对象上
+      let p3 = p
+        .then(() => {
+          return 111
+        })
+        .then((res) => {
+          console.log('p3 ', res)
+        })
+      console.log(p3)
+      // 3 then 的回调函数中返回 promise 对象 返回值就是这个 promise 对象
+      let p4 = p.then(function () {
+        return new Promise(() => {})
+      })
+      console.log(p4)
+    </script>
+  </body>
+</html>

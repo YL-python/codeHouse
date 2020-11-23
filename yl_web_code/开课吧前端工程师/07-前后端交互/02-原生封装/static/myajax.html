@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+  <script>
+    ajax({
+      url: '/myajax',
+      method: 'post',
+      data: {
+        hello: '你好',
+        height: '178cm',
+      },
+      dataType: 'json',
+      success(res) {
+        console.log(res);
+      },
+    });
+
+    function ajax(options) {
+      let opts = Object.assign(
+        {
+          url: '',
+          method: 'get',
+          headers: {
+            'content-type': 'application/x-www-form-urlencoded',
+          },
+          async: true,
+          data: {},
+          dataType: '',
+          success(res) {},
+        },
+        options
+      );
+      let xhr = new XMLHttpRequest();
+      // data = {name:zhangsan,age:20}
+      // name=zhangsan&age=20;
+      // get: url?  post:  send();
+      if (opts.method.toLowerCase() === 'get') {
+        opts.url = opts.url + '?' + o2u(opts.data);
+      }
+      xhr.open(opts.method, opts.url, opts.async);
+      let sendData;
+      // name=zhangsan&age=20; --> application/x-www-form-urlencoded
+      // json --> application/json
+      // console.log(o2u(opts.data));
+      if (opts.headers['content-type'] === 'application/x-www-form-urlencoded') {
+        sendData = o2u(opts.data);
+      } else {
+        sendData = JSON.stringify(opts.data);
+      }
+
+      xhr.onload = function () {
+        if (opts.dataType === 'json') {
+          // console.log(xhr.responseText);
+          opts.success(JSON.parse(xhr.responseText));
+        } else {
+          opts.success(xhr.responseText);
+        }
+      };
+      xhr.send(sendData);
+      function o2u(obj) {
+        let keys = Object.keys(obj);
+        let values = Object.values(obj);
+        // name=zhangsan
+        // age=20
+        return keys.map((v, k) => `${v}=${values[k]}`).join('&');
+      }
+    }
+  </script>
+</html>

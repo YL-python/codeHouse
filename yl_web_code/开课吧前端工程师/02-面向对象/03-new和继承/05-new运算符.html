@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // new 运算符 
+    // 1.执行函数
+    function test() {
+      console.log('test...');
+    }
+    test();
+    new test;
+    // 2.自动创建一个空对象
+    // 2.1简化工厂模式  --> 构造函数
+    function People() {
+
+      // 4.把空对象和函数里面的this 衔接起来(this指向实例化对象)
+      // let obj = {}  // --> this
+      this.name = 'zhangsan'
+      this.hobby = function () {
+        console.log('兴趣爱好');
+      }
+      // 5.隐式返还this
+      // return obj
+    }
+
+    People.prototype.run = function () {
+      console.log('run', this.name);
+    }
+
+    // 3.把创建的对象指向另一个对象
+    let tab1 = new People()
+    console.log(tab1.name);
+    tab1.hobby()
+
+    let tab2 = new People()
+    console.log(tab2.name);
+    tab2.hobby()
+
+    console.log(tab1.hobby === tab2.hobby); // false
+    console.log(tab1.run === tab2.run); // true
+
+    // 构造函数 首字母大写
+    // 属性放在构造函数内部  方法绑定在原型上
+
+    // 仿写 new运算符
+    function myNew(constructor, ...arg) {
+      let obj = {}
+      constructor.call(obj, ...arg)
+      obj.__proto__ = constructor.prototype
+      return obj
+    }
+
+    let p1 = myNew(People)
+    console.log(p1.name);
+  </script>
+</body>
+
+</html>

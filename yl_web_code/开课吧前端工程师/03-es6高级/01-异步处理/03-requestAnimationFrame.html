@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1</title>
+  </head>
+  <body>
+    <script>
+      // function test() {
+      //   document.title++
+      //   window.requestAnimationFrame(test)
+      // }
+      // test()
+
+      function test() {
+        document.title++
+        setTimeout(test, 10)
+      }
+      test()
+
+      // requestAnimationFrame 会调取到电脑的CPU提高性能
+      // 主窗口不是当前窗口的时候会停止
+
+      // setTimeout 切换窗口的时候不会停止 性能不是很高
+    </script>
+  </body>
+</html>

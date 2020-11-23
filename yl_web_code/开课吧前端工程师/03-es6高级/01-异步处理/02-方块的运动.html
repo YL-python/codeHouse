@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        left: 0px;
+        top: 0px;
+        background-color: red;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      // 让元素移动
+      function move(ele, arg, target, cb) {
+        // console.log(window.getComputedStyle(ele, null))
+        // console.log(window.getComputedStyle(ele, null)[arg])
+        let start = parseInt(window.getComputedStyle(ele, null)[arg])
+        // 1 或 -1  决定方向
+        let dis = (target - start) / Math.abs(target - start)
+        let speed = dis * 5
+        function fn() {
+          let now = parseInt(window.getComputedStyle(ele, null)[arg])
+          if (now === target) {
+            cb('运动完成')
+          } else {
+            console.log(now, target)
+            ele.style[arg] = now + speed + 'px'
+            // setTimeout(fn, 100)
+            window.requestAnimationFrame(fn)
+          }
+        }
+        fn()
+      }
+      // 回调地狱
+      let ele = document.querySelector('.box')
+      move(ele, 'left', 200, function (res) {
+        // console.log(res)
+        move(ele, 'top', 200, function (res) {
+          // console.log(res)
+          move(ele, 'left', 0, function (res) {
+            // console.log(res)
+            move(ele, 'top', 0, function (res) {
+              console.log(res)
+            })
+          })
+        })
+      })
+    </script>
+  </body>
+</html>

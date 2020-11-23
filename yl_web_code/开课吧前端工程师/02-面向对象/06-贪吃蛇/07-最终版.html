@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      #map {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        background-color: #000;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 id="grade">0</h1>
+    <div id="map"></div>
+    <script>
+      class Event {
+        // 事件池 记录所有的相关事件以及对应的函数
+        events = {}
+        // 添加一个事件对应的处理函数
+        on(eventName, fn) {
+          if (!this.events[eventName]) {
+            this.events[eventName] = []
+          }
+          if (!this.events[eventName].includes(fn)) {
+            !this.events[eventName].push(fn)
+          }
+        }
+        // 删除一个事件对应的处理函数
+        off(eventName, fn) {
+          if (!this.events[eventName]) {
+            return
+          }
+          this.events[eventName] = this.events[eventName].filters((item) => item != fn)
+        }
+        dispatch(eventName, ...arg) {
+          if (!this.events[eventName]) {
+            return
+          }
+          this.events[eventName].forEach((item) => {
+            item.call(this, ...arg)
+          })
+        }
+      }
+      class Map {
+        // 传参 元素和比例
+        constructor(el, rect) {
+          this.el = el
+          this.rect = rect
+          // 计算每行列多少个
+          this.rows = Math.ceil(Map.getStyle(el, 'height') / rect)
+          this.cells = Math.ceil(Map.getStyle(el, 'width') / rect)
+          // 修复小细节
+          Map.setStyle(el, 'height', rect * this.rows)
+          Map.setStyle(el, 'width', rect * this.cells)
+          this.data = []
+        }
+        static getStyle(el, attr) {
+          return parseFloat(getComputedStyle(el)[attr])
+        }
+        static setStyle(el, attr, val) {
+          el.style[attr] = val
+        }
+        // 向data中添加数据
+        setData(newData) {
+          this.data = this.data.concat(newData)
+        }
+        // 清空data
+        clearData() {
+          this.data.length = 0
+        }
+        // 判断data中是否包含
+        include({ x, y }) {
+          return !!this.data.some((item) => item.x == x && item.y == y)
+        }
+        // 渲染
+        rander() {
+          this.el.innerHTML = this.data
+            .map((item) => {
+              return `<span
+                style="position:absolute;
+                left:${item.x * this.rect}px;top:${item.y * this.rect}px;
+                width:${this.rect}px;height:${this.rect}px;
+                background:${item.color};"></span>`
+            })
+            .join('')
+        }
+      }
+      class Food {
+        constructor(cells, rows, colors = ['red', 'yellow', 'blue', 'pink']) {
+          this.cells = cells
+          this.rows = rows
+          this.colors = colors
+          this.data = {}
+        }
+        // 随机创建一个食物
+        create() {
+          let x = Math.floor(Math.random() * this.cells)
+          let y = Math.floor(Math.random() * this.rows)
+          let color = this.colors[parseInt(Math.random() * this.colors.length)]
+          this.data = { x, y, color }
+        }
+      }
+      class Snake {
+        constructor() {
+          this.data = [
+            { x: 5, y: 2, color: 'green' },
+            { x: 4, y: 2, color: 'white' },
+            { x: 3, y: 2, color: 'white' },
+            { x: 2, y: 2, color: 'white' },
+          ]
+          // 当前方向
+          this.direction = 'right'
+          this.lastData = {}
+        }
+        move() {
+          let lastIndex = this.data.length - 1
+          this.lastData = {
+            x: this.data[lastIndex].x,
+            y: this.data[lastIndex].y,
+            color: this.data[lastIndex].color,
+          }
+          // 让最后一格走到第一格上
+          for (let i = this.data.length - 1; i > 0; i--) {
+            this.data[i].x = this.data[i - 1].x
+            this.data[i].y = this.data[i - 1].y
+          }
+          switch (this.direction) {
+            case 'left':
+              this.data[0].x--
+              break
+            case 'right':
+              this.data[0].x++
+              break
+            case 'top':
+              this.data[0].y--
+              break
+            case 'bottom':
+              this.data[0].y++
+              break
+          }
+        }
+        changeDir(dir) {
+          // 上下走的时候能左右调转方向
+          if (this.direction === 'left' || this.direction === 'right') {
+            if (dir === 'left' || dir === 'right') {
+              return false
+            }
+          } else {
+            // 左右走的时候能上下调转方向
+            if (dir === 'top' || dir === 'bottom') {
+              return false
+            }
+          }
+          this.direction = dir
+          return true
+        }
+        // 吃食物蛇加长
+        eatFood() {
+          this.data.push(this.lastData)
+        }
+      }
+      // game 处理游戏逻辑
+      class Game extends Event {
+        constructor(el, rect) {
+          super()
+          this.map = new Map(el, rect)
+          // 创建蛇
+          this.snake = new Snake()
+          this.map.setData(this.snake.data)
+          // 创建食物
+          this.food = new Food(this.map.cells, this.map.rows)
+          this.createFood()
+          this.rander()
+          this.timer = null
+          this.interval = 200
+          this.keyDown = this.keyDown.bind(this)
+          this.grade = 0 // 分数
+          // 执行绑定事件函数
+          this.control()
+        }
+        // 创建食物
+        createFood() {
+          this.food.create()
+          if (this.map.include(this.food.data)) {
+            this.createFood()
+          }
+        }
+        // 开始游戏
+        start() {
+          this.move()
+        }
+        // 暂停游戏
+        stop() {
+          clearInterval(this.timer)
+        }
+        // 渲染数据
+        rander() {
+          this.map.clearData()
+          this.map.setData(this.snake.data)
+          this.map.setData(this.food.data)
+          this.map.rander()
+        }
+        // 控制移动
+        move() {
+          this.stop()
+          this.timer = setInterval(() => {
+            this.snake.move()
+            if (this.isEat()) {
+              this.stop()
+              this.snake.eatFood()
+              this.createFood()
+              this.grade++
+              this.changeGrade(this.grade)
+              this.interval *= 0.95
+              if (this.grade > 20) {
+                this.over(1)
+                return
+              }
+              this.start()
+            }
+            if (this.isOver()) {
+              this.over(0)
+              return
+            }
+            this.rander()
+          }, this.interval)
+        }
+        // 判断是否吃到食物
+        isEat() {
+          return this.snake.data[0].x === this.food.data.x && this.snake.data[0].y === this.food.data.y
+        }
+        // 判断是否结束游戏
+        isOver() {
+          // 判断 蛇出地图
+          // console.log(this.snake.data)
+          if (
+            this.snake.data[0].x < 0 ||
+            this.snake.data[0].x >= this.map.cells ||
+            this.snake.data[0].y < 0 ||
+            this.snake.data[0].y >= this.map.rows
+          ) {
+            return true
+          }
+          // 判断蛇撞到自己
+          for (let i = 1; i < this.snake.data.length; i++) {
+            if (this.snake.data[0].x === this.snake.data[i].x && this.snake.data[0].y === this.snake.data[i].y) {
+              return true
+            }
+          }
+          return false
+        }
+        // 结束游戏
+        over(overState) {
+          if (overState) {
+            this.dispatch('win', grade)
+          } else {
+            this.dispatch('over', grade)
+          }
+          this.stop()
+        }
+        keyDown(e) {
+          let keyCode = e.keyCode
+          switch (keyCode) {
+            case 38:
+            case 87:
+              this.snake.changeDir('top')
+              break
+            case 40:
+            case 83:
+              this.snake.changeDir('bottom')
+              break
+            case 37:
+            case 65:
+              this.snake.changeDir('left')
+              break
+            case 39:
+            case 68:
+              this.snake.changeDir('right')
+              break
+          }
+        }
+        // 分数
+        changeGrade(grade) {
+          this.dispatch('changeGrade', grade)
+        }
+        // 控制器
+        control() {
+          if (this.toControl) {
+            this.toControl()
+            return
+          }
+          window.addEventListener('keydown', this.keyDown)
+        }
+        // 用户自定义控制器
+        addControl(fn) {
+          fn.call(this)
+          window.removeEventListener('keydown', this.keyDown)
+        }
+      }
+      {
+        let map = document.querySelector('#map')
+        let game = new Game(map, 20)
+        let gradeEl = document.querySelector('#grade')
+        document.onclick = () => {
+          game.start()
+        }
+        game.on('changeGrade', (grade) => {
+          console.log(grade)
+        })
+        game.on('win', () => {
+          console.log('win')
+        })
+        game.on('over', () => {
+          console.log('over')
+        })
+      }
+    </script>
+  </body>
+</html>

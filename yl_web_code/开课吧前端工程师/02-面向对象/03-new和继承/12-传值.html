@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let a = 10
+    let b = a
+    a = 20
+    console.log(a);
+    console.log(b);
+
+    let obj1 = {
+      name: '11',
+      age: 22
+    }
+    let obj2 = obj1
+    obj1.name = '222'
+    console.log(obj1);
+    console.log(obj2);
+
+    // 简单深拷贝
+    let obj3 = JSON.parse(JSON.stringify(obj1))
+  </script>
+</body>
+
+</html>

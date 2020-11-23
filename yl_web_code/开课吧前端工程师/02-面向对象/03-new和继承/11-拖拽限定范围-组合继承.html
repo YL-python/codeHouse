@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .myDiv1 {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+    }
+
+    .myDiv2 {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="myDiv1"></div>
+  <div class="myDiv2"></div>
+  <script>
+    // 面向对象
+    // 限定移动
+    function Drag(ele) {
+      this.ele = ele
+      this.downFn()
+    }
+    // es5静态属性写法
+    Drag.num  = 100
+    Drag.prototype.downFn = function () {
+      this.ele.onmousedown = e => {
+        let ev = e || window.event
+        let x = ev.clientX - this.ele.offsetLeft
+        let y = ev.clientY - this.ele.offsetTop
+        this.moveFn(x, y)
+        this.upFn()
+      }
+    }
+    Drag.prototype.moveFn = function (x, y) {
+      this.ele.onmousemove = e => {
+        let ev = e || window.event
+        let xx = ev.clientX
+        let yy = ev.clientY
+        this.setStyle(xx - x, yy - y)
+      }
+    }
+    Drag.prototype.upFn = function () {
+      this.ele.onmouseup = () => {
+        this.ele.onmousemove = ''
+      }
+    }
+    Drag.prototype.setStyle = function (leftNum, topNum) {
+      this.ele.style.left = leftNum + 'px'
+      this.ele.style.top = topNum + 'px'
+    }
+
+    let myDiv1 = document.querySelector('.myDiv1')
+    new Drag(myDiv1)
+
+    function LimitDrag(ele) {
+      Drag.call(this, ele)
+    }
+
+    // 继承
+    let Link = function () {}
+    Link.prototype = Drag.prototype
+    LimitDrag.prototype = new Link()
+    LimitDrag.prototype.constructor = LimitDrag
+
+    LimitDrag.prototype.setStyle = function (leftNum, topNum) {
+      leftNum = leftNum < 0 ? 0 : leftNum
+      topNum = topNum < 0 ? 0 : topNum
+      this.ele.style.left = leftNum + 'px'
+      this.ele.style.top = topNum + 'px'
+    }
+
+    let myDiv2 = document.querySelector('.myDiv2')
+    new LimitDrag(myDiv2)
+  </script>
+</body>
+
+</html>

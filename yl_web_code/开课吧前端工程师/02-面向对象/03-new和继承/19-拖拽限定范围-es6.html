@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .myDiv1 {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+    }
+
+    .myDiv2 {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="myDiv1"></div>
+  <div class="myDiv2"></div>
+  <script>
+    // 面向对象
+    // 限定移动
+    class Drag {
+      constructor(ele) {
+        this.ele = ele
+        this.downFn()
+      }
+
+      downFn() {
+        this.ele.onmousedown = e => {
+          let ev = e || window.event
+          let x = ev.clientX - this.ele.offsetLeft
+          let y = ev.clientY - this.ele.offsetTop
+          this.moveFn(x, y)
+          this.upFn()
+        }
+      }
+
+      moveFn(x, y) {
+        this.ele.onmousemove = e => {
+          let ev = e || window.event
+          let xx = ev.clientX
+          let yy = ev.clientY
+          this.setStyle(xx - x, yy - y)
+        }
+      }
+
+      upFn() {
+        this.ele.onmouseup = () => {
+          this.ele.onmousemove = ''
+        }
+      }
+
+      setStyle(leftNum, topNum) {
+        this.ele.style.left = leftNum + 'px'
+        this.ele.style.top = topNum + 'px'
+      }
+
+    }
+
+    let myDiv1 = document.querySelector('.myDiv1')
+    new Drag(myDiv1)
+
+    class LimitDrag extends Drag {
+      constructor(ele) {
+        super(ele)
+      }
+      setStyle(leftNum, topNum) {
+        leftNum = leftNum < 0 ? 0 : leftNum
+        topNum = topNum < 0 ? 0 : topNum
+        setStyle.setStyle(leftNum, topNum)
+      }
+    }
+
+    let myDiv2 = document.querySelector('.myDiv2')
+    new LimitDrag(myDiv2)
+  </script>
+</body>
+
+</html>

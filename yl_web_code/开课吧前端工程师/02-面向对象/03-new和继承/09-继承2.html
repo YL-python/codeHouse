@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Dad(height) {
+      this.name = '张三'
+      this.age = 28
+      this.height = height
+      this.money = '$100000'
+    }
+
+    // 原型链上的方法不能继承到
+    Dad.prototype.hobby = function () {
+      console.log('高尔夫');
+    }
+
+    // 能解决子类继承父类的方法
+    // 但是地址是一致的  子类修改父类的也修改了
+    Son.prototype = Dad.prototype
+    Son.prototype.hobby = function () {
+      console.log('篮球');
+    }
+
+    // 继承的第一种实现
+    function Son(height) {
+      Dad.call(this, height)
+      // Dad.apply(this, [height])
+      // Dad.bind(this)(height)
+    }
+
+    let newSon = new Son('178cm')
+    console.log(newSon.name);
+    console.log(newSon);
+    newSon.hobby()
+
+    let dad = new Dad();
+    dad.hobby()
+  </script>
+</body>
+
+</html>

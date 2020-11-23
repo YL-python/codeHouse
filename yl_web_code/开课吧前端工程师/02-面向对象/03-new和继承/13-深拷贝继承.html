@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj1 = {
+      name: '11',
+      age: 22,
+      arr: [1, 2, 3],
+      fn: function () {
+        console.log('fn');
+      },
+      n: null
+    }
+
+    function DeepCopy(obj) {
+      if (obj === null) return null
+      let newObj = Array.isArray(obj) ? [] : {}
+      for (let i in obj) {
+        // 检测属性是否是自身上的  而不是原型上的
+        if (obj.hasOwnProperty(i)) {
+          if (typeof obj[i] === 'object') {
+            newObj[i] = DeepCopy(obj[i])
+          } else {
+            newObj[i] = obj[i]
+          }
+        }
+      }
+      return newObj
+    }
+
+    let obj2 = DeepCopy(obj1)
+    obj1.name = '222'
+    console.log(obj1);
+    console.log(obj2);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Drag() {
+      this.ele = 'some value...'
+    }
+    Drag.prototype.ele = 'prototype value...'
+    Object.prototype.ele = 'Object value...'
+
+    let drag1 = new Drag()
+    console.log(drag1.ele);
+  </script>
+</body>
+
+</html>

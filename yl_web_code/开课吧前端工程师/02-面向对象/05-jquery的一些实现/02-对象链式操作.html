@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj = {
+      click() {
+        console.log('111');
+        return this
+      },
+      css() {
+        console.log('222');
+        return this
+      }
+    }
+    obj.click().css()
+  </script>
+</body>
+
+</html>

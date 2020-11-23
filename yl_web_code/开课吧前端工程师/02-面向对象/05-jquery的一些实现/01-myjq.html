@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./myjq.js" type="text/javascript"></script>
+  <style>
+    .box1 {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+
+    .box2 {
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box1"></div>
+  <div class="box2"></div>
+  <script>
+    // 绑定点击事件
+    // $('.box1').click(function () {
+    //   console.log('111');
+    // })
+
+    // $ 常用 1
+    // console.log($('.box1'));
+
+    // $ 常用 2 
+    // console.log($(function () {
+    //   console.log('111');
+    // }));
+
+    // $ 常用 3
+    // console.log(document.querySelector('.box1'));
+
+    // 链式操作
+    // $('div').eq(0).click(function () {
+    //   console.log('xxxx');
+    // })
+
+    // end  获取上一次操作的 节点对象
+
+    // on 绑定事件
+    // $('.box1').on('   mouseover     mousedown   ', function () {
+    //   console.log('   mouseover   mousedown  ');
+    // })
+
+    // 操作CSS 1 获取属性值
+    // let bg = $('.box1').css('background')
+    // console.log(bg);
+
+    // // 操作CSS 2 设置属性值
+    // $('div').css('width', '200px')
+    // $('div').css('opacity', 0.5)
+
+    // 操作CSS 3 设置属性值
+    // $('div').css({
+    //   'width': '200px',
+    //   'height': '200px'
+    // })
+
+    // 自定义属性  wh同时设置宽高
+    $.cssHooks['wh'] = {
+      get(ele) {
+        return ele.offsetWidth + " " + ele.offsetHeight
+      },
+      set(ele, value) {
+        ele.style.width = value
+        ele.style.height = value
+      }
+    }
+    $('.box1').css('wh', '200px')
+  </script>
+</body>
+
+</html>

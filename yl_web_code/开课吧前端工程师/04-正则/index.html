@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 案例一  提取出字符串中的数字
+      let str = 'qwe123qweqwew45456e46qweqweqw456';
+      let reg = /\d+/g;
+      console.log(str.match(reg));
+
+      // 正则的创建
+      // 1 字面量创建
+      let reg1 = /\d+/g;
+      // 2 构造函数  传入字符串参数使用  开销大
+      let reg2 = new RegExp('\\d+', 'g');
+
+      // 正则的方法
+      // 1 test  查找
+      console.log(/\d+/g.test('qwre123qwe'));
+      console.log(/\d+/g.test('qwreqwe'));
+      // 2 exec 执行匹配  匹配的时候会记忆上一次执行的结果
+      let reg3 = /\d+/g;
+      console.log(reg3.exec('qw456re123qwe'));
+      console.log(reg3.exec('qw456re123qwe'));
+
+      // 字符串方法
+      // 1 split 切割
+      console.log('qweaqweaqwea'.split(/a/));
+      // 2 replace  替换
+      console.log('qwe1aqwe2aqw3ea11'.replace(/\d+/g, '*'));
+      console.log(
+        'qwe111123123aqwe2aqw3ea11'.replace(/\d+/g, (arg) => {
+          return '*'.repeat(arg.length);
+        })
+      );
+      // 3 match 匹配结果  全局匹配只会返回结果  匹配出来一个值时内容会很多
+      console.log('qwe123qwe123'.match(/\d+/));
+      console.log('qwe123qwe123'.match(/\d+/g));
+      // 4 search 匹配符合第一个结果的位置  找不到返回-1  忽略全局匹配
+      console.log('qwe123qwe123'.search(/\d+/));
+
+      // 元字符
+    </script>
+  </body>
+</html>

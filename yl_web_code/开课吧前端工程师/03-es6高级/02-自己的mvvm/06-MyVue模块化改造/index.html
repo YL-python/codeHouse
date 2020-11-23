@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- <script src="./mvvm2.js" type="text/javascript"></script> -->
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      11 {{ message }}111
+      <div>
+        1111
+        <div>{{message}}</div>
+      </div>
+      <div v-html="htmlData"></div>
+      <input v-model="modelData" /> {{modelData}}
+    </div>
+  </body>
+  <script type="module">
+    import Kvue from './Kvue.js';
+    let vm = new Kvue({
+      el: '#app',
+      data: {
+        message: '测试数据',
+        htmlData: 'html数据',
+        modelData: '绑定的数据',
+      },
+    });
+
+    console.log(vm.$options.data);
+    setTimeout(() => {
+      // console.log("settimeout...");
+      vm.$options.data.message = '修改的数据';
+    }, 1000);
+  </script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="sendPost()">点击发送post请求</button>
+    <button onclick="getXML()">获取xml数据</button>
+    <!-- <form action="" enctype="application/x-www-form-urlencoded"></form> -->
+  </body>
+  <script>
+    // 主流的数据传输格式：json；xml；
+    function sendPost() {
+      let xhr = new XMLHttpRequest();
+      xhr.open('post', '/post', true);
+      // xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+      xhr.setRequestHeader('content-type', 'application/json');
+      xhr.onload = function () {
+        console.log(xhr.readyState, xhr.status);
+        // console.log(xhr.response);
+        console.log(xhr.responseText);
+      };
+      // let data = "name=zhangsan&age=20";
+      let data = JSON.stringify({ name: '王五', age: 20 });
+      xhr.send(data);
+    }
+    function getXML() {
+      let xhr = new XMLHttpRequest();
+      xhr.open('post', '/xml', true);
+      xhr.overrideMimeType('text/xml');
+      xhr.onload = function () {
+        console.log(xhr.responseXML);
+      };
+      xhr.send();
+    }
+  </script>
+</html>

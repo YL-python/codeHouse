@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('1111')
+          resolve(1)
+        }, 1000)
+      })
+      let p2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('2222')
+          resolve(2)
+        }, 2000)
+      })
+      let p3 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('3333')
+          resolve(3)
+        }, 3000)
+      })
+      // Promise.resolve() 返回一个 resolved 状态的 promise对象
+      // Promise.reject() 返回一个 rejected 状态的 promise对象
+      // let p2 = p1.resolve()
+      // let p2 = p1.reject()
+      // console.log(p2);
+
+      // Promise.all()
+      // then需要所有的 promise都是成功的
+      Promise.all([p1, p2, p3]).then((res) => {
+        console.log(res)
+      })
+
+      // Promise.rase()
+      // then的返回值是最先执行完成的promise返回值
+      Promise.rase([p1, p2, p3]).then((res) => {
+        console.log(res)
+      })
+    </script>
+  </body>
+</html>

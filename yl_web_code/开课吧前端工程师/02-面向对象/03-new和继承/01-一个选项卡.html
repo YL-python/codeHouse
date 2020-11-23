@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="btn1">
+    <button style="background: red;">按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <p>内容一</p>
+    <p style='display:none'>内容二</p>
+    <p style='display:none'>内容三</p>
+  </div>
+  <script>
+    let btns = document.querySelectorAll(".btn1 button")
+    let ps = document.querySelectorAll(".btn1 p")
+    btns.forEach((vb, ib) => {
+      vb.onclick = () => {
+        ps.forEach((vp, ip) => {
+          if (ip === ib) {
+            btns[ip].style.background = 'red'
+            ps[ip].style.display = 'block'
+          } else {
+            btns[ip].style.background = ''
+            ps[ip].style.display = 'none'
+          }
+        })
+      }
+    })
+  </script>
+</body>
+
+</html>

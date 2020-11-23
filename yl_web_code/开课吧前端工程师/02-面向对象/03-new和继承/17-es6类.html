@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function Drag() {
+    //   this.name = '张三'
+    // }
+    // Drag.prototype.hobby = function () {
+    //   console.log("篮球");
+    // }
+
+    // es6写法
+    class Drag {
+      // 静态属性
+      static height = '178cm'
+      constructor() {
+        this.name = '张三'
+      }
+      hobby() {
+        console.log("篮球");
+      }
+    }
+
+    // 添加静态属性  同理可以添加静态方法
+    Drag.test = 'test'
+
+    console.log(typeof Drag);
+
+    let drag = new Drag()
+    console.log(drag);
+    console.log(Drag.height);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>测数数据</h1>
+    <div class="exchange"></div>
+  </body>
+  <script>
+    let source = new EventSource('/sse');
+    source.onopen = function () {
+      console.log('连接成功....');
+      console.log(source.readyState);
+    };
+    source.onmessage = function (e) {
+      console.log('获取到的数据是：', e.data);
+      document.querySelector('.exchange').innerHTML = e.data;
+    };
+    source.onerror = function (err) {
+      return console.log(err);
+    };
+  </script>
+</html>
